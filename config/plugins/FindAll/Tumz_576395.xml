@@ -1,0 +1,24 @@
+<findall>
+
+    <!--When set to enabled, this plugin will be allowed to modify this xml when you change settings ingame.-->
+    <autosave>enabled</autosave>
+
+    <!--When set to enabled, this plugin will memory swap inventory struct in upon zoning, so it is immediately accessible.-->
+    <instantload>disabled</instantload>
+
+    <!--When set to enabled, this plugin will store your items to a local cache so they can be searched even if the character is offline.-->
+    <cachetodisc>enabled</cachetodisc>
+
+    <!--The maximum number of item IDs to display when in imgui mode.  Must be between 1 and 20.-->
+    <displaymax>8</displaymax>
+
+    <!--When set to imgui, this plugin will display search results in an imgui window.  When set to chatlog, they will be displayed in chat log.-->
+    <displaymode>imgui</displaymode>
+
+    <!--When set to enabled, you must type ki: prior to a search term to include key items in the search.-->
+    <requirekeyitemprefix>enabled</requirekeyitemprefix>
+
+    <!--The delay, in milliseconds, after an item changes before it is written to cache.  This prevents extensive writes when inventory is frequently changing.-->
+    <writedelay>20000</writedelay>
+
+</findall>

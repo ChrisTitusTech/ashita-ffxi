@@ -1,0 +1,19 @@
+<lootwhore>
+
+	<settings>
+		<defaultaction>ignore</defaultaction>
+		<smartpass>disabled</smartpass>
+		<rarepass>disabled</rarepass>
+		<zonereset>disabled</zonereset>
+	</settings>
+
+	<itemlist>
+	</itemlist>
+
+	<droplist>
+	</droplist>
+
+	<storelist>
+	</storelist>
+
+</lootwhore>

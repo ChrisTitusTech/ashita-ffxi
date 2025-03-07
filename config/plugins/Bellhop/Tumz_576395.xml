@@ -1,0 +1,45 @@
+<bellhop>
+
+    <!--When set to enabled, this plugin will be allowed to modify this xml when you change settings ingame.-->
+    <autosave>enabled</autosave>
+
+	<!--Set the default behavior of autotrade. (Accept/Deny/Ignore)-->
+	<autotrade>Ignore</autotrade>
+
+	<!-- Any entries contained here will automatically have trades denied. -->
+	<blacklist>
+	</blacklist>
+
+	<!-- Any entries contained here will automatically have trades accepted. -->
+	<whitelist>
+	</whitelist>
+
+	<!-- Any bag indices listed here will be treated as if you have access to them.  This is primarily for DSP. -->
+	<forceenablebags></forceenablebags>
+
+	<!-- Any bag indices listed here will be treated as if you do not have access to them.  This is primarily for DSP. -->
+	<forcedisablebags></forcedisablebags>
+
+	<!--If enabled, bellhop will allow you to remove and place items in storage while at a nomad moogle.  Retail servers allow this, but it cannot be accomplished with a legitimate client so it may entail ban risk.-->
+	<nomadstorage>Disabled</nomadstorage>
+
+	<!--If enabled, bellhop will allow you to purchase items you do not have the rank for from guild NPCs.  Retail servers allow this, but it cannot be accomplished with a legitimate client so it may entail ban risk.-->
+	<ignorecraftskill>Disabled</ignorecraftskill>
+
+	<!--If enabled, bellhop will prevent tradeplayer commands unless a trade window is actually open.-->
+	<enforcetradewindow>Disabled</enforcetradewindow>
+
+	<!--If enabled, commands used for Ashita3's version of bellhop will work.  This is disabled by default as some of them overlap with ingame commands or are generic enough to compete with other plugins. -->
+	<legacycommands>Enabled</legacycommands>
+
+	<!-- If enabled, complex commands will be summarized in one line of output instead of using multiple. -->
+	<shortoutput>Disabled</shortoutput>
+
+	<!-- The time, in milliseconds, before an autotrade-related packet will be resent if the server does not respond to it. -->
+	<retrydelay>3000</retrydelay>
+
+	<!--This is used to specify item types, which allows you to batch commands on a whole type of item.  See documentation for more information.-->
+	<itemtypes>
+	</itemtypes>
+
+</bellhop>

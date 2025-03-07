@@ -1,0 +1,13 @@
+<shorthand>
+
+	<settings>
+		<packetws>false</packetws>
+		<gearcheck>true</gearcheck>
+		<impact>false</impact>
+		<honor>false</honor>
+		<aria>false</aria>
+		<dispelga>false</dispelga>
+		<debug>false</debug>
+	</settings>
+
+</shorthand>

@@ -1,0 +1,95 @@
+<packer>
+
+	<settings>
+		<equipbags>8,10,11,12,13,14,15,16,0</equipbags> <!-- List of container indices you can equip items from.  Should only be changed when on a private server that allows players to equip from non-standard containers. -->
+		<forceenablebags></forceenablebags> <!-- List of bags that will always be treated as accessible.  Primarily for private server usage.-->
+		<forcedisablebags></forcedisablebags> <!-- List of bags that will always be treated as inaccessible.  Primarily for private server usage.-->
+		<threading>true</threading> <!--When enabled, initial move lists will be created in a background thread.  Disabling this will cause client stutter when parsing or reparsing inventories.  You may still want to disable it on computers with very few cores or very high single core performance.-->
+		<weaponpriority>true</weaponpriority> <!--If this is enabled, all weapons will be stored in your first equipment bag.  This makes it easier to swap weapons from the menu without searching bags.  Since default first bag is 8(wardrobe), that is where they will be unless modified.-->
+		<dirtypackets>false</dirtypackets> <!--When enabled, packer will use item move packets to directly combine stacks and bypass inventory.  This is not possible with the legitimate game client and may be a ban risk, but will increase speed.-->
+		<defrag>true</defrag> <!--When enabled, packer will combine like stacks after organizing.  Requires a movelimit of 4 or higher, or dirtypackets enabled.-->
+		<benchmark>true</benchmark> <!--When enabled, packer will print the amount of time various steps take to ashita log for troubleshooting.-->
+		<debug>true</debug> <!--When enabled, packer will print a large amount of information to ashita log for troubleshooting.-->
+		<nomadstorage>false</nomadstorage> <!--When enabled, Packer will access storage bag at nomad moogles despite the menu not directly allowing it.  This is not possible with the legitimate game client and may be a ban risk.-->
+		<validateaftergear>true</validateaftergear> <!--When enabled, Packer will automatically do a validate after you use /ac gear or /packer gear to show which items are missing.-->
+		<movelimit>200</movelimit> <!--Limits the amount of items moved per packet interval.  Packet size makes for a maximum of 166 when using dirty packets, or 83 without, so any value higher than this is effectively unlimited.-->
+	</settings>
+
+	<priority> <!--Set which containers will have items stored in them, and which item types can be stored in them.-->
+	<!--List all your bags, in the order you want them filled.
+	If a bag is not listed at all, it will be as if it does not exist and items will never be added to or removed from it.
+	Packer will only store equipment in bags with 'equip="true"' and will only store non-equipment in bags with 'other="true"' attributes.
+	If an item is listed in an item node, it will always go in that bag regardless of attributes, unless a GEAR command requires it and the bag is not equippable.  So, you can list equipment in item nodes even if the bag does not allow equipment, for example.
+	By default, Packer will move items from later bags to earlier bags to make more space in your later bags.
+	If you set 'compress="false"', Packer will not remove items from a bag to make space, only if the items are required to be elsewhere.
+	If you do not enable dirtypackets, it is highly recommended that you set inventory as last bag.
+	Otherwise, your inventory is likely to fill up, and since items have to travel through inventory to reach other bags you will reach a jam.
+	Besides, who wants a full inventory in this game?  Why?  Just don't do it. -->
+		<safe equip="true" />
+		<storage equip="true" />
+		<locker equip="true" />
+		<safe2 equip="true" />
+		<wardrobe equip="true" />
+		<wardrobe2 equip="true" />
+		<wardrobe3 equip="true" />
+		<wardrobe4 equip="true" />
+		<wardrobe5 equip="true" />
+		<wardrobe6 equip="true" />
+		<wardrobe7 equip="true" />
+		<wardrobe8 equip="true" />
+		<satchel other="true" />
+		<sack other="true" />
+		<case other="true" />
+		<inventory compress="false" />
+	</priority>
+
+	<!--List bags at the same level as priority/settings if you want to specify items that always belong in those bags.-->
+	<inventory>
+	</inventory>
+
+	<safe>
+	</safe>
+
+	<storage>
+	</storage>
+
+	<locker>
+	</locker>
+
+	<satchel>
+	</satchel>
+
+	<sack>
+	</sack>
+
+	<case>
+	</case>
+
+	<wardrobe>
+	</wardrobe>
+
+	<safe2>
+	</safe2>
+
+	<wardrobe2>
+	</wardrobe2>
+
+	<wardrobe3>
+	</wardrobe3>
+
+	<wardrobe4>
+	</wardrobe4>
+
+	<wardrobe5>
+	</wardrobe5>
+
+	<wardrobe6>
+	</wardrobe6>
+
+	<wardrobe7>
+	</wardrobe7>
+
+	<wardrobe8>
+	</wardrobe8>
+
+</packer>

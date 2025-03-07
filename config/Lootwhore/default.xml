@@ -1,0 +1,18 @@
+<lwconfig>
+
+	<settings>
+		<storebags>5,6,7,8,10,11,12,13,14,15,16</storebags>
+		<autostack>enabled</autostack>
+		<forceenablebags></forceenablebags>
+		<nomadstorage>disabled</nomadstorage>
+		<maxretry>3</maxretry> <!--Maximum amount of times to try lotting or passing an item if server doesn't respond to indicate packet was received. -->
+		<retrydelay>3500</retrydelay> <!--Time, in milliseconds, to wait before retrying a pass or lot. -->
+		<delaymin>0</delaymin> <!--Minimum time, in milliseconds, to wait before lotting a freshly dropped item. -->
+		<delaymax>2500</delaymax> <!--Maximum time, in milliseconds, to wait before lotting a freshly dropped item.  Set to 0 for instant lots. -->
+		<silentstack>disabled</silentstack>
+	</settings>
+
+	<whitelist> <!--Anyone listed here will trigger smartpass when in 'listonly' mode. -->
+	</whitelist>
+
+</lwconfig>

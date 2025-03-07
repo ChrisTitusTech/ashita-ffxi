@@ -101,6 +101,7 @@
 /bind !F4 /ta <a23>
 /bind !F5 /ta <a24>
 /bind !F6 /ta <a25>
+/bind numpad9 /targetnpc
 
 ##########################################################################
 #
@@ -116,3 +117,8 @@
 ##########################################################################
 
 /ambient 255 255 255
+/fps 1
+/ignorepet on
+/ignoretrust on
+/hidetrust on
+/localsettings blureffect off

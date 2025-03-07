@@ -1,0 +1,32 @@
+require('common');
+
+local settings = T{ };
+settings["EquipBags"] = T{ };
+settings["ForceEnableBags"] = T{ };
+settings["ForceDisableBags"] = T{ };
+settings["FastCast"] = 0;
+settings["ItemBase"] = 8;
+settings["AddSetBackups"] = true;
+settings["AbilityDelay"] = 2.5;
+settings["RangedOffset"] = 0.5;
+settings["PetskillDelay"] = 4;
+settings["AllowSyncEquip"] = true;
+settings["ItemOffset"] = 1;
+settings["RangedBase"] = 10;
+settings["HorizonMode"] = false;
+settings["Snapshot"] = 0;
+settings["EquipBags"][1] = 8;
+settings["EquipBags"][2] = 10;
+settings["EquipBags"][3] = 11;
+settings["EquipBags"][4] = 12;
+settings["EquipBags"][5] = 13;
+settings["EquipBags"][6] = 14;
+settings["EquipBags"][7] = 15;
+settings["EquipBags"][8] = 16;
+settings["EquipBags"][9] = 0;
+settings["WeaponskillDelay"] = 3;
+settings["EnableNomadStorage"] = false;
+settings["AddSetEquipScreenOrder"] = true;
+settings["SpellOffset"] = 1;
+
+return settings;
