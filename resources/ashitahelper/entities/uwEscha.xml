@@ -1,0 +1,49 @@
+<entitydata>
+    <entry type="eschanpc" name="Affi" zone="288" instance="1" posx="-357.000000" posy="-170.500000" posz="0.110000" />
+    <entry type="eschanpc" name="Dremi" zone="289" instance="1" posx="-10.000000" posy="-460.000000" posz="-34.000099" />
+    <entry type="eschanpc" name="Shiftrix" zone="291" instance="1" posx="-502.000000" posy="-486.000000" posz="-19.220608" />
+    <entry type="eschaentrance" name="Undulating Confluence" zone="25" instance="1" posx="-48.977001" posy="572.489014" posz="-23.309162" />
+    <entry type="dimportal" name="Dimensional Portal" zone="33" instance="1" posx="25.299000" posy="579.000000" posz="-1.000000" />
+    <entry type="dimportal" name="Dimensional Portal" zone="33" instance="2" posx="-635.598999" posy="163.800003" posz="-0.998720" />
+    <entry type="dimportal" name="Dimensional Portal" zone="33" instance="3" posx="654.200012" posy="100.699997" posz="-1.000000" />
+    <entry type="dimportal" name="Dimensional Portal" zone="102" instance="1" posx="420.000000" posy="-140.000000" posz="19.104002" />
+    <entry type="dimportal" name="Dimensional Portal" zone="108" instance="1" posx="220.000000" posy="140.000000" posz="19.104002" />
+    <entry type="dimportal" name="Dimensional Portal" zone="117" instance="1" posx="260.000000" posy="340.000000" posz="35.150600" />
+    <entry type="eschaentrance" name="Undulating Confluence" zone="126" instance="1" posx="-204.531006" posy="75.318001" posz="-20.019001" />
+    <entry type="eschaentrance" name="Undulating Confluence" zone="288" instance="1" posx="-344.372009" posy="-182.309006" posz="1.619733" />
+    <entry type="eschaentrance" name="Undulating Confluence" zone="289" instance="1" posx="0.009000" posy="-471.917999" posz="-34.105850" />
+    <entry type="dimportal" name="Dimensional Portal" zone="291" instance="1" posx="-500.015991" posy="-494.675995" posz="-19.746655" />
+    <entry type="eschanportal" name="Eschan Portal #1" zone="288" instance="1" posx="-342.000000" posy="-172.000000" posz="-0.070000" />
+    <entry type="eschanportal" name="Eschan Portal #2" zone="288" instance="1" posx="-303.000000" posy="309.000000" posz="-0.030000" />
+    <entry type="eschanportal" name="Eschan Portal #3" zone="288" instance="1" posx="-261.000000" posy="-15.000000" posz="0.670000" />
+    <entry type="eschanportal" name="Eschan Portal #4" zone="288" instance="1" posx="-110.000000" posy="-242.000000" posz="0.120000" />
+    <entry type="eschanportal" name="Eschan Portal #5" zone="288" instance="1" posx="246.000000" posy="-148.000000" posz="0.270000" />
+    <entry type="eschanportal" name="Eschan Portal #6" zone="288" instance="1" posx="452.000000" posy="-343.000000" posz="1.390000" />
+    <entry type="eschanportal" name="Eschan Portal #7" zone="288" instance="1" posx="192.000000" posy="-318.000000" posz="0.200000" />
+    <entry type="eschanportal" name="Eschan Portal #8" zone="288" instance="1" posx="-135.000000" posy="-453.000000" posz="1.800000" />
+    <entry type="eschanportal" name="Eschan Portal #1" zone="289" instance="1" posx="10.000000" posy="-463.000000" posz="-34.000000" />
+    <entry type="eschanportal" name="Eschan Portal #2" zone="289" instance="1" posx="-274.500000" posy="-377.500000" posz="-40.500000" />
+    <entry type="eschanportal" name="Eschan Portal #3" zone="289" instance="1" posx="-455.000000" posy="-147.500000" posz="-3.500000" />
+    <entry type="eschanportal" name="Eschan Portal #4" zone="289" instance="1" posx="-451.500000" posy="-306.500000" posz="-71.419998" />
+    <entry type="eschanportal" name="Eschan Portal #5" zone="289" instance="1" posx="-443.500000" posy="144.000000" posz="-40.500000" />
+    <entry type="eschanportal" name="Eschan Portal #6" zone="289" instance="1" posx="-281.500000" posy="387.500000" posz="-3.500000" />
+    <entry type="eschanportal" name="Eschan Portal #7" zone="289" instance="1" posx="-430.500000" posy="334.500000" posz="-71.849998" />
+    <entry type="eschanportal" name="Eschan Portal #8" zone="289" instance="1" posx="0.000000" posy="465.500000" posz="-40.500000" />
+    <entry type="eschanportal" name="Eschan Portal #9" zone="289" instance="1" posx="279.500000" posy="385.000000" posz="-3.630000" />
+    <entry type="eschanportal" name="Eschan Portal #10" zone="289" instance="1" posx="185.000000" posy="513.500000" posz="-71.849998" />
+    <entry type="eschanportal" name="Eschan Portal #11" zone="289" instance="1" posx="443.500000" posy="144.000000" posz="-40.000000" />
+    <entry type="eschanportal" name="Eschan Portal #12" zone="289" instance="1" posx="455.500000" posy="-147.500000" posz="-3.600000" />
+    <entry type="eschanportal" name="Eschan Portal #13" zone="289" instance="1" posx="545.500000" posy="-17.000000" posz="-71.500000" />
+    <entry type="eschanportal" name="Eschan Portal #14" zone="289" instance="1" posx="274.000000" posy="-376.500000" posz="-40.500000" />
+    <entry type="eschanportal" name="Eschan Portal #15" zone="289" instance="1" posx="-1.200000" posy="-580.500000" posz="-52.000000" />
+    <entry type="eschanportal" name="Ethereal Ingress #1" zone="291" instance="1" posx="-494.440002" posy="-476.480011" posz="-19.000000" />
+    <entry type="eschanportal" name="Ethereal Ingress #2" zone="291" instance="1" posx="-404.000000" posy="85.000000" posz="-55.000000" />
+    <entry type="eschanportal" name="Ethereal Ingress #3" zone="291" instance="1" posx="-531.400024" posy="398.750000" posz="-50.000000" />
+    <entry type="eschanportal" name="Ethereal Ingress #4" zone="291" instance="1" posx="-554.400024" posy="603.000000" posz="-48.750000" />
+    <entry type="eschanportal" name="Ethereal Ingress #5" zone="291" instance="1" posx="107.000000" posy="598.000000" posz="-75.400002" />
+    <entry type="eschanportal" name="Ethereal Ingress #6" zone="291" instance="1" posx="242.500000" posy="106.000000" posz="-87.400002" />
+    <entry type="eschanportal" name="Ethereal Ingress #7" zone="291" instance="1" posx="640.599976" posy="-911.200012" posz="-374.000000" />
+    <entry type="eschanportal" name="Ethereal Ingress #8" zone="291" instance="1" posx="-368.720001" posy="211.449997" posz="-113.300003" />
+    <entry type="eschanportal" name="Ethereal Ingress #9" zone="291" instance="1" posx="-580.000000" posy="-1065.000000" posz="-417.399994" />
+    <entry type="eschanportal" name="Ethereal Ingress #10" zone="291" instance="1" posx="-389.220001" posy="-835.130005" posz="-439.709991" />
+</entitydata>

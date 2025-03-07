@@ -1,0 +1,554 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:105%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor=black lang=EN-US style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>Bellhop</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Bellhop is a plugin to make managing your
+inventory easier.  It operates entirely on typed commands, and offers the
+ability to do large batch actions with a single command.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>WARNING</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Bellhop has very powerful commands.  This can
+make things much quicker.  However, it can also cause unintended results. 
+Please use extreme caution when using commands such as drop, sell, etc..
+particularly with wildcards.  If you type something along the lines of </span><span
+style='font-size:14.0pt;line-height:105%;color:#5B9BD5'>/bh dropall *</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>, bellhop will honor the
+request and drop everything in your inventory.  Caution should be employed when
+using bellhop immediately after a maintenance, to ensure inventory structure
+shifts have not occurred.  I am not responsible for any mistakes or bugs
+resulting in the loss of items, though I have put every effort forward to
+ensure the plugin behaves exactly as described.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>Item Parameters</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Anywhere where a command uses the term 'item',
+you may input items several different ways.  You can use:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'> * An item ID.  This is specified as simply the
+number, for example: </span><span style='font-size:14.0pt;line-height:105%;
+color:#5B9BD5'>/bh getall 4096</span><span style='font-size:14.0pt;line-height:
+105%;color:white'>.  This would get all fire crystals.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'> * An item name.  This is not case sensitive, for
+example: </span><span style='font-size:14.0pt;line-height:105%;color:#5B9BD5'>/bh
+getall &quot;Fire Crystal&quot;</span><span style='font-size:14.0pt;line-height:
+105%;color:white'>.  Remember that anything containing a space must be
+encompassed in quotation marks.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'> * A wildcard string.  This is also not case
+sensitive, for example: </span><span style='font-size:14.0pt;line-height:105%;
+color:#5B9BD5'>/bh getall \*Crystal</span><span style='font-size:14.0pt;
+line-height:105%;color:white'>.  This can match multiple different items.  Use
+caution when performing operations with wildcards.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'> * An item type.  This must be specified
+beforehand in your settings XML.  For example:</span><span style='font-size:
+14.0pt;line-height:105%;color:#5B9BD5'> /bh getall TYPE:Crystal</span><span
+style='font-size:14.0pt;line-height:105%;color:white'> would look for a
+predefined item type called Crystal in your settings XML and match any item
+listed there.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>Configuration</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Settings are stored in a configuration file,
+located at </span><span style='font-size:14.0pt;line-height:105%;color:#5B9BD5'>Ashita/config/bellhop/default.xml</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>.  This file will be
+created on first load.  If you want character-specific settings, you must
+create another file in the same folder, named (Your Current Character
+Name).xml.  For example, </span><span style='font-size:14.0pt;line-height:105%;
+color:#5B9BD5'>Ashita/config/bellhop/Thorny.xml</span><span style='font-size:
+14.0pt;line-height:105%;color:white'>.  While most settings in the config file
+can be changed via commands, item types will have to be manually entered into
+the configuration file.  See </span><span style='font-size:14.0pt;line-height:
+105%;color:#5B9BD5'>xmlstructure.html</span><span style='font-size:14.0pt;
+line-height:105%;color:white'> for more information.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>Commands</span></b></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>All commands can be prefixed with </span><span
+style='font-size:14.0pt;line-height:105%;color:#5B9BD5'>/bellhop</span><span
+style='font-size:14.0pt;line-height:105%;color:white'> or </span><span
+style='font-size:14.0pt;line-height:105%;color:#5B9BD5'>/bh</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Any parameter that includes a space must be
+enclosed in quotation marks(&quot;).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>If you are coming from Ashita3 and the commands
+look unfamiliar, please note that you can use the </span><span
+style='font-size:14.0pt;line-height:105%;color:#FFC000'>LegacyCommands</span><span
+style='font-size:14.0pt;line-height:105%;color:white'> setting to allow the old
+commands to also work.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh bazaar [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>] [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: price</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh bazaarall [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: item</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required: price</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Bazaar matching items.  Bazaar will bazaar one
+stack.  You must have the bazaar pricing menu already open.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh drop [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh dropall [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: item</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Drop matching items.  Drop will drop one stack.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh get [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>] [</span><span style='font-size:24.0pt;
+line-height:105%;color:#FFC000'>optional: quantity</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: container</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh gets [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>] [</span><span style='font-size:24.0pt;
+line-height:105%;color:#FFC000'>optional: container</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh getall [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>] [</span><span style='font-size:24.0pt;
+line-height:105%;color:#FFC000'>optional: container</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Retrieve matching items.  Gets will retrieve up
+to a stack.  Get will default to one item unless quantity is specified. 
+Quantity can exceed the size of one stack.  If a container is specified,
+bellhop will only retrieve items from that container.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh put [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>] [</span><span style='font-size:24.0pt;
+line-height:105%;color:#FFC000'>optional: quantity</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: container</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh puts [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>] [</span><span style='font-size:24.0pt;
+line-height:105%;color:#FFC000'>optional: container</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh putall [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>] [</span><span style='font-size:24.0pt;
+line-height:105%;color:#FFC000'>optional: container</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Store matching items.  Puts will store up to a
+stack.  Put will default to one item unless quantity is specified.  Quantity
+can exceed the size of one stack.  If a container is specified, bellhop will
+only store items in that container.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh sell [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>] [</span><span style='font-size:24.0pt;
+line-height:105%;color:#FFC000'>optional: quantity</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh sells [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh sellall [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: item</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Sell matching items.  Sells will store up to a
+stack.  Sell will default to one item unless quantity is specified.  Quantity
+can exceed the size of one stack.  You must have spoken to a NPC to open their
+shop, and stayed within range of that NPC, to use this command.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh buy [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>] [</span><span style='font-size:24.0pt;
+line-height:105%;color:#FFC000'>optional: quantity</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh buys [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh buyall [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: item</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Buy matching items.  Buys will buy up to a
+stack.  Buy will default to one item unless quantity is specified.  Buyall will
+buy the lesser of how many you can hold in inventory and how many you can
+afford.  Quantity can exceed the size of one stack.  You must have spoken to a
+NPC to open their shop, and stayed within range of that NPC, to use this
+command.  This does not work on shops with limited stock.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh sort [</span><span style='font-size:24.0pt;
+line-height:105%;color:#70AD47'>required: container</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Sort a container.  This is not the same as the
+ingame sort; it will combine stacks but will not rearrange the order.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh tradeplayer [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: item</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: quantity</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: item2</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: quantity2</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: item3</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: quantity3</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [repeating]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh tradeplayerall [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required: item</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: item2</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: item3</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [repeating]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Trade matching items to a player.  Tradeplayer
+will fail if the exact amount of items specified is not available or cannot fit
+in trade.  Tradeplayerall will trade what it is able to regardless.  When using
+multiple items in tradeplayer, all except the last item MUST have quantity
+specified.  Quantity can exceed the size of one stack, but the sum of all
+items/quantities must still fit within 8 slots.  You must already have trade
+window open to use this command, and it will silently confirm the trade, so do
+not click OK after sending the command, even though it does not show you have
+confirmed or the trade will fail.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh tradenpc [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: item</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: quantity</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: item2</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: quantity2</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: item3</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: quantity3</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [repeating]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh tradenpcall [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: item</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: item2</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>optional: item3</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#FFC000'>repeating</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Trade matching items to currently targeted NPC. 
+Tradenpc will fail if the exact amount of items specified is not available or
+cannot fit in trade.  Tradenpcall will trade what it is able to regardless. 
+When using multiple items in tradenpc, all except the last item MUST have
+quantity specified.  Quantity can exceed the size of one stack, but the sum of
+all items/quantities must still fit within 8 slots.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh default [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: accept/deny/ignore</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Sets the default behavior for autotrade.  This is
+overridden by whitelist/blacklist.  Using this command will automatically
+update your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh blacklist [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: add/remove/clear/print</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required: name</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Edits or displays the autotrade blacklist.  Name
+is only required when using add or remove.  Using add, remove, or clear will
+automatically update your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh whitelist [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: add/remove/clear/print</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required: name</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Edits or displays the autotrade whitelist.  Name
+is only required when using add or remove.  Using add, remove, or clear will
+automatically update your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh enablebags [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: add/remove/clear/print</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required: container</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Edits or displays the list of force enabled
+bags.  Container is only required when using add or remove.  Using add, remove,
+or clear will automatically update your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh disablebags [</span><span style='font-size:
+24.0pt;line-height:105%;color:#70AD47'>required: add/remove/clear/print</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>] [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required: container</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Edits or displays the list of force disabled
+bags.  Container is only required when using add or remove.  Using add, remove,
+or clear will automatically update your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh config nomadstorage [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required:
+enable/disable</span><span style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Sets nomadstorage setting.  When enabled, bellhop
+commands will act on storage while at a nomad moogle.  Note that the legitimate
+game client does not allow this and it could be a ban risk.  Using this command
+will automatically update your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh config ignorecraftskill [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required:
+enable/disable</span><span style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Sets ignorecraftskill setting.  When enabled, buy
+commands will be able to purchase items you have not yet unlocked from the
+unlimited stock guild shops.  Note that the legitimate game client does not
+allow this and it could be a ban risk.  Using this command will automatically update
+your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh config legacycommands [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required:
+enable/disable</span><span style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Sets legacycommands setting.  When enabled,
+bellhop commands from Ashita3 will work.  Using this command will automatically
+update your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh config shortoutput [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required:
+enable/disable</span><span style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Sets shortoutput setting.  When enabled, large
+batch commands will be reduced to a single line of output.  Using this command
+will automatically update your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh config retrydelay [</span><span
+style='font-size:24.0pt;line-height:105%;color:#70AD47'>required: #</span><span
+style='font-size:24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>Sets retrydelay setting to a time, in
+milliseconds, between 1 and 9999.  This is the length of time Bellhop will wait
+for server to respond before re-sending a packet for autotrade.  Using this
+command will automatically update your current settings xml.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>/bh help [</span><span style='font-size:24.0pt;
+line-height:105%;color:#FFC000'>optional: command</span><span style='font-size:
+24.0pt;line-height:105%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:white'>If a command is specified, displays the command's
+input structure and a brief explanation of how it works.  If no command is
+specified, displays a list of available commands.</span></p>
+
+</div>
+
+</body>
+
+</html>

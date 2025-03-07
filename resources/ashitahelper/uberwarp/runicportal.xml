@@ -1,0 +1,14 @@
+<uberwarp>
+    <!--
+        Bitflags have 0x4000 set to indicate they are applied in reverse.
+		Bitflags have field omitted or 0x8000 set to indicate they should not be checked.
+        A typical user should not be editing any fields in this file besides alias.
+        If you want multiple aliases for the same destination, simply copy the entire line and change alias field.
+	-->
+    <entry alias="Azouph Isle" bitflag="97" param="1" />
+    <entry alias="Dvucca Isle" bitflag="98" param="2" />
+    <entry alias="Mamool Ja" bitflag="99" param="3" />
+    <entry alias="Halvung" bitflag="100" param="4" />
+    <entry alias="Ilrusi Atoll" bitflag="101" param="5" />
+    <entry alias="Nyzul Isle" bitflag="102" param="6" />
+</uberwarp>

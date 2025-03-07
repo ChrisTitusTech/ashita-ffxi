@@ -1,0 +1,10 @@
+<multisend> <!--You must have an xml structure listed.-->
+	<group index="1" name="BLMs"> <!--Every group must have a unique index, from 1 to 65535.  It has no meaning, but it's used to maintain sync on reload.  Using the same index on multiple groups will cause unexpected behavior.  You may only use letters, no numbers symbols or spaces, in group names.-->
+		<char>Avesta</char> <!--List all characters belonging to said group.-->
+		<char>Stanlee</char>
+	</group>
+	<group index="2" name="Melee"> <!--Just another example..-->
+		<char>Deadpool</char>
+		<char>Wolverine</char>
+	</group>
+</multisend>

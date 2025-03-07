@@ -1,0 +1,72 @@
+<uberwarp>
+    <!--
+        Bitflags have 0x4000 set to indicate they are applied in reverse.
+		Bitflags have field omitted or 0x8000 set to indicate they should not be checked.
+        A typical user should not be editing any fields in this file besides alias.
+        If you want multiple aliases for the same destination, simply copy the entire line and change alias field.
+	-->
+    <entry zone="265" posx="221.397003" posy="-389.980988" posz="-16.520000" landx="1129794765" landy="3284328711" landz="3216141976" landh="32513" />
+    <entry zone="265" posx="218.755005" posy="-389.756012" posz="-1.785000" landx="1130299327" landy="3284349977" landz="3246602584" landh="3073" />
+    <entry zone="265" posx="181.160995" posy="-450.298004" posz="-1.785000" landx="1127286899" landy="3286282863" landz="3246606779" landh="33537" />
+    <entry zone="265" posx="178.712997" posy="-449.997009" posz="-16.523001" landx="1127736083" landy="3286300361" landz="3216561407" landh="1" />
+    <entry zone="265" posx="-179.098999" posy="69.751999" posz="-1.785000" landx="3275189388" landy="1116497249" landz="3246593672" landh="33537" />
+    <entry zone="265" posx="-181.296997" posy="69.931000" posz="-16.520000" landx="3274678273" landy="1116491744" landz="3217207329" landh="1" />
+    <entry zone="265" posx="-219.020996" posy="109.810997" posz="-17.785000" landx="3277783958" landy="1121751401" landz="3254884238" landh="33537" />
+    <entry zone="265" posx="-221.244995" posy="109.986000" posz="-32.527000" landx="3277364593" landy="1121731478" landz="3247182447" landh="63745" />
+    <entry zone="265" posx="-259.100006" posy="149.761993" posz="-33.785000" landx="3280168387" landy="1125528634" landz="3259078804" landh="33537" />
+    <entry zone="265" posx="-261.312988" posy="149.955002" posz="-48.520000" landx="3279945958" landy="1125522080" landz="3255154770" landh="1" />
+    <entry zone="265" posx="-130.018997" posy="301.253998" posz="-48.522999" landx="3271666434" landy="1133780337" landz="3255190160" landh="14337" />
+    <entry zone="265" posx="-130.244003" posy="299.032990" posz="-33.785000" landx="3271669842" landy="1134039401" landz="3259072250" landh="49409" />
+    <entry zone="265" posx="-90.044998" posy="181.326004" posz="-16.520000" landx="3266566292" landy="1127191020" landz="3217173775" landh="16129" />
+    <entry zone="265" posx="-90.281998" posy="178.919998" posz="-1.785000" landx="3266534835" landy="1127708623" landz="3246595769" landh="50945" />
+    <entry zone="265" posx="-50.261002" posy="259.131012" posz="-17.785000" landx="3259277771" landy="1132714918" landz="3254886073" landh="49153" />
+    <entry zone="265" posx="-50.019001" posy="261.313995" posz="-32.521000" landx="3259504788" landy="1132445631" landz="3247123202" landh="16129" />
+    <entry zone="266" posx="271.483002" posy="92.095001" posz="-59.917000" landx="1132815352" landy="1119620695" landz="3256888591" landh="41473" />
+    <entry zone="266" posx="269.002991" posy="92.169998" posz="-40.124001" landx="1133065143" landy="1119346230" landz="3262088217" landh="1" />
+    <entry zone="266" posx="227.806000" posy="188.977005" posz="-40.120998" landx="1130566517" landy="1128355267" landz="3262088742" landh="46337" />
+    <entry zone="266" posx="227.932007" posy="191.475998" posz="-59.916000" landx="1130457531" landy="1127974896" landz="3256891474" landh="23041" />
+    <entry zone="266" posx="271.526001" posy="252.018005" posz="-59.922001" landx="1132834522" landy="1132332385" landz="3256888329" landh="39937" />
+    <entry zone="266" posx="268.971985" posy="252.125000" posz="-40.115002" landx="1133036471" landy="1132182766" landz="3262090577" landh="63745" />
+    <entry zone="266" posx="268.032013" posy="-111.428001" posz="-19.910999" landx="1132798608" landy="3268892034" landz="3172437328" landh="40705" />
+    <entry zone="266" posx="268.171997" posy="-109.392998" posz="-0.246000" landx="1132850185" landy="3269710578" landz="3248427107" landh="17409" />
+    <entry zone="266" posx="331.833008" posy="-130.764999" posz="-20.205000" landx="1134961525" landy="3271192872" landz="3256817288" landh="47105" />
+    <entry zone="266" posx="331.885986" posy="-128.500000" posz="-39.923000" landx="1135003829" landy="3271933821" landz="3248495789" landh="7937" />
+    <entry zone="266" posx="108.007004" posy="-128.544006" posz="20.086000" landx="1121143096" landy="3271865336" landz="1109380039" landh="22273" />
+    <entry zone="266" posx="107.760002" posy="-130.673004" posz="39.791000" landx="1121495811" landy="3271297860" landz="1101047268" landh="50945" />
+    <entry zone="266" posx="-92.167000" posy="-90.588997" posz="39.773998" landx="3266855699" landy="3266027979" landz="1101059851" landh="47873" />
+    <entry zone="266" posx="-92.037003" posy="-88.537003" posz="20.086000" landx="3267139863" landy="3266969732" landz="1109379515" landh="22273" />
+    <entry zone="266" posx="-210.649002" posy="-211.828995" posz="-0.235000" landx="3276657394" landy="3277048579" landz="3248430253" landh="63745" />
+    <entry zone="266" posx="-208.557007" posy="-211.927002" posz="-19.915001" landx="3277098517" landy="3277182403" landz="3172974199" landh="23809" />
+    <entry zone="266" posx="-211.927002" posy="-151.419998" posz="-19.912001" landx="3277187187" landy="3272805712" landz="3177269167" landh="41473" />
+    <entry zone="266" posx="-211.908005" posy="-149.264008" posz="-0.198000" landx="3277061031" landy="3273277375" landz="3248422912" landh="16129" />
+    <entry zone="266" posx="-307.847992" posy="50.631001" posz="-20.215000" landx="3281649271" landy="1111020274" landz="3256850056" landh="16129" />
+    <entry zone="266" posx="-307.947998" posy="48.549999" posz="-39.912998" landx="3281570333" landy="1112774804" landz="3248518857" landh="57345" />
+    <entry zone="266" posx="-271.360992" posy="228.085007" posz="-39.905998" landx="3280302932" landy="1130456286" landz="3248517809" landh="7937" />
+    <entry zone="266" posx="-268.987000" posy="228.022995" posz="-20.115999" landx="3280530047" landy="1130658399" landz="3256844813" landh="32513" />
+    <entry zone="266" posx="-105.022003" posy="177.664993" posz="-18.100000" landx="3268751656" landy="1127564313" landz="0" landh="44545" />
+    <entry zone="266" posx="-106.697998" posy="179.453003" posz="-0.100000" landx="3268307321" landy="1127170180" landz="3247551546" landh="9473" />
+    <entry zone="268" posx="-259.733002" posy="-298.816986" posz="-9.984000" landx="3280067527" landy="3281469670" landz="3248467477" landh="14337" />
+    <entry zone="268" posx="-259.934998" posy="-301.296997" posz="-20.014000" landx="3280064349" landy="3281252123" landz="3239984497" landh="49409" />
+    <entry zone="268" posx="-220.000000" posy="-341.272003" posz="-20.014000" landx="3277596132" landy="3282582864" landz="3239955137" landh="47873" />
+    <entry zone="268" posx="-219.757996" posy="-338.832001" posz="-9.978000" landx="3277581649" landy="3282790155" landz="3248430777" landh="15873" />
+    <entry zone="269" posx="180.203995" posy="-341.463013" posz="29.980000" landx="1127476167" landy="3282556912" landz="1109430371" landh="49153" />
+    <entry zone="269" posx="180.289001" posy="-338.743988" posz="40.014999" landx="1127482131" landy="3282788746" landz="1106300110" landh="16129" />
+    <entry zone="269" posx="300.253998" posy="-258.713989" posz="40.018002" landx="1133903184" landy="3280165438" landz="1106300110" landh="16129" />
+    <entry zone="269" posx="300.101013" posy="-261.259003" posz="29.988001" landx="1133910000" landy="3279953757" landz="1109428798" landh="49153" />
+    <entry zone="270" posx="-180.235001" posy="458.821991" posz="30.023001" landx="3274961323" landy="1139250988" landz="1101070337" landh="49153" />
+    <entry zone="270" posx="-180.035004" posy="461.048004" posz="19.996000" landx="3274968007" landy="1139004998" landz="1106302731" landh="17409" />
+    <entry zone="270" posx="58.719002" posy="180.210007" posz="20.021999" landx="1115387593" landy="1127478854" landz="1092735730" landh="64513" />
+    <entry zone="270" posx="61.124001" posy="180.085007" posz="9.993000" landx="1113608946" landy="1127478133" landz="1101079249" landh="33537" />
+    <entry zone="270" posx="101.028999" posy="60.025002" posz="9.997000" landx="1119858721" landy="1114722272" landz="1101065618" landh="33537" />
+    <entry zone="270" posx="98.762001" posy="60.198002" posz="20.021999" landx="1120805979" landy="1114621871" landz="1092750410" landh="64513" />
+    <entry zone="270" posx="139.966995" posy="21.063999" posz="9.995000" landx="1124862264" landy="1099000972" landz="1101081871" landh="14337" />
+    <entry zone="270" posx="139.785004" posy="18.847000" posz="20.024000" landx="1124843127" landy="1102601258" landz="1092750410" landh="49409" />
+    <entry zone="270" posx="-221.139008" posy="-259.813995" posz="30.021000" landx="3277390152" landy="3280077751" landz="1101069288" landh="1" />
+    <entry zone="270" posx="-218.923996" posy="-259.993988" posz="19.995001" landx="3277850477" landy="3280066741" landz="1106303255" landh="32513" />
+    <entry zone="272" posx="-374.911987" posy="184.714005" posz="-30.198999" landx="3283991823" landy="1127820297" landz="3256917689" landh="31745" />
+    <entry zone="272" posx="-377.192993" posy="184.938004" posz="-40.120998" landx="3283761366" landy="1127810532" landz="3253872362" landh="1" />
+    <entry zone="272" posx="-465.082001" posy="65.140999" posz="-40.258999" landx="3286796174" landy="1114789381" landz="3259537556" landh="16129" />
+    <entry zone="272" posx="-465.226013" posy="62.890999" posz="-50.106998" landx="3286812558" landy="1116124218" landz="3256956486" landh="50177" />
+    <entry zone="273" posx="225.149002" posy="-14.945000" posz="39.877998" landx="1130184639" landy="3245099451" landz="1106210456" landh="33537" />
+    <entry zone="273" posx="222.802002" posy="-14.813000" posz="29.603001" landx="1130594370" landy="3245408781" landz="1109352252" landh="1" />
+</uberwarp>

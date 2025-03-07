@@ -1,0 +1,270 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:105%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor=black lang=EN-US style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:105%;color:#ED7D31'>XML Layout</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&lt;bellhop&gt; </span><span style='font-size:
+14.0pt;line-height:105%;color:#70AD47'>&lt;!-- All files must start with a
+bellhop node.&nbsp; It is the </span><span style='font-size:14.0pt;line-height:
+105%;color:#ED7D31'>root </span><span style='font-size:14.0pt;line-height:105%;
+color:#70AD47'>node. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!--Set the default
+behavior of autotrade.--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;autotrade&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>Accept/Deny/Ignore</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/autotrade&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- Any entries
+contained here will automatically have trades denied. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;blacklist&gt;</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:yellow'>&lt;entry&gt;</span><span style='font-size:14.0pt;
+line-height:105%;color:white'>Odoro</span><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&lt;/entry&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/blacklist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- Any entries
+contained here will automatically have trades accepted. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;whitelist&gt;</span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
+margin-left:.5in;text-indent:.5in'><span style='font-size:14.0pt;line-height:
+105%;color:yellow'>&lt;entry&gt;</span><span style='font-size:14.0pt;
+line-height:105%;color:white'>Thorny</span><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&lt;/entry&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            &lt;/whitelist&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>            &lt;!-- Any bag indices listed here
+will be treated as if you have access to them.  This is primarily for DSP.
+--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            &lt;forceenablebags&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>8,10,11,12</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/forceenablebags&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>            &lt;!-- Any bag indices listed here
+will be treated as if you do not have access to them.  This is primarily for
+DSP. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            &lt;forcedisablebags&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>9</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/forcedisablebags&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>            &lt;!--If enabled, bellhop will
+allow you to remove and place items in storage while at a nomad moogle.  This
+will work on retail servers, but it cannot be accomplished with a legitimate
+client so it may entail ban risk.--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            &lt;nomadstorage&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>Enabled/Disabled</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/nomadstorage&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&lt;!--If enabled, bellhop will allow you to
+purchase items you do not have the rank for from guild NPCs. This will work on
+retail servers, but it cannot be accomplished with a legitimate client so it
+may entail ban risk.--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            &lt;ignorecraftskill&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>Enabled/Disabled</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/ignorecraftskill&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&lt;!--If enabled, commands used for Ashita3's
+version of bellhop will work.  This is disabled by default as some of them
+overlap with ingame commands or are generic enough to compete with other
+plugins. --&gt;</span><span style='font-size:14.0pt;line-height:105%;
+color:yellow'>            &lt;legacycommands&gt;</span><span style='font-size:
+14.0pt;line-height:105%;color:white'>Enabled/Disabled</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/legacycommands&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&lt;!-- If enabled, complex commands will be
+summarized in one line of output instead of using multiple. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            &lt;shortoutput&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>Enabled/Disabled</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/shortoutput&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>&lt;!-- The time, in
+milliseconds, before an autotrade-related packet will be resent if the server
+does not respond to it.  Must be between 1 and 9999. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            &lt;retrydelay&gt;</span><span
+style='font-size:14.0pt;line-height:105%;color:white'>3000</span><span
+style='font-size:14.0pt;line-height:105%;color:yellow'>&lt;/retrydelay&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>&lt;!—This is used to specify item types, which
+allow you to batch commands on a whole type of item.  You may specify as many
+types as you’d like.  Each type must have a </span><span style='font-size:14.0pt;
+line-height:105%;color:#FFF2CC'>name</span><span style='font-size:14.0pt;
+line-height:105%;color:#70AD47'>, which will be referenced when performing an
+action on the type.  Each type can contain as many </span><span
+style='font-size:14.0pt;line-height:105%;color:red'>entries </span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>as you would like,
+which define items that match the type.  You can specify entries by </span><span
+style='font-size:14.0pt;line-height:105%;color:#FFC000'>name</span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>, </span><span
+style='font-size:14.0pt;line-height:105%;color:#2F5597'>id</span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>, or </span><span
+style='font-size:14.0pt;line-height:105%;color:#7F7F7F'>wildcard</span><span
+style='font-size:14.0pt;line-height:105%;color:#70AD47'>.  Note that name and
+wildcard entries may match multiple names.  When you change any settings in
+bellhop, your entries are automatically converted to id-based entries with
+comments stating the item name.  This will not change their functionality, but
+it will change the appearance. </span><span style='font-size:14.0pt;line-height:
+105%;font-family:Wingdings;color:#70AD47'>à</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            &lt;itemtypes&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:105%;color:#5B9BD5'>            &lt;type </span><span
+style='font-size:14.0pt;line-height:105%;color:#FFF2CC'>name=”SynthesisCrystals”&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>                        </span><span
+style='font-size:14.0pt;line-height:105%;color:red'>            &lt;entry </span><span
+style='font-size:14.0pt;line-height:105%;color:#FFC000'>name=”Fire Crystal”</span><span
+style='font-size:14.0pt;line-height:105%;color:red'> /&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:red'>                                    &lt;entry </span><span
+style='font-size:14.0pt;line-height:105%;color:#2F5597'>id=”4099” </span><span
+style='font-size:14.0pt;line-height:105%;color:red'>/&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:red'>                                    &lt;entry </span><span
+style='font-size:14.0pt;line-height:105%;color:#7F7F7F'>wildcard=”W*Crystal”</span><span
+style='font-size:14.0pt;line-height:105%;color:red'> /&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#5B9BD5'>                        &lt;/type&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>            &lt;/itemtypes&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:yellow'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:105%;color:#ED7D31'>&lt;/bellhop&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

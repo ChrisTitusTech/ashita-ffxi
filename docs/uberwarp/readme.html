@@ -1,0 +1,702 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:106%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:.5in;
+	line-height:106%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:106%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor=black lang=EN-US style='word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#4472C4'>Uberwarp</span><span style='font-size:24.0pt;
+line-height:106%;color:white'> is a plugin used to trigger NPC warp systems via
+command line.&nbsp; Configuration files are as follows:</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>Ashita/resources/ashitahelper/entitydats.xml –
+Dat location file</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:white'>-This file is used to store the locations of dats
+containing entity string tables.  It should not be modified unless you
+understand what you are doing.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>Ashita/resources/ashitahelper/entities/uw***.xml
+– Entity information files</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:white'>-These files are used for locating entities the
+server has failed to load.  They should not be modified unless you understand
+what you are doing.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>Ashita/resources/ashitahelper/uberwarp/***.xml –
+Warp information files</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:white'>-These files are used to store information about the
+various warps that </span><span style='font-size:24.0pt;line-height:106%;
+color:#4472C4'>Uberwarp</span><span style='font-size:24.0pt;line-height:106%;
+color:white'> can perform.  You can modify them to change aliases for any
+system with multiple destinations.  You should not modify any fields other than
+Alias, though you can copy entire lines if you want multiple aliases for a
+given destination.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:white'>-Modify these files with </span><span
+style='font-size:24.0pt;line-height:106%;color:#C00000'>extreme caution</span><span
+style='font-size:24.0pt;line-height:106%;color:white'> as changes to field
+other than alias can result in warping to inappropriate locations or sending
+invalid packets.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#C00000'>Note: Configuration files provided with versions
+of </span><span style='font-size:24.0pt;line-height:106%;color:#4472C4'>Uberwarp</span><span
+style='font-size:24.0pt;line-height:106%;color:#C00000'> prior to 2.0 or
+intended for use with Ashita3 will not work correctly.  If you’ve accidentally
+installed this without removing the earlier files, simply go to </span><span
+style='font-size:24.0pt;line-height:106%;color:#70AD47'>Ashita/resources/ashitahelper/entities</span><span
+style='font-size:24.0pt;line-height:106%;color:#C00000'> and delete all files
+that do not begin with the prefix ‘</span><span style='font-size:24.0pt;
+line-height:106%;color:#4472C4'>uw</span><span style='font-size:24.0pt;
+line-height:106%;color:#C00000'>’.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#FFC000'>As of Ashita4, </span><span style='font-size:
+24.0pt;line-height:106%;color:#4472C4'>Uberwarp</span><span style='font-size:
+24.0pt;line-height:106%;color:#FFC000'> no longer allows you to automatically
+override the safety features to use warps you do not have unlocked
+automatically.&nbsp; This is due to server-side modifications that make such
+usage impossible on retail.  If you are on a server that allows this usage, you
+may remove the bitflag field or change the value to 65536 in the warp
+information files to remove checks for a given warp.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#FFC000'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>Commands</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>All commands must be prefixed with </span><span
+style='font-size:16.0pt;line-height:106%;color:#4472C4'>/uw </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>or</span><span
+style='font-size:16.0pt;line-height:106%;color:#4472C4'> /uberwarp</span><span
+style='font-size:16.0pt;line-height:106%;color:white'>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw hp [</span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>required: Alias</span><span style='font-size:
+24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Warp to a home point matching the specified
+alias.&nbsp; You must be standing near another home point.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw hp </span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>CHECK</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>List which home points you have not yet
+unlocked.&nbsp; You must be standing near a home point.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw wp [</span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>required: Alias</span><span style='font-size:
+24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Warp to a waypoint using the adoulin waypoint
+system.&nbsp; You must be standing near another waypoint.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw wp </span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>CHECK</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>List which waypoints you have not yet
+unlocked.&nbsp; You must be standing near a waypoint.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw sg [</span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>required: Alias</span><span style='font-size:
+24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Warp to a survival guide matching the spceified
+alias.&nbsp; You must be standing near another survival guide.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw sg </span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>CHECK</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>List which survival guides you have not yet
+unlocked.&nbsp; You must be standing near a survival guide.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw aw [</span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>required: Zone Name</span><span
+style='font-size:24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Warp to a zone using the abyssea zone
+system.&nbsp; Use the name of the zone you're warping to, not the name of the
+abyssea zone(valkurmdunes not abysseamisareaux).&nbsp; You must be near an
+abyssea warp NPC(Horst,Vincent,etc.).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw aw </span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>CHECK</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>List which abyssea zones you have unlocked.&nbsp;
+You must be near an abyssea warp NPC.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw uc [</span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>required: Zone Name</span><span
+style='font-size:24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Warp to a zone using the unity warp system.&nbsp;
+You must be near a unity warp npc.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw uc </span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>CHECK</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Check which unity warps you have unlocked.&nbsp;
+You must be near a unity warp npc.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw pw [</span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>required: Zone Name</span><span
+style='font-size:24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Warp to a zone using the proto-waypoint
+system.&nbsp; You must be near a city proto-waypoint.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw pw </span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>CHECK</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Check which proto-waypoint warps you have
+unlocked.&nbsp; You must be near a city proto-waypoint.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw ep [</span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>required: Target Portal #</span><span
+style='font-size:24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Warp to an eschan portal or ethereal ingress
+within the same zone.&nbsp; You must be near a different eschan portal or
+ethereal ingress.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw ep </span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>CHECK</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>List which eschan portals you have
+unlocked.&nbsp; You must be near an eschan portal or ethereal ingress.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw ab [</span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>required: Target Conflux #</span><span
+style='font-size:24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Use an abyssea conflux to warp you to another abyssea
+conflux.&nbsp; If you have not yet unlocked the starting conflux, it will be
+unlocked for you(provided you have enough cruor).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw ab </span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>CHECK</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>List which abyssea confluxes you have
+unlocked.&nbsp; You must be near an abyssea conflux.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw rp [</span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>required: Target Portal</span><span
+style='font-size:24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Use the runic portal in Aht Urhgan Whitegate to
+warp to another runic portal.  This will not work if you have assault orders.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw rp </span><span style='font-size:24.0pt;
+line-height:106%;color:#70AD47'>CHECK</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>List which runic portals you have unlocked.  You
+must be near the runic portal in Aht Urhgan Whitegate.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw ev [</span><span style='font-size:24.0pt;
+line-height:106%;color:#FFC000'>optional: NOWARP</span><span style='font-size:
+24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Get an elvorseal.&nbsp; If </span><span
+style='font-size:16.0pt;line-height:106%;color:#FFC000'>NOWARP </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>is specified, will exit
+menu afterwards.&nbsp; If it is not specified, will warp to DI.&nbsp; You must
+be near the appropriate NPC, and elvorseal must be available at the time.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw cw</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Enter a crystal warp(the blue/purple crystal
+formations in adoulin that lead between gates zones and ra'kaznar).</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw ee</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Enter or exit escha from a dimensional portal or
+undulating confluence.&nbsp; Also exits altaieu dimensional portal back to
+crag.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw ea</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Enter al'taieu from a crag's dimensional
+portal.&nbsp; Use /uw ee to exit from al'taieu to crag.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw sa</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Use a scalable area in adoulin.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw cp</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Use a castoff point in adoulin.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw cu</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Go upstream at a castoff point in foret de
+hennetiel.&nbsp; This will do nothing at points that cannot go upstream.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw ae</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Enter abyssea using a cavernous maw.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>/uw ad [</span><span style='font-size:24.0pt;
+line-height:106%;color:#FFC000'>Optional: Third Argument</span><span
+style='font-size:24.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Automatically detect the available warp system, and
+trigger it's command.&nbsp; If a third argument is specified, it will be passed
+to the command.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>Notes on </span><span style='font-size:16.0pt;
+line-height:106%;color:#ED7D31'>/uw ad</span><span style='font-size:16.0pt;
+line-height:106%;color:white'>:</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>It is possible to be in
+range of 2 systems, such as at northern sandoria HP#1 spaced between the
+survival guide and home point.&nbsp; If you are in such a position, there is no
+guarantee /uw ad will trigger the system you want(/uw ad rabao could hit either
+the home point or the survival guide).</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>To ensure you get the
+results you are aiming for, either use the more specific command or ensure you
+are more than 5.5 yalms away from all but one warp method.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Castoff points with 2
+options will default to downstream in foret de hennetiel.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Dimensional portals will
+go to Reisenjima, not Al'taieu.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>Safety/Convenience Features:</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Uberwarp will
+automatically coordinate a delay if multiple characters on the same system are
+trying to use the same NPC at the same time.&nbsp; You do not need to stagger
+waits, a simple multisend command is fine.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Uberwarp will force the
+NPC to draw itself if you are close enough to use the NPC and it failed to show
+up.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Uberwarp will verify you
+have the destination unlocked and enough of the appropriate currency to warp
+there for every system.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Uberwarp completes all
+menus identically to retail client, for both same zone and other zone warps.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>Notes on input format:</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>You may skip spaces and
+punctuation when typing zone names or aliases, but spelling must be correct.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Default aliases are zonename,
+zonename2, zonename3, and so on.&nbsp; Frontier stations are zonename, bivouacs
+are zonename#.&nbsp; Adoulin waypoints are as listed in the configuration
+files.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>You may change the
+aliases for home points, waypoints, or survival guides by going into the xml
+files in Ashita/resources/ashitahelper/uberwarp/ and changing the 'alias' field.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>You may use multiple
+aliases for a single point by copying the entire line and changing the alias
+for the second copy.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>Notes on resource files:</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>posx, posy, posz fields
+refer to the location of the NPC.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Landx, Landy, Landz,
+Landh positions refer to the raw binary values used when warping to those
+locations from another location in the same zone.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Scalable area, castoff point,
+and 'upstream' castoff point entries store the land values for warping away
+from that location, rather than to it.&nbsp; This was done so that only one
+point would need to be looked up.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:16.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'>Notes on ingame warp systems:</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Talk to Anastase in
+Ru'lude gardens to unlock proto-waypoints.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Complete appropriate
+mission access to use escha entrances, abyssea entrances.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Complete appropriate
+quests to use scalable areas, castoff points.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Complete appropriate
+cutscenes to use abyssea warps.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:16.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:16.0pt;line-height:106%;color:white'>Kill appropriate
+wildskeeper reive to use crystal warps.</span></p>
+
+</div>
+
+</body>
+
+</html>

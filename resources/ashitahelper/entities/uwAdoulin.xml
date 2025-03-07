@@ -1,0 +1,100 @@
+<entitydata>
+    <entry type="castoffpoint" name="Castoff Point" zone="260" instance="1" posx="377.000000" posy="-9.800000" posz="4.399988" />
+    <entry type="castoffpoint" name="Castoff Point" zone="260" instance="2" posx="419.316010" posy="-14.522000" posz="1.744599" />
+    <entry type="adoulincrystal" name="???" zone="261" instance="11" posx="-238.000000" posy="-402.000000" posz="0.000000" />
+    <entry type="adoulincrystal" name="???" zone="262" instance="11" posx="138.000000" posy="-382.000000" posz="-2.465000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="262" instance="1" posx="-220.000000" posy="225.000000" posz="0.800000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="262" instance="2" posx="-105.000000" posy="140.000000" posz="0.800000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="262" instance="3" posx="-14.000000" posy="60.000000" posz="0.800000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="262" instance="4" posx="20.000000" posy="-65.000000" posz="0.800000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="262" instance="5" posx="220.000000" posy="146.000000" posz="0.800000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="262" instance="6" posx="380.000000" posy="-145.000000" posz="0.800000" />
+    <entry type="adoulincrystal" name="???" zone="263" instance="12" posx="160.000000" posy="-360.000000" posz="0.000000" />
+    <entry type="adoulincrystal" name="???" zone="265" instance="13" posx="-20.000000" posy="525.000000" posz="-47.000000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="265" instance="1" posx="-462.346985" posy="257.484009" posz="-46.000000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="265" instance="2" posx="-452.000000" posy="263.458008" posz="-46.000000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="1" posx="221.397003" posy="-389.980988" posz="-16.520000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="2" posx="218.755005" posy="-389.756012" posz="-1.785000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="4" posx="181.160995" posy="-450.298004" posz="-1.785000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="3" posx="178.712997" posy="-449.997009" posz="-16.523001" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="12" posx="-179.098999" posy="69.751999" posz="-1.785000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="11" posx="-181.296997" posy="69.931000" posz="-16.520000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="14" posx="-219.020996" posy="109.810997" posz="-17.785000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="13" posx="-221.244995" posy="109.986000" posz="-32.527000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="16" posx="-259.100006" posy="149.761993" posz="-33.785000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="15" posx="-261.312988" posy="149.955002" posz="-48.520000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="9" posx="-130.018997" posy="301.253998" posz="-48.522999" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="10" posx="-130.244003" posy="299.032990" posz="-33.785000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="5" posx="-90.044998" posy="181.326004" posz="-16.520000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="6" posx="-90.281998" posy="178.919998" posz="-1.785000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="8" posx="-50.261002" posy="259.131012" posz="-17.785000" />
+    <entry type="scalablearea" name="Scalable Area" zone="265" instance="7" posx="-50.019001" posy="261.313995" posz="-32.521000" />
+    <entry type="adoulincrystal" name="???" zone="266" instance="12" posx="-159.649994" posy="-203.399994" posz="-20.000000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="3" posx="271.483002" posy="92.095001" posz="-59.917000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="4" posx="269.002991" posy="92.169998" posz="-40.124001" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="6" posx="227.806000" posy="188.977005" posz="-40.120998" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="5" posx="227.932007" posy="191.475998" posz="-59.916000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="7" posx="271.526001" posy="252.018005" posz="-59.922001" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="8" posx="268.971985" posy="252.125000" posz="-40.115002" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="9" posx="268.032013" posy="-111.428001" posz="-19.910999" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="10" posx="268.171997" posy="-109.392998" posz="-0.246000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="2" posx="331.833008" posy="-130.764999" posz="-20.205000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="1" posx="331.885986" posy="-128.500000" posz="-39.923000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="11" posx="108.007004" posy="-128.544006" posz="20.086000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="12" posx="107.760002" posy="-130.673004" posz="39.791000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="14" posx="-92.167000" posy="-90.588997" posz="39.773998" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="13" posx="-92.037003" posy="-88.537003" posz="20.086000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="18" posx="-210.649002" posy="-211.828995" posz="-0.235000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="17" posx="-208.557007" posy="-211.927002" posz="-19.915001" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="15" posx="-211.927002" posy="-151.419998" posz="-19.912001" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="16" posx="-211.908005" posy="-149.264008" posz="-0.198000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="20" posx="-307.847992" posy="50.631001" posz="-20.215000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="19" posx="-307.947998" posy="48.549999" posz="-39.912998" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="21" posx="-271.360992" posy="228.085007" posz="-39.905998" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="22" posx="-268.987000" posy="228.022995" posz="-20.115999" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="23" posx="-105.022003" posy="177.664993" posz="-18.100000" />
+    <entry type="scalablearea" name="Scalable Area" zone="266" instance="24" posx="-106.697998" posy="179.453003" posz="-0.100000" />
+    <entry type="adoulincrystal" name="???" zone="268" instance="5" posx="340.058014" posy="381.410004" posz="9.300000" />
+    <entry type="adoulincrystal" name="???" zone="268" instance="6" posx="379.967010" posy="418.615997" posz="-20.700001" />
+    <entry type="castoffpoint" name="Castoff Point" zone="268" instance="2" posx="17.000000" posy="-440.000000" posz="1.500000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="268" instance="1" posx="32.000000" posy="-440.000000" posz="1.500000" />
+    <entry type="scalablearea" name="Scalable Area" zone="268" instance="4" posx="-259.733002" posy="-298.816986" posz="-9.984000" />
+    <entry type="scalablearea" name="Scalable Area" zone="268" instance="3" posx="-259.934998" posy="-301.296997" posz="-20.014000" />
+    <entry type="scalablearea" name="Scalable Area" zone="268" instance="1" posx="-220.000000" posy="-341.272003" posz="-20.014000" />
+    <entry type="scalablearea" name="Scalable Area" zone="268" instance="2" posx="-219.757996" posy="-338.832001" posz="-9.978000" />
+    <entry type="adoulincrystal" name="???" zone="269" instance="3" posx="-501.093994" posy="300.058990" posz="39.299999" />
+    <entry type="adoulincrystal" name="???" zone="269" instance="4" posx="-219.332993" posy="540.931030" posz="59.299999" />
+    <entry type="scalablearea" name="Scalable Area" zone="269" instance="3" posx="180.203995" posy="-341.463013" posz="29.980000" />
+    <entry type="scalablearea" name="Scalable Area" zone="269" instance="4" posx="180.289001" posy="-338.743988" posz="40.014999" />
+    <entry type="scalablearea" name="Scalable Area" zone="269" instance="2" posx="300.253998" posy="-258.713989" posz="40.018002" />
+    <entry type="scalablearea" name="Scalable Area" zone="269" instance="1" posx="300.101013" posy="-261.259003" posz="29.988001" />
+    <entry type="adoulincrystal" name="???" zone="270" instance="6" posx="-501.100006" posy="-579.299988" posz="29.209999" />
+    <entry type="adoulincrystal" name="???" zone="270" instance="7" posx="-459.649994" posy="-300.149994" posz="30.000000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="270" instance="1" posx="190.000000" posy="222.000000" posz="11.000000" />
+    <entry type="castoffpoint" name="Castoff Point" zone="270" instance="2" posx="169.000000" posy="222.000000" posz="11.000000" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="8" posx="-180.235001" posy="458.821991" posz="30.023001" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="7" posx="-180.035004" posy="461.048004" posz="19.996000" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="6" posx="58.719002" posy="180.210007" posz="20.021999" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="5" posx="61.124001" posy="180.085007" posz="9.993000" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="3" posx="101.028999" posy="60.025002" posz="9.997000" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="4" posx="98.762001" posy="60.198002" posz="20.021999" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="1" posx="139.966995" posy="21.063999" posz="9.995000" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="2" posx="139.785004" posy="18.847000" posz="20.024000" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="10" posx="-221.139008" posy="-259.813995" posz="30.021000" />
+    <entry type="scalablearea" name="Scalable Area" zone="270" instance="9" posx="-218.923996" posy="-259.993988" posz="19.995001" />
+    <entry type="adoulincrystal" name="???" zone="272" instance="4" posx="298.000000" posy="-177.250000" posz="-20.865999" />
+    <entry type="adoulincrystal" name="???" zone="272" instance="5" posx="256.250000" posy="-540.500000" posz="-0.150000" />
+    <entry type="scalablearea" name="Scalable Area" zone="272" instance="2" posx="-374.911987" posy="184.714005" posz="-30.198999" />
+    <entry type="scalablearea" name="Scalable Area" zone="272" instance="1" posx="-377.192993" posy="184.938004" posz="-40.120998" />
+    <entry type="scalablearea" name="Scalable Area" zone="272" instance="4" posx="-465.082001" posy="65.140999" posz="-40.258999" />
+    <entry type="scalablearea" name="Scalable Area" zone="272" instance="3" posx="-465.226013" posy="62.890999" posz="-50.106998" />
+    <entry type="adoulincrystal" name="???" zone="273" instance="4" posx="-258.299988" posy="-218.600006" posz="29.811001" />
+    <entry type="adoulincrystal" name="???" zone="273" instance="5" posx="-298.399994" posy="-458.299988" posz="49.880001" />
+    <entry type="scalablearea" name="Scalable Area" zone="273" instance="2" posx="225.149002" posy="-14.945000" posz="39.877998" />
+    <entry type="scalablearea" name="Scalable Area" zone="273" instance="1" posx="222.802002" posy="-14.813000" posz="29.603001" />
+    <entry type="adoulincrystal" name="???" zone="276" instance="1" posx="-140.000000" posy="100.000000" posz="-510.600006" />
+    <entry type="adoulincrystal" name="???" zone="276" instance="3" posx="-620.000000" posy="420.000000" posz="-520.599976" />
+    <entry type="adoulincrystal" name="???" zone="276" instance="2" posx="-500.000000" posy="-380.000000" posz="-530.599976" />
+    <entry type="adoulincrystal" name="???" zone="276" instance="5" posx="-900.000000" posy="-20.000000" posz="-480.600006" />
+    <entry type="adoulincrystal" name="???" zone="276" instance="4" posx="820.000000" posy="60.000000" posz="89.400002" />
+</entitydata>

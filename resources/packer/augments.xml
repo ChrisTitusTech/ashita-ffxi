@@ -1,0 +1,3243 @@
+<augmentdata>
+	<augments table="0">
+		<augment id="0">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="1">
+			<params stat="HP"  offset="1" />
+		</augment>
+		<augment id="2">
+			<params stat="HP"  offset="33" />
+		</augment>
+		<augment id="3">
+			<params stat="HP"  offset="65" />
+		</augment>
+		<augment id="4">
+			<params stat="HP"  offset="97" />
+		</augment>
+		<augment id="5">
+			<params stat="HP"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="6">
+			<params stat="HP"  offset="33" multiplier="-1" />
+		</augment>
+		<augment id="7">
+			<params stat="HP"  offset="65" multiplier="-1" />
+		</augment>
+		<augment id="8">
+			<params stat="HP"  offset="97" multiplier="-1" />
+		</augment>
+		<augment id="9">
+			<params stat="MP"  offset="1" />
+		</augment>
+		<augment id="10">
+			<params stat="MP"  offset="33" />
+		</augment>
+		<augment id="11">
+			<params stat="MP"  offset="65" />
+		</augment>
+		<augment id="12">
+			<params stat="MP"  offset="97" />
+		</augment>
+		<augment id="13">
+			<params stat="MP"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="14">
+			<params stat="MP"  offset="33" multiplier="-1" />
+		</augment>
+		<augment id="15">
+			<params stat="MP"  offset="65" multiplier="-1" />
+		</augment>
+		<augment id="16">
+			<params stat="MP"  offset="97" multiplier="-1" />
+		</augment>
+		<augment id="17">
+			<params stat="HP"  offset="1" />
+			<params stat="MP"  offset="1" />
+		</augment>
+		<augment id="18">
+			<params stat="HP"  offset="33" />
+			<params stat="MP"  offset="33" />
+		</augment>
+		<augment id="19">
+			<params stat="HP"  offset="1" />
+			<params stat="MP"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="20">
+			<params stat="HP"  offset="33" />
+			<params stat="MP"  offset="33" multiplier="-1" />
+		</augment>
+		<augment id="21">
+			<params stat="HP"  offset="1" multiplier="-1" />
+			<params stat="MP"  offset="1" />
+		</augment>
+		<augment id="22">
+			<params stat="HP"  offset="33" multiplier="-1" />
+			<params stat="MP"  offset="33" />
+		</augment>
+		<augment id="23">
+			<params stat="Accuracy"  offset="1" />
+		</augment>
+		<augment id="24">
+			<params stat="Accuracy"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="25">
+			<params stat="Attack"  offset="1" />
+		</augment>
+		<augment id="26">
+			<params stat="Attack"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="27">
+			<params stat="Rng.Acc."  offset="1" />
+		</augment>
+		<augment id="28">
+			<params stat="Rng.Acc."  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="29">
+			<params stat="Rng.Atk."  offset="1" />
+		</augment>
+		<augment id="30">
+			<params stat="Rng.Atk."  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="31">
+			<params stat="Evasion"  offset="1" />
+		</augment>
+		<augment id="32">
+			<params stat="Evasion"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="33">
+			<params stat="DEF"  offset="1" />
+		</augment>
+		<augment id="34">
+			<params stat="DEF"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="35">
+			<params stat="Mag. Acc."  offset="1" />
+		</augment>
+		<augment id="36">
+			<params stat="Mag. Acc."  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="37">
+			<params stat="Mag. Evasion"  offset="1" />
+		</augment>
+		<augment id="38">
+			<params stat="Mag. Evasion"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="39">
+			<params stat="Enmity"  offset="1" />
+		</augment>
+		<augment id="40">
+			<params stat="Enmity"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="41">
+			<params stat="Crit.hit rate"  offset="1" />
+		</augment>
+		<augment id="42">
+			<params stat="Enemy crit. hit rate "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="43">
+			<params stat="'Charm'"  offset="1" />
+		</augment>
+		<augment id="44">
+			<params stat="'Store TP'"  offset="1" />
+			<params stat="'Subtle Blow'"  offset="1" />
+		</augment>
+		<augment id="45">
+			<params stat="DMG:"  offset="1" />
+		</augment>
+		<augment id="46">
+			<params stat="DMG:"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="47">
+			<params stat="Delay:"  offset="1" percent="true" />
+		</augment>
+		<augment id="48">
+			<params stat="Delay:"  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="49">
+			<params stat="Haste"  offset="1" />
+		</augment>
+		<augment id="50">
+			<params stat="'Slow'"  offset="1" />
+		</augment>
+		<augment id="51">
+			<params stat="HP recovered while healing "  offset="1" />
+		</augment>
+		<augment id="52">
+			<params stat="MP recovered while healing "  offset="1" />
+		</augment>
+		<augment id="53">
+			<params stat="Spell interruption rate down "  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="54">
+			<params stat="Phys. dmg. taken "  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="55">
+			<params stat="Magic dmg. taken "  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="56">
+			<params stat="Breath dmg. taken "  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="57">
+			<params stat="Magic crit. hit rate "  offset="1" />
+		</augment>
+		<augment id="58">
+			<params stat="'Mag.Def.Bns.'"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="59">
+			<params stat="Latent effect: 'Regain'"  offset="1" />
+		</augment>
+		<augment id="60">
+			<params stat="Latent effect: 'Refresh'"  offset="1" />
+		</augment>
+		<augment id="61">
+			<params stat="Occ. inc. resist. to stat. ailments "  offset="1" />
+		</augment>
+		<augment id="62">
+			<params stat="Accuracy"  offset="33" />
+		</augment>
+		<augment id="63">
+			<params stat="Rng.Acc."  offset="33" />
+		</augment>
+		<augment id="64">
+			<params stat="Mag. Acc."  offset="33" />
+		</augment>
+		<augment id="65">
+			<params stat="Attack"  offset="33" />
+		</augment>
+		<augment id="66">
+			<params stat="Rng.Atk."  offset="33" />
+		</augment>
+		<augment id="67">
+			<params stat="All Songs"  offset="1" />
+		</augment>
+		<augment id="68">
+			<params stat="Accuracy"  offset="1" />
+			<params stat="Attack"  offset="1" />
+		</augment>
+		<augment id="69">
+			<params stat="Rng.Acc."  offset="1" />
+			<params stat="Rng.Atk."  offset="1" />
+		</augment>
+		<augment id="70">
+			<params stat="Mag. Acc."  offset="1" />
+			<params stat="'Mag. Atk. Bns.'"  offset="1" />
+		</augment>
+		<augment id="71">
+			<params stat="Damage taken"  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="74">
+			<params stat="Cap. Point"  offset="1" percent="true" />
+		</augment>
+		<augment id="75">
+			<params stat="Cap. Point"  offset="33" percent="true" />
+		</augment>
+		<augment id="76">
+			<params stat="DMG:"  offset="33" />
+		</augment>
+		<augment id="77">
+			<params stat="Delay:"  offset="33" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="78">
+			<params stat="HP"  offset="1" multiplier="2" />
+		</augment>
+		<augment id="79">
+			<params stat="HP"  offset="1" multiplier="3" />
+		</augment>
+		<augment id="80">
+			<params stat="Mag. Acc."  offset="1" />
+			<params stat="Magic Damage"  offset="1" />
+		</augment>
+		<augment id="81">
+			<params stat="Eva."  offset="1" />
+			<params stat="Mag. Eva."  offset="1" />
+		</augment>
+		<augment id="82">
+			<params stat="MP"  offset="1" multiplier="2" />
+		</augment>
+		<augment id="83">
+			<params stat="MP"  offset="1" multiplier="3" />
+		</augment>
+		<augment id="96">
+			<params stat="Pet: Accuracy"  offset="1" />
+			<params stat="Pet: Rng. Acc."  offset="1" />
+		</augment>
+		<augment id="97">
+			<params stat="Pet: Attack"  offset="1" />
+			<params stat="Pet: Rng.Atk."  offset="1" />
+		</augment>
+		<augment id="98">
+			<params stat="Pet: Evasion"  offset="1" />
+		</augment>
+		<augment id="99">
+			<params stat="Pet: DEF"  offset="1" />
+		</augment>
+		<augment id="100">
+			<params stat="Pet: Mag. Acc."  offset="1" />
+		</augment>
+		<augment id="101">
+			<params stat="Pet: 'Mag. Atk. Bns.'"  offset="1" />
+		</augment>
+		<augment id="102">
+			<params stat="Pet: Crit.hit rate "  offset="1" />
+		</augment>
+		<augment id="103">
+			<params stat="Pet: Enemy crit. hit rate "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="104">
+			<params stat="Pet: Enmity"  offset="1" />
+		</augment>
+		<augment id="105">
+			<params stat="Pet: Enmity"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="106">
+			<params stat="Pet: Accuracy"  offset="1" />
+			<params stat="Pet: Rng. Acc."  offset="1" />
+		</augment>
+		<augment id="107">
+			<params stat="Pet: Attack"  offset="1" />
+			<params stat="Pet: Rng.Atk."  offset="1" />
+		</augment>
+		<augment id="108">
+			<params stat="Pet: Mag. Acc."  offset="1" />
+			<params stat="Pet: 'Mag. Atk. Bns.'"  offset="1" />
+		</augment>
+		<augment id="109">
+			<params stat="Pet: 'Dbl.Atk.'"  offset="1" />
+			<params stat="Pet: Crit.hit rate "  offset="1" />
+		</augment>
+		<augment id="110">
+			<params stat="Pet: 'Regen'"  offset="1" />
+		</augment>
+		<augment id="111">
+			<params stat="Pet: Haste"  offset="1" />
+		</augment>
+		<augment id="112">
+			<params stat="Pet: Damage taken "  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="113">
+			<params stat="Pet: Rng.Acc."  offset="1" />
+		</augment>
+		<augment id="114">
+			<params stat="Pet: Rng.Atk."  offset="1" />
+		</augment>
+		<augment id="115">
+			<params stat="Pet: 'Store TP'"  offset="1" />
+		</augment>
+		<augment id="116">
+			<params stat="Pet: 'Subtle Blow'"  offset="1" />
+		</augment>
+		<augment id="117">
+			<params stat="Pet: Mag. Evasion"  offset="1" />
+		</augment>
+		<augment id="118">
+			<params stat="Pet: Phys. dmg. taken "  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="119">
+			<params stat="Pet: 'Mag.Def.Bns.'"  offset="1" />
+		</augment>
+		<augment id="120">
+			<params stat="Avatar: 'Mag. Atk. Bns.'"  offset="1" />
+		</augment>
+		<augment id="121">
+			<params stat="Pet: Breath"  offset="1" />
+		</augment>
+		<augment id="122">
+			<params stat="Pet: TP Bonus"  offset="1"  multiplier="20" />
+		</augment>
+		<augment id="123">
+			<params stat="Pet: 'Dbl. Atk.'"  offset="1" />
+		</augment>
+		<augment id="124">
+			<params stat="Pet: Acc."  offset="1" />
+			<params stat="Pet: R.Acc."  offset="1" />
+			<params stat="Pet: Atk."  offset="1" />
+			<params stat="Pet: R.Atk."  offset="1" />
+		</augment>
+		<augment id="125">
+			<params stat="Pet: M.Acc."  offset="1" />
+			<params stat="Pet: M.Dmg."  offset="1" />
+		</augment>
+		<augment id="126">
+			<params stat="Pet: Magic Damage"  offset="1" />
+		</augment>
+		<augment id="127">
+			<params stat="Pet: Magic dmg. taken "  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="128">
+			<params stat="Pet:" offset =" 0" />
+		</augment>
+		<augment id="133">
+			<params stat="'Mag. Atk. Bns.'"  offset="1" />
+		</augment>
+		<augment id="134">
+			<params stat="'Mag.Def.Bns.'"  offset="1" />
+		</augment>
+		<augment id="135">
+			<params stat="Avatar:" offset="0" />
+		</augment>
+		<augment id="137">
+			<params stat="'Regen'"  offset="1" />
+		</augment>
+		<augment id="138">
+			<params stat="'Refresh'"  offset="1" />
+		</augment>
+		<augment id="139">
+			<params stat="'Rapid Shot'"  offset="1" />
+		</augment>
+		<augment id="140">
+			<params stat="'Fast Cast'"  offset="1" />
+		</augment>
+		<augment id="141">
+			<params stat="'Conserve MP'"  offset="1" />
+		</augment>
+		<augment id="142">
+			<params stat="'Store TP'"  offset="1" />
+		</augment>
+		<augment id="143">
+			<params stat="'Dbl.Atk.'"  offset="1" />
+		</augment>
+		<augment id="144">
+			<params stat="'Triple Atk.'"  offset="1" />
+		</augment>
+		<augment id="145">
+			<params stat="'Counter'"  offset="1" />
+		</augment>
+		<augment id="146">
+			<params stat="'Dual Wield'"  offset="1" />
+		</augment>
+		<augment id="147">
+			<params stat="'Treasure Hunter'"  offset="1" />
+		</augment>
+		<augment id="148">
+			<params stat="'Gilfinder'"  offset="1" />
+		</augment>
+		<augment id="151">
+			<params stat="'Martial Arts'"  offset="1" />
+		</augment>
+		<augment id="153">
+			<params stat="'Shield Mastery'"  offset="1" />
+		</augment>
+		<augment id="176">
+			<params stat="'Resist Sleep'"  offset="1" />
+		</augment>
+		<augment id="177">
+			<params stat="'Resist Poison'"  offset="1" />
+		</augment>
+		<augment id="178">
+			<params stat="'Resist Paralyze'"  offset="1" />
+		</augment>
+		<augment id="179">
+			<params stat="'Resist Blind'"  offset="1" />
+		</augment>
+		<augment id="180">
+			<params stat="'Resist Silence'"  offset="1" />
+		</augment>
+		<augment id="181">
+			<params stat="'Resist Petrify'"  offset="1" />
+		</augment>
+		<augment id="182">
+			<params stat="'Resist Virus'"  offset="1" />
+		</augment>
+		<augment id="183">
+			<params stat="'Resist Curse'"  offset="1" />
+		</augment>
+		<augment id="184">
+			<params stat="'Resist Stun'"  offset="1" />
+		</augment>
+		<augment id="185">
+			<params stat="'Resist Bind'"  offset="1" />
+		</augment>
+		<augment id="186">
+			<params stat="'Resist Gravity'"  offset="1" />
+		</augment>
+		<augment id="187">
+			<params stat="'Resist Slow'"  offset="1" />
+		</augment>
+		<augment id="188">
+			<params stat="'Resist Charm'"  offset="1" />
+		</augment>
+		<augment id="194">
+			<params stat="'Kick Attacks'"  offset="1" />
+		</augment>
+		<augment id="195">
+			<params stat="'Subtle Blow'"  offset="1" />
+		</augment>
+		<augment id="198">
+			<params stat="'Zanshin'"  offset="1" />
+		</augment>
+		<augment id="211">
+			<params stat="'Snapshot'"  offset="1" />
+		</augment>
+		<augment id="212">
+			<params stat="'Recycle'"  offset="1" />
+		</augment>
+		<augment id="215">
+			<params stat="'Ninja tool expertise'"  offset="1" />
+		</augment>
+		<augment id="233">
+			<params stat="'Blood Boon'"  offset="1" />
+		</augment>
+		<augment id="237">
+			<params stat="'Occult Acumen'"  offset="1" />
+		</augment>
+		<augment id="257">
+			<params stat="Hand-to-Hand skill "  offset="1" />
+		</augment>
+		<augment id="258">
+			<params stat="Dagger skill "  offset="1" />
+		</augment>
+		<augment id="259">
+			<params stat="Sword skill "  offset="1" />
+		</augment>
+		<augment id="260">
+			<params stat="Great Sword skill "  offset="1" />
+		</augment>
+		<augment id="261">
+			<params stat="Axe skill "  offset="1" />
+		</augment>
+		<augment id="262">
+			<params stat="Great Axe skill "  offset="1" />
+		</augment>
+		<augment id="263">
+			<params stat="Scythe skill "  offset="1" />
+		</augment>
+		<augment id="264">
+			<params stat="Polearm skill "  offset="1" />
+		</augment>
+		<augment id="265">
+			<params stat="Katana skill "  offset="1" />
+		</augment>
+		<augment id="266">
+			<params stat="Great Katana skill "  offset="1" />
+		</augment>
+		<augment id="267">
+			<params stat="Club skill "  offset="1" />
+		</augment>
+		<augment id="268">
+			<params stat="Staff skill "  offset="1" />
+		</augment>
+		<augment id="278">
+			<params stat="Melee skill "  offset="1" />
+		</augment>
+		<augment id="279">
+			<params stat="Ranged skill "  offset="1" />
+		</augment>
+		<augment id="280">
+			<params stat="Magic skill "  offset="1" />
+		</augment>
+		<augment id="281">
+			<params stat="Archery skill "  offset="1" />
+		</augment>
+		<augment id="282">
+			<params stat="Marksmanship skill "  offset="1" />
+		</augment>
+		<augment id="283">
+			<params stat="Throwing skill "  offset="1" />
+		</augment>
+		<augment id="286">
+			<params stat="Shield skill "  offset="1" />
+		</augment>
+		<augment id="288">
+			<params stat="Divine magic skill "  offset="1" />
+		</augment>
+		<augment id="289">
+			<params stat="Healing magic skill "  offset="1" />
+		</augment>
+		<augment id="290">
+			<params stat="Enha.mag. skill "  offset="1" />
+		</augment>
+		<augment id="291">
+			<params stat="Enfb.mag. skill "  offset="1" />
+		</augment>
+		<augment id="292">
+			<params stat="Elem. magic skill "  offset="1" />
+		</augment>
+		<augment id="293">
+			<params stat="Dark magic skill "  offset="1" />
+		</augment>
+		<augment id="294">
+			<params stat="Summoning magic skill "  offset="1" />
+		</augment>
+		<augment id="295">
+			<params stat="Ninjutsu skill "  offset="1" />
+		</augment>
+		<augment id="296">
+			<params stat="Singing skill "  offset="1" />
+		</augment>
+		<augment id="297">
+			<params stat="String instrument skill "  offset="1" />
+		</augment>
+		<augment id="298">
+			<params stat="Wind instrument skill "  offset="1" />
+		</augment>
+		<augment id="299">
+			<params stat="Blue Magic skill "  offset="1" />
+		</augment>
+		<augment id="300">
+			<params stat="Geomancy Skill "  offset="1" />
+		</augment>
+		<augment id="301">
+			<params stat="Handbell Skill "  offset="1" />
+		</augment>
+		<augment id="320">
+			<params stat="'Blood Pact' ability delay "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="321">
+			<params stat="'Avatar perpetuation cost' "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="322">
+			<params stat="Song spellcasting time "  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="323">
+			<params stat="'Cure' spellcasting time "  offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="324">
+			<params stat="'Call Beast' ability delay "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="325">
+			<params stat="'Quick Draw' ability delay "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="326">
+			<params stat="Weapon Skill Acc."  offset="1" />
+		</augment>
+		<augment id="327">
+			<params stat="Weapon skill damage "  offset="1" percent="true" />
+		</augment>
+		<augment id="328">
+			<params stat="Crit. hit damage "  offset="1" percent="true" />
+		</augment>
+		<augment id="329">
+			<params stat="'Cure' potency "  offset="1" percent="true" />
+		</augment>
+		<augment id="330">
+			<params stat="'Waltz' potency "  offset="1" percent="true" />
+		</augment>
+		<augment id="331">
+			<params stat="'Waltz' ability delay "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="332">
+			<params stat="Sklchn.dmg."  offset="1" percent="true" />
+		</augment>
+		<augment id="333">
+			<params stat="'Conserve TP'"  offset="1" />
+		</augment>
+		<augment id="334">
+			<params stat="Magic burst dmg."  offset="1" percent="true" />
+		</augment>
+		<augment id="335">
+			<params stat="Mag. crit. hit dmg. "  offset="1" percent="true" />
+		</augment>
+		<augment id="336">
+			<params stat="'Sic' and 'Ready' ability delay "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="337">
+			<params stat="Song recast delay "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="338">
+			<params stat="'Barrage'"  offset="1" />
+		</augment>
+		<augment id="339">
+			<params stat="'Elemental Siphon'"  offset="1"  multiplier="5" />
+		</augment>
+		<augment id="340">
+			<params stat="'Phantom Roll' ability delay "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="341">
+			<params stat="'Repair' potency "  offset="1" percent="true" />
+		</augment>
+		<augment id="342">
+			<params stat="'Waltz' TP cost "  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="343">
+			<params stat="'Drain' and 'Aspir' potency "  offset="1" />
+		</augment>
+		<augment id="350">
+			<params stat="Occ. maximizes magic accuracy "  offset="1" percent="true" />
+		</augment>
+		<augment id="351">
+			<params stat="Occ. quickens spellcasting "  offset="1" percent="true" />
+		</augment>
+		<augment id="352">
+			<params stat="Occ. grants dmg. bonus based on TP "  offset="1" percent="true" />
+		</augment>
+		<augment id="353">
+			<params stat="TP Bonus "  offset="1"  multiplier="50" />
+		</augment>
+		<augment id="354">
+			<params stat="Quadruple Attack "  offset="1" />
+		</augment>
+		<augment id="356">
+			<params stat="Potency of 'Cure' effect received"  offset="1"  percent="true" />
+		</augment>
+		<augment id="360">
+			<params stat="Save TP "  offset="1"  multiplier="10" />
+		</augment>
+		<augment id="362">
+			<params stat="Magic Damage "  offset="1" />
+		</augment>
+		<augment id="363">
+			<params stat="Chance of successful block "  offset="1" />
+		</augment>
+		<augment id="366">
+			<params stat="Blood Pact ab. del. II "  offset="1"  multiplier="-1" />
+		</augment>
+		<augment id="368">
+			<params stat="Phalanx "  offset="1" />
+		</augment>
+		<augment id="369">
+			<params stat="Blood Pact Dmg."  offset="1" />
+		</augment>
+		<augment id="370">
+			<params stat="'Rev. Flourish'"  offset="1" />
+		</augment>
+		<augment id="371">
+			<params stat="'Regen' potency"  offset="1" />
+		</augment>
+		<augment id="372">
+			<params stat="'Embolden'"  offset="1" />
+		</augment>
+		<augment id="512">
+			<params stat="STR"  offset="1" />
+		</augment>
+		<augment id="513">
+			<params stat="DEX"  offset="1" />
+		</augment>
+		<augment id="514">
+			<params stat="VIT"  offset="1" />
+		</augment>
+		<augment id="515">
+			<params stat="AGI"  offset="1" />
+		</augment>
+		<augment id="516">
+			<params stat="INT"  offset="1" />
+		</augment>
+		<augment id="517">
+			<params stat="MND"  offset="1" />
+		</augment>
+		<augment id="518">
+			<params stat="CHR"  offset="1" />
+		</augment>
+		<augment id="519">
+			<params stat="STR"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="520">
+			<params stat="DEX"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="521">
+			<params stat="VIT"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="522">
+			<params stat="AGI"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="523">
+			<params stat="INT"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="524">
+			<params stat="MND"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="525">
+			<params stat="CHR"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="526">
+			<params stat="STR"  offset="1" />
+			<params stat="DEX"  offset="1"  multiplier="-0.5" />
+			<params stat="VIT"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="527">
+			<params stat="STR"  offset="1" />
+			<params stat="DEX"  offset="1"  multiplier="-0.5" />
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="528">
+			<params stat="STR"  offset="1" />
+			<params stat="VIT"  offset="1"  multiplier="-0.5" />
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="529">
+			<params stat="STR"  offset="1"  multiplier="-0.5" />
+			<params stat="DEX"  offset="1" />
+			<params stat="VIT"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="530">
+			<params stat="STR"  offset="1"  multiplier="-0.5" />
+			<params stat="DEX"  offset="1" />
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="531">
+			<params stat="DEX"  offset="1" />
+			<params stat="VIT"  offset="1"  multiplier="-0.5" />
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="532">
+			<params stat="STR"  offset="1"  multiplier="-0.5" />
+			<params stat="DEX"  offset="1"  multiplier="-0.5" />
+			<params stat="VIT"  offset="1" />
+		</augment>
+		<augment id="533">
+			<params stat="STR"  offset="1"  multiplier="-0.5" />
+			<params stat="VIT"  offset="1" />
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="534">
+			<params stat="DEX"  offset="1"  multiplier="-0.5" />
+			<params stat="VIT"  offset="1" />
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="535">
+			<params stat="STR"  offset="1"  multiplier="-0.5" />
+			<params stat="DEX"  offset="1"  multiplier="-0.5" />
+			<params stat="AGI"  offset="1" />
+		</augment>
+		<augment id="536">
+			<params stat="STR"  offset="1"  multiplier="-0.5" />
+			<params stat="VIT"  offset="1"  multiplier="-0.5" />
+			<params stat="AGI"  offset="1" />
+		</augment>
+		<augment id="537">
+			<params stat="DEX"  offset="1"  multiplier="-0.5" />
+			<params stat="VIT"  offset="1"  multiplier="-0.5" />
+			<params stat="AGI"  offset="1" />
+		</augment>
+		<augment id="538">
+			<params stat="AGI"  offset="1" />
+			<params stat="INT"  offset="1"  multiplier="-0.5" />
+			<params stat="MND"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="539">
+			<params stat="AGI"  offset="1" />
+			<params stat="INT"  offset="1"  multiplier="-0.5" />
+			<params stat="CHR"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="540">
+			<params stat="AGI"  offset="1" />
+			<params stat="MND"  offset="1"  multiplier="-0.5" />
+			<params stat="CHR"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="541">
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+			<params stat="INT"  offset="1" />
+			<params stat="MND"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="542">
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+			<params stat="INT"  offset="1" />
+			<params stat="CHR"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="543">
+			<params stat="INT"  offset="1" />
+			<params stat="MND"  offset="1"  multiplier="-0.5" />
+			<params stat="CHR"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="544">
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+			<params stat="INT"  offset="1"  multiplier="-0.5" />
+			<params stat="MND"  offset="1" />
+		</augment>
+		<augment id="545">
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+			<params stat="MND"  offset="1" />
+			<params stat="CHR"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="546">
+			<params stat="INT"  offset="1"  multiplier="-0.5" />
+			<params stat="MND"  offset="1" />
+			<params stat="CHR"  offset="1"  multiplier="-0.5" />
+		</augment>
+		<augment id="547">
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+			<params stat="INT"  offset="1"  multiplier="-0.5" />
+			<params stat="CHR"  offset="1" />
+		</augment>
+		<augment id="548">
+			<params stat="AGI"  offset="1"  multiplier="-0.5" />
+			<params stat="MND"  offset="1"  multiplier="-0.5" />
+			<params stat="CHR"  offset="1" />
+		</augment>
+		<augment id="549">
+			<params stat="INT"  offset="1"  multiplier="-0.5" />
+			<params stat="MND"  offset="1"  multiplier="-0.5" />
+			<params stat="CHR"  offset="1" />
+		</augment>
+		<augment id="550">
+			<params stat="STR"  offset="1" />
+			<params stat="DEX"  offset="1" />
+		</augment>
+		<augment id="551">
+			<params stat="STR"  offset="1" />
+			<params stat="VIT"  offset="1" />
+		</augment>
+		<augment id="552">
+			<params stat="STR"  offset="1" />
+			<params stat="AGI"  offset="1" />
+		</augment>
+		<augment id="553">
+			<params stat="DEX"  offset="1" />
+			<params stat="AGI"  offset="1" />
+		</augment>
+		<augment id="554">
+			<params stat="INT"  offset="1" />
+			<params stat="MND"  offset="1" />
+		</augment>
+		<augment id="555">
+			<params stat="MND"  offset="1" />
+			<params stat="CHR"  offset="1" />
+		</augment>
+		<augment id="556">
+			<params stat="INT"  offset="1" />
+			<params stat="MND"  offset="1" />
+			<params stat="CHR"  offset="1" />
+		</augment>
+		<augment id="557">
+			<params stat="STR"  offset="1" />
+			<params stat="CHR"  offset="1" />
+		</augment>
+		<augment id="558">
+			<params stat="STR"  offset="1" />
+			<params stat="INT"  offset="1" />
+		</augment>
+		<augment id="559">
+			<params stat="STR"  offset="1" />
+			<params stat="MND"  offset="1" />
+		</augment>
+		<augment id="740">
+			<params stat="DMG:"  offset="1" />
+		</augment>
+		<augment id="741">
+			<params stat="DMG:"  offset="33" />
+		</augment>
+		<augment id="742">
+			<params stat="DMG:"  offset="65" />
+		</augment>
+		<augment id="743">
+			<params stat="DMG:"  offset="97" />
+		</augment>
+		<augment id="744">
+			<params stat="DMG:"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="745">
+			<params stat="DMG:"  offset="33" multiplier="-1" />
+		</augment>
+		<augment id="746">
+			<params stat="DMG:"  offset="1" />
+		</augment>
+		<augment id="747">
+			<params stat="DMG:"  offset="33" />
+		</augment>
+		<augment id="748">
+			<params stat="DMG:"  offset="65" />
+		</augment>
+		<augment id="749">
+			<params stat="DMG:"  offset="97" />
+		</augment>
+		<augment id="750">
+			<params stat="DMG:"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="751">
+			<params stat="DMG:"  offset="33" multiplier="-1" />
+		</augment>
+		<augment id="752">
+			<params stat="Delay:"  offset="1" />
+		</augment>
+		<augment id="753">
+			<params stat="Delay:"  offset="33" />
+		</augment>
+		<augment id="754">
+			<params stat="Delay:"  offset="65" />
+		</augment>
+		<augment id="755">
+			<params stat="Delay:"  offset="97" />
+		</augment>
+		<augment id="756">
+			<params stat="Delay:"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="757">
+			<params stat="Delay:"  offset="33" multiplier="-1" />
+		</augment>
+		<augment id="758">
+			<params stat="Delay:"  offset="65" multiplier="-1" />
+		</augment>
+		<augment id="759">
+			<params stat="Delay:"  offset="97" multiplier="-1" />
+		</augment>
+		<augment id="760">
+			<params stat="Delay:"  offset="1" />
+		</augment>
+		<augment id="761">
+			<params stat="Delay:"  offset="33" />
+		</augment>
+		<augment id="762">
+			<params stat="Delay:"  offset="65" />
+		</augment>
+		<augment id="763">
+			<params stat="Delay:"  offset="97" />
+		</augment>
+		<augment id="764">
+			<params stat="Delay:"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="765">
+			<params stat="Delay:"  offset="33" multiplier="-1" />
+		</augment>
+		<augment id="766">
+			<params stat="Delay:"  offset="65" multiplier="-1" />
+		</augment>
+		<augment id="767">
+			<params stat="Delay:"  offset="97" multiplier="-1" />
+		</augment>
+		<augment id="768">
+			<params stat="Fire resistance"  offset="1" />
+		</augment>
+		<augment id="769">
+			<params stat="Ice resistance"  offset="1" />
+		</augment>
+		<augment id="770">
+			<params stat="Wind resistance"  offset="1" />
+		</augment>
+		<augment id="771">
+			<params stat="Earth resistance"  offset="1" />
+		</augment>
+		<augment id="772">
+			<params stat="Lightning resistance"  offset="1" />
+		</augment>
+		<augment id="773">
+			<params stat="Water resistance"  offset="1" />
+		</augment>
+		<augment id="774">
+			<params stat="Light resistance"  offset="1" />
+		</augment>
+		<augment id="775">
+			<params stat="Dark resistance"  offset="1" />
+		</augment>
+		<augment id="776">
+			<params stat="Fire resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="777">
+			<params stat="Ice resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="778">
+			<params stat="Wind resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="779">
+			<params stat="Earth resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="780">
+			<params stat="Lightning resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="781">
+			<params stat="Water resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="782">
+			<params stat="Light resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="783">
+			<params stat="Dark resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="784">
+			<params stat="Fire resistance"  offset="1" />
+			<params stat="Water resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="785">
+			<params stat="Fire resistance"  offset="1" multiplier="-1" />
+			<params stat="Ice resistance"  offset="1" />
+		</augment>
+		<augment id="786">
+			<params stat="Ice resistance"  offset="1" multiplier="-1" />
+			<params stat="Wind resistance"  offset="1" />
+		</augment>
+		<augment id="787">
+			<params stat="Wind resistance"  offset="1" multiplier="-1" />
+			<params stat="Earth resistance"  offset="1" />
+		</augment>
+		<augment id="788">
+			<params stat="Earth resistance"  offset="1" multiplier="-1" />
+			<params stat="Lightning resistance"  offset="1" />
+		</augment>
+		<augment id="789">
+			<params stat="Lightning resistance"  offset="1" multiplier="-1" />
+			<params stat="Water resistance"  offset="1" />
+		</augment>
+		<augment id="790">
+			<params stat="Light resistance"  offset="1" />
+			<params stat="Dark resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="791">
+			<params stat="Light resistance"  offset="1" multiplier="-1" />
+			<params stat="Dark resistance"  offset="1" />
+		</augment>
+		<augment id="792">
+			<params stat="Fire resistance"  offset="1" />
+			<params stat="Wind resistance"  offset="1" />
+			<params stat="Lightning resistance"  offset="1" />
+			<params stat="Light resistance"  offset="1" />
+		</augment>
+		<augment id="793">
+			<params stat="Ice resistance"  offset="1" />
+			<params stat="Earth resistance"  offset="1" />
+			<params stat="Water resistance"  offset="1" />
+			<params stat="Dark resistance"  offset="1" />
+		</augment>
+		<augment id="794">
+			<params stat="Fire resistance"  offset="1" />
+			<params stat="Ice resistance"  offset="1" multiplier="-1" />
+			<params stat="Wind resistance"  offset="1" />
+			<params stat="Earth resistance"  offset="1" multiplier="-1" />
+			<params stat="Lightning resistance"  offset="1" />
+			<params stat="Water resistance"  offset="1" multiplier="-1" />
+			<params stat="Light resistance"  offset="1" />
+			<params stat="Dark resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="795">
+			<params stat="Fire resistance"  offset="1" multiplier="-1" />
+			<params stat="Ice resistance"  offset="1" />
+			<params stat="Wind resistance"  offset="1" multiplier="-1" />
+			<params stat="Earth resistance"  offset="1" />
+			<params stat="Lightning resistance"  offset="1" multiplier="-1" />
+			<params stat="Water resistance"  offset="1" />
+			<params stat="Light resistance"  offset="1" multiplier="-1" />
+			<params stat="Dark resistance"  offset="1" />
+		</augment>
+		<augment id="796">
+			<params stat="Fire resistance"  offset="1" />
+			<params stat="Ice resistance"  offset="1" />
+			<params stat="Wind resistance"  offset="1" />
+			<params stat="Earth resistance"  offset="1" />
+			<params stat="Lightning resistance"  offset="1" />
+			<params stat="Water resistance"  offset="1" />
+			<params stat="Light resistance"  offset="1" />
+			<params stat="Dark resistance"  offset="1" />
+		</augment>
+		<augment id="797">
+			<params stat="Fire resistance"  offset="1" multiplier="-1" />
+			<params stat="Ice resistance"  offset="1" multiplier="-1" />
+			<params stat="Wind resistance"  offset="1" multiplier="-1" />
+			<params stat="Earth resistance"  offset="1" multiplier="-1" />
+			<params stat="Lightning resistance"  offset="1" multiplier="-1" />
+			<params stat="Water resistance"  offset="1" multiplier="-1" />
+			<params stat="Light resistance"  offset="1" multiplier="-1" />
+			<params stat="Dark resistance"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="832">
+			<params stat="Add.eff.:Fire Dmg."  offset="5" />
+		</augment>
+		<augment id="833">
+			<params stat="Add.eff.:Ice Dmg."  offset="5" />
+		</augment>
+		<augment id="834">
+			<params stat="Add.eff.:Wind Dmg."  offset="5" />
+		</augment>
+		<augment id="835">
+			<params stat="Add.eff.:Earth Dmg."  offset="5" />
+		</augment>
+		<augment id="836">
+			<params stat="Add.eff.:Lightning Dmg."  offset="5" />
+		</augment>
+		<augment id="837">
+			<params stat="Add.eff.:Water Dmg."  offset="5" />
+		</augment>
+		<augment id="838">
+			<params stat="Add.eff.:Light Dmg."  offset="5" />
+		</augment>
+		<augment id="839">
+			<params stat="Add.eff.:Dark Dmg."  offset="5" />
+		</augment>
+		<augment id="840">
+			<params stat="Add.eff.:Disease"  offset="1" />
+		</augment>
+		<augment id="841">
+			<params stat="Add.eff.:Paralysis"  offset="1" />
+		</augment>
+		<augment id="842">
+			<params stat="Add.eff.:Silence"  offset="1" />
+		</augment>
+		<augment id="843">
+			<params stat="Add.eff.:Slow"  offset="1" />
+		</augment>
+		<augment id="844">
+			<params stat="Add.eff.:Stun"  offset="1" />
+		</augment>
+		<augment id="845">
+			<params stat="Add.eff.:Poison"  offset="1" />
+		</augment>
+		<augment id="846">
+			<params stat="Add.eff.:Flash"  offset="1" />
+		</augment>
+		<augment id="847">
+			<params stat="Add.eff.:Blindness"  offset="1" />
+		</augment>
+		<augment id="848">
+			<params stat="Add.eff.:Weakens def."  offset="1" />
+		</augment>
+		<augment id="849">
+			<params stat="Add.eff.:Sleep"  offset="1" />
+		</augment>
+		<augment id="850">
+			<params stat="Add.eff.:Weakens atk."  offset="1" />
+		</augment>
+		<augment id="851">
+			<params stat="Add.eff.:Impairs evasion"  offset="1" />
+		</augment>
+		<augment id="852">
+			<params stat="Add.eff.:Lowers acc."  offset="1" />
+		</augment>
+		<augment id="853">
+			<params stat="Add.eff.:Lowers mag.eva."  offset="1" />
+		</augment>
+		<augment id="854">
+			<params stat="Add.eff.:Lowers mag.atk."  offset="1" />
+		</augment>
+		<augment id="855">
+			<params stat="Add.eff.:Lowers mag.def."  offset="1" />
+		</augment>
+		<augment id="856">
+			<params stat="Add.eff.:Lowers mag.acc."  offset="1" />
+		</augment>
+		<augment id="896">
+			<params stat="Sword enhancement spell damage "  offset="1" />
+		</augment>
+		<augment id="897">
+			<params stat="Enhances 'Souleater' effect "  offset="1" percent="true" />
+		</augment>
+		<augment id="912">
+		</augment>
+		<augment id="913">
+		</augment>
+		<augment id="914">
+		</augment>
+		<augment id="928">
+			<params stat="Fire Affinity "  offset="0" />
+		</augment>
+		<augment id="929">
+			<params stat="Ice Affinity "  offset="0" />
+		</augment>
+		<augment id="930">
+			<params stat="Wind Affinity "  offset="0" />
+		</augment>
+		<augment id="931">
+			<params stat="Earth Affinity "  offset="0" />
+		</augment>
+		<augment id="932">
+			<params stat="Lightning Affinity "  offset="0" />
+		</augment>
+		<augment id="933">
+			<params stat="Water Affinity "  offset="0" />
+		</augment>
+		<augment id="934">
+			<params stat="Light Affinity "  offset="0" />
+		</augment>
+		<augment id="935">
+			<params stat="Dark Affinity "  offset="0" />
+		</augment>
+		<augment id="936">
+			<params stat="Fire Affinity: Magic Accuracy"  offset="0" />
+		</augment>
+		<augment id="937">
+			<params stat="Ice Affinity: Magic Accuracy"  offset="0" />
+		</augment>
+		<augment id="938">
+			<params stat="Wind Affinity: Magic Accuracy"  offset="0" />
+		</augment>
+		<augment id="939">
+			<params stat="Earth Affinity: Magic Accuracy"  offset="0" />
+		</augment>
+		<augment id="940">
+			<params stat="Lightning Affinity: Magic Accuracy"  offset="0" />
+		</augment>
+		<augment id="941">
+			<params stat="Water Affinity: Magic Accuracy"  offset="0" />
+		</augment>
+		<augment id="942">
+			<params stat="Light Affinity: Magic Accuracy"  offset="0" />
+		</augment>
+		<augment id="943">
+			<params stat="Dark Affinity: Magic Accuracy"  offset="0" />
+		</augment>
+		<augment id="944">
+			<params stat="Fire Affinity: Magic Damage"  offset="0" />
+		</augment>
+		<augment id="945">
+			<params stat="Ice Affinity: Magic Damage"  offset="0" />
+		</augment>
+		<augment id="946">
+			<params stat="Wind Affinity: Magic Damage"  offset="0" />
+		</augment>
+		<augment id="947">
+			<params stat="Earth Affinity: Magic Damage"  offset="0" />
+		</augment>
+		<augment id="948">
+			<params stat="Lightning Affinity: Magic Damage"  offset="0" />
+		</augment>
+		<augment id="949">
+			<params stat="Water Affinity: Magic Damage"  offset="0" />
+		</augment>
+		<augment id="950">
+			<params stat="Light Affinity: Magic Damage"  offset="0" />
+		</augment>
+		<augment id="951">
+			<params stat="Dark Affinity: Magic Damage"  offset="0" />
+		</augment>
+		<augment id="952">
+			<params stat="Fire Affinity: Avatar perp. cost"  offset="0" />
+		</augment>
+		<augment id="953">
+			<params stat="Ice Affinity: Avatar perp. cost"  offset="0" />
+		</augment>
+		<augment id="954">
+			<params stat="Wind Affinity: Avatar perp. cost"  offset="0" />
+		</augment>
+		<augment id="955">
+			<params stat="Earth Affinity: Avatar perp. cost"  offset="0" />
+		</augment>
+		<augment id="956">
+			<params stat="Lightning Affinity: Avatar perp. cost"  offset="0" />
+		</augment>
+		<augment id="957">
+			<params stat="Water Affinity: Avatar perp. cost"  offset="0" />
+		</augment>
+		<augment id="958">
+			<params stat="Light Affinity: Avatar perp. cost"  offset="0" />
+		</augment>
+		<augment id="959">
+			<params stat="Dark Affinity: Avatar perp. cost"  offset="0" />
+		</augment>
+		<augment id="960">
+			<params stat="Fire Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Fire Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="961">
+			<params stat="Ice Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Ice Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="962">
+			<params stat="Wind Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Wind Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="963">
+			<params stat="Earth Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Earth Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="964">
+			<params stat="Lightning Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Lightning Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="965">
+			<params stat="Water Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Water Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="966">
+			<params stat="Light Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Light Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="967">
+			<params stat="Dark Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Dark Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="968">
+			<params stat="Fire Affinity: Magic Damage"  offset="0" />
+			<params stat="Fire Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="969">
+			<params stat="Ice Affinity: Magic Damage"  offset="0" />
+			<params stat="Ice Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="970">
+			<params stat="Wind Affinity: Magic Damage"  offset="0" />
+			<params stat="Wind Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="971">
+			<params stat="Earth Affinity: Magic Damage"  offset="0" />
+			<params stat="Earth Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="972">
+			<params stat="Lightning Affinity: Magic Damage"  offset="0" />
+			<params stat="Lightning Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="973">
+			<params stat="Water Affinity: Magic Damage"  offset="0" />
+			<params stat="Water Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="974">
+			<params stat="Light Affinity: Magic Damage"  offset="0" />
+			<params stat="Light Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="975">
+			<params stat="Dark Affinity: Magic Damage"  offset="0" />
+			<params stat="Dark Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="976">
+			<params stat="Fire Affin.: 'Blood Pact' delay "  offset="1" />
+		</augment>
+		<augment id="977">
+			<params stat="Ice Affin.: 'Blood Pact' delay "  offset="1" />
+		</augment>
+		<augment id="978">
+			<params stat="Wind Affin.: 'Blood Pact' delay "  offset="1" />
+		</augment>
+		<augment id="979">
+			<params stat="Earth Affin.: 'Blood Pact' delay "  offset="1" />
+		</augment>
+		<augment id="980">
+			<params stat="Lightning Affin.: 'Blood Pact' delay "  offset="1" />
+		</augment>
+		<augment id="981">
+			<params stat="Water Affin.: 'Blood Pact' delay "  offset="1" />
+		</augment>
+		<augment id="982">
+			<params stat="Light Affin.: 'Blood Pact' delay "  offset="1" />
+		</augment>
+		<augment id="983">
+			<params stat="Dark Affin.: 'Blood Pact' delay "  offset="1" />
+		</augment>
+		<augment id="984">
+			<params stat="Fire Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="985">
+			<params stat="Ice Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="986">
+			<params stat="Wind Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="987">
+			<params stat="Earth Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="988">
+			<params stat="Lightning Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="989">
+			<params stat="Water Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="990">
+			<params stat="Light Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="991">
+			<params stat="Dark Affinity: Recast time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="992">
+			<params stat="Fire Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="993">
+			<params stat="Ice Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="994">
+			<params stat="Wind Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="995">
+			<params stat="Earth Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="996">
+			<params stat="Lightning Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="997">
+			<params stat="Water Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="998">
+			<params stat="Light Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="999">
+			<params stat="Dark Affinity: Casting time"  offset="1"  multiplier="-2"  percent="true" />
+		</augment>
+		<augment id="1000">
+			<params stat="Fire Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Fire Affinity: Casting time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1001">
+			<params stat="Ice Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Ice Affinity: Casting time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1002">
+			<params stat="Wind Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Wind Affinity: Casting time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1003">
+			<params stat="Earth Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Earth Affinity: Casting time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1004">
+			<params stat="Lightning Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Lightning Affinity: Casting time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1005">
+			<params stat="Water Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Water Affinity: Casting time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1006">
+			<params stat="Light Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Light Affinity: Casting time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1007">
+			<params stat="Dark Affinity: Magic Accuracy"  offset="0" />
+			<params stat="Dark Affinity: Casting time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1008">
+			<params stat="Fire Affinity: Magic Damage"  offset="0" />
+			<params stat="Fire Affinity: Recast time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1009">
+			<params stat="Ice Affinity: Magic Damage"  offset="0" />
+			<params stat="Ice Affinity: Recast time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1010">
+			<params stat="Wind Affinity: Magic Damage"  offset="0" />
+			<params stat="Wind Affinity: Recast time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1011">
+			<params stat="Earth Affinity: Magic Damage"  offset="0" />
+			<params stat="Earth Affinity: Recast time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1012">
+			<params stat="Lightning Affinity: Magic Damage"  offset="0" />
+			<params stat="Lightning Affinity: Recast time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1013">
+			<params stat="Water Affinity: Magic Damage"  offset="0" />
+			<params stat="Water Affinity: Recast time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1014">
+			<params stat="Light Affinity: Magic Damage"  offset="0" />
+			<params stat="Light Affinity: Recast time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1015">
+			<params stat="Dark Affinity: Magic Damage"  offset="0" />
+			<params stat="Dark Affinity: Recast time"  offset="1"  multiplier="-6"  percent="true" />
+		</augment>
+		<augment id="1024">
+			<params stat="Backhand Blow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1025">
+			<params stat="Spinning Attack:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1026">
+			<params stat="Howling Fist:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1027">
+			<params stat="Dragon Kick:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1028">
+			<params stat="Viper Bite:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1029">
+			<params stat="Shadowstitch:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1030">
+			<params stat="Cyclone:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1031">
+			<params stat="Evisceration:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1032">
+			<params stat="Burning Blade:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1033">
+			<params stat="Shining Blade:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1034">
+			<params stat="Circle Blade:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1035">
+			<params stat="Savage Blade:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1036">
+			<params stat="Freezebite:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1037">
+			<params stat="Shockwave:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1038">
+			<params stat="Ground Strike:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1039">
+			<params stat="Sickle Moon:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1040">
+			<params stat="Gale Axe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1041">
+			<params stat="Spinning Axe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1042">
+			<params stat="Calamity:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1043">
+			<params stat="Decimation:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1044">
+			<params stat="Iron Tempest:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1045">
+			<params stat="Sturmwind:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1046">
+			<params stat="Keen Edge:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1047">
+			<params stat="Steel Cyclone:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1048">
+			<params stat="Nightmare Scythe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1049">
+			<params stat="Spinning Scythe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1050">
+			<params stat="Vorpal Scythe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1051">
+			<params stat="Spiral Hell:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1052">
+			<params stat="Leg Sweep:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1053">
+			<params stat="Skewer:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1054">
+			<params stat="Vorpal Thrust:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1055">
+			<params stat="Impulse Drive:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1056">
+			<params stat="Blade: To:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1057">
+			<params stat="Blade: Chi:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1058">
+			<params stat="Blade: Ten:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1059">
+			<params stat="Blade: Ku:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1060">
+			<params stat="Tachi: Goten:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1061">
+			<params stat="Tachi: Jinpu:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1062">
+			<params stat="Tachi: Koki:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1063">
+			<params stat="Tachi: Kasha:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1064">
+			<params stat="Brainshaker:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1065">
+			<params stat="Skullbreaker:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1066">
+			<params stat="Judgment:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1067">
+			<params stat="Black Halo:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1068">
+			<params stat="Rock Crusher:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1069">
+			<params stat="Shell Crusher:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1070">
+			<params stat="Full Swing:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1071">
+			<params stat="Retribution:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1072">
+			<params stat="Dulling Arrow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1073">
+			<params stat="Blast Arrow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1074">
+			<params stat="Arching Arrow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1075">
+			<params stat="Empyreal Arrow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1076">
+			<params stat="Hot Shot:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1077">
+			<params stat="Split Shot:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1078">
+			<params stat="Sniper Shot:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1079">
+			<params stat="Detonator:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1080">
+			<params stat="Weapon Skill:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1152">
+			<params stat="DEF"  offset="1" multiplier="10" />
+		</augment>
+		<augment id="1153">
+			<params stat="Evasion"  offset="1" multiplier="3" />
+		</augment>
+		<augment id="1154">
+			<params stat="Mag. Evasion"  offset="1" multiplier="3" />
+		</augment>
+		<augment id="1155">
+			<params stat="Phys. dmg. taken "  offset="1" multiplier="-2" percent="true" />
+		</augment>
+		<augment id="1156">
+			<params stat="Magic dmg. taken "  offset="1" multiplier="-2" percent="true" />
+		</augment>
+		<augment id="1157">
+			<params stat="Spell interruption rate down"  offset="1" multiplier="-2" percent="true" />
+		</augment>
+		<augment id="1158">
+			<params stat="Occ. inc. resist. to stat. ailments"  offset="1" multiplier="2" />
+		</augment>
+		<augment id="1248">
+			<params stat="Enh. Mag. eff. dur. "  offset="1" />
+		</augment>
+		<augment id="1249">
+			<params stat="Helix eff. dur. "  offset="1" />
+		</augment>
+		<augment id="1250">
+			<params stat="Indi. eff. dur. "  offset="1" />
+		</augment>
+		<augment id="1264">
+			<params stat="Meditate eff. dur. "  offset="1" />
+		</augment>
+		<augment id="1280">
+			<params stat="Enhances 'Mighty Strikes' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1281">
+			<params stat="Enhances 'Hundred Fists' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1282">
+			<params stat="Enhances 'Benediction' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1283">
+			<params stat="Enhances 'Manafont' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1284">
+			<params stat="Enhances 'Chainspell' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1285">
+			<params stat="Enhances 'Perfect Dodge' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1286">
+			<params stat="Enhances 'Invincible' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1287">
+			<params stat="Enhances 'Blood Weapon' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1288">
+			<params stat="Enhances 'Familiar' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1289">
+			<params stat="Enhances 'Soul Voice' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1290">
+			<params stat="Enhances 'Eagle Eye Shot' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1291">
+			<params stat="Enhances 'Meikyo Shisui' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1292">
+			<params stat="Enhances 'Mijin Gakure' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1293">
+			<params stat="Enhances 'Spirit Surge' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1294">
+			<params stat="Enhances 'Astral Flow' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1295">
+			<params stat="Enhances 'Azure Lore' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1296">
+			<params stat="Enhances 'Wild Card' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1297">
+			<params stat="Enhances 'Overdrive' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1298">
+			<params stat="Enhances 'Trance' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1299">
+			<params stat="Enhances 'Tabula Rasa' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1300">
+			<params stat="Enhances 'Bolster' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1301">
+			<params stat="Enhances 'Elemental Sforzo' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1328">
+			<params stat="Enhances 'Savagery' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1329">
+			<params stat="Enhances 'Aggressive Aim' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1330">
+			<params stat="Enhances 'Warrior's Charge' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1331">
+			<params stat="Enhances 'Tomahawk' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1334">
+			<params stat="Enhances 'Penance' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1335">
+			<params stat="Enhances 'Formless Strikes' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1336">
+			<params stat="Enhances 'Invigorate' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1337">
+			<params stat="Enhances 'Mantra' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1340">
+			<params stat="Enhances 'Afflatus Solace' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1341">
+			<params stat="Enhances 'Martyr' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1342">
+			<params stat="Enhances 'Afflatus Misery' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1343">
+			<params stat="Enhances 'Devotion' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1346">
+			<params stat="Increases Ancient Magic damage and magic burst damage"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1347">
+			<params stat="Increases Elemental Magic accuracy"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1348">
+			<params stat="Increases Elemental Magic debuff time and potency"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1349">
+			<params stat="Increases Aspir absorption amount"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1352">
+			<params stat="Enfeebling Magic duration"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1353">
+			<params stat="Magic Accuracy"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1354">
+			<params stat="Enhancing Magic duration"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1355">
+			<params stat="Enspell Damage"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1356">
+			<params stat="Accuracy"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1357">
+			<params stat="Immunobreak Chance"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1358">
+			<params stat="Enhances 'Aura Steal' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1359">
+			<params stat="Enhances 'Ambush' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1360">
+			<params stat="Enhances 'Feint' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1361">
+			<params stat="Enhances 'Assassin's Charge' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1364">
+			<params stat="Enhances 'Iron Will' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1365">
+			<params stat="Enhances 'Fealty' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1366">
+			<params stat="Enhances 'Chivalry' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1367">
+			<params stat="Enhances 'Guardian' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1370">
+			<params stat="Enhances 'Dark Seal' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1371">
+			<params stat="Enhances 'Diabolic Eye' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1372">
+			<params stat="Enhances 'Muted Soul' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1373">
+			<params stat="Enhances 'Desperate Blows' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1376">
+			<params stat="Enhances 'Killer Instinct' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1377">
+			<params stat="Enhances 'Feral Howl' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1378">
+			<params stat="Enhances 'Beast Affinity' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1379">
+			<params stat="Enhances 'Beast Healer' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1382">
+			<params stat="Enhances 'Con Anima' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1383">
+			<params stat="Enhances 'Troubadour' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1384">
+			<params stat="Enhances 'Con Brio' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1385">
+			<params stat="Enhances 'Nightingale' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1388">
+			<params stat="Enhances 'Recycle' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1389">
+			<params stat="Enhances 'Snapshot' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1390">
+			<params stat="Enhances 'Flashy Shot' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1391">
+			<params stat="Enhances 'Stealth Shot' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1394">
+			<params stat="Enhances 'Shikikoyo' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1395">
+			<params stat="Enhances 'Overwhelm' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1396">
+			<params stat="Enhances 'Blade Bash' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1397">
+			<params stat="Enhances 'Ikishoten' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1400">
+			<params stat="Enhances 'Yonin' and 'Innin' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1401">
+			<params stat="Enhances 'Sange' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1402">
+			<params stat="Enh. 'Ninja Tool Expertise' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1403">
+			<params stat="Enh. Ninj. Mag. Acc/Cast Time Red."  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1406">
+			<params stat="Enhances 'Deep Breathing' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1407">
+			<params stat="Enhances 'Angon' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1408">
+			<params stat="Enhances 'Strafe' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1409">
+			<params stat="Enhances 'Empathy' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1412">
+			<params stat="Reduces Sp. 'Blood Pact' MP cost"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1413">
+			<params stat="Inc. Sp. 'Blood Pact' magic burst dmg."  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1414">
+			<params stat="Increases Sp. 'Blood Pact' accuracy"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1415">
+			<params stat="Inc. Sp. 'Blood Pact' magic crit. dmg."  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1418">
+			<params stat="Enhances 'Convergence' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1419">
+			<params stat="Enhances 'Enchainment' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1420">
+			<params stat="Enhances 'Assimilation' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1421">
+			<params stat="Enhances 'Diffusion' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1424">
+			<params stat="Enhances 'Winning Streak' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1425">
+			<params stat="Enhances 'Loaded Deck' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1426">
+			<params stat="Enhances 'Fold' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1427">
+			<params stat="Enhances 'Snake Eye' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1430">
+			<params stat="Enhances 'Optimization' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1431">
+			<params stat="Enhances 'Fine-Tuning' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1432">
+			<params stat="Enhances 'Ventriloquy' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1433">
+			<params stat="Enhances 'Role Reversal' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1436">
+			<params stat="Enhances 'No Foot Rise' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1437">
+			<params stat="Enhances 'Fan Dance' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1438">
+			<params stat="Enhances 'Saber Dance' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1439">
+			<params stat="Enhances 'Closed Position' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1442">
+			<params stat="Enh. 'Altruism' and 'Focalization'"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1443">
+			<params stat="Enhances 'Enlightenment' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1444">
+			<params stat="Enh. 'Tranquility' and 'Equanimity'"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1445">
+			<params stat="Enhances 'Stormsurge' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1448">
+			<params stat="Enhances 'Mending Halation' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1449">
+			<params stat="Enhances 'Radial Arcana' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1450">
+			<params stat="Enhances 'Curative Recantation' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1451">
+			<params stat="Enhances 'Primeval Zeal' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1454">
+			<params stat="Enhances 'Battuta' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1455">
+			<params stat="Enhances 'Rayke' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1456">
+			<params stat="Enhances 'Inspire' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1457">
+			<params stat="Enhances 'Sleight of Sword' effect"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1472">
+			<params stat="Parrying rate"  offset="1" percent="true" />
+		</augment>
+		<augment id="1536">
+			<params stat="Backhand Blow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1537">
+			<params stat="Spinning Attack:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1538">
+			<params stat="Howling Fist:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1539">
+			<params stat="Dragon Kick:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1540">
+			<params stat="Viper Bite:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1541">
+			<params stat="Shadowstitch:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1542">
+			<params stat="Cyclone:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1543">
+			<params stat="Evisceration:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1544">
+			<params stat="Burning Blade:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1545">
+			<params stat="Shining Blade:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1546">
+			<params stat="Circle Blade:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1547">
+			<params stat="Savage Blade:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1548">
+			<params stat="Freezebite:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1549">
+			<params stat="Shockwave:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1550">
+			<params stat="Ground Strike:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1551">
+			<params stat="Sickle Moon:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1552">
+			<params stat="Gale Axe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1553">
+			<params stat="Spinning Axe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1554">
+			<params stat="Calamity:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1555">
+			<params stat="Decimation:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1556">
+			<params stat="Iron Tempest:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1557">
+			<params stat="Sturmwind:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1558">
+			<params stat="Keen Edge:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1559">
+			<params stat="Steel Cyclone:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1560">
+			<params stat="Nightmare Scythe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1561">
+			<params stat="Spinning Scythe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1562">
+			<params stat="Vorpal Scythe:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1563">
+			<params stat="Spiral Hell:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1564">
+			<params stat="Leg Sweep:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1565">
+			<params stat="Skewer:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1566">
+			<params stat="Vorpal Thrust:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1567">
+			<params stat="Impulse Drive:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1568">
+			<params stat="Blade: To:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1569">
+			<params stat="Blade: Chi:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1570">
+			<params stat="Blade: Ten:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1571">
+			<params stat="Blade: Ku:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1572">
+			<params stat="Tachi: Goten:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1573">
+			<params stat="Tachi: Jinpu:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1574">
+			<params stat="Tachi: Koki:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1575">
+			<params stat="Tachi: Kasha:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1576">
+			<params stat="Brainshaker:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1577">
+			<params stat="Skullbreaker:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1578">
+			<params stat="Judgment:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1579">
+			<params stat="Black Halo:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1580">
+			<params stat="Rock Crusher:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1581">
+			<params stat="Shell Crusher:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1582">
+			<params stat="Full Swing:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1583">
+			<params stat="Retribution:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1584">
+			<params stat="Dulling Arrow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1585">
+			<params stat="Blast Arrow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1586">
+			<params stat="Arching Arrow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1587">
+			<params stat="Empyreal Arrow:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1588">
+			<params stat="Hot Shot:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1589">
+			<params stat="Split Shot:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1590">
+			<params stat="Sniper Shot:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1591">
+			<params stat="Detonator:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1592">
+			<params stat="Weapon Skill:DMG:"  offset="1" multiplier="5" percent="true" />
+		</augment>
+		<augment id="1792">
+			<params stat="Pet: STR"  offset="1" />
+		</augment>
+		<augment id="1793">
+			<params stat="Pet: DEX"  offset="1" />
+		</augment>
+		<augment id="1794">
+			<params stat="Pet: VIT"  offset="1" />
+		</augment>
+		<augment id="1795">
+			<params stat="Pet: AGI"  offset="1" />
+		</augment>
+		<augment id="1796">
+			<params stat="Pet: INT"  offset="1" />
+		</augment>
+		<augment id="1797">
+			<params stat="Pet: MND"  offset="1" />
+		</augment>
+		<augment id="1798">
+			<params stat="Pet: CHR"  offset="1" />
+		</augment>
+		<augment id="1799">
+			<params stat="Pet: STR"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="1800">
+			<params stat="Pet: DEX"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="1801">
+			<params stat="Pet: VIT"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="1802">
+			<params stat="Pet: AGI"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="1803">
+			<params stat="Pet: INT"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="1804">
+			<params stat="Pet: MND"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="1805">
+			<params stat="Pet: CHR"  offset="1" multiplier="-1" />
+		</augment>
+		<augment id="1806">
+			<params stat="Pet: STR"  offset="1" />
+			<params stat="Pet: DEX"  offset="1" />
+			<params stat="Pet: VIT"  offset="1" />
+		</augment>
+		<augment id="1807">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1808">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1809">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1810">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1811">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1812">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1813">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1814">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1815">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1816">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1817">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1818">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1819">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1820">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1821">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1822">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="1823">
+			<params stat="Pet:"  offset="0" multiplier="0" />
+		</augment>
+		<augment id="2047">
+			<params stat="???"  offset="0" />
+		</augment>
+	</augments>
+	<augments table="1">
+		<augment id="0">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="1">
+			<params stat="----------------" offset="0" />
+		</augment>
+		<augment id="2">
+			<params stat="HP" offset="1" />
+		</augment>
+		<augment id="3">
+			<params stat="HP" offset="256" />
+		</augment>
+		<augment id="4">
+			<params stat="MP" offset="1" />
+		</augment>
+		<augment id="5">
+			<params stat="MP" offset="256" />
+		</augment>
+		<augment id="8">
+			<params stat="Attack" offset="1" />
+		</augment>
+		<augment id="9">
+			<params stat="Attack" offset="256" />
+		</augment>
+		<augment id="10">
+			<params stat="Rng.Atk." offset="1" />
+		</augment>
+		<augment id="11">
+			<params stat="Rng.Atk." offset="256" />
+		</augment>
+		<augment id="12">
+			<params stat="Accuracy" offset="1" />
+		</augment>
+		<augment id="13">
+			<params stat="Accuracy" offset="256" />
+		</augment>
+		<augment id="14">
+			<params stat="Rng.Acc." offset="1" />
+		</augment>
+		<augment id="15">
+			<params stat="Rng.Acc." offset="256" />
+		</augment>
+		<augment id="16">
+			<params stat="DEF" offset="1" />
+		</augment>
+		<augment id="17">
+			<params stat="DEF" offset="256" />
+		</augment>
+		<augment id="18">
+			<params stat="Evasion" offset="1" />
+		</augment>
+		<augment id="19">
+			<params stat="Evasion" offset="256" />
+		</augment>
+		<augment id="20">
+			<params stat="'Mag. Atk. Bns.'" offset="1" />
+		</augment>
+		<augment id="21">
+			<params stat="'Mag. Atk. Bns.'" offset="256" />
+		</augment>
+		<augment id="22">
+			<params stat="'Mag.Def.Bns.'" offset="1" />
+		</augment>
+		<augment id="23">
+			<params stat="'Mag.Def.Bns.'" offset="256" />
+		</augment>
+		<augment id="24">
+			<params stat="Mag. Acc." offset="1" />
+		</augment>
+		<augment id="25">
+			<params stat="Mag. Acc." offset="256" />
+		</augment>
+		<augment id="26">
+			<params stat="Mag. Evasion" offset="1" />
+		</augment>
+		<augment id="27">
+			<params stat="Mag. Evasion" offset="256" />
+		</augment>
+		<augment id="28">
+			<params stat="DMG:" offset="1" />
+		</augment>
+		<augment id="29">
+			<params stat="DMG:" offset="256" />
+		</augment>
+		<augment id="114">
+			<params stat="Weapon skill damage " offset="1" percent="true" />
+		</augment>
+		<augment id="115">
+			<params stat="Magic damage" offset="1" />
+		</augment>
+		<augment id="116">
+			<params stat="Blood Pact Dmg." offset="1" />
+		</augment>
+		<augment id="117">
+			<params stat="'Avatar perpetuation cost'" offset="1" />
+		</augment>
+		<augment id="118">
+			<params stat="'Blood Pact' ability delay" offset="1" />
+		</augment>
+		<augment id="119">
+			<params stat="Haste" offset="1" percent="true" />
+		</augment>
+		<augment id="120">
+			<params stat="Enmity" offset="1" />
+		</augment>
+		<augment id="121">
+			<params stat="Enmity" offset="1" multiplier="-1" />
+		</augment>
+		<augment id="122">
+			<params stat="Crit. hit rate" offset="1" percent="true" />
+		</augment>
+		<augment id="123">
+			<params stat="'Cure' spellcasting time " offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="124">
+			<params stat="'Cure' potency " offset="1" percent="true" />
+		</augment>
+		<augment id="125">
+			<params stat="'Refresh'" offset="1" />
+		</augment>
+		<augment id="126">
+			<params stat="Spell interruption rate down " offset="1" percent="true" />
+		</augment>
+		<augment id="127">
+			<params stat="Potency of 'Cure' effect received " offset="1" percent="true" />
+		</augment>
+		<augment id="128">
+			<params stat="Pet: 'Mag. Atk. Bns.'" offset="1" />
+		</augment>
+		<augment id="129">
+			<params stat="Pet: Mag. Acc." offset="1" />
+		</augment>
+		<augment id="130">
+			<params stat="Pet: Attack" offset="1" />
+		</augment>
+		<augment id="131">
+			<params stat="Pet: Accuracy" offset="1" />
+		</augment>
+		<augment id="132">
+			<params stat="Pet: Enmity" offset="1" />
+		</augment>
+		<augment id="133">
+			<params stat="Pet: Enmity" offset="1" />
+		</augment>
+		<augment id="134">
+			<params stat="Pet: HP" offset="1" />
+		</augment>
+		<augment id="135">
+			<params stat="Pet: MP" offset="1" />
+		</augment>
+		<augment id="136">
+			<params stat="Pet: STR" offset="1" />
+		</augment>
+		<augment id="137">
+			<params stat="Pet: DEX" offset="1" />
+		</augment>
+		<augment id="138">
+			<params stat="Pet: VIT" offset="1" />
+		</augment>
+		<augment id="139">
+			<params stat="Pet: AGI" offset="1" />
+		</augment>
+		<augment id="140">
+			<params stat="Pet: INT" offset="1" />
+		</augment>
+		<augment id="141">
+			<params stat="Pet: MND" offset="1" />
+		</augment>
+		<augment id="142">
+			<params stat="Pet: CHR" offset="1" />
+		</augment>
+		<augment id="152">
+			<params stat="Pet: 'Dbl. Atk.'" offset="1" />
+		</augment>
+		<augment id="153">
+			<params stat="Pet: Damage taken " offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="154">
+			<params stat="Pet: 'Regen'" offset="1" />
+		</augment>
+		<augment id="155">
+			<params stat="Pet: Haste" offset="1" percent="true" />
+		</augment>
+		<augment id="156">
+			<params stat="Automaton: 'Cure' potency " offset="1" percent="true" />
+		</augment>
+		<augment id="157">
+			<params stat="Automaton: 'Fast Cast'" offset="1" />
+		</augment>
+		<augment id="171">
+			<params stat="'Dual Wield'" offset="1" />
+		</augment>
+		<augment id="172">
+			<params stat="Damage Taken " offset="1" multiplier="-1" percent="true" />
+		</augment>
+		<augment id="173">
+			<params stat="All songs " offset="1" />
+		</augment>
+		<augment id="177">
+			<params stat="'Conserve MP'" offset="1" />
+		</augment>
+		<augment id="178">
+			<params stat="'Counter'" offset="1" />
+		</augment>
+		<augment id="179">
+			<params stat="'Triple Atk.'" offset="1" />
+		</augment>
+		<augment id="180">
+			<params stat="'Fast Cast'" offset="1" />
+		</augment>
+		<augment id="181">
+			<params stat="'Blood Boon'" offset="1" />
+		</augment>
+		<augment id="182">
+			<params stat="'Subtle Blow'" offset="1" />
+		</augment>
+		<augment id="183">
+			<params stat="'Rapid Shot'" offset="1" />
+		</augment>
+		<augment id="184">
+			<params stat="'Recycle'" offset="1" />
+		</augment>
+		<augment id="185">
+			<params stat="'Store TP'" offset="1" />
+		</augment>
+		<augment id="186">
+			<params stat="'Dbl.Atk.'" offset="1" />
+		</augment>
+		<augment id="187">
+			<params stat="'Snapshot'" offset="1" />
+		</augment>
+		<augment id="188">
+			<params stat="Phys. dmg. taken " offset="1" multiplier="-1" />
+		</augment>
+		<augment id="189">
+			<params stat="Magic dmg. taken " offset="1" multiplier="-1" />
+		</augment>
+		<augment id="190">
+			<params stat="Breath dmg. taken " offset="1" multiplier="-1" />
+		</augment>
+		<augment id="191">
+			<params stat="STR" offset="1" />
+		</augment>
+		<augment id="192">
+			<params stat="DEX" offset="1" />
+		</augment>
+		<augment id="193">
+			<params stat="VIT" offset="1" />
+		</augment>
+		<augment id="194">
+			<params stat="AGI" offset="1" />
+		</augment>
+		<augment id="195">
+			<params stat="INT" offset="1" />
+		</augment>
+		<augment id="196">
+			<params stat="MND" offset="1" />
+		</augment>
+		<augment id="197">
+			<params stat="CHR" offset="1" />
+		</augment>
+		<augment id="198">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="199">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="200">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="201">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="202">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="203">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="204">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="205">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="206">
+			<params stat="STR" offset="1" />
+			<params stat="DEX" offset="1" />
+			<params stat="VIT" offset="1" />
+			<params stat="AGI" offset="1" />
+			<params stat="INT" offset="1" />
+			<params stat="MND" offset="1" />
+			<params stat="CHR" offset="1" />
+		</augment>
+		<augment id="207">
+			<params stat="none" offset="0" />
+		</augment>
+		<augment id="208">
+			<params stat="Hand-to-Hand skill " offset="1" />
+		</augment>
+		<augment id="209">
+			<params stat="Dagger skill " offset="1" />
+		</augment>
+		<augment id="210">
+			<params stat="Sword skill "  offset="1" />
+		</augment>
+		<augment id="211">
+			<params stat="Great Sword skill "  offset="1" />
+		</augment>
+		<augment id="212">
+			<params stat="Axe skill "  offset="1" />
+		</augment>
+		<augment id="213">
+			<params stat="Great Axe skill "  offset="1" />
+		</augment>
+		<augment id="214">
+			<params stat="Scythe skill "  offset="1" />
+		</augment>
+		<augment id="215">
+			<params stat="Polearm skill "  offset="1" />
+		</augment>
+		<augment id="216">
+			<params stat="Katana skill "  offset="1" />
+		</augment>
+		<augment id="217">
+			<params stat="Great Katana skill "  offset="1" />
+		</augment>
+		<augment id="218">
+			<params stat="Club skill "  offset="1" />
+		</augment>
+		<augment id="219">
+			<params stat="Staff skill "  offset="1" />
+		</augment>
+		<augment id="220">
+			<params stat="269"  offset="0" />
+		</augment>
+		<augment id="221">
+			<params stat="270"  offset="0" />
+		</augment>
+		<augment id="222">
+			<params stat="271"  offset="0" />
+		</augment>
+		<augment id="223">
+			<params stat="272"  offset="0" />
+		</augment>
+		<augment id="224">
+			<params stat="273"  offset="0" />
+		</augment>
+		<augment id="225">
+			<params stat="274"  offset="0" />
+		</augment>
+		<augment id="226">
+			<params stat="275"  offset="0" />
+		</augment>
+		<augment id="227">
+			<params stat="276"  offset="0" />
+		</augment>
+		<augment id="228">
+			<params stat="277"  offset="0" />
+		</augment>
+		<augment id="229">
+			<params stat="Melee skill "  offset="1" />
+		</augment>
+		<augment id="230">
+			<params stat="Ranged skill "  offset="1" />
+		</augment>
+		<augment id="231">
+			<params stat="Magic skill "  offset="1" />
+		</augment>
+		<augment id="232">
+			<params stat="Archery skill "  offset="1" />
+		</augment>
+		<augment id="233">
+			<params stat="Marksmanship skill "  offset="1" />
+		</augment>
+		<augment id="234">
+			<params stat="Throwing skill "  offset="1" />
+		</augment>
+		<augment id="235">
+			<params stat="284"  offset="0" />
+		</augment>
+		<augment id="236">
+			<params stat="285"  offset="0" />
+		</augment>
+		<augment id="237">
+			<params stat="Shield skill "  offset="1" />
+		</augment>
+		<augment id="238">
+			<params stat="287"  offset="0" />
+		</augment>
+		<augment id="239">
+			<params stat="Divine magic skill "  offset="1" />
+		</augment>
+		<augment id="240">
+			<params stat="Healing magic skill "  offset="1" />
+		</augment>
+		<augment id="241">
+			<params stat="Enha.mag. skill "  offset="1" />
+		</augment>
+		<augment id="242">
+			<params stat="Enfb.mag. skill "  offset="1" />
+		</augment>
+		<augment id="243">
+			<params stat="Elem. magic skill "  offset="1" />
+		</augment>
+		<augment id="244">
+			<params stat="Dark magic skill "  offset="1" />
+		</augment>
+		<augment id="245">
+			<params stat="Summoning magic skill "  offset="1" />
+		</augment>
+		<augment id="246">
+			<params stat="Ninjutsu skill "  offset="1" />
+		</augment>
+		<augment id="247">
+			<params stat="Singing skill "  offset="1" />
+		</augment>
+		<augment id="248">
+			<params stat="String instrument skill "  offset="1" />
+		</augment>
+		<augment id="249">
+			<params stat="Wind instrument skill "  offset="1" />
+		</augment>
+		<augment id="250">
+			<params stat="Blue Magic skill "  offset="1" />
+		</augment>
+		<augment id="251">
+			<params stat="Geomancy Skill "  offset="1" />
+		</augment>
+		<augment id="252">
+			<params stat="Handbell Skill"  offset="1" />
+		</augment>
+		<augment id="253">
+			<params stat="302"  offset="0" />
+		</augment>
+		<augment id="254">
+			<params stat="303"  offset="0" />
+		</augment>
+	</augments>
+	<augments table="2">
+		<augment id="0">
+			<params stat="----------------" potency="potencies.zero" />
+		</augment>
+		<augment id="1">
+			<params stat="Vs. beasts: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="2">
+			<params stat="Vs. beasts: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="3">
+			<params stat="Vs. beasts: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="4">
+			<params stat="Vs. beasts: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="5">
+			<params stat="Vs. beasts: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="6">
+			<params stat="Vs. beasts: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="7">
+			<params stat="Vs. beasts: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="8">
+			<params stat="Vs. beasts: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="9">
+			<params stat="Vs. beasts: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="10">
+			<params stat="Vs. beasts: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="11">
+			<params stat="Vs. plantoids: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="12">
+			<params stat="Vs. plantoids: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="13">
+			<params stat="Vs. plantoids: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="14">
+			<params stat="Vs. plantoids: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="15">
+			<params stat="Vs. plantoids: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="16">
+			<params stat="Vs. plantoids: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="17">
+			<params stat="Vs. plantoids: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="18">
+			<params stat="Vs. plantoids: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="19">
+			<params stat="Vs. plantoids: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="20">
+			<params stat="Vs. plantoids: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="21">
+			<params stat="Vs. vermin: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="22">
+			<params stat="Vs. vermin: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="23">
+			<params stat="Vs. vermin: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="24">
+			<params stat="Vs. vermin: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="25">
+			<params stat="Vs. vermin: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="26">
+			<params stat="Vs. vermin: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="27">
+			<params stat="Vs. vermin: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="28">
+			<params stat="Vs. vermin: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="29">
+			<params stat="Vs. vermin: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="30">
+			<params stat="Vs. vermin: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="31">
+			<params stat="Vs. lizards: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="32">
+			<params stat="Vs. lizards: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="33">
+			<params stat="Vs. lizards: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="34">
+			<params stat="Vs. lizards: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="35">
+			<params stat="Vs. lizards: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="36">
+			<params stat="Vs. lizards: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="37">
+			<params stat="Vs. lizards: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="38">
+			<params stat="Vs. lizards: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="39">
+			<params stat="Vs. lizards: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="40">
+			<params stat="Vs. lizards: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="41">
+			<params stat="Vs. birds: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="42">
+			<params stat="Vs. birds: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="43">
+			<params stat="Vs. birds: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="44">
+			<params stat="Vs. birds: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="45">
+			<params stat="Vs. birds: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="46">
+			<params stat="Vs. birds: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="47">
+			<params stat="Vs. birds: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="48">
+			<params stat="Vs. birds: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="49">
+			<params stat="Vs. birds: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="50">
+			<params stat="Vs. birds: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="51">
+			<params stat="Vs. amorphs: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="52">
+			<params stat="Vs. amorphs: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="53">
+			<params stat="Vs. amorphs: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="54">
+			<params stat="Vs. amorphs: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="55">
+			<params stat="Vs. amorphs: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="56">
+			<params stat="Vs. amorphs: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="57">
+			<params stat="Vs. amorphs: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="58">
+			<params stat="Vs. amorphs: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="59">
+			<params stat="Vs. amorphs: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="60">
+			<params stat="Vs. amorphs: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="61">
+			<params stat="Vs. aquans: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="62">
+			<params stat="Vs. aquans: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="63">
+			<params stat="Vs. aquans: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="64">
+			<params stat="Vs. aquans: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="65">
+			<params stat="Vs. aquans: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="66">
+			<params stat="Vs. aquans: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="67">
+			<params stat="Vs. aquans: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="68">
+			<params stat="Vs. aquans: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="69">
+			<params stat="Vs. aquans: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="70">
+			<params stat="Vs. aquans: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="71">
+			<params stat="Vs. undead: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="72">
+			<params stat="Vs. undead: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="73">
+			<params stat="Vs. undead: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="74">
+			<params stat="Vs. undead: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="75">
+			<params stat="Vs. undead: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="76">
+			<params stat="Vs. undead: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="77">
+			<params stat="Vs. undead: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="78">
+			<params stat="Vs. undead: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="79">
+			<params stat="Vs. undead: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="80">
+			<params stat="Vs. undead: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="81">
+			<params stat="Vs. elementals: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="82">
+			<params stat="Vs. elementals: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="83">
+			<params stat="Vs. elementals: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="84">
+			<params stat="Vs. elementals: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="85">
+			<params stat="Vs. elementals: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="86">
+			<params stat="Vs. elementals: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="87">
+			<params stat="Vs. elementals: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="88">
+			<params stat="Vs. elementals: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="89">
+			<params stat="Vs. elementals: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="90">
+			<params stat="Vs. elementals: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="91">
+			<params stat="Vs. arcana: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="92">
+			<params stat="Vs. arcana: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="93">
+			<params stat="Vs. arcana: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="94">
+			<params stat="Vs. arcana: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="95">
+			<params stat="Vs. arcana: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="96">
+			<params stat="Vs. arcana: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="97">
+			<params stat="Vs. arcana: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="98">
+			<params stat="Vs. arcana: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="99">
+			<params stat="Vs. arcana: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="100">
+			<params stat="Vs. arcana: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="101">
+			<params stat="Vs. Demons: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="102">
+			<params stat="Vs. Demons: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="103">
+			<params stat="Vs. Demons: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="104">
+			<params stat="Vs. Demons: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="105">
+			<params stat="Vs. Demons: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="106">
+			<params stat="Vs. Demons: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="107">
+			<params stat="Vs. Demons: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="108">
+			<params stat="Vs. Demons: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="109">
+			<params stat="Vs. Demons: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="110">
+			<params stat="Vs. Demons: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="111">
+			<params stat="Vs. dragons: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="112">
+			<params stat="Vs. dragons: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="113">
+			<params stat="Vs. dragons: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="114">
+			<params stat="Vs. dragons: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="115">
+			<params stat="Vs. dragons: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="116">
+			<params stat="Vs. dragons: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="117">
+			<params stat="Vs. dragons: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="118">
+			<params stat="Vs. dragons: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="119">
+			<params stat="Vs. dragons: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="120">
+			<params stat="Vs. dragons: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="121">
+			<params stat="Vs. Empty: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="122">
+			<params stat="Vs. Empty: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="123">
+			<params stat="Vs. Empty: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="124">
+			<params stat="Vs. Empty: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="125">
+			<params stat="Vs. Empty: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="126">
+			<params stat="Vs. Empty: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="127">
+			<params stat="Vs. Empty: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="128">
+			<params stat="Vs. Empty: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="129">
+			<params stat="Vs. Empty: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="130">
+			<params stat="Vs. Empty: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="131">
+			<params stat="Vs. Luminians: Attack" potency="potencies.family.attack" />
+		</augment>
+		<augment id="132">
+			<params stat="Vs. Luminians: DEF" potency="potencies.family.defense" />
+		</augment>
+		<augment id="133">
+			<params stat="Vs. Luminians: Accuracy" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="134">
+			<params stat="Vs. Luminians: Evasion" potency="potencies.family.evasion" />
+		</augment>
+		<augment id="135">
+			<params stat="Vs. Luminians: 'Mag.Atk.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="136">
+			<params stat="Vs. Luminians: 'Mag.Def.Bns.'" potency="potencies.family.magic_bonus" />
+		</augment>
+		<augment id="137">
+			<params stat="Vs. Luminians: Mag. Acc." potency="potencies.family.magic_accuracy" />
+		</augment>
+		<augment id="138">
+			<params stat="Vs. Luminians: Mag. Evasion" potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="139">
+			<params stat="Vs. Luminians: Rng.Atk." potency="potencies.family.attack" />
+		</augment>
+		<augment id="140">
+			<params stat="Vs. Luminians: Rng.Acc." potency="potencies.family.accuracy" />
+		</augment>
+		<augment id="141">
+			<params stat="Might Strikes: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="142">
+			<params stat="Hundred Fists: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="143">
+			<params stat="Benediction: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="144">
+			<params stat="Manafont: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="145">
+			<params stat="Chainspell: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="146">
+			<params stat="Perfect Dodge: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="147">
+			<params stat="Invincible: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="148">
+			<params stat="Blood Weapon: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="149">
+			<params stat="Familiar: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="150">
+			<params stat="Soul Voice: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="151">
+			<params stat="Eagle Eye Shot: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="152">
+			<params stat="Meikyo Shisui: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="153">
+			<params stat="Mijin Gakure: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="154">
+			<params stat="Spirit Surge: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="155">
+			<params stat="Astral Flow: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="156">
+			<params stat="Azure Lore: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="157">
+			<params stat="Wild Card: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="158">
+			<params stat="Overdrive: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="159">
+			<params stat="Trance: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+		<augment id="160">
+			<params stat="Tabula Rasa: Ability delay " potency="potencies.sp_recast" />
+		</augment>
+	</augments>
+</augmentdata>

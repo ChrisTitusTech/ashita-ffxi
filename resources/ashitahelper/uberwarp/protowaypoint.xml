@@ -1,0 +1,34 @@
+<uberwarp>
+    <!--
+        Bitflags have 0x4000 set to indicate they are applied in reverse.
+		Bitflags have field omitted or 0x8000 set to indicate they should not be checked.
+        A typical user should not be editing any fields in this file besides alias.
+        If you want multiple aliases for the same destination, simply copy the entire line and change alias field.
+	-->
+    <entry alias="Ru'Lude Gardens" bitflag="64" param="4" />
+    <entry alias="Selbina" bitflag="65" param="5" />
+    <entry alias="Mhaura" bitflag="66" param="6" />
+    <entry alias="Rabao" bitflag="67" param="7" />
+    <entry alias="Norg" bitflag="68" param="8" />
+    <entry alias="West Ronfaure" bitflag="69" param="9" />
+    <entry alias="North Gustaberg" bitflag="70" param="10" />
+    <entry alias="West Sarutabaruta" bitflag="71" param="11" />
+    <entry alias="La Theine Plateau" bitflag="72" param="12" />
+    <entry alias="Konschtat Highlands" bitflag="73" param="13" />
+    <entry alias="Tahrongi Canyon" bitflag="74" param="14" />
+    <entry alias="Jugner Forest" bitflag="75" param="15" />
+    <entry alias="Pashhow Marshlands" bitflag="76" param="16" />
+    <entry alias="Meriphataud Mountains" bitflag="77" param="17" />
+    <entry alias="Attohwa Chasm" bitflag="78" param="18" />
+    <entry alias="Uleguerand Range" bitflag="79" param="19" />
+    <entry alias="Davoi" bitflag="80" param="20" />
+    <entry alias="Beadeaux" bitflag="81" param="21" />
+    <entry alias="Castle Oztroja" bitflag="82" param="22" />
+    <entry alias="Quicksand Caves" bitflag="83" param="23" />
+    <entry alias="Sea Serpent Grotto" bitflag="84" param="24" />
+    <entry alias="Temple of Uggalepih" bitflag="85" param="25" />
+    <entry alias="The Boyahda Tree" bitflag="86" param="26" />
+    <entry alias="Oldton Movalpolos" bitflag="87" param="27" />
+    <entry alias="Riverne - Site #B01" bitflag="88" param="68" />
+    <entry alias="Castle Zvahl Keep" bitflag="89" param="69" />
+</uberwarp>

@@ -1,0 +1,15 @@
+--Zone: Bearclaw Pinnacle
+--Zone ID: 6
+return {
+    Names = {
+        ['Apis'] = { Name='Apis', Notorious=false, Aggro=true, Link=false, TrueSight=true, Job=0, MinLevel=81, MaxLevel=81, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=false, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1.125, Light=1, Dark=1} },
+        ['Bearclaw Leveret'] = { Name='Bearclaw Leveret', Notorious=false, Aggro=true, Link=true, TrueSight=true, Job=0, MinLevel=75, MaxLevel=75, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=true, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1.25, Water=1.25, Light=1, Dark=1.25} },
+        ['Bearclaw Rabbit'] = { Name='Bearclaw Rabbit', Notorious=false, Aggro=true, Link=true, TrueSight=true, Job=0, MinLevel=75, MaxLevel=75, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=true, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1.25, Water=1.25, Light=1, Dark=1.25} },
+        ['Eldertaur'] = { Name='Eldertaur', Notorious=false, Aggro=true, Link=true, TrueSight=true, Job=0, MinLevel=75, MaxLevel=75, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=false, Drops={}, Spells={5,46,50}, Modifiers={Slashing=1, Piercing=1, H2H=1.25, Impact=1.5, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1.25, Dark=1} },
+        ['Mindertaur'] = { Name='Mindertaur', Notorious=false, Aggro=true, Link=true, TrueSight=true, Job=0, MinLevel=75, MaxLevel=75, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=false, Drops={}, Spells={5,29,112}, Modifiers={Slashing=1, Piercing=1, H2H=1.25, Impact=1.5, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1.25, Dark=1} },
+        ['Snoll Tzar'] = { Name='Snoll Tzar', Notorious=true, Aggro=true, Link=false, TrueSight=true, Job=0, MinLevel=65, MaxLevel=66, Immunities=1, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=true, JA=false, Scent=false, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1.125, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+        ['Snow Devil'] = { Name='Snow Devil', Notorious=false, Aggro=true, Link=true, TrueSight=true, Job=0, MinLevel=75, MaxLevel=75, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=true, JA=false, Scent=false, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1.125, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+    },
+    Indices = {
+    },
+};

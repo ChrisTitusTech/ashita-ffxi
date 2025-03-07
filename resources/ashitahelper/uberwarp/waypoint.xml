@@ -1,0 +1,77 @@
+<uberwarp>
+    <!--
+        Bitflags have 0x4000 set to indicate they are applied in reverse.
+		Bitflags have field omitted or 0x8000 set to indicate they should not be checked.
+        A typical user should not be editing any fields in this file besides alias.
+        If you want multiple aliases for the same destination, simply copy the entire line and change alias field.
+	-->
+    <entry alias="Tavnazian Safehold" bitflag="16521" param="208" zone="26" posx="0.000000" posy="35.466000" posz="-23.500000" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Aht Urhgan Whitegate" bitflag="16522" param="209" zone="51" posx="676.981995" posy="220.000000" posz="-15.500000" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Wajaom Woodlands" bitflag="16522" param="209" zone="51" posx="676.981995" posy="220.000000" posz="-15.500000" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Nashmau" bitflag="16523" param="210" zone="79" posx="13.202000" posy="-453.438995" posz="-3.675264" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Caedarva Mire" bitflag="16523" param="210" zone="79" posx="13.202000" posy="-453.438995" posz="-3.675264" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Northern San d'Oria" bitflag="16513" param="200" zone="231" posx="96.641998" posy="-4.800000" posz="-0.199000" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Bastok Markets" bitflag="16514" param="201" zone="235" posx="-176.619003" posy="-30.091000" posz="-8.000000" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Windurst Woods" bitflag="16515" param="202" zone="241" posx="-85.592003" posy="37.238998" posz="-5.000000" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Lower Jeuno" bitflag="96" param="100" zone="245" posx="-34.922001" posy="-30.966000" posz="0.000000" landx="4294967263" landy="4294967265" landz="0" landh="65534" />
+    <entry alias="Rabao" bitflag="16519" param="206" zone="247" posx="-7.347999" posy="-82.642982" posz="0.000000" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Selbina" bitflag="16516" param="203" zone="248" posx="18.360001" posy="74.016998" posz="-14.558599" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Mhaura" bitflag="16517" param="204" zone="249" posx="-0.201000" posy="109.851997" posz="-4.000000" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Kazham" bitflag="16518" param="205" zone="250" posx="-51.564999" posy="-104.850998" posz="-10.000000" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="Norg" bitflag="16520" param="207" zone="252" posx="-19.104000" posy="-47.464001" posz="0.219550" landx="0" landy="0" landz="0" landh="0" />
+    <entry alias="courier" bitflag="96" param="1" zone="256" posx="5.685000" posy="-5.640000" posz="0.000000" landx="1084009481" landy="3231268733" landz="0" landh="8449" />
+    <entry alias="pioneer" bitflag="97" param="2" zone="256" posx="-110.500000" posy="-11.350000" posz="3.850000" landx="3269263361" landy="3243750982" landz="1081501287" landh="48897" />
+    <entry alias="mummer" bitflag="98" param="3" zone="256" posx="-23.090000" posy="-79.890999" posz="-0.150000" landx="3249003299" landy="3265251378" landz="3189348762" landh="32513" />
+    <entry alias="inventor" bitflag="99" param="4" zone="256" posx="93.079002" posy="-49.013000" posz="-0.150000" landx="1119282922" landy="3259239760" landz="3189348762" landh="1" />
+    <entry alias="westah" bitflag="100" param="5" zone="256" posx="-66.420998" posy="-75.064003" posz="3.850000" landx="3263705777" landy="3264436241" landz="1082130432" landh="7169" />
+    <entry alias="westmh" bitflag="101" param="6" zone="256" posx="3.398000" posy="-123.042999" posz="0.000000" landx="1085760603" landy="3270907397" landz="0" landh="32513" />
+    <entry alias="bridge" bitflag="102" param="7" zone="256" posx="174.783005" posy="-37.514999" posz="3.850000" landx="1127139443" landy="3255772906" landz="1081501287" landh="16129" />
+    <entry alias="docks" bitflag="103" param="8" zone="256" posx="14.586000" posy="163.835999" posz="0.000000" landx="1097424962" landy="1126341542" landz="0" landh="48897" />
+    <entry alias="waterfront" bitflag="104" param="9" zone="256" posx="51.094002" posy="127.917999" posz="32.000000" landx="1112301634" landy="1123850519" landz="1107296256" landh="48897" />
+    <entry alias="peacekeeper" bitflag="111" param="21" zone="257" posx="-101.274002" posy="-9.726000" posz="-0.150000" landx="3268054090" landy="3240861107" landz="3189348762" landh="48897" />
+    <entry alias="scout" bitflag="112" param="22" zone="257" posx="-76.944000" posy="-63.925999" posz="-0.150000" landx="3264996180" landy="3263149114" landz="3189348762" landh="1" />
+    <entry alias="statue" bitflag="113" param="23" zone="257" posx="-46.838001" posy="-13.767000" posz="-0.075000" landx="3258669597" landy="3243001250" landz="3180960154" landh="16129" />
+    <entry alias="wharf" bitflag="114" param="24" zone="257" posx="-58.772999" posy="85.237000" posz="-0.150000" landx="3261536142" landy="1118468441" landz="3189348762" landh="32513" />
+    <entry alias="eastmh" bitflag="115" param="25" zone="257" posx="-62.865002" posy="-120.809998" posz="-0.150000" landx="3262608835" landy="3270614713" landz="3189348762" landh="32513" />
+    <entry alias="eastah" bitflag="116" param="26" zone="257" posx="-42.064999" posy="-88.978996" posz="-0.150000" landx="3257418384" landy="3266573632" landz="3189348762" landh="48897" />
+    <entry alias="hillock" bitflag="117" param="27" zone="257" posx="10.681000" posy="29.976000" posz="-22.150000" landx="1094378849" landy="1106235098" landz="3249615668" landh="32513" />
+    <entry alias="coronal" bitflag="118" param="28" zone="257" posx="26.124001" posy="-60.844002" posz="-40.150002" landx="1104739828" landy="3262341186" landz="3256916378" landh="32513" />
+    <entry alias="castle" bitflag="119" param="29" zone="257" posx="96.994003" posy="-74.541000" posz="-40.150002" landx="1119878382" landy="3264550142" landz="3256916378" landh="1" />
+    <entry alias="Rala Waterways" bitflag="256" param="300" zone="258" posx="-588.000000" posy="20.000000" posz="-7.500000" landx="4294966708" landy="19" landz="4294967289" landh="65535" />
+    <entry alias="Yahse Hunting Grounds" bitflag="166" param="31" zone="260" posx="320.000000" posy="-199.800003" posz="0.000000" landx="1134592000" landy="3276262605" landz="0" landh="32513" />
+    <entry alias="Yahse Hunting Grounds1" bitflag="167" param="32" zone="260" posx="87.500000" posy="1.500000" posz="0.000000" landx="1118633985" landy="1069547521" landz="0" landh="1" />
+    <entry alias="Yahse Hunting Grounds2" bitflag="168" param="33" zone="260" posx="-287.500000" posy="43.500000" posz="0.000000" landx="3280945152" landy="1110310913" landz="0" landh="32513" />
+    <entry alias="Yahse Hunting Grounds3" bitflag="169" param="34" zone="260" posx="-162.399994" posy="-271.799988" posz="0.000000" landx="3273811559" landy="3280496231" landz="0" landh="48897" />
+    <entry alias="Ceizak Battlegrounds" bitflag="160" param="41" zone="261" posx="364.000000" posy="190.000000" posz="0.600000" landx="1136033793" landy="1128136705" landz="1058642330" landh="32513" />
+    <entry alias="Ceizak Battlegrounds1" bitflag="161" param="42" zone="261" posx="-6.879000" posy="-118.511002" posz="0.000000" landx="3235651781" landy="3270182307" landz="0" landh="16129" />
+    <entry alias="Ceizak Battlegrounds2" bitflag="162" param="43" zone="261" posx="-42.000000" posy="156.000000" posz="0.000000" landx="3257401345" landy="1125842944" landz="0" landh="48897" />
+    <entry alias="Ceizak Battlegrounds3" bitflag="163" param="44" zone="261" posx="-442.000000" posy="-246.000000" posz="0.000000" landx="3286040577" landy="3279355905" landz="0" landh="48897" />
+    <entry alias="Foret de Hennetiel" bitflag="192" param="51" zone="262" posx="399.109985" posy="279.109985" posz="-2.000000" landx="1137118741" landy="1133219349" landz="3221225472" landh="1" />
+    <entry alias="Foret de Hennetiel1" bitflag="193" param="52" zone="262" posx="13.600000" posy="342.000000" posz="-2.400000" landx="1095342490" landy="1135280129" landz="3222903194" landh="1" />
+    <entry alias="Foret de Hennetiel2" bitflag="194" param="53" zone="262" posx="504.000000" posy="-303.500000" posz="-2.250000" landx="1140621313" landy="3281502208" landz="3222274048" landh="32513" />
+    <entry alias="Foret de Hennetiel3" bitflag="195" param="54" zone="262" posx="103.000000" posy="-93.300003" posz="-2.200000" landx="1120796673" landy="3266877850" landz="3222064333" landh="16129" />
+    <entry alias="Foret de Hennetiel4" bitflag="196" param="55" zone="262" posx="-251.800003" posy="-40.250000" posz="-2.370000" landx="3279670478" landy="3256680448" landz="3222777365" landh="16129" />
+    <entry alias="Yorcia Weald" bitflag="224" param="71" zone="263" posx="354.000000" posy="154.000000" posz="0.200000" landx="1135650407" landy="1125731533" landz="1045220557" landh="57089" />
+    <entry alias="Yorcia Weald1" bitflag="225" param="72" zone="263" posx="-39.499001" posy="296.367004" posz="0.367000" landx="3257007866" landy="1133784826" landz="1052501869" landh="1" />
+    <entry alias="Yorcia Weald2" bitflag="226" param="73" zone="263" posx="121.132004" posy="-287.730988" posz="0.146000" landx="1123304342" landy="3280985490" landz="1041596679" landh="32513" />
+    <entry alias="Yorcia Weald3" bitflag="227" param="74" zone="263" posx="-275.776001" posy="85.375999" posz="0.357000" landx="3280560980" landy="1118486660" landz="1052166325" landh="32513" />
+    <entry alias="Yorcia Weald" bitflag="258" param="302" zone="263" posx="170.000000" posy="-259.000000" posz="4.685037" landx="171" landy="4294967037" landz="4" landh="65533" />
+    <entry alias="Morimar Basalt Fields" bitflag="198" param="61" zone="265" posx="443.727997" posy="-324.428009" posz="-16.000000" landx="1138613552" landy="3282220745" landz="3246391296" landh="48897" />
+    <entry alias="Morimar Basalt Fields1" bitflag="199" param="62" zone="265" posx="367.000000" posy="37.500000" posz="-16.000000" landx="1136132097" landy="1108738048" landz="3246391296" landh="32513" />
+    <entry alias="Morimar Basalt Fields2" bitflag="200" param="63" zone="265" posx="112.800003" posy="323.399994" posz="-0.483000" landx="1122081178" landy="1134703412" landz="3203877831" landh="16129" />
+    <entry alias="Morimar Basalt Fields3" bitflag="201" param="64" zone="265" posx="174.500000" posy="-318.200012" posz="-15.581000" landx="1127186433" landy="3281983898" landz="3245951943" landh="32513" />
+    <entry alias="Morimar Basalt Fields4" bitflag="202" param="65" zone="265" posx="-323.000000" posy="1.000000" posz="-32.000000" landx="3282141185" landy="1073741824" landz="3254779904" landh="16129" />
+    <entry alias="Morimar Basalt Fields5" bitflag="203" param="66" zone="265" posx="-78.199997" posy="304.000000" posz="-47.284000" landx="3265029735" landy="1134002176" landz="3258786513" landh="48897" />
+    <entry alias="Marjami Ravine" bitflag="230" param="81" zone="266" posx="358.000000" posy="164.000000" posz="-60.000000" landx="1135804417" landy="1126498305" landz="3262119937" landh="16129" />
+    <entry alias="Marjami Ravine1" bitflag="231" param="82" zone="266" posx="324.000000" posy="-79.000000" posz="-20.000000" landx="1134657537" landy="3265134592" landz="3248488448" landh="1" />
+    <entry alias="Marjami Ravine2" bitflag="232" param="83" zone="266" posx="6.808000" posy="79.436996" posz="0.000000" landx="1088019235" landy="1117577151" landz="0" landh="48897" />
+    <entry alias="Marjami Ravine3" bitflag="233" param="84" zone="266" posx="-318.708008" posy="-128.274994" posz="-20.000000" landx="3282000544" landy="3271462094" landz="3248488448" landh="16129" />
+    <entry alias="Marjami Ravine4" bitflag="234" param="85" zone="266" posx="-326.022003" posy="202.095993" posz="-40.022999" landx="3282240209" landy="1128863892" landz="3256883086" landh="48897" />
+    <entry alias="Kamihr Drifts" bitflag="262" param="91" zone="267" posx="439.403015" posy="-273.553986" posz="63.000000" landx="1138471830" landy="3280488170" landz="1115422721" landh="16129" />
+    <entry alias="Kamihr Drifts1" bitflag="263" param="92" zone="267" posx="-41.574001" posy="-71.319000" posz="43.000000" landx="3257551815" landy="3264127828" landz="1110179841" landh="1" />
+    <entry alias="Kamihr Drifts2" bitflag="264" param="93" zone="267" posx="8.240000" posy="-282.016998" posz="43.000000" landx="1090770699" landy="3280831021" landz="1110179841" landh="48897" />
+    <entry alias="Kamihr Drifts3" bitflag="265" param="94" zone="267" posx="9.240000" posy="161.802994" posz="23.000000" landx="1091819275" landy="1126354322" landz="1102577665" landh="16129" />
+    <entry alias="Kamihr Drifts4" bitflag="266" param="95" zone="267" posx="-229.942001" posy="364.511993" posz="3.567000" landx="3278172456" landy="1136017802" landz="1080314299" landh="32513" />
+    <entry alias="Cirdas Caverns" bitflag="257" param="301" zone="270" posx="70.000000" posy="580.000000" posz="29.296881" landx="70" landy="579" landz="29" landh="65535" />
+    <entry alias="Outer Ra'Kaznar" bitflag="259" param="303" zone="274" posx="-148.000000" posy="28.000000" posz="-170.000000" landx="4294967148" landy="27" landz="4294967126" landh="65535" />
+</uberwarp>

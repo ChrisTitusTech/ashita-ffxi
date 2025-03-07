@@ -1,0 +1,486 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:106%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:.5in;
+	line-height:106%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:106%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor=black lang=EN-US>
+
+<div class=WordSection1>
+
+<p class=MsoNormal><span style='font-size:26.0pt;line-height:106%;color:#ED7D31'>Stylist</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Stylist is a plugin that allows you to customize
+any player character’s appearance quickly from a command line.&nbsp; It can
+also be used to prevent character ‘blinking’ in a similar manner to </span><span
+style='font-size:14.0pt;line-height:106%;color:#4472C4'>GearLock </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>from Ashita3.&nbsp; Some
+notes:</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>Model specific filters
+take priority over slot filters.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>Character-specific filters
+take priority over global filters.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>You may specify a model
+by using an item name or item ID.&nbsp; You do not need to ever input model IDs
+yourself, but they are stored in </span><span style='font-size:14.0pt;
+line-height:106%;color:#4472C4'>ashita/resources/stylist/modelinfo.xml </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>if you need to modify
+any.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>Note that while you
+specify item name or item ID for simplicity, a model filter will still apply to
+other items with the same model.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>Anywhere where equipment
+slot is specified, you may also change race or face.&nbsp; Note that the full
+list of slot names and race names are configurable in </span><span
+style='font-size:14.0pt;line-height:106%;color:#4472C4'>ashita/resources/stylist/modelinfo.xml</span><span
+style='font-size:14.0pt;line-height:106%;color:white'>.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>Faces are specified using
+a numeric value from 0 to 15.</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:white'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>All configuration can be
+done using the typed commands and exports, but you may also directly modify a
+setting file, see </span><span style='font-size:14.0pt;line-height:106%;
+color:#4472C4'>xmllayout.htm </span><span style='font-size:14.0pt;line-height:
+106%;color:white'>for details.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Default values for slots are:</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Race</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Face</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Head</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Body</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Hands</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Legs</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Feet</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Main</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Sub</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#70AD47'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#70AD47'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#70AD47'>Range</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Default values for races are:</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#FFC000'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#FFC000'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#FFC000'>HumeM</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#FFC000'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#FFC000'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#FFC000'>HumeF</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#FFC000'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#FFC000'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#FFC000'>ElvaanM</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#FFC000'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#FFC000'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#FFC000'>ElvaanF</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#FFC000'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#FFC000'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#FFC000'>TaruM</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#FFC000'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#FFC000'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#FFC000'>TaruF</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#FFC000'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#FFC000'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#FFC000'>Mithra</span></p>
+
+<p class=MsoListParagraph style='margin-bottom:0in;text-indent:-.25in'><span
+style='font-size:14.0pt;line-height:106%;font-family:Symbol;color:#FFC000'>·</span><span
+style='font-size:7.0pt;line-height:106%;font-family:"Times New Roman",serif;
+color:#FFC000'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-size:14.0pt;line-height:106%;color:#FFC000'>Galka</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:106%;color:#ED7D31'><br>
+Commands</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>All commands can be prefixed with </span><span
+style='font-size:14.0pt;line-height:106%;color:#4472C4'>/sl </span><span
+style='font-size:14.0pt;line-height:106%;color:white'>or </span><span
+style='font-size:14.0pt;line-height:106%;color:#4472C4'>/stylist</span><span
+style='font-size:14.0pt;line-height:106%;color:white'>.&nbsp; You may also
+configure stylist via XML directly.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl blink</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Triggers all characters who are outdated to blink
+to their current equipment, with any specified filters.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl self [</span><span style='font-size:20.0pt;
+line-height:106%;color:#FFC000'>Optional: On/Off</span><span style='font-size:
+20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>When enabled, prevents you from blinking except
+when adding or removing filters or using </span><span style='font-size:14.0pt;
+line-height:106%;color:#4472C4'>/sl blink</span><span style='font-size:14.0pt;
+line-height:106%;color:white'>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl target [</span><span style='font-size:20.0pt;
+line-height:106%;color:#FFC000'>Optional: On/Off</span><span style='font-size:
+20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>When enabled, prevents your current target from
+blinking except when adding or removing filters or using </span><span
+style='font-size:14.0pt;line-height:106%;color:#4472C4'>/sl blink</span><span
+style='font-size:14.0pt;line-height:106%;color:white'>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl others [</span><span style='font-size:20.0pt;
+line-height:106%;color:#FFC000'>Optional: On/Off</span><span style='font-size:
+20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>When enabled, prevents all players from blinking
+except when adding or removing filters or using </span><span style='font-size:
+14.0pt;line-height:106%;color:#4472C4'>/sl blink</span><span style='font-size:
+14.0pt;line-height:106%;color:white'>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl add [</span><span style='font-size:20.0pt;
+line-height:106%;color:#70AD47'>Required: Equipment Slot</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Model</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Adds a slot filter, forcing the specified slot to
+show the specified model for all characters unless a character-specific or
+model specific filter overrides it.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl remove [</span><span style='font-size:20.0pt;
+line-height:106%;color:#70AD47'>Required: Equipment Slot</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Removes a slot filter.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl addc [</span><span style='font-size:20.0pt;
+line-height:106%;color:#70AD47'>Required: Character Name</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Equipment
+Slot</span><span style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Model</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Adds a character-specific slot filter, forcing
+the specified slot to show the specified model for the specified character
+instead of what they actually have equipped.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl removec [</span><span style='font-size:
+20.0pt;line-height:106%;color:#70AD47'>Required: Character Name</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Equipment
+Slot</span><span style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Removes a character-specific slot filter.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl addmodel [</span><span style='font-size:
+20.0pt;line-height:106%;color:#70AD47'>Required: Equipment Slot</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Initial Model</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Target Model</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Adds a global model filter, changing the initial
+model to the target model for all characters.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl removemodel [</span><span style='font-size:
+20.0pt;line-height:106%;color:#70AD47'>Required: Equipment Slot</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Initial Model</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Removes a global model filter.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl addmodelc [</span><span style='font-size:
+20.0pt;line-height:106%;color:#70AD47'>Required: Character Name</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Equipment
+Slot</span><span style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Initial Model</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Target Model</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Adds a character-specific model filter, changing
+the initial model to the target model for only the specified character.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl removemodelc [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Character
+Name</span><span style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Equipment
+Slot</span><span style='font-size:20.0pt;line-height:106%;color:#ED7D31'>] [</span><span
+style='font-size:20.0pt;line-height:106%;color:#70AD47'>Required: Initial Model</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Removes a character-specific model filter.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl clear [</span><span style='font-size:20.0pt;
+line-height:106%;color:#70AD47'>Required: Character Name</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Removes all filters and model filters for the
+specified character, allowing them to show their real equipment.&nbsp; Global
+model filters will still apply.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl load [</span><span style='font-size:20.0pt;
+line-height:106%;color:#FFC000'>Optional: Filename</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Loads a configuration XML.&nbsp; If Filename is
+not specified, reloads current configuration XML.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl reload</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Reloads the current configuration XML from disk.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl newconfig [</span><span style='font-size:
+20.0pt;line-height:106%;color:#70AD47'>Required: Filename</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Creates a new configuration XML on disk and loads
+it.&nbsp; This will return you to default settings.&nbsp; If you are trying to
+save your settings, use </span><span style='font-size:14.0pt;line-height:106%;
+color:#4472C4'>/sl export</span><span style='font-size:14.0pt;line-height:106%;
+color:white'>.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:20.0pt;
+line-height:106%;color:#ED7D31'>/sl export [</span><span style='font-size:20.0pt;
+line-height:106%;color:#FFC000'>Optional: Filename</span><span
+style='font-size:20.0pt;line-height:106%;color:#ED7D31'>]</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>Saves the current configuration to a
+configuration XML.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:106%;color:white'>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

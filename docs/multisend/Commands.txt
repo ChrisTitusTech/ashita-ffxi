@@ -1,0 +1,35 @@
+Multisend is a replacement for servo.  No synchronization is needed, just load and go.
+
+Commands to send input to other instances on the same PC:
+/ms send [command] - Sends the command to all characters with MultiSend loaded.
+/ms sendto CharName [command] - Sends the command to a specific character, if they have MultiSend loaded.
+/ms sendgroup GroupName [command] - Sends the command to all characters listed in a group.  Groups can be defined in Ashita/Config/MultiSend.xml.  See XML Structure file for example.
+/ms sendothers [command] - Sends a command to all characters except for the current character.
+/ms sendparty - Sends a command to all characters in the current character's immediate party.  This includes the current character unless ignoreself is turned on.
+/ms sendally - Sends a command to all characters in the current character's immediate alliance.  This includes the current character unless ignoreself is turned on.
+
+These have built-in aliases as well:
+/mss = /ms send
+/mst = /ms sendto
+/mso = /ms sendothers
+/msp = /ms sendparty
+/msa = /ms sendally
+/msg = /ms sendgroup
+
+Configuration:
+/ms followmax # - Sets a max range(in yalms).  If follow target is more than this many yalms away, but in same zone, follow won't move.
+-I recommend setting between 30 and 100 to prevent following from trying to use portals.
+-Default is 5000, which will be the same behavior as before this setting was added.
+/ms followme on/off - Enables or disables followme.  When followme is enabled, any characters with follow enabled will follow the player who last activated followme.  Default: OFF.
+/ms follow on/off - Enables or disables follow.  Any character with follow enabled with follow the player who last activated followme.  Default: ON
+/ms attemptzone on/off - Enables or disables attempted zoning.  When enabled, if the leader zones, the other characters will continue running in the direction they were last running to follow suit.  Default: OFF
+NOTE: If you are using a home point, survival guide, etc, it will be detected as long as you stand still throughout the process and nobody will run off.
+CONT: If you move after first acting upon the object or sending an uberwarp command, chars may run off.
+/ms ignoreself on/off - When enabled, any command that would effect the local character is not executed by the local character. Default: OFF
+/ms debug on/off - When enabled, all received commands are printed to log and any character with followme updated will spam log with position updates.  For debug purposes, obviously.  Default: OFF
+/ms reload - Will reload groups xml.
+/ms help - Print an ingame reference.
+
+You may use [t] [me] or [p0] [p1] [p2] [p3] [p4] [p5] to replace the <> equivalents, if you wish to resolve them on local character.  This will replace them with the appropriate server IDs, allowing the command to resolve on receiving character.
+
+Example: Typing /ms send /ma "Fire IV" [t] will make all characters with multisend loaded cast Fire IV on the character who typed the command's target, rather than their own current target.

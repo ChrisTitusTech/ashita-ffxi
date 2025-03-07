@@ -1,0 +1,17 @@
+--Zone: Spire of Vahzl
+--Zone ID: 23
+return {
+    Names = {
+        ['Agonizer'] = { Name='Agonizer', Notorious=true, Aggro=false, Link=false, TrueSight=true, Job=0, MinLevel=53, MaxLevel=54, Immunities=1, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=false, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+        ['Contemplator'] = { Name='Contemplator', Notorious=false, Aggro=true, Link=false, TrueSight=true, Job=0, MinLevel=50, MaxLevel=50, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=false, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+        ['Cumulator'] = { Name='Cumulator', Notorious=true, Aggro=false, Link=false, TrueSight=true, Job=0, MinLevel=53, MaxLevel=54, Immunities=1, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=true, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+        ['Ingurgitator'] = { Name='Ingurgitator', Notorious=false, Aggro=true, Link=false, TrueSight=true, Job=0, MinLevel=50, MaxLevel=50, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=false, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+        ['Memory Receptacle'] = { Name='Memory Receptacle', Notorious=true, Aggro=false, Link=false, TrueSight=false, Job=0, MinLevel=50, MaxLevel=50, Immunities=0, Respawn=0, Sight=false, Sound=false, Blood=false, Magic=false, JA=false, Scent=true, Drops={}, Spells={}, Modifiers={Slashing=2, Piercing=2, H2H=2, Impact=2, Fire=0.5, Ice=0.5, Wind=0.5, Earth=0.5, Lightning=0.5, Water=0.5, Light=0.5, Dark=0.5} },
+        ['Neoingurgitator'] = { Name='Neoingurgitator', Notorious=true, Aggro=true, Link=false, TrueSight=true, Job=0, MinLevel=50, MaxLevel=50, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=false, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+        ['Offspring'] = { Name='Offspring', Notorious=false, Aggro=true, Link=true, TrueSight=true, Job=0, MinLevel=47, MaxLevel=48, Immunities=1, Respawn=0, Sight=false, Sound=false, Blood=false, Magic=false, JA=false, Scent=true, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+        ['Procreator'] = { Name='Procreator', Notorious=true, Aggro=false, Link=false, TrueSight=true, Job=0, MinLevel=53, MaxLevel=54, Immunities=1, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=false, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+        ['Repiner'] = { Name='Repiner', Notorious=false, Aggro=true, Link=false, TrueSight=true, Job=0, MinLevel=50, MaxLevel=50, Immunities=0, Respawn=0, Sight=true, Sound=false, Blood=false, Magic=false, JA=false, Scent=true, Drops={}, Spells={}, Modifiers={Slashing=1, Piercing=1, H2H=1, Impact=1, Fire=1, Ice=1, Wind=1, Earth=1, Lightning=1, Water=1, Light=1, Dark=1} },
+    },
+    Indices = {
+    },
+};

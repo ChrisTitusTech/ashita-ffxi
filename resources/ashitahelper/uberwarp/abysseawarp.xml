@@ -1,0 +1,26 @@
+<uberwarp>
+    <!--
+        Bitflags have 0x4000 set to indicate they are applied in reverse.
+		Bitflags have field omitted or 0x8000 set to indicate they should not be checked.
+        A typical user should not be editing any fields in this file besides alias.
+        If you want multiple aliases for the same destination, simply copy the entire line and change alias field.
+	-->
+    <entry alias="La Theine Plateau" bitflag="128" param="260" />
+    <entry alias="LaTheine" bitflag="128" param="260" />
+    <entry alias="Konschtat Highlands" bitflag="129" param="264" />
+    <entry alias="Konschtat" bitflag="129" param="264" />
+    <entry alias="Tahrongi Canyon" bitflag="130" param="268" />
+    <entry alias="Tahrongi" bitflag="130" param="268" />
+    <entry alias="Jugner Forest" bitflag="160" param="272" />
+    <entry alias="Vunkerl" bitflag="160" param="272" />
+    <entry alias="Valkurm Dunes" bitflag="161" param="276" />
+    <entry alias="Misareaux" bitflag="161" param="276" />
+    <entry alias="Buburimu Peninsula" bitflag="162" param="280" />
+    <entry alias="Attohwa" bitflag="162" param="280" />
+    <entry alias="South Gustaberg" bitflag="192" param="284" />
+    <entry alias="Altepa" bitflag="192" param="284" />
+    <entry alias="Xarcabard" bitflag="193" param="288" />
+    <entry alias="Uleguerand" bitflag="193" param="288" />
+    <entry alias="North Gustaberg" bitflag="194" param="292" />
+    <entry alias="Grauberg" bitflag="194" param="292" />
+</uberwarp>

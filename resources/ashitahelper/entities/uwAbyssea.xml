@@ -1,0 +1,83 @@
+<entitydata>
+    <entry type="abysseawarp" name="Ivan" zone="232" instance="1" posx="8.272000" posy="-65.092003" posz="-4.000000" />
+    <entry type="abysseawarp" name="Ernst" zone="236" instance="1" posx="86.808998" posy="-177.897995" posz="7.500000" />
+    <entry type="abysseawarp" name="Willis" zone="240" instance="1" posx="159.233002" posy="131.421005" posz="-3.917287" />
+    <entry type="abysseawarp" name="Kierron" zone="242" instance="1" posx="-7.154000" posy="-4.474000" posz="0.500000" />
+    <entry type="abysseawarp" name="Vincent" zone="243" instance="1" posx="4.043000" posy="-65.350998" posz="0.001214" />
+    <entry type="abysseawarp" name="Horst" zone="246" instance="1" posx="-54.379002" posy="-10.061000" posz="0.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #01" zone="15" instance="1" posx="120.000000" posy="-840.000000" posz="-72.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #02" zone="15" instance="1" posx="-162.000000" posy="-278.000000" posz="-32.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #03" zone="15" instance="1" posx="-642.000000" posy="122.000000" posz="0.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #04" zone="15" instance="1" posx="20.000000" posy="42.000000" posz="9.124996" />
+    <entry type="abysseaconflux" name="Veridical Conflux #05" zone="15" instance="1" posx="-122.000000" posy="282.000000" posz="15.999998" />
+    <entry type="abysseaconflux" name="Veridical Conflux #06" zone="15" instance="1" posx="-318.000000" posy="562.000000" posz="47.999992" />
+    <entry type="abysseaconflux" name="Veridical Conflux #07" zone="15" instance="1" posx="478.000000" posy="122.000000" posz="8.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #08" zone="15" instance="1" posx="242.000000" posy="638.000000" posz="40.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #01" zone="45" instance="1" posx="8.743000" posy="-634.645996" posz="31.314243" />
+    <entry type="abysseaconflux" name="Veridical Conflux #02" zone="45" instance="1" posx="25.549000" posy="-173.373001" posz="-17.108490" />
+    <entry type="abysseaconflux" name="Veridical Conflux #03" zone="45" instance="1" posx="-291.135010" posy="-173.723007" posz="-25.916151" />
+    <entry type="abysseaconflux" name="Veridical Conflux #04" zone="45" instance="1" posx="-239.171005" posy="168.496994" posz="6.958858" />
+    <entry type="abysseaconflux" name="Veridical Conflux #05" zone="45" instance="1" posx="-54.006001" posy="546.072021" posz="30.726522" />
+    <entry type="abysseaconflux" name="Veridical Conflux #06" zone="45" instance="1" posx="-66.110001" posy="334.131012" posz="36.931709" />
+    <entry type="abysseaconflux" name="Veridical Conflux #07" zone="45" instance="1" posx="120.945000" posy="152.893005" posz="15.268932" />
+    <entry type="abysseaconflux" name="Veridical Conflux #08" zone="45" instance="1" posx="325.819000" posy="431.722992" posz="39.430740" />
+    <entry type="abysseaconflux" name="Veridical Conflux #01" zone="132" instance="1" posx="-480.000000" posy="772.000000" posz="0.400000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #02" zone="132" instance="1" posx="-593.262024" posy="28.263000" posz="-15.544698" />
+    <entry type="abysseaconflux" name="Veridical Conflux #03" zone="132" instance="1" posx="-123.058998" posy="-37.210999" posz="-8.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #04" zone="132" instance="1" posx="-58.223000" posy="174.244995" posz="29.399914" />
+    <entry type="abysseaconflux" name="Veridical Conflux #05" zone="132" instance="1" posx="203.248993" posy="-396.972992" posz="24.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #06" zone="132" instance="1" posx="596.556030" posy="-505.602997" posz="40.639709" />
+    <entry type="abysseaconflux" name="Veridical Conflux #07" zone="132" instance="1" posx="495.713013" posy="333.696991" posz="40.316574" />
+    <entry type="abysseaconflux" name="Veridical Conflux #08" zone="132" instance="1" posx="214.701004" posy="-197.209000" posz="16.670101" />
+    <entry type="abysseaconflux" name="Veridical Conflux #01" zone="215" instance="1" posx="-138.572006" posy="-207.557007" posz="18.102943" />
+    <entry type="abysseaconflux" name="Veridical Conflux #02" zone="215" instance="1" posx="-486.872986" posy="-6.661000" posz="-3.964478" />
+    <entry type="abysseaconflux" name="Veridical Conflux #03" zone="215" instance="1" posx="265.253998" posy="-23.167000" posz="20.304884" />
+    <entry type="abysseaconflux" name="Veridical Conflux #04" zone="215" instance="1" posx="-606.189026" posy="191.949997" posz="-5.065711" />
+    <entry type="abysseaconflux" name="Veridical Conflux #05" zone="215" instance="1" posx="467.490997" posy="75.614998" posz="20.274801" />
+    <entry type="abysseaconflux" name="Veridical Conflux #06" zone="215" instance="1" posx="-246.714996" posy="286.005005" posz="14.117251" />
+    <entry type="abysseaconflux" name="Veridical Conflux #07" zone="215" instance="1" posx="379.743011" posy="-143.632996" posz="20.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #08" zone="215" instance="1" posx="1.511000" posy="148.714005" posz="-3.821510" />
+    <entry type="abysseaconflux" name="Veridical Conflux #00" zone="215" instance="1" posx="-280.000000" posy="-6.000000" posz="-4.249985" />
+    <entry type="abysseaconflux" name="Veridical Conflux #01" zone="216" instance="1" posx="642.000000" posy="278.000000" posz="-16.166664" />
+    <entry type="abysseaconflux" name="Veridical Conflux #02" zone="216" instance="1" posx="398.533997" posy="30.695999" posz="-6.434168" />
+    <entry type="abysseaconflux" name="Veridical Conflux #03" zone="216" instance="1" posx="-98.669998" posy="254.199005" posz="-34.224380" />
+    <entry type="abysseaconflux" name="Veridical Conflux #04" zone="216" instance="1" posx="142.804993" posy="-221.612000" posz="-10.295518" />
+    <entry type="abysseaconflux" name="Veridical Conflux #05" zone="216" instance="1" posx="-42.497002" posy="438.199005" posz="-24.179083" />
+    <entry type="abysseaconflux" name="Veridical Conflux #06" zone="216" instance="1" posx="-229.625000" posy="208.888000" posz="-32.995392" />
+    <entry type="abysseaconflux" name="Veridical Conflux #07" zone="216" instance="1" posx="288.949005" posy="-409.609009" posz="23.109118" />
+    <entry type="abysseaconflux" name="Veridical Conflux #08" zone="216" instance="1" posx="646.692017" posy="-475.048004" posz="-0.356712" />
+    <entry type="abysseaconflux" name="Veridical Conflux #00" zone="216" instance="1" posx="276.000000" posy="242.000000" posz="-16.125000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #01" zone="217" instance="1" posx="-313.500000" posy="676.000000" posz="-40.254677" />
+    <entry type="abysseaconflux" name="Veridical Conflux #02" zone="217" instance="1" posx="-20.747999" posy="373.945007" posz="-31.755737" />
+    <entry type="abysseaconflux" name="Veridical Conflux #03" zone="217" instance="1" posx="205.516006" posy="312.843994" posz="-31.817301" />
+    <entry type="abysseaconflux" name="Veridical Conflux #04" zone="217" instance="1" posx="-266.665009" posy="-109.450996" posz="-42.690605" />
+    <entry type="abysseaconflux" name="Veridical Conflux #05" zone="217" instance="1" posx="-120.259003" posy="-476.654999" posz="-39.998829" />
+    <entry type="abysseaconflux" name="Veridical Conflux #06" zone="217" instance="1" posx="-98.579002" posy="-767.356018" posz="-56.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #07" zone="217" instance="1" posx="-678.693970" posy="-559.677002" posz="-47.037624" />
+    <entry type="abysseaconflux" name="Veridical Conflux #08" zone="217" instance="1" posx="-287.447998" posy="282.587006" posz="-31.911907" />
+    <entry type="abysseaconflux" name="Veridical Conflux #00" zone="217" instance="1" posx="162.000000" posy="-162.000000" posz="-37.599998" />
+    <entry type="abysseaconflux" name="Veridical Conflux #01" zone="218" instance="1" posx="412.000000" posy="288.000000" posz="-1.393553" />
+    <entry type="abysseaconflux" name="Veridical Conflux #02" zone="218" instance="1" posx="642.000000" posy="-129.000000" posz="-0.625004" />
+    <entry type="abysseaconflux" name="Veridical Conflux #03" zone="218" instance="1" posx="-80.000000" posy="440.000000" posz="0.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #04" zone="218" instance="1" posx="-330.000000" posy="-260.000000" posz="-0.875002" />
+    <entry type="abysseaconflux" name="Veridical Conflux #05" zone="218" instance="1" posx="-477.000000" posy="-681.000000" posz="0.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #06" zone="218" instance="1" posx="-639.000000" posy="-239.000000" posz="0.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #07" zone="218" instance="1" posx="-607.000000" posy="-39.000000" posz="-0.562500" />
+    <entry type="abysseaconflux" name="Veridical Conflux #08" zone="218" instance="1" posx="-824.000000" posy="-594.000000" posz="-10.451170" />
+    <entry type="abysseaconflux" name="Veridical Conflux #01" zone="253" instance="1" posx="-210.000000" posy="-498.000000" posz="-39.900002" />
+    <entry type="abysseaconflux" name="Veridical Conflux #02" zone="253" instance="1" posx="-382.247009" posy="-173.393997" posz="-24.575027" />
+    <entry type="abysseaconflux" name="Veridical Conflux #03" zone="253" instance="1" posx="-301.040009" posy="-32.146999" posz="-53.405907" />
+    <entry type="abysseaconflux" name="Veridical Conflux #04" zone="253" instance="1" posx="134.289001" posy="-367.906006" posz="-0.413821" />
+    <entry type="abysseaconflux" name="Veridical Conflux #05" zone="253" instance="1" posx="572.883972" posy="-9.127000" posz="-36.779022" />
+    <entry type="abysseaconflux" name="Veridical Conflux #06" zone="253" instance="1" posx="340.583008" posy="502.407990" posz="-100.645752" />
+    <entry type="abysseaconflux" name="Veridical Conflux #07" zone="253" instance="1" posx="-260.289001" posy="239.177994" posz="-175.963867" />
+    <entry type="abysseaconflux" name="Veridical Conflux #08" zone="253" instance="1" posx="-580.359985" posy="49.438000" posz="-40.197750" />
+    <entry type="abysseaconflux" name="Veridical Conflux #01" zone="254" instance="1" posx="-515.651978" posy="-752.294983" posz="21.329224" />
+    <entry type="abysseaconflux" name="Veridical Conflux #02" zone="254" instance="1" posx="325.589996" posy="-555.127014" posz="30.034607" />
+    <entry type="abysseaconflux" name="Veridical Conflux #03" zone="254" instance="1" posx="426.259003" posy="-177.580002" posz="-0.777924" />
+    <entry type="abysseaconflux" name="Veridical Conflux #04" zone="254" instance="1" posx="-22.919001" posy="-463.972992" posz="-1.047277" />
+    <entry type="abysseaconflux" name="Veridical Conflux #05" zone="254" instance="1" posx="-161.608994" posy="404.023987" posz="-31.998800" />
+    <entry type="abysseaconflux" name="Veridical Conflux #06" zone="254" instance="1" posx="99.183998" posy="496.614014" posz="16.500065" />
+    <entry type="abysseaconflux" name="Veridical Conflux #07" zone="254" instance="1" posx="-323.000000" posy="116.000000" posz="-128.000000" />
+    <entry type="abysseaconflux" name="Veridical Conflux #08" zone="254" instance="1" posx="490.618011" posy="338.096985" posz="-5.955723" />
+</entitydata>

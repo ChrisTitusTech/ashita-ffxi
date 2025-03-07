@@ -1,0 +1,40 @@
+<uberwarp>
+    <!--
+        Bitflags have 0x40000000 set to indicate they are applied in reverse.
+        A typical user should not be editing any fields in this file besides alias.
+        If you want multiple aliases for the same destination, simply copy the entire line and change alias field.
+	-->
+    <entry alias="1" bitflag="96" param="0" zone="288" posx="-342.000000" posy="-172.000000" posz="-0.070000" landx="3282796545" landy="3274440705" landz="3180289065" landh="1" />
+    <entry alias="2" bitflag="97" param="1" zone="288" posx="-303.000000" posy="309.000000" posz="-0.030000" landx="3281485824" landy="1134166016" landz="3170222736" landh="48897" />
+    <entry alias="3" bitflag="98" param="2" zone="288" posx="-261.000000" posy="-15.000000" posz="0.670000" landx="3280109568" landy="3246391296" landz="1059816735" landh="48897" />
+    <entry alias="4" bitflag="99" param="3" zone="288" posx="-110.000000" posy="-242.000000" posz="0.120000" landx="3269197825" landy="3278962689" landz="1039516304" landh="16129" />
+    <entry alias="5" bitflag="100" param="4" zone="288" posx="246.000000" posy="-148.000000" posz="0.270000" landx="1131741185" landy="3272867840" landz="1049247089" landh="1" />
+    <entry alias="6" bitflag="101" param="5" zone="288" posx="452.000000" posy="-343.000000" posz="1.390000" landx="1138884609" landy="3282829313" landz="1068624774" landh="48897" />
+    <entry alias="7" bitflag="102" param="6" zone="288" posx="192.000000" posy="-318.000000" posz="0.200000" landx="1128202241" landy="3281977344" landz="1045220557" landh="1" />
+    <entry alias="8" bitflag="103" param="7" zone="288" posx="-135.000000" posy="-453.000000" posz="1.800000" landx="3271950336" landy="3286433793" landz="1072064103" landh="40705" />
+    <entry alias="1" bitflag="104" param="8" zone="289" posx="10.000000" posy="-463.000000" posz="-34.000000" landx="1092616192" landy="3286761473" landz="3255304192" landh="48897" />
+    <entry alias="2" bitflag="105" param="9" zone="289" posx="-274.500000" posy="-377.500000" posz="-40.500000" landx="3280584704" landy="3283959809" landz="3257008129" landh="57089" />
+    <entry alias="3" bitflag="106" param="10" zone="289" posx="-455.000000" posy="-147.500000" posz="-3.500000" landx="3286433793" landy="3272835072" landz="3227516929" landh="32513" />
+    <entry alias="4" bitflag="107" param="11" zone="289" posx="-451.500000" posy="-306.500000" posz="-71.419998" landx="3286384641" landy="3281633280" landz="3264141067" landh="57089" />
+    <entry alias="5" bitflag="108" param="12" zone="289" posx="-443.500000" posy="144.000000" posz="-40.500000" landx="3286122497" landy="1125122048" landz="3257008129" landh="1" />
+    <entry alias="6" bitflag="109" param="13" zone="289" posx="-281.500000" posy="387.500000" posz="-3.500000" landx="3280748544" landy="1136738305" landz="3227516929" landh="40705" />
+    <entry alias="7" bitflag="110" param="14" zone="289" posx="-430.500000" posy="334.500000" posz="-71.849998" landx="3285696513" landy="1135067137" landz="3264197428" landh="7937" />
+    <entry alias="8" bitflag="111" param="15" zone="289" posx="0.000000" posy="465.500000" posz="-40.500000" landx="0" landy="1139359745" landz="3257008129" landh="16129" />
+    <entry alias="9" bitflag="112" param="16" zone="289" posx="279.500000" posy="385.000000" posz="-3.630000" landx="1133199360" landy="1136656385" landz="3228062188" landh="57089" />
+    <entry alias="10" bitflag="113" param="17" zone="289" posx="185.000000" posy="513.500000" posz="-71.849998" landx="1127874561" landy="1140891648" landz="3264197428" landh="24321" />
+    <entry alias="11" bitflag="114" param="18" zone="289" posx="443.500000" posy="144.000000" posz="-40.000000" landx="1138638849" landy="1125122048" landz="3256877056" landh="32513" />
+    <entry alias="12" bitflag="115" param="19" zone="289" posx="455.500000" posy="-147.500000" posz="-3.600000" landx="1138966529" landy="3272835072" landz="3227936359" landh="1" />
+    <entry alias="13" bitflag="116" param="20" zone="289" posx="545.500000" posy="-17.000000" posz="-71.500000" landx="1141415936" landy="3246915584" landz="3264151552" landh="32513" />
+    <entry alias="14" bitflag="117" param="21" zone="289" posx="274.000000" posy="-376.500000" posz="-40.500000" landx="1133084672" landy="3283927041" landz="3257008129" landh="40705" />
+    <entry alias="15" bitflag="118" param="22" zone="289" posx="-1.200000" posy="-580.500000" posz="-52.000000" landx="3214514586" landy="3289473024" landz="3260022785" landh="48897" />
+    <entry alias="1" bitflag="119" param="23" zone="291" posx="-494.440002" posy="-476.480011" posz="-19.000000" landx="3287791699" landy="3287170417" landz="3247964160" landh="1" />
+    <entry alias="2" bitflag="120" param="24" zone="291" posx="-404.000000" posy="85.000000" posz="-55.000000" landx="3284795393" landy="1118568449" landz="3260809217" landh="16129" />
+    <entry alias="3" bitflag="121" param="25" zone="291" posx="-531.400024" posy="398.750000" posz="-50.000000" landx="3288635802" landy="1137172481" landz="3259498497" landh="24321" />
+    <entry alias="4" bitflag="122" param="26" zone="291" posx="-554.400024" posy="603.000000" posz="-48.750000" landx="3289029018" landy="1142325248" landz="3259170817" landh="48897" />
+    <entry alias="5" bitflag="123" param="27" zone="291" posx="107.000000" posy="598.000000" posz="-75.400002" landx="1121320961" landy="1142276096" landz="3264662733" landh="16129" />
+    <entry alias="6" bitflag="124" param="28" zone="291" posx="242.500000" posy="106.000000" posz="-87.400002" landx="1131642881" landy="1121189889" landz="3266235597" landh="32513" />
+    <entry alias="7" bitflag="125" param="29" zone="291" posx="640.599976" posy="-911.200012" posz="-374.000000" landx="1142974055" landy="3294891214" landz="3283812353" landh="40705" />
+    <entry alias="8" bitflag="194" param="30" zone="291" posx="-368.720001" posy="211.449997" posz="-113.300003" landx="3283639338" landy="1129607988" landz="3269630362" landh="16129" />
+    <entry alias="9" bitflag="127" param="31" zone="291" posx="-580.000000" posy="-1065.000000" posz="-417.399994" landx="3289464832" landy="3297058816" landz="3285234484" landh="1" />
+    <entry alias="10" bitflag="194" param="32" zone="291" posx="-389.220001" posy="-835.130005" posz="-439.709991" landx="3284343850" landy="3293628499" landz="3285965538" landh="1" />
+</uberwarp>

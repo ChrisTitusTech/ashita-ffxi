@@ -1,0 +1,13 @@
+<uberwarp>
+    <!--
+        Bitflags have 0x4000 set to indicate they are applied in reverse.
+		Bitflags have field omitted or 0x8000 set to indicate they should not be checked.
+        A typical user should not be editing any fields in this file besides alias.
+        If you want multiple aliases for the same destination, simply copy the entire line and change alias field.
+	-->
+    <entry zone="262" posx="-105.000000" posy="140.000000" posz="0.800000" landx="3277586433" landy="1130758145" landz="3196227421" landh="48897" />
+    <entry zone="262" posx="-14.000000" posy="60.000000" posz="0.800000" landx="3269197825" landy="1124859904" landz="3194247709" landh="32513" />
+    <entry zone="262" posx="20.000000" posy="-65.000000" posz="0.800000" landx="3240099840" landy="1114636289" landz="3196260975" landh="1" />
+    <entry zone="262" posx="220.000000" posy="146.000000" posz="0.800000" landx="1101004800" landy="3263954944" landz="3194314818" landh="16129" />
+    <entry zone="262" posx="380.000000" posy="-145.000000" posz="0.800000" landx="1130102785" landy="1125515264" landz="3196227421" landh="48897" />
+</uberwarp>

@@ -1,0 +1,318 @@
+<entitydats>
+    <entry zone="1" path="ROM3\2\111.DAT" /> <!--Phanauet Channel-->
+    <entry zone="2" path="ROM3\2\112.DAT" /> <!--Carpenters' Landing-->
+    <entry zone="3" path="ROM3\2\113.DAT" /> <!--Manaclipper-->
+    <entry zone="4" path="ROM3\2\114.DAT" /> <!--Bibiki Bay-->
+    <entry zone="5" path="ROM3\2\115.DAT" /> <!--Uleguerand Range-->
+    <entry zone="6" path="ROM3\2\116.DAT" /> <!--Bearclaw Pinnacle-->
+    <entry zone="7" path="ROM3\2\117.DAT" /> <!--Attohwa Chasm-->
+    <entry zone="8" path="ROM3\2\118.DAT" /> <!--Boneyard Gully-->
+    <entry zone="9" path="ROM3\2\119.DAT" /> <!--Pso'Xja-->
+    <entry zone="10" path="ROM3\2\120.DAT" /> <!--The Shrouded Maw-->
+    <entry zone="11" path="ROM3\2\121.DAT" /> <!--Oldton Movalpolos-->
+    <entry zone="12" path="ROM3\2\122.DAT" /> <!--Newton Movalpolos-->
+    <entry zone="13" path="ROM3\2\123.DAT" /> <!--Mine Shaft #2716-->
+    <entry zone="14" path="ROM3\2\124.DAT" /> <!--Hall of Transference-->
+    <entry zone="15" path="ROM\25\80.DAT" /> <!--Abyssea - Konschtat-->
+    <entry zone="16" path="ROM3\2\126.DAT" /> <!--Promyvion - Holla-->
+    <entry zone="17" path="ROM3\2\127.DAT" /> <!--Spire of Holla-->
+    <entry zone="18" path="ROM3\3\0.DAT" /> <!--Promyvion - Dem-->
+    <entry zone="19" path="ROM3\3\1.DAT" /> <!--Spire of Dem-->
+    <entry zone="20" path="ROM3\3\2.DAT" /> <!--Promyvion - Mea-->
+    <entry zone="21" path="ROM3\3\3.DAT" /> <!--Spire of Mea-->
+    <entry zone="22" path="ROM3\3\4.DAT" /> <!--Promyvion - Vahzl-->
+    <entry zone="23" path="ROM3\3\5.DAT" /> <!--Spire of Vahzl-->
+    <entry zone="24" path="ROM3\3\6.DAT" /> <!--Lufaise Meadows-->
+    <entry zone="25" path="ROM3\3\7.DAT" /> <!--Misareaux Coast-->
+    <entry zone="26" path="ROM3\3\8.DAT" /> <!--Tavnazian Safehold-->
+    <entry zone="27" path="ROM3\3\9.DAT" /> <!--Phomiuna Aqueducts-->
+    <entry zone="28" path="ROM3\3\10.DAT" /> <!--Sacrarium-->
+    <entry zone="29" path="ROM3\3\11.DAT" /> <!--Riverne - Site #B01-->
+    <entry zone="30" path="ROM3\3\12.DAT" /> <!--Riverne - Site #A01-->
+    <entry zone="31" path="ROM3\3\13.DAT" /> <!--Monarch Linn-->
+    <entry zone="32" path="ROM3\3\14.DAT" /> <!--Sealion's Den-->
+    <entry zone="33" path="ROM3\3\15.DAT" /> <!--Al'Taieu-->
+    <entry zone="34" path="ROM3\3\16.DAT" /> <!--Grand Palace of Hu'Xzoi-->
+    <entry zone="35" path="ROM3\3\17.DAT" /> <!--The Garden of Ru'Hmet-->
+    <entry zone="36" path="ROM3\3\18.DAT" /> <!--Empyreal Paradox-->
+    <entry zone="37" path="ROM3\3\19.DAT" /> <!--Temenos-->
+    <entry zone="38" path="ROM3\3\20.DAT" /> <!--Apollyon-->
+    <entry zone="39" path="ROM3\3\21.DAT" /> <!--Dynamis - Valkurm-->
+    <entry zone="40" path="ROM3\3\22.DAT" /> <!--Dynamis - Buburimu-->
+    <entry zone="41" path="ROM3\3\23.DAT" /> <!--Dynamis - Qufim-->
+    <entry zone="42" path="ROM3\3\24.DAT" /> <!--Dynamis - Tavnazia-->
+    <entry zone="43" path="ROM3\3\25.DAT" /> <!--Diorama Abdhaljs-Ghelsba-->
+    <entry zone="44" path="ROM3\3\26.DAT" /> <!--Abdhaljs Isle-Purgonorgo-->
+    <entry zone="45" path="ROM\25\110.DAT" /> <!--Abyssea - Tahrongi-->
+    <entry zone="46" path="ROM4\1\45.DAT" /> <!--Open sea route to Al Zahbi-->
+    <entry zone="47" path="ROM4\1\46.DAT" /> <!--Open sea route to Mhaura-->
+    <entry zone="48" path="ROM4\1\47.DAT" /> <!--Al Zahbi-->
+    <entry zone="50" path="ROM4\1\49.DAT" /> <!--Aht Urhgan Whitegate-->
+    <entry zone="51" path="ROM4\1\50.DAT" /> <!--Wajaom Woodlands-->
+    <entry zone="52" path="ROM4\1\51.DAT" /> <!--Bhaflau Thickets-->
+    <entry zone="53" path="ROM4\1\52.DAT" /> <!--Nashmau-->
+    <entry zone="54" path="ROM4\1\53.DAT" /> <!--Arrapago Reef-->
+    <entry zone="55" path="ROM4\1\54.DAT" /> <!--Ilrusi Atoll-->
+    <entry zone="56" path="ROM4\1\55.DAT" /> <!--Periqia-->
+    <entry zone="57" path="ROM4\1\56.DAT" /> <!--Talacca Cove-->
+    <entry zone="58" path="ROM4\1\57.DAT" /> <!--Silver Sea route to Nashmau-->
+    <entry zone="59" path="ROM4\1\58.DAT" /> <!--Silver Sea route to Al Zahbi-->
+    <entry zone="60" path="ROM4\1\59.DAT" /> <!--The Ashu Talif-->
+    <entry zone="61" path="ROM4\1\60.DAT" /> <!--Mount Zhayolm-->
+    <entry zone="62" path="ROM4\1\61.DAT" /> <!--Halvung-->
+    <entry zone="63" path="ROM4\1\62.DAT" /> <!--Lebros Cavern-->
+    <entry zone="64" path="ROM4\1\63.DAT" /> <!--Navukgo Execution Chamber-->
+    <entry zone="65" path="ROM4\1\64.DAT" /> <!--Mamook-->
+    <entry zone="66" path="ROM4\1\65.DAT" /> <!--Mamool Ja Training Grounds-->
+    <entry zone="67" path="ROM4\1\66.DAT" /> <!--Jade Sepulcher-->
+    <entry zone="68" path="ROM4\1\67.DAT" /> <!--Aydeewa Subterrane-->
+    <entry zone="69" path="ROM4\1\68.DAT" /> <!--Leujaoam Sanctum-->
+    <entry zone="70" path="ROM4\1\69.DAT" /> <!--Chocobo Circuit-->
+    <entry zone="71" path="ROM4\1\70.DAT" /> <!--The Colosseum-->
+    <entry zone="72" path="ROM4\1\71.DAT" /> <!--Alzadaal Undersea Ruins-->
+    <entry zone="73" path="ROM4\1\72.DAT" /> <!--Zhayolm Remnants-->
+    <entry zone="74" path="ROM4\1\73.DAT" /> <!--Arrapago Remnants-->
+    <entry zone="75" path="ROM4\1\74.DAT" /> <!--Bhaflau Remnants-->
+    <entry zone="76" path="ROM4\1\75.DAT" /> <!--Silver Sea Remnants-->
+    <entry zone="77" path="ROM4\1\76.DAT" /> <!--Nyzul Isle-->
+    <entry zone="78" path="ROM4\1\77.DAT" /> <!--Hazhalm Testing Grounds-->
+    <entry zone="79" path="ROM4\1\78.DAT" /> <!--Caedarva Mire-->
+    <entry zone="80" path="ROM\26\17.DAT" /> <!--Southern San d'Oria [S]-->
+    <entry zone="81" path="ROM\26\18.DAT" /> <!--East Ronfaure [S]-->
+    <entry zone="82" path="ROM\26\19.DAT" /> <!--Jugner Forest [S]-->
+    <entry zone="83" path="ROM\26\20.DAT" /> <!--Vunkerl Inlet [S]-->
+    <entry zone="84" path="ROM\26\21.DAT" /> <!--Batallia Downs [S]-->
+    <entry zone="85" path="ROM\26\22.DAT" /> <!--La Vaule [S]-->
+    <entry zone="86" path="ROM\26\23.DAT" /> <!--Everbloom Hollow-->
+    <entry zone="87" path="ROM\26\24.DAT" /> <!--Bastok Markets [S]-->
+    <entry zone="88" path="ROM\26\25.DAT" /> <!--North Gustaberg [S]-->
+    <entry zone="89" path="ROM\26\26.DAT" /> <!--Grauberg [S]-->
+    <entry zone="90" path="ROM\26\27.DAT" /> <!--Pashhow Marshlands [S]-->
+    <entry zone="91" path="ROM\26\28.DAT" /> <!--Rolanberry Fields [S]-->
+    <entry zone="92" path="ROM\26\29.DAT" /> <!--Beadeaux [S]-->
+    <entry zone="93" path="ROM\26\30.DAT" /> <!--Ruhotz Silvermines-->
+    <entry zone="94" path="ROM\26\31.DAT" /> <!--Windurst Waters [S]-->
+    <entry zone="95" path="ROM\26\32.DAT" /> <!--West Sarutabaruta [S]-->
+    <entry zone="96" path="ROM\26\33.DAT" /> <!--Fort Karugo-Narugo [S]-->
+    <entry zone="97" path="ROM\26\34.DAT" /> <!--Meriphataud Mountains [S]-->
+    <entry zone="98" path="ROM\26\35.DAT" /> <!--Sauromugue Champaign [S]-->
+    <entry zone="99" path="ROM\26\36.DAT" /> <!--Castle Oztroja [S]-->
+    <entry zone="100" path="ROM\26\37.DAT" /> <!--West Ronfaure-->
+    <entry zone="101" path="ROM\26\38.DAT" /> <!--East Ronfaure-->
+    <entry zone="102" path="ROM\26\39.DAT" /> <!--La Theine Plateau-->
+    <entry zone="103" path="ROM\26\40.DAT" /> <!--Valkurm Dunes-->
+    <entry zone="104" path="ROM\26\41.DAT" /> <!--Jugner Forest-->
+    <entry zone="105" path="ROM\26\42.DAT" /> <!--Batallia Downs-->
+    <entry zone="106" path="ROM\26\43.DAT" /> <!--North Gustaberg-->
+    <entry zone="107" path="ROM\26\44.DAT" /> <!--South Gustaberg-->
+    <entry zone="108" path="ROM\26\45.DAT" /> <!--Konschtat Highlands-->
+    <entry zone="109" path="ROM\26\46.DAT" /> <!--Pashhow Marshlands-->
+    <entry zone="110" path="ROM\26\47.DAT" /> <!--Rolanberry Fields-->
+    <entry zone="111" path="ROM\26\48.DAT" /> <!--Beaucedine Glacier-->
+    <entry zone="112" path="ROM\26\49.DAT" /> <!--Xarcabard-->
+    <entry zone="113" path="ROM2\13\95.DAT" /> <!--Cape Teriggan-->
+    <entry zone="114" path="ROM2\13\96.DAT" /> <!--Eastern Altepa Desert-->
+    <entry zone="115" path="ROM\26\52.DAT" /> <!--West Sarutabaruta-->
+    <entry zone="116" path="ROM\26\53.DAT" /> <!--East Sarutabaruta-->
+    <entry zone="117" path="ROM\26\54.DAT" /> <!--Tahrongi Canyon-->
+    <entry zone="118" path="ROM\26\55.DAT" /> <!--Buburimu Peninsula-->
+    <entry zone="119" path="ROM\26\56.DAT" /> <!--Meriphataud Mountains-->
+    <entry zone="120" path="ROM\26\57.DAT" /> <!--Sauromugue Champaign-->
+    <entry zone="121" path="ROM2\13\97.DAT" /> <!--The Sanctuary of Zi'Tah-->
+    <entry zone="122" path="ROM2\13\98.DAT" /> <!--Ro'Maeve-->
+    <entry zone="123" path="ROM2\13\99.DAT" /> <!--Yuhtunga Jungle-->
+    <entry zone="124" path="ROM2\13\100.DAT" /> <!--Yhoator Jungle-->
+    <entry zone="125" path="ROM2\13\101.DAT" /> <!--Western Altepa Desert-->
+    <entry zone="126" path="ROM\26\63.DAT" /> <!--Qufim Island-->
+    <entry zone="127" path="ROM\26\64.DAT" /> <!--Behemoth's Dominion-->
+    <entry zone="128" path="ROM2\13\102.DAT" /> <!--Valley of Sorrows-->
+    <entry zone="129" path="ROM\26\66.DAT" /> <!--Ghoyu's Reverie-->
+    <entry zone="130" path="ROM2\13\103.DAT" /> <!--Ru'Aun Gardens-->
+    <entry zone="131" path="ROM\26\68.DAT" /> <!--Mordion Gaol-->
+    <entry zone="132" path="ROM\26\69.DAT" /> <!--Abyssea - La Theine-->
+    <entry zone="134" path="ROM2\13\104.DAT" /> <!--Dynamis - Beaucedine-->
+    <entry zone="135" path="ROM2\13\105.DAT" /> <!--Dynamis - Xarcabard-->
+    <entry zone="136" path="ROM\26\73.DAT" /> <!--Beaucedine Glacier [S]-->
+    <entry zone="137" path="ROM\26\74.DAT" /> <!--Xarcabard [S]-->
+    <entry zone="138" path="ROM\26\75.DAT" /> <!--Castle Zvahl Baileys [S]-->
+    <entry zone="139" path="ROM\26\76.DAT" /> <!--Horlais Peak-->
+    <entry zone="140" path="ROM\26\77.DAT" /> <!--Ghelsba Outpost-->
+    <entry zone="141" path="ROM\26\78.DAT" /> <!--Fort Ghelsba-->
+    <entry zone="142" path="ROM\26\79.DAT" /> <!--Yughott Grotto-->
+    <entry zone="143" path="ROM\26\80.DAT" /> <!--Palborough Mines-->
+    <entry zone="144" path="ROM\26\81.DAT" /> <!--Waughroon Shrine-->
+    <entry zone="145" path="ROM\26\82.DAT" /> <!--Giddeus-->
+    <entry zone="146" path="ROM\26\83.DAT" /> <!--Balga's Dais-->
+    <entry zone="147" path="ROM\26\84.DAT" /> <!--Beadeaux-->
+    <entry zone="148" path="ROM\26\85.DAT" /> <!--Qulun Dome-->
+    <entry zone="149" path="ROM\26\86.DAT" /> <!--Davoi-->
+    <entry zone="150" path="ROM\26\87.DAT" /> <!--Monastic Cavern-->
+    <entry zone="151" path="ROM\26\88.DAT" /> <!--Castle Oztroja-->
+    <entry zone="152" path="ROM\26\89.DAT" /> <!--Altar Room-->
+    <entry zone="153" path="ROM2\13\106.DAT" /> <!--The Boyahda Tree-->
+    <entry zone="154" path="ROM2\13\107.DAT" /> <!--Dragon's Aery-->
+    <entry zone="155" path="ROM\26\92.DAT" /> <!--Castle Zvahl Keep [S]-->
+    <entry zone="156" path="ROM\26\93.DAT" /> <!--Throne Room [S]-->
+    <entry zone="157" path="ROM\26\94.DAT" /> <!--Middle Delkfutt's Tower-->
+    <entry zone="158" path="ROM\26\95.DAT" /> <!--Upper Delkfutt's Tower-->
+    <entry zone="159" path="ROM2\13\108.DAT" /> <!--Temple of Uggalepih-->
+    <entry zone="160" path="ROM2\13\109.DAT" /> <!--Den of Rancor-->
+    <entry zone="161" path="ROM\26\98.DAT" /> <!--Castle Zvahl Baileys-->
+    <entry zone="162" path="ROM\26\99.DAT" /> <!--Castle Zvahl Keep-->
+    <entry zone="163" path="ROM2\13\110.DAT" /> <!--Sacrificial Chamber-->
+    <entry zone="164" path="ROM\26\101.DAT" /> <!--Garlaige Citadel [S]-->
+    <entry zone="165" path="ROM\26\102.DAT" /> <!--Throne Room-->
+    <entry zone="166" path="ROM\26\103.DAT" /> <!--Ranguemont Pass-->
+    <entry zone="167" path="ROM\26\104.DAT" /> <!--Bostaunieux Oubliette-->
+    <entry zone="168" path="ROM2\13\111.DAT" /> <!--Chamber of Oracles-->
+    <entry zone="169" path="ROM\26\106.DAT" /> <!--Toraimarai Canal-->
+    <entry zone="170" path="ROM2\13\112.DAT" /> <!--Full Moon Fountain-->
+    <entry zone="171" path="ROM\26\108.DAT" /> <!--Crawlers' Nest [S]-->
+    <entry zone="172" path="ROM\26\109.DAT" /> <!--Zeruhn Mines-->
+    <entry zone="173" path="ROM2\13\113.DAT" /> <!--Korroloka Tunnel-->
+    <entry zone="174" path="ROM2\13\114.DAT" /> <!--Kuftal Tunnel-->
+    <entry zone="175" path="ROM\26\112.DAT" /> <!--The Eldieme Necropolis [S]-->
+    <entry zone="176" path="ROM2\13\115.DAT" /> <!--Sea Serpent Grotto-->
+    <entry zone="177" path="ROM2\13\116.DAT" /> <!--Ve'Lugannon Palace-->
+    <entry zone="178" path="ROM2\13\117.DAT" /> <!--The Shrine of Ru'Avitau-->
+    <entry zone="179" path="ROM2\13\118.DAT" /> <!--Stellar Fulcrum-->
+    <entry zone="180" path="ROM2\13\119.DAT" /> <!--La'Loff Amphitheater-->
+    <entry zone="181" path="ROM2\13\120.DAT" /> <!--The Celestial Nexus-->
+    <entry zone="182" path="ROM\26\119.DAT" /> <!--Walk of Echoes-->
+    <entry zone="183" path="ROM\26\120.DAT" /> <!--Maquette Abdhaljs-LegionA-->
+    <entry zone="184" path="ROM\26\121.DAT" /> <!--Lower Delkfutt's Tower-->
+    <entry zone="185" path="ROM2\13\121.DAT" /> <!--Dynamis - San d'Oria-->
+    <entry zone="186" path="ROM2\13\122.DAT" /> <!--Dynamis - Bastok-->
+    <entry zone="187" path="ROM2\13\123.DAT" /> <!--Dynamis - Windurst-->
+    <entry zone="188" path="ROM2\13\124.DAT" /> <!--Dynamis - Jeuno-->
+    <entry zone="190" path="ROM\26\127.DAT" /> <!--King Ranperre's Tomb-->
+    <entry zone="191" path="ROM\27\0.DAT" /> <!--Dangruf Wadi-->
+    <entry zone="192" path="ROM\27\1.DAT" /> <!--Inner Horutoto Ruins-->
+    <entry zone="193" path="ROM\27\2.DAT" /> <!--Ordelle's Caves-->
+    <entry zone="194" path="ROM\27\3.DAT" /> <!--Outer Horutoto Ruins-->
+    <entry zone="195" path="ROM\27\4.DAT" /> <!--The Eldieme Necropolis-->
+    <entry zone="196" path="ROM\27\5.DAT" /> <!--Gusgen Mines-->
+    <entry zone="197" path="ROM\27\6.DAT" /> <!--Crawlers' Nest-->
+    <entry zone="198" path="ROM\27\7.DAT" /> <!--Maze of Shakhrami-->
+    <entry zone="200" path="ROM\27\9.DAT" /> <!--Garlaige Citadel-->
+    <entry zone="201" path="ROM2\13\125.DAT" /> <!--Cloister of Gales-->
+    <entry zone="202" path="ROM2\13\126.DAT" /> <!--Cloister of Storms-->
+    <entry zone="203" path="ROM2\13\127.DAT" /> <!--Cloister of Frost-->
+    <entry zone="204" path="ROM\27\13.DAT" /> <!--Fei'Yin-->
+    <entry zone="205" path="ROM2\14\0.DAT" /> <!--Ifrit's Cauldron-->
+    <entry zone="206" path="ROM\27\15.DAT" /> <!--Qu'Bia Arena-->
+    <entry zone="207" path="ROM2\14\1.DAT" /> <!--Cloister of Flames-->
+    <entry zone="208" path="ROM2\14\2.DAT" /> <!--Quicksand Caves-->
+    <entry zone="209" path="ROM2\14\3.DAT" /> <!--Cloister of Tremors-->
+    <entry zone="210" path="ROM\27\19.DAT" /> <!--GM Lobby-->
+    <entry zone="211" path="ROM2\14\4.DAT" /> <!--Cloister of Tides-->
+    <entry zone="212" path="ROM2\14\5.DAT" /> <!--Gustav Tunnel-->
+    <entry zone="213" path="ROM2\14\6.DAT" /> <!--Labyrinth of Onzozo-->
+    <entry zone="215" path="ROM\27\24.DAT" /> <!--Abyssea - Attohwa-->
+    <entry zone="216" path="ROM\27\25.DAT" /> <!--Abyssea - Misareaux-->
+    <entry zone="217" path="ROM\27\26.DAT" /> <!--Abyssea - Vunkerl-->
+    <entry zone="218" path="ROM\27\27.DAT" /> <!--Abyssea - Altepa-->
+    <entry zone="220" path="ROM\27\29.DAT" /> <!--Ship bound for Selbina-->
+    <entry zone="221" path="ROM\27\30.DAT" /> <!--Ship bound for Mhaura-->
+    <entry zone="222" path="ROM\27\31.DAT" /> <!--Provenance-->
+    <entry zone="223" path="ROM\27\32.DAT" /> <!--San d'Oria-Jeuno Airship-->
+    <entry zone="224" path="ROM\27\33.DAT" /> <!--Bastok-Jeuno Airship-->
+    <entry zone="225" path="ROM\27\34.DAT" /> <!--Windurst-Jeuno Airship-->
+    <entry zone="226" path="ROM2\14\7.DAT" /> <!--Kazham-Jeuno Airship-->
+    <entry zone="227" path="ROM\27\36.DAT" /> <!--Ship bound for Selbina-->
+    <entry zone="228" path="ROM\27\37.DAT" /> <!--Ship bound for Mhaura-->
+    <entry zone="230" path="ROM\27\39.DAT" /> <!--Southern San d'Oria-->
+    <entry zone="231" path="ROM\27\40.DAT" /> <!--Northern San d'Oria-->
+    <entry zone="232" path="ROM\27\41.DAT" /> <!--Port San d'Oria-->
+    <entry zone="233" path="ROM\27\42.DAT" /> <!--Chateau d'Oraguille-->
+    <entry zone="234" path="ROM\27\43.DAT" /> <!--Bastok Mines-->
+    <entry zone="235" path="ROM\27\44.DAT" /> <!--Bastok Markets-->
+    <entry zone="236" path="ROM\27\45.DAT" /> <!--Port Bastok-->
+    <entry zone="237" path="ROM\27\46.DAT" /> <!--Metalworks-->
+    <entry zone="238" path="ROM\27\47.DAT" /> <!--Windurst Waters-->
+    <entry zone="239" path="ROM\27\48.DAT" /> <!--Windurst Walls-->
+    <entry zone="240" path="ROM\27\49.DAT" /> <!--Port Windurst-->
+    <entry zone="241" path="ROM\27\50.DAT" /> <!--Windurst Woods-->
+    <entry zone="242" path="ROM\27\51.DAT" /> <!--Heavens Tower-->
+    <entry zone="243" path="ROM\27\52.DAT" /> <!--Ru'Lude Gardens-->
+    <entry zone="244" path="ROM\27\53.DAT" /> <!--Upper Jeuno-->
+    <entry zone="245" path="ROM\27\54.DAT" /> <!--Lower Jeuno-->
+    <entry zone="246" path="ROM\27\55.DAT" /> <!--Port Jeuno-->
+    <entry zone="247" path="ROM2\14\8.DAT" /> <!--Rabao-->
+    <entry zone="248" path="ROM\27\57.DAT" /> <!--Selbina-->
+    <entry zone="249" path="ROM\27\58.DAT" /> <!--Mhaura-->
+    <entry zone="250" path="ROM2\14\9.DAT" /> <!--Kazham-->
+    <entry zone="251" path="ROM2\14\10.DAT" /> <!--Hall of the Gods-->
+    <entry zone="252" path="ROM2\14\11.DAT" /> <!--Norg-->
+    <entry zone="253" path="ROM\27\62.DAT" /> <!--Abyssea - Uleguerand-->
+    <entry zone="254" path="ROM\27\63.DAT" /> <!--Abyssea - Grauberg-->
+    <entry zone="255" path="ROM\27\64.DAT" /> <!--Abyssea - Empyreal Paradox-->
+    <entry zone="256" path="ROM9\6\45.DAT" /> <!--Western Adoulin-->
+    <entry zone="257" path="ROM9\6\46.DAT" /> <!--Eastern Adoulin-->
+    <entry zone="258" path="ROM9\6\47.DAT" /> <!--Rala Waterways-->
+    <entry zone="259" path="ROM9\6\48.DAT" /> <!--Rala Waterways [U]-->
+    <entry zone="260" path="ROM9\6\49.DAT" /> <!--Yahse Hunting Grounds-->
+    <entry zone="261" path="ROM9\6\50.DAT" /> <!--Ceizak Battlegrounds-->
+    <entry zone="262" path="ROM9\6\51.DAT" /> <!--Foret de Hennetiel-->
+    <entry zone="263" path="ROM9\6\52.DAT" /> <!--Yorcia Weald-->
+    <entry zone="264" path="ROM9\6\53.DAT" /> <!--Yorcia Weald [U]-->
+    <entry zone="265" path="ROM9\6\54.DAT" /> <!--Morimar Basalt Fields-->
+    <entry zone="266" path="ROM9\6\55.DAT" /> <!--Marjami Ravine-->
+    <entry zone="267" path="ROM9\6\56.DAT" /> <!--Kamihr Drifts-->
+    <entry zone="268" path="ROM9\6\57.DAT" /> <!--Sih Gates-->
+    <entry zone="269" path="ROM9\6\58.DAT" /> <!--Moh Gates-->
+    <entry zone="270" path="ROM9\6\59.DAT" /> <!--Cirdas Caverns-->
+    <entry zone="271" path="ROM9\6\60.DAT" /> <!--Cirdas Caverns [U]-->
+    <entry zone="272" path="ROM9\6\61.DAT" /> <!--Dho Gates-->
+    <entry zone="273" path="ROM9\6\62.DAT" /> <!--Woh Gates-->
+    <entry zone="274" path="ROM9\6\63.DAT" /> <!--Outer Ra'Kaznar-->
+    <entry zone="275" path="ROM9\6\64.DAT" /> <!--Outer Ra'Kaznar [U]-->
+    <entry zone="276" path="ROM9\6\65.DAT" /> <!--Ra'Kaznar Inner Court-->
+    <entry zone="277" path="ROM9\6\66.DAT" /> <!--Ra'Kaznar Turris-->
+    <entry zone="278" path="ROM9\6\67.DAT" /> <!--Unused Adoulin Lobby-->
+    <entry zone="279" path="ROM9\6\68.DAT" /> <!--Walk of Echoes [P2]-->
+    <entry zone="280" path="ROM\303\36.DAT" /> <!--Mog Garden-->
+    <entry zone="281" path="ROM\315\114.DAT" /> <!--Leafallia-->
+    <entry zone="282" path="ROM\315\115.DAT" /> <!--Mount Kamihr-->
+    <entry zone="284" path="ROM\303\37.DAT" /> <!--Celennia Memorial Library-->
+    <entry zone="285" path="ROM\306\61.DAT" /> <!--Feretory-->
+    <entry zone="287" path="ROM\362\25.DAT" /> <!--Maquette Abdhaljs-LegionB-->
+    <entry zone="288" path="ROM\332\109.DAT" /> <!--Escha - Zi'Tah-->
+    <entry zone="289" path="ROM\337\66.DAT" /> <!--Escha - Ru'Aun-->
+    <entry zone="290" path="ROM\342\93.DAT" /> <!--Desuetia - Empyreal Paradox-->
+    <entry zone="291" path="ROM\342\94.DAT" /> <!--Reisenjima-->
+    <entry zone="292" path="ROM\353\61.DAT" /> <!--Reisenjima Henge-->
+    <entry zone="293" path="ROM\342\95.DAT" /> <!--Reisenjima Sanctorium-->
+    <entry zone="294" path="ROM\354\116.DAT" /> <!--Dynamis - San d'Oria [D]-->
+    <entry zone="295" path="ROM\355\5.DAT" /> <!--Dynamis - Bastok [D]-->
+    <entry zone="296" path="ROM\355\39.DAT" /> <!--Dynamis - Windurst [D]-->
+    <entry zone="297" path="ROM\355\54.DAT" /> <!--Dynamis - Jeuno [D]-->
+    <entry zone="298" path="ROM\361\92.DAT" /> <!--Walk of Echoes [P1]-->
+    <entry zone="1000" path="ROM\214\62.DAT" /> <!--Moblin Maze Mongers-->
+    <entry zone="1001" path="ROM\216\50.DAT" /> <!--Moblin Maze Mongers-->
+    <entry zone="1002" path="ROM\216\51.DAT" /> <!--Moblin Maze Mongers-->
+    <entry zone="1003" path="ROM\216\52.DAT" /> <!--Moblin Maze Mongers-->
+    <entry zone="1004" path="ROM\216\53.DAT" /> <!--Moblin Maze Mongers-->
+    <entry zone="1005" path="ROM\216\54.DAT" /> <!--Moblin Maze Mongers-->
+    <entry zone="1006" path="ROM\216\55.DAT" /> <!--Moblin Maze Mongers-->
+    <entry zone="1007" path="ROM\224\117.DAT" /> <!--Moblin Maze Mongers-->
+    <entry zone="1008" path="ROM\238\86.DAT" /> <!--Moblin Maze Mongers-->
+    <entry zone="1009" path="ROM\281\80.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1010" path="ROM\281\81.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1011" path="ROM\281\82.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1012" path="ROM\281\83.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1013" path="ROM\286\102.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1014" path="ROM\288\41.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1015" path="ROM\288\42.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1016" path="ROM\288\43.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1017" path="ROM\288\44.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1018" path="ROM\288\45.DAT" /> <!--Meeble Burrows-->
+    <entry zone="1019" path="ROM\363\67.DAT" /> <!--Odyssey-->
+    <entry zone="1020" path="ROM\363\68.DAT" /> <!--Odyssey-->
+    <entry zone="1021" path="ROM\363\69.DAT" /> <!--Odyssey-->
+    <entry zone="1022" path="ROM\363\70.DAT" /> <!--Odyssey-->
+    <entry zone="1023" path="ROM\363\71.DAT" /> <!--Odyssey-->
+    <entry zone="1024" path="ROM\363\72.DAT" /> <!--Odyssey-->
+    <entry zone="1025" path="ROM\364\110.DAT" /> <!--Odyssey-->
+    <entry zone="1026" path="ROM\364\111.DAT" /> <!--Odyssey-->
+</entitydats>

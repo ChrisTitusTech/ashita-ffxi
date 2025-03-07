@@ -1,0 +1,83 @@
+<uberwarp>
+    <!--
+        Bitflags have 0x4000 set to indicate they are applied in reverse.
+		Bitflags have field omitted or 0x8000 set to indicate they should not be checked.
+        A typical user should not be editing any fields in this file besides alias.
+        If you want multiple aliases for the same destination, simply copy the entire line and change alias field.
+	-->
+    <entry alias="1" bitflag="192" param="1" zone="15" posx="120.000000" posy="-840.000000" posz="-72.000000" landx="1123811329" landy="3293609985" landz="3264321946" landh="57089" />
+    <entry alias="2" bitflag="193" param="2" zone="15" posx="-162.000000" posy="-278.000000" posz="-32.000000" landx="3273916417" landy="3280601088" landz="3254963405" landh="40705" />
+    <entry alias="3" bitflag="194" param="3" zone="15" posx="-642.000000" posy="122.000000" posz="0.000000" landx="3290497025" landy="1123549185" landz="3207803700" landh="40705" />
+    <entry alias="4" bitflag="195" param="4" zone="15" posx="20.000000" posy="42.000000" posz="9.124996" landx="1101004800" landy="1110704129" landz="1091253044" landh="48897" />
+    <entry alias="5" bitflag="196" param="5" zone="15" posx="-122.000000" posy="282.000000" posz="15.999998" landx="3271163905" landy="1133314048" landz="1098068788" landh="32513" />
+    <entry alias="6" bitflag="197" param="6" zone="15" posx="-318.000000" posy="562.000000" posz="47.999992" landx="3281911808" landy="1141702656" landz="1111254631" landh="57089" />
+    <entry alias="7" bitflag="198" param="7" zone="15" posx="478.000000" posy="122.000000" posz="8.000000" landx="1139671041" landy="1123549185" landz="1089051034" landh="40705" />
+    <entry alias="8" bitflag="199" param="8" zone="15" posx="242.000000" posy="638.000000" posz="40.000000" landx="1131675649" landy="1142882304" landz="1109183693" landh="7937" />
+    <entry alias="1" bitflag="192" param="1" zone="45" posx="8.743000" posy="-634.645996" posz="31.314243" landx="1090154136" landy="3290379617" landz="1107041977" landh="20737" />
+    <entry alias="2" bitflag="193" param="2" zone="45" posx="25.549000" posy="-173.373001" posz="-17.108490" landx="1103107195" landy="3274413638" landz="3246748861" landh="41473" />
+    <entry alias="3" bitflag="194" param="3" zone="45" posx="-291.135010" posy="-173.723007" posz="-25.916151" landx="3281085531" landy="3274418095" landz="3251410830" landh="51457" />
+    <entry alias="4" bitflag="195" param="4" zone="45" posx="-239.171005" posy="168.496994" posz="6.958858" landx="3278888502" landy="1126574719" landz="1089407550" landh="19457" />
+    <entry alias="5" bitflag="196" param="5" zone="45" posx="-54.006001" posy="546.072021" posz="30.726522" landx="3261104391" landy="1141431108" landz="1106816533" landh="38401" />
+    <entry alias="6" bitflag="197" param="6" zone="45" posx="-66.110001" posy="334.131012" posz="36.931709" landx="3263244665" landy="1134947206" landz="1108547732" landh="9985" />
+    <entry alias="7" bitflag="198" param="7" zone="45" posx="120.945000" posy="152.893005" posz="15.268932" landx="1123044426" landy="1125852185" landz="1098672768" landh="45313" />
+    <entry alias="8" bitflag="199" param="8" zone="45" posx="325.819000" posy="431.722992" posz="39.430740" landx="1134697677" landy="1138272928" landz="1109304542" landh="40705" />
+    <entry alias="1" bitflag="192" param="1" zone="132" posx="-480.000000" posy="772.000000" posz="0.400000" landx="3287285761" landy="1144979457" landz="3201092813" landh="16129" />
+    <entry alias="2" bitflag="193" param="2" zone="132" posx="-593.262024" posy="28.263000" posz="-15.544698" landx="3289674728" landy="1106326848" landz="3246548583" landh="46081" />
+    <entry alias="3" bitflag="194" param="3" zone="132" posx="-123.058998" posy="-37.210999" posz="-8.000000" landx="3270897304" landy="3256602854" landz="3238631834" landh="7937" />
+    <entry alias="4" bitflag="195" param="4" zone="132" posx="-58.223000" posy="174.244995" posz="29.399914" landx="3260708553" landy="1127170049" landz="1105828250" landh="62465" />
+    <entry alias="5" bitflag="196" param="5" zone="132" posx="203.248993" posy="-396.972992" posz="24.000000" landx="1128902231" landy="3284603864" landz="1102734951" landh="25601" />
+    <entry alias="6" bitflag="197" param="6" zone="132" posx="596.556030" posy="-505.602997" posz="40.639709" landx="1142216737" landy="3288176592" landz="1109236122" landh="2561" />
+    <entry alias="7" bitflag="198" param="7" zone="132" posx="495.713013" posy="333.696991" posz="40.316574" landx="1140268172" landy="1134988297" landz="1109288551" landh="28673" />
+    <entry alias="8" bitflag="199" param="8" zone="132" posx="214.701004" posy="-197.209000" posz="16.670101" landx="1129784607" landy="3276204803" landz="1098697934" landh="13569" />
+    <entry alias="1" bitflag="192" param="1" zone="215" posx="-138.572006" posy="-207.557007" posz="18.102943" landx="3272343552" landy="3276275713" landz="1100742656" landh="48897" />
+    <entry alias="2" bitflag="193" param="2" zone="215" posx="-486.872986" posy="-6.661000" posz="-3.964478" landx="3287466116" landy="3231585403" landz="3229597304" landh="57089" />
+    <entry alias="3" bitflag="194" param="3" zone="215" posx="265.253998" posy="-23.167000" posz="20.304884" landx="1132557403" landy="3249095050" landz="1101498156" landh="33537" />
+    <entry alias="4" bitflag="195" param="4" zone="215" posx="-606.189026" posy="191.949997" posz="-5.065711" landx="3289839649" landy="1128263582" landz="3230287266" landh="1" />
+    <entry alias="5" bitflag="196" param="5" zone="215" posx="467.490997" posy="75.614998" posz="20.274801" landx="1139370591" landy="1117520528" landz="1101295780" landh="48897" />
+    <entry alias="6" bitflag="197" param="6" zone="215" posx="-246.714996" posy="286.005005" posz="14.117251" landx="3279362655" landy="1133365560" landz="1096788477" landh="15873" />
+    <entry alias="7" bitflag="198" param="7" zone="215" posx="379.743011" posy="-143.632996" posz="20.000000" landx="1136487466" landy="3272471085" landz="1101004800" landh="46337" />
+    <entry alias="8" bitflag="199" param="8" zone="215" posx="1.511000" posy="148.714005" posz="-3.821510" landx="1069094536" landy="1125567169" landz="3228154463" landh="48897" />
+    <entry alias="0" bitflag="200" param="9" zone="215" posx="-280.000000" posy="-6.000000" posz="-4.249985" landx="3280732160" landy="0" landz="3230662656" landh="48897" />
+    <entry alias="1" bitflag="192" param="1" zone="216" posx="642.000000" posy="278.000000" posz="-16.166664" landx="1142849536" landy="1133445120" landz="3246653440" landh="40705" />
+    <entry alias="2" bitflag="193" param="2" zone="216" posx="398.533997" posy="30.695999" posz="-6.434168" landx="1137162617" landy="1107608470" landz="3235391734" landh="39937" />
+    <entry alias="3" bitflag="194" param="3" zone="216" posx="-98.669998" posy="254.199005" posz="-34.224380" landx="3267470033" landy="1132351980" landz="3255259104" landh="63745" />
+    <entry alias="4" bitflag="195" param="4" zone="216" posx="142.804993" posy="-221.612000" posz="-10.295518" landx="1124953162" landy="3277743129" landz="3240221475" landh="24321" />
+    <entry alias="5" bitflag="196" param="5" zone="216" posx="-42.497002" posy="438.199005" posz="-24.179083" landx="3257112462" landy="1138468127" landz="3250621252" landh="49409" />
+    <entry alias="6" bitflag="197" param="6" zone="216" posx="-229.625000" posy="208.888000" posz="-32.995392" landx="3278323909" landy="1129366029" landz="3254990668" landh="32769" />
+    <entry alias="7" bitflag="198" param="7" zone="216" posx="288.949005" posy="-409.609009" posz="23.109118" landx="1133542572" landy="3284901364" landz="1102834041" landh="49409" />
+    <entry alias="8" bitflag="199" param="8" zone="216" posx="646.692017" posy="-475.048004" posz="-0.356712" landx="1143084008" landy="3287158326" landz="3162706543" landh="7937" />
+    <entry alias="0" bitflag="200" param="9" zone="216" posx="276.000000" posy="242.000000" posz="-16.125000" landx="1133117440" landy="1131151361" landz="3246570603" landh="16129" />
+    <entry alias="1" bitflag="192" param="1" zone="217" posx="-313.500000" posy="676.000000" posz="-40.254677" landx="3282108417" landy="1143537665" landz="3257014158" landh="32513" />
+    <entry alias="2" bitflag="193" param="2" zone="217" posx="-20.747999" posy="373.945007" posz="-31.755737" landx="3250848793" landy="1136204186" landz="3255340630" landh="24321" />
+    <entry alias="3" bitflag="194" param="3" zone="217" posx="205.516006" posy="312.843994" posz="-31.817301" landx="1128958002" landy="1134301774" landz="3254678717" landh="40705" />
+    <entry alias="4" bitflag="195" param="4" zone="217" posx="-266.665009" posy="-109.450996" posz="-42.690605" landx="3280302834" landy="3269384209" landz="3257386140" landh="16129" />
+    <entry alias="5" bitflag="196" param="5" zone="217" posx="-120.259003" posy="-476.654999" posz="-39.998829" landx="3270335792" landy="3287199745" landz="3256849269" landh="1" />
+    <entry alias="6" bitflag="197" param="6" zone="217" posx="-98.579002" posy="-767.356018" posz="-56.000000" landx="3267887105" landy="3292463367" landz="3261071361" landh="40705" />
+    <entry alias="7" bitflag="198" param="7" zone="217" posx="-678.693970" posy="-559.677002" posz="-47.037624" landx="3291007091" landy="3289047892" landz="3258369442" landh="57089" />
+    <entry alias="8" bitflag="199" param="8" zone="217" posx="-287.447998" posy="282.587006" posz="-31.911907" landx="3281093919" landy="1133332759" landz="3254785409" landh="32513" />
+    <entry alias="0" bitflag="200" param="9" zone="217" posx="162.000000" posy="-162.000000" posz="-37.599998" landx="1126039552" landy="3273523200" landz="3256378983" landh="40705" />
+    <entry alias="1" bitflag="192" param="1" zone="218" posx="412.000000" posy="288.000000" posz="-1.393553" landx="1137311745" landy="1133510656" landz="3197737370" landh="32513" />
+    <entry alias="2" bitflag="193" param="2" zone="218" posx="642.000000" posy="-129.000000" posz="-0.625004" landx="1142931456" landy="3271294977" landz="0" landh="40705" />
+    <entry alias="3" bitflag="194" param="3" zone="218" posx="-80.000000" posy="440.000000" posz="0.000000" landx="3265265664" landy="1138393089" landz="0" landh="16129" />
+    <entry alias="4" bitflag="195" param="4" zone="218" posx="-330.000000" posy="-260.000000" posz="-0.875002" landx="3282141185" landy="3280175104" landz="1063306396" landh="7937" />
+    <entry alias="5" bitflag="196" param="5" zone="218" posx="-477.000000" posy="-681.000000" posz="0.000000" landx="3287187457" landy="3291152385" landz="3212836864" landh="48897" />
+    <entry alias="6" bitflag="197" param="6" zone="218" posx="-639.000000" posy="-239.000000" posz="0.000000" landx="3290431488" landy="3279028225" landz="0" landh="20225" />
+    <entry alias="7" bitflag="198" param="7" zone="218" posx="-607.000000" posy="-39.000000" posz="-0.562500" landx="3289841664" landy="3256614912" landz="3212836864" landh="1" />
+    <entry alias="8" bitflag="199" param="8" zone="218" posx="-824.000000" posy="-594.000000" posz="-10.451170" landx="3293478913" landy="3289628672" landz="3240099840" landh="40705" />
+    <entry alias="1" bitflag="192" param="1" zone="253" posx="-210.000000" posy="-498.000000" posz="-39.900002" landx="3276406785" landy="3288137729" landz="3256850842" landh="7937" />
+    <entry alias="2" bitflag="193" param="2" zone="253" posx="-382.247009" posy="-173.393997" posz="-24.575027" landx="3284043531" landy="3274257204" landz="3251258262" landh="52225" />
+    <entry alias="3" bitflag="194" param="3" zone="253" posx="-301.040009" posy="-32.146999" posz="-53.405907" landx="3281412850" landy="3255349019" landz="3260418360" landh="14849" />
+    <entry alias="4" bitflag="195" param="4" zone="253" posx="134.289001" posy="-367.906006" posz="-0.413821" landx="1124687283" landy="3283632751" landz="1036831949" landh="62209" />
+    <entry alias="5" bitflag="196" param="5" zone="253" posx="572.883972" posy="-9.127000" posz="-36.779022" landx="1141899396" landy="3238407439" landz="3255848403" landh="58369" />
+    <entry alias="6" bitflag="197" param="6" zone="253" posx="340.583008" posy="502.407990" posz="-100.645752" landx="1135177237" landy="1140461044" landz="3267924853" landh="23041" />
+    <entry alias="7" bitflag="198" param="7" zone="253" posx="-260.289001" posy="239.177994" posz="-175.963867" landx="3279990260" landy="1131203200" landz="3274724803" landh="5889" />
+    <entry alias="8" bitflag="199" param="8" zone="253" posx="-580.359985" posy="49.438000" posz="-40.197750" landx="3289497224" landy="1110846473" landz="3256976147" landh="22785" />
+    <entry alias="1" bitflag="192" param="1" zone="254" posx="-515.651978" posy="-752.294983" posz="21.329224" landx="3288367104" landy="3292332033" landz="1102272005" landh="16129" />
+    <entry alias="2" bitflag="193" param="2" zone="254" posx="325.589996" posy="-555.127014" posz="30.034607" landx="1134619296" landy="3289087722" landz="1107002131" landh="23809" />
+    <entry alias="3" bitflag="194" param="3" zone="254" posx="426.259003" posy="-177.580002" posz="-0.777924" landx="1137965466" landy="3274580296" landz="3211041703" landh="40705" />
+    <entry alias="4" bitflag="195" param="4" zone="254" posx="-22.919001" posy="-463.972992" posz="-1.047277" landx="3251877971" landy="3286779364" landz="3211746346" landh="32513" />
+    <entry alias="5" bitflag="196" param="5" zone="254" posx="-161.608994" posy="404.023987" posz="-31.998800" landx="3274009084" landy="1137364436" landz="3254805857" landh="35073" />
+    <entry alias="6" bitflag="197" param="6" zone="254" posx="99.183998" posy="496.614014" posz="16.500065" landx="1120687228" landy="1140368639" landz="1099149869" landh="65025" />
+    <entry alias="7" bitflag="198" param="7" zone="254" posx="-323.000000" posy="116.000000" posz="-128.000000" landx="3282143577" landy="1122192983" landz="3271553058" landh="16129" />
+    <entry alias="8" bitflag="199" param="8" zone="254" posx="490.618011" posy="338.096985" posz="-5.955723" landx="1140155221" landy="1135233041" landz="3232856278" landh="48897" />
+</uberwarp>

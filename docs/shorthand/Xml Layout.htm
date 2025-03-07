@@ -1,0 +1,190 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body bgcolor=black lang=EN-US>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:24.0pt;
+line-height:107%;color:#ED7D31'>Xml Layout</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&lt;shorthand&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>            </span><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>&lt;settings&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>                        </span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47;background:black'>&lt;!--
+All setting nodes are optional.&nbsp; If they are not specified, or an invalid
+value is used, the default value(listed in white here) will be used. --&gt;</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:yellow'>                        &lt;packetws&gt;</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>false</span><span
+style='font-size:14.0pt;line-height:107%;color:yellow'>&lt;/packetws&gt; </span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>&lt;!-- When enabled,
+weaponskills will be sent as packets.  This allows you to WS disengaged.  This
+does not work with &lt;st&gt; type targeting. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:yellow'>                        &lt;gearcheck&gt;</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>true</span><span
+style='font-size:14.0pt;line-height:107%;color:yellow'>&lt;/gearcheck&gt; </span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>&lt;!-- When enabled,
+shorthand will block Honor March, Impact, and Dispelga packets from going out
+if the correct gear is not currently in an equippable bag. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#70AD47'>                        &lt;!--Impact, Honor,
+and Dispelga switches will modify the client to show that you always know the
+corresponding spell.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#70AD47'>                        Please note that this
+will not allow you to cast the spell on it’s own.  It is simply to streamline
+everything.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#70AD47'>                        You will still need to
+configure ashitacast or some sort of equip macro to ensure the corresponding
+equipment is put on in precast and midcast. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:yellow'>                        &lt;impact&gt;</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>false</span><span
+style='font-size:14.0pt;line-height:107%;color:yellow'>&lt;/impact&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:yellow'>                        &lt;honor&gt;</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>false</span><span
+style='font-size:14.0pt;line-height:107%;color:yellow'>&lt;/honor&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:yellow'>                        &lt;dispelga&gt;</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>false</span><span
+style='font-size:14.0pt;line-height:107%;color:yellow'>&lt;/dispelga&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:yellow'>                        &lt;debug&gt;</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>false</span><span
+style='font-size:14.0pt;line-height:107%;color:yellow'>&lt;/debug&gt; </span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>&lt;!-- When enabled,
+all typed commands will be printed to Ashita’s debug log.  You must have Ashita
+logging set to debug to see this. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>            &lt;/settings&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>            </span><span style='font-size:14.0pt;
+line-height:107%;color:#70AD47'>&lt;!-- Ability, Item, Spell, and Weaponskill
+tags can be used to further customize inputs. You should comment the name for
+ease of use, as I have done.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>Note that you can use
+the command ‘/shh export’ to print a xml full of pregenerated ability/spell/weaponskill
+tags to ashita/config/shorthand/settings-empty.xml for copy/paste usage.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>Item tags simply use
+the item’s ID, which you can find on FFXIAH.  Note that you can only alias
+usable or enchanted items for actual use, this is not used to trade items to
+players or NPCs. --&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>            &lt;spell </span><span
+style='font-size:14.0pt;line-height:107%;color:#5B9BD5'>id=”2”</span><span
+style='font-size:14.0pt;line-height:107%;color:#4472C4'>&gt; </span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>&lt;!--Cure II--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>                        </span><span
+style='font-size:14.0pt;line-height:107%;color:yellow'>&lt;command&gt;</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>/castcure</span><span
+style='font-size:14.0pt;line-height:107%;color:yellow'>&lt;/command&gt; </span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>&lt;!--A command tag
+replaces the entire body of a command.  So, you can use ‘</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>/castcure PlayerName</span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>’ in this case.--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:yellow'>                        &lt;name&gt;</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>heal</span><span
+style='font-size:14.0pt;line-height:107%;color:yellow'>&lt;/name&gt; </span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>&lt;!--A name tag adds
+an additional name to the internal registry.  So, you can use ‘</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>//heal PlayerName</span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>’ or ‘</span><span
+style='font-size:14.0pt;line-height:107%;color:white'>/ma heal PlayerName</span><span
+style='font-size:14.0pt;line-height:107%;color:#70AD47'>’ in this case.--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#70AD47'>                        &lt;!--You can use any
+number of either type of tag to add additional ways to cast a spell.--&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:yellow'>            </span><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>&lt;/spell&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#ED7D31'>&lt;/shorthand&gt;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:14.0pt;
+line-height:107%;color:#4472C4'>            </span></p>
+
+</div>
+
+</body>
+
+</html>
