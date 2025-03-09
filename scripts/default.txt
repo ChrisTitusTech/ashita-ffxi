@@ -37,18 +37,17 @@
 /addon load fps
 /addon load move
 /addon load timestamp
-/addon load tparty
 /addon load affinity
 /addon load ahgo
 /addon load allmaps
 /addon load aspect
-/addon load autojoin
 /addon load blucheck
 /addon load blumon
 /addon load blusets
 /addon load casper
 /addon load cbind
 /addon load chatmon
+/addon load chains
 /addon load checker
 /addon load cleancs
 /addon load debuff
@@ -59,24 +58,27 @@
 /addon load filterless
 /addon load filters
 /addon load filterscan
+/addon load find
 /addon load fishaid
+/addon load hideparty
 /addon load HXUI
 /addon load instantah
 /addon load instantchat
 /addon load luashitacast
 /addon load macrofix
-/addon load mobdb
 /addon load nocombat
 /addon load NoMount
 /addon load partybuffs
 /addon load petinfo
 /addon load points
 /addon load porter
-/addon load recast
+/addon load pupsets
+/addon load rolltracker
 /addon load tTimers
 /addon load stfu
 /addon load skeletonkey
 /addon load sellit
+/addon load simplelog
 
 ##########################################################################
 #
@@ -121,4 +123,5 @@
 /ignorepet on
 /ignoretrust on
 /hidetrust on
+/hideparty h
 /localsettings blureffect off
