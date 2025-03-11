@@ -4,7 +4,15 @@ local settings = {
     },
     ExcludeUnpack = {
     },
-    ForceDisableContainers = {  },
+    ForceDisableContainers = {
+        'Wardrobe',
+        'Wardrobe2',
+        'Wardrobe3',
+        'Wardrobe4',
+        'Wardrobe5',
+        'Wardrobe6',
+        'Wardrobe7',
+      },
     ForceEnableContainers = {  },
     BlockInput = true,
     ReversePack = false,
