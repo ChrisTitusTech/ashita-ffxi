@@ -46,19 +46,18 @@ local sets = {
 
     ['Precast'] = {
         Ammo = 'Sapience orb',
-        Head = 'Runeist Bandeau +1',
-        Ear1 = 'Loquacious Earring',
+        Head = 'Rune. Bandeau +1',
+        Ear1 = 'Loquac. Earring',
         Ring1 = 'Prolix Ring',
         Legs = 'Aya. Cosciales +2',
     },
 
     ['Midcast'] = {
         Head = 'Erilaz Galea +2',
-        Body = 'Runeist Coat +1',
+        Body = 'Runeist Coat +2',
         Hands = 'Runeist Mitons',
         Legs = 'Futhark Trousers',
         Neck = 'Colossus\'s Torque',
-        Back = 'Merciful Cape',
         Waist = 'Siegel Sash',
     },
 
@@ -139,7 +138,11 @@ end
 
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
+    local target = gData.GetTarget();
     if (player.Status == 'Engaged') then
+        if (player.TP > 1000) and (gcdisplay.GetToggle('Solomode') == true) then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
+        end
         if (player.HPP < 50) then
             gFunc.EquipSet(sets.Dt)
         else

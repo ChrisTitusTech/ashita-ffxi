@@ -118,7 +118,7 @@ function gcdisplay.Initialize()
 	ashita.events.register('d3d_present', 'gcdisplay_present_cb', function ()
 		local display = ' '
 		for k, v in pairs(Toggles) do
-			display = display .. '   ';
+			display = display .. ' ';
 			if (v == true) then
 				display = display .. '|cFF00FF00|' .. k .. '|r';
 			else

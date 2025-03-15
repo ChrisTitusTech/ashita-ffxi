@@ -18,36 +18,9 @@ gcinclude.sets = T{
     },
 	Sleeping = { -- this set will auto equip if you are asleep
     },
-	Reraise = { -- this set will try to equip when weakened if AutoGear variable is true below or you can force it with /rrset in game
-		Head = 'Crepuscular Helm',
-		Body = 'Crepuscular Mail',
-    },
-	Crafting = { -- this set is meant as a default set for crafting, equip using /craftset, be sure to dbl check what rings you want to use
-		Head = 'Midras\'s Helm +1',
-		Body = 'Tanner\'s Apron',
-		Hands = 'Tanner\'s Gloves',
-		Ring1 = 'Artificer\'s Ring',
-		Ring2 = 'Craftmaster\'s Ring',
-    },
-	Zeni = { -- this set is meant as a default set for pictures, equip using /zeniset
-		Range = 'Soultrapper 2000',
-		Ammo = 'Blank Soulplate',
-		Head = 'Malignance Chapeau',
-        Neck = 'Bathy Choker +1';
-        Ear1 = 'Eabani Earring',
-        Ear2 = 'Infused Earring',
-        Body = 'Nyame Mail',
-        Hands = 'Malignance Gloves',
-        Ring1 = 'Vengeful Ring',
-        Ring2 = 'Ilabrat Ring',
-		Back = 'Solemnity Cape',
-        Waist = 'Svelt. Gouriz +1',
-        Legs = 'Nyame Flanchard',
-        Feet = 'Nyame Sollerets',
-    },
 	Fishing = { -- this set is meant as a default set for fishing, equip using /fishset
-		Range = 'Halcyon Rod',
-		Ring2 = 'Pelican Ring',
+		Range = 'Lu Shang\'s F. Rod',
+		--Ring2 = 'Pelican Ring',
     },
 };
 gcinclude.settings = {
@@ -73,7 +46,7 @@ in each individual job lua file. Unless you know what you're doing then it is be
 ]]
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 
-gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','dt','th','kite','gcdrain','gcaspir','nukeset','burst','weapon','elecycle','helix','weather','nuke','death','fight','tankset','proc','cj','pupmode','tpgun','cormsg','forcestring','siphon','warpring','telering','rrset','craftset','zeniset','fishset'};
+gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','dt','solo','th','kite','nukeset','burst','weapon','elecycle','helix','weather','nuke','death','fight','tankset','proc','pupmode','tpgun','cormsg','forcestring','warpring','telering','fishset'};
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
@@ -101,9 +74,6 @@ gcinclude.NinNukes = T{'Katon: Ichi', 'Katon: Ni', 'Katon: San', 'Hyoton: Ichi',
 gcinclude.Rolls = T{{'Fighter\'s Roll',5,9}, {'Monk\'s Roll',3,7}, {'Healer\'s Roll',3,7}, {'Corsair\'s Roll',5,9}, {'Ninja Roll',4,8},{'Hunter\'s Roll',4,8}, {'Chaos Roll',4,8}, {'Magus\'s Roll',2,6}, {'Drachen Roll',4,8}, {'Choral Roll',2,6},{'Beast Roll',4,8}, {'Samurai Roll',2,6}, {'Evoker\'s Roll',5,9}, {'Rogue\'s Roll',5,9}, {'Warlock\'s Roll',4,8},
 	{'Puppet Roll',3,7}, {'Gallant\'s Roll',3,7}, {'Wizard\'s Roll',5,9}, {'Dancer\'s Roll',3,7}, {'Scholar\'s Roll',2,6},{'Naturalist\'s Roll',3,7}, {'Runeist\'s Roll',4,8}, {'Bolter\'s Roll',3,9}, {'Caster\'s Roll',2,7}, {'Courser\'s Roll',3,9},{'Blitzer\'s Roll',4,9}, {'Tactician\'s Roll',5,8}, {'Allies\' Roll',3,10}, {'Miser\'s Roll',5,7},
 	{'Companion\'s Roll',2,10},{'Avenger\'s Roll',4,8},}; -- {name,lucky,unlucky}
-gcinclude.RRSET = false;
-gcinclude.CraftSet = false;
-gcinclude.ZeniSet = false;
 gcinclude.FishSet = false;
 gcinclude.CORmsg = true;
 
@@ -128,8 +98,10 @@ end
 function gcinclude.SetVariables()
 	local player = gData.GetPlayer();
 
+	gcdisplay.CreateCycle('MeleeSet', {[1] = 'Default', [2] = 'Hybrid'});
 	gcdisplay.CreateToggle('DTset', false);
 	gcdisplay.CreateToggle('Kite', false);
+	gcdisplay.CreateToggle('Solomode', false);
 	gcdisplay.CreateToggle('TH', false);
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
 		gcdisplay.CreateToggle('Burst', true);
@@ -156,9 +128,6 @@ function gcinclude.SetVariables()
 	end
 	if (player.MainJob == 'COR') then
 		gcdisplay.CreateToggle('TPgun', false);
-	end
-	if (player.MainJob == 'BLU') then
-		gcdisplay.CreateToggle('CJmode', false);
 	end
 end
 
@@ -191,6 +160,10 @@ function gcinclude.HandleCommands(args)
 		gcdisplay.AdvanceToggle('DTset');
 		toggle = 'DT Set';
 		status = gcdisplay.GetToggle('DTset');
+	elseif (args[1] == 'meleeset') then
+		gcdisplay.AdvanceCycle('MeleeSet');
+		toggle = 'Melee Gear Set';
+		status = gcdisplay.GetCycle('MeleeSet');
 	elseif (#args == 3 and args[1] == 'setcycle') then
 		if gcdisplay.SetCycle(args[2], args[3]) then
 			toggle = args[2];
@@ -200,30 +173,18 @@ function gcinclude.HandleCommands(args)
 		gcdisplay.AdvanceToggle('Kite');
 		toggle = 'Kite Set';
 		status = gcdisplay.GetToggle('Kite');
+	elseif (args[1] == 'solo') then
+		gcdisplay.AdvanceToggle('Solomode');
+		toggle = 'Solo Mode';
+		status = gcdisplay.GetToggle('Solomode');
 	elseif (args[1] == 'th') then
 		gcdisplay.AdvanceToggle('TH');
 		toggle = 'TH Set';
 		status = gcdisplay.GetToggle('TH');
-	elseif (args[1] == 'gcaspir') then
-		gcinclude.DoAspir();
-	elseif (args[1] == 'gcdrain') then
-		gcinclude.DoDrain();
 	elseif (args[1] == 'warpring') then
 		gcinclude.DoWarpRing();
 	elseif (args[1] == 'telering') then
 		gcinclude.DoTeleRing();
-	elseif (args[1] == 'rrset') then
-		gcinclude.RRSET = not gcinclude.RRSET;
-		toggle = 'Reraise Set';
-		status = gcinclude.RRSET;
-	elseif (args[1] == 'craftset') then
-		gcinclude.CraftSet = not gcinclude.CraftSet;
-		toggle = 'Crafting Set';
-		status = gcinclude.CraftSet;
-	elseif (args[1] == 'zeniset') then
-		gcinclude.ZeniSet = not gcinclude.ZeniSet;
-		toggle = 'Zeni Pictures Set';
-		status = gcinclude.ZeniSet;
 	elseif (args[1] == 'fishset') then
 		gcinclude.FishSet = not gcinclude.FishSet;
 		toggle = 'Fishing Set';
@@ -335,19 +296,6 @@ function gcinclude.HandleCommands(args)
 			end
 		end
 	end
-	if (player.MainJob == 'BLU') then
-		if (args[1] == 'cj') then
-			gcdisplay.AdvanceToggle('CJmode');
-			toggle = 'BLU Cruel Joke Set';
-			status = gcdisplay.GetToggle('CJmode');
-		end
-	end
-	if (player.MainJob == 'SMN') then
-		if (args[1] == 'siphon') then
-			gcinclude.DoSiphon();
-		end
-	end
-
 	if gcinclude.settings.Messages then
 		gcinclude.Message(toggle, status)
 	end
@@ -604,51 +552,6 @@ function gcinclude.DoSCHspells(spell)
 				end
 			end
 			AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. '" ' .. target);
-		end
-	end
-end
-
-function gcinclude.DoSiphon()
-	local recast = gcinclude.CheckAbilityRecast('Elemental Siphon');
-	if recast ~= 0 then 
-		print(chat.header('GCinclude'):append(chat.warning('Elemental Siphon not available yet!')));
-		return;
-	end
-	local pet = gData.GetPet();
-	local oldpet = 'none';
-	local spirit = 'none';
-	local spirits = {['Firesday'] = 'Fire Spirit', ['Earthsday'] = 'Earth Spirit', ['Watersday'] = 'Water Spirit', ['Windsday'] = 'Air Spirit', ['Iceday'] = 'Ice Spirit', ['Lightningday'] = 'Thunder Spirit', ['Lightsday'] = 'Light Spirit', ['Darksday'] = 'Dark Spirit'};
-	local e = gData.GetEnvironment();
-	
-	local function release()
-		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Release" <me>');
-	end
-	local function siphon()
-		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Elemental Siphon" <me>');
-	end
-	local function castavatar()
-		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. oldpet .. '" <me>');
-	end
-	local function castspirit()
-		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. spirit .. '" <me>');
-		siphon:once(4);
-		release:once(6);
-		if oldpet ~= 'none' then
-			castavatar:once(8);
-		end
-	end
-
-	if pet ~= nil then
-		oldpet = pet.Name;
-		release:once(1);
-	end
-
-	for k,v in pairs(spirits) do
-		if k == e.Day then
-			if v ~= nil then
-				spirit = v;
-				castspirit:once(3);
-			end
 		end
 	end
 end

@@ -60,7 +60,6 @@
 /addon load filterscan
 /addon load find
 /addon load fishaid
-/addon load hideparty
 /addon load HXUI
 /addon load instantah
 /addon load instantchat
