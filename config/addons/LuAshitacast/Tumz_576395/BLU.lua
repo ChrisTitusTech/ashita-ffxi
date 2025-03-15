@@ -21,7 +21,7 @@ local sets = {
         Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
         Ammo = 'Staunch Tathlum',
         Head = 'Aya. Zucchetto +2',
-        Neck = 'Defiant Collar',
+        Neck = 'Mirage Stole',
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Moonshade Earring',
         Body = 'Ayanmo Corazza +2',
@@ -39,7 +39,7 @@ local sets = {
     ['Precast'] = {
         Ammo = 'Sapience Orb',
         Head = 'Aya. Zucchetto +2',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Mirage Stole',
         Ear1 = 'Loquac. Earring',
         Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Latent effect: "Refresh"+1', [2] = '"Mag. Atk. Bns."+4' } },
         Body = 'Ayanmo Corazza +2',
@@ -58,7 +58,7 @@ local sets = {
         Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
         Ammo = 'Staunch Tathlum',
         Head = 'Aya. Zucchetto +2',
-        Neck = 'Defiant Collar',
+        Neck = 'Mirage Stole',
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Cessance Earring',
         Body = 'Ayanmo Corazza +2',
@@ -76,7 +76,7 @@ local sets = {
         Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
         Ammo = 'Coiste Bodhar',
         Head = 'Aya. Zucchetto +2',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Mirage Stole',
         Ear1 = 'Suppanomimi',
         Ear2 = 'Cessance Earring',
         Body = 'Ayanmo Corazza +2',
@@ -94,7 +94,7 @@ local sets = {
         Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
         Ammo = 'Coiste Bodhar',
         Head = 'Aya. Zucchetto +2',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Mirage Stole',
         Ear1 = 'Suppanomimi',
         Ear2 = 'Cessance Earring',
         Body = 'Ayanmo Corazza +2',
@@ -113,16 +113,9 @@ local sets = {
     },
 
     ['Magic'] = {       
-        Head = 'Vishap Armet',
-        Neck = 'Dgn. Collar +1',
-        Ear1 = 'Brutal Earring',
-        Ear2 = 'Cessance Earring',
-        Ring1 = 'Rajas Ring',
-        Ring2 = 'Epona\'s Ring',
-        Back = 'Brigantia\'s Mantle',
-        Waist = 'Windbuffet Belt',
-        Legs = 'Vishap Brais',
-        Feet = 'Vishap Greaves'
+        
+        Legs = 'Hashishin Tayt +2',
+        
     },
 
     ['Chain_Affinity'] = {
@@ -138,7 +131,7 @@ local sets = {
     },
     
     ['Efflux'] = {
-        
+        Legs = 'Hashishin Tayt +2',
     },
 
     ['TH'] = {
@@ -180,7 +173,7 @@ local sets = {
     ['Sanguine_Blade'] = {
         Ammo = 'Coiste Bodhar',
         Head = 'Aya. Zucchetto +2',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Mirage Stole',
         Ear1 = 'Friomisi Earring',
         Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Latent effect: "Refresh"+1', [2] = '"Mag. Atk. Bns."+4' } },
         Body = 'Ayanmo Corazza +2',

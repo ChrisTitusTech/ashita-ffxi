@@ -118,6 +118,7 @@
 ##########################################################################
 
 /ambient 255 255 255
+/addon load engage
 /fps 1
 /ignorepet on
 /ignoretrust on

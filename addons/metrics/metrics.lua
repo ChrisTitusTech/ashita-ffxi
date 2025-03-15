@@ -240,6 +240,7 @@ ashita.events.register('packet_in', 'packet_in_cb', function(packet)
             if Ashita.Party.Is_Affiliate(actor_mob.name) or Ashita.Mob.Pet_Owner(actor_mob) then
                 local target_mob = Ashita.Mob.Get_Mob_By_Index(data.target_index)
                 DB.Defeated_Mob(target_mob.name)
+                DB.Increment_Kill()
                 Blog.Add(target_mob.name, nil, Blog.Enum.Types.MOB_DEATH, Blog.Enum.Text.MOB_DEATH, nil, "------------", DB.Enum.Trackable.DEATH)
             end
 
@@ -248,6 +249,7 @@ ashita.events.register('packet_in', 'packet_in_cb', function(packet)
             local target_mob = Ashita.Mob.Get_Mob_By_Index(data.target_index)
             if Ashita.Party.Is_Affiliate(target_mob.name) then
                 local actor_mob = Ashita.Mob.Get_Mob_By_Index(data.actor_index)
+                DB.Increment_Death()
                 H.Death.Action(actor_mob, target_mob)
             end
         end

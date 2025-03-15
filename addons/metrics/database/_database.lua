@@ -41,6 +41,19 @@ require("database.pet_catalog")
 require("database.pet_data")
 require("database.widgets")
 
+-- Add to your database schema/structure
+DB.kills = 0
+DB.deaths = 0
+
+-- Add to your database update functions
+function DB.Increment_Kill()
+    DB.kills = DB.kills + 1
+end
+
+function DB.Increment_Death()
+    DB.deaths = DB.deaths + 1
+end
+
 ------------------------------------------------------------------------------------------------------
 -- Resets the parsing data and clears the battle log.
 ------------------------------------------------------------------------------------------------------

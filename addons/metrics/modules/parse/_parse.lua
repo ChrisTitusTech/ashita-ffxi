@@ -83,6 +83,7 @@ Parse.Util.Calculate_Column_Flags = function()
     if Metrics.Parse.Healing then added_columns = added_columns + 1 end
     if Metrics.Parse.Damage_Taken then added_columns = added_columns + 1 end
     if Metrics.Parse.Deaths then added_columns = added_columns + 1 end
+    if Metrics.Parse.Kills then added_columns = added_columns + 1 end
 
     -- Apply new column count.
     Parse.Columns.Current = Parse.Columns.Base + added_columns

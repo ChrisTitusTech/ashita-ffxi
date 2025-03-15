@@ -83,6 +83,7 @@ Parse.Full.Headers = function()
     if Metrics.Parse.Healing then      UI.TableSetupColumn("Healing",  flags) end
     if Metrics.Parse.Damage_Taken then UI.TableSetupColumn("DT",       flags) end
     if Metrics.Parse.Deaths then       UI.TableSetupColumn("Deaths",   flags) end
+    if Metrics.Parse.Kills then        UI.TableSetupColumn("Kills",      flags) end
 
     UI.TableHeadersRow()
 end

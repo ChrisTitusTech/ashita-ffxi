@@ -16,6 +16,10 @@ local activeDelay = 0;
 
 -- Add this at the top with other local variables
 local itemQueue = {};
+local lastSoldItemId = 0;
+local lastSoldItemIndex = 0;
+local waitingForSale = false;
+local minDelay = 0.1; -- Minimum delay between attempts
 
 local function LocateItem(itemTerm)
     local invMgr = AshitaCore:GetMemoryManager():GetInventory();
@@ -23,12 +27,12 @@ local function LocateItem(itemTerm)
         local item = invMgr:GetContainerItem(0, i);
         if (item.Id > 0) then
             local resource = AshitaCore:GetResourceManager():GetItemById(item.Id);
-            -- Debug print to see what we're comparing
-            --print(string.format("Comparing: '%s' with '%s'", string.lower(resource.Name[1]), itemTerm));
-            -- Remove any extra spaces and convert to lowercase for comparison
-            local itemName = string.lower(string.trim(resource.Name[1]));
-            itemTerm = string.lower(string.trim(itemTerm));
-            if (itemName == itemTerm) and (bit.band(resource.Flags, 0x1000) == 0) then
+            -- Uncomment this for debugging
+            --print(string.format("Comparing: '%s' with '%s'", string.lower(resource.Name[1]), string.lower(itemTerm)));
+            -- Ensure proper string cleaning for both strings
+            local itemName = string.lower(string.gsub(string.trim(resource.Name[1]), "%s+", " "));
+            local cleanTerm = string.lower(string.gsub(string.trim(itemTerm), "%s+", " "));
+            if (itemName == cleanTerm) and (bit.band(resource.Flags, 0x1000) == 0) then
                 return item;
             end
         end
@@ -92,14 +96,12 @@ ashita.events.register('command', 'cb_HandleCommand', function (e)
 end);
 
 ashita.events.register('packet_out', 'cb_HandleOutgoingPacket', function (e)
-    if (e.id == 0x15) and (activeTerm ~= nil) and (os.clock() > activeDelay) then
+    if (e.id == 0x15) and (activeTerm ~= nil) then
         local item = LocateItem(activeTerm);
         if (item == nil) then
             if #itemQueue > 0 then
                 -- Move to next item in queue immediately
                 activeTerm = table.remove(itemQueue, 1);
-                -- Reduce delay for next item
-                activeDelay = os.clock() + 0.1;
                 print(chat.header('SellIt') .. chat.message('Moving to next item.'));
             else
                 print(chat.header('SellIt') .. chat.message('Sale complete.'));
@@ -107,11 +109,52 @@ ashita.events.register('packet_out', 'cb_HandleOutgoingPacket', function (e)
             end
             return;
         else
+            -- Send the sell packets with minimal delay
             local appraise = struct.pack('LLHBB', 0, item.Count, item.Id, item.Index, 0);
             AshitaCore:GetPacketManager():AddOutgoingPacket(0x84, appraise:totable());
             local confirm = struct.pack('LL', 0, 1);
             AshitaCore:GetPacketManager():AddOutgoingPacket(0x85, confirm:totable());
-            activeDelay = os.clock() + baseDelay;
+            
+            -- Use coroutine to check if item is gone
+            ashita.tasks.once(minDelay, function()
+                -- Check if item is gone
+                if LocateItem(activeTerm) == nil then
+                    if #itemQueue > 0 then
+                        activeTerm = table.remove(itemQueue, 1);
+                    else
+                        print(chat.header('SellIt') .. chat.message('All sales complete.'));
+                        activeTerm = nil;
+                    end
+                end
+            end);
         end
+    end
+end);
+
+-- Add a new packet_in handler to detect inventory changes
+ashita.events.register('packet_in', 'cb_HandleIncomingPacket', function (e)
+    -- Packet 0x1D (Inventory Finished) or 0x20 (Inventory Item Update)
+    if waitingForSale and (e.id == 0x1D or e.id == 0x20) then
+        -- Check if our current item is no longer in inventory
+        local item = LocateItem(activeTerm);
+        if item == nil then
+            -- Item is gone, move to next
+            if #itemQueue > 0 then
+                activeTerm = table.remove(itemQueue, 1);
+                print(chat.header('SellIt') .. chat.message('Item sold. Moving to next item.'));
+            else
+                print(chat.header('SellIt') .. chat.message('All sales complete.'));
+                activeTerm = nil;
+            end
+            waitingForSale = false;
+            -- Reset delay to allow immediate processing
+            activeDelay = 0;
+        end
+    end
+    
+    -- Also check merchant completion packet (0xAE)
+    if waitingForSale and e.id == 0x3C then
+        -- Short delay to let inventory update
+        activeDelay = os.clock() + 0.2;
     end
 end);
