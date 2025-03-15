@@ -215,7 +215,7 @@ profile.HandleDefault = function()
         end
         if (player.HPP < 50) then
             gFunc.EquipSet(sets.Dt)
-            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (target.Name ~= 'Lady Lilith') then
+            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (target.Name ~= 'Lady Lilith|Cacheaemic Ghost') then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
             end
         else
