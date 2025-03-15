@@ -40,6 +40,19 @@ local engage = {
     gc = nil,
 };
 
+-- Add packet handling variables
+local packets = {
+    action = 0x28, -- Action packet ID
+    category_offset = 10,
+    category_size = 4,
+    position_bits = {60, 121, 122}, -- Bits to clear for position data
+};
+
+-- Add near the top of the file with other variables
+local debug_enabled = false;
+
+print(chat.header(addon.name):append(chat.message('Loaded with packet handling enabled.')));
+
 ---------------------------------------------------------------------------------------------------
 -- ja0wait Table
 ---------------------------------------------------------------------------------------------------
@@ -107,4 +120,115 @@ engage.gc = ffi.gc(ffi.cast('uint8_t*', 0), function ()
     end
     engage.ja0_ptr = 0;
     engage.engage_ptr = 0;
+end);
+
+----------------------------------------------------------------------------------------------------
+-- func: incoming_packet
+-- desc: Event called when the addon is processing incoming packets.
+----------------------------------------------------------------------------------------------------
+ashita.events.register('packet_in', 'packet_in_cb', function (e)
+    -- Check if this is an action packet
+    if (e.id == packets.action) then
+        local data = e.data_modified;
+        local count = struct.unpack('B', data, 10);
+        local raw_category = struct.unpack('B', data, 11);
+        local category = bit.rshift(bit.band(raw_category, 63), 2);
+        
+        -- Handle both regular (0x2C) and special (0xAC) action packets
+        if (raw_category == 0x2C or raw_category == 0xAC) then
+            if debug_enabled then
+                print(string.format('[Engage] Processing action packet - Count: %d, Raw Category: %x', count, raw_category));
+            end
+            
+            local offset = 150;
+            local modified = false;
+
+            -- Convert data to a mutable format
+            local bytes = {};
+            for i = 1, #data do
+                bytes[i] = struct.unpack('B', data, i);
+            end
+
+            -- Process each target in the packet
+            for i = 1, count do
+                -- Clear all movement/position related bits
+                local bits_to_clear = {60, 121, 122}
+                if raw_category == 0xAC then
+                    -- Add additional bits for special action packets
+                    bits_to_clear = {60, 121, 122, 123, 124, 125}
+                end
+
+                for _, bit_pos in ipairs(bits_to_clear) do
+                    local bit_offset = offset + bit_pos;
+                    local byte_index = math.floor(bit_offset / 8) + 1;
+                    local bit_index = bit_offset % 8;
+                    
+                    if byte_index <= #bytes then
+                        local before = bytes[byte_index];
+                        bytes[byte_index] = bit.band(bytes[byte_index], bit.bnot(bit.lshift(1, bit_index)));
+                        local after = bytes[byte_index];
+                        
+                        if before ~= after and debug_enabled then
+                            print(string.format('[Engage] Modified bit at offset %d (byte %d, bit %d): %02x -> %02x', 
+                                bit_offset, byte_index, bit_index, before, after));
+                            modified = true;
+                        end
+                    end
+                end
+
+                -- Calculate next offset based on packet type
+                local next_offset = offset + 123;
+                if raw_category == 0xAC then
+                    next_offset = offset + 150; -- Adjust for special action packets
+                end
+                
+                -- Check for additional data
+                local check_offset1 = math.floor((offset + 121) / 8) + 1;
+                local check_offset2 = math.floor((offset + 122) / 8) + 1;
+                
+                if check_offset1 <= #bytes and check_offset2 <= #bytes then
+                    if bit.band(bytes[check_offset1], bit.lshift(1, ((offset + 121) % 8))) ~= 0 then
+                        next_offset = next_offset + 37;
+                    end
+                    if bit.band(bytes[check_offset2], bit.lshift(1, ((offset + 122) % 8))) ~= 0 then
+                        next_offset = next_offset + 34;
+                    end
+                end
+                
+                if debug_enabled then
+                    print(string.format('[Engage] Processed target %d/%d, offset: %d -> %d (Raw Category: %x)', 
+                        i, count, offset, next_offset, raw_category));
+                end
+                
+                offset = next_offset;
+            end
+
+            -- If we modified the packet, rebuild it and return
+            if modified then
+                local new_data = '';
+                for i = 1, #bytes do
+                    new_data = new_data .. struct.pack('B', bytes[i]);
+                end
+                e.data_modified = new_data;
+                if debug_enabled then
+                    print(string.format('[Engage] Packet modified successfully (Raw Category: %x)', raw_category));
+                end
+                return true;
+            elseif debug_enabled then
+                print(string.format('[Engage] No modifications needed for packet (Raw Category: %x)', raw_category));
+            end
+        end
+    end
+end);
+
+-- Add this function after the other event handlers
+ashita.events.register('command', 'command_cb', function (e)
+    local args = e.command:args();
+    if (#args > 0 and args[1]:lower() == '/engage') then
+        if (#args > 1 and args[2]:lower() == 'debug') then
+            debug_enabled = not debug_enabled;
+            print(string.format('[Engage] Debug output %s', debug_enabled and 'enabled' or 'disabled'));
+            e.blocked = true;
+        end
+    end
 end);

@@ -210,12 +210,12 @@ profile.HandleDefault = function()
 	local player = gData.GetPlayer();
     local target = gData.GetTarget();
     if (player.Status == 'Engaged') then
-        if (player.TP > 1000) and (player.HPP > 50) and (gcdisplay.GetToggle('Solomode') == true) then
+        if (player.TP >= 1000) and (player.HPP > 50) and (gcdisplay.GetToggle('Solomode') == true) then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Chant du Cygne" <t>');
         end
         if (player.HPP < 50) then
             gFunc.EquipSet(sets.Dt)
-            if (player.TP > 1000) and (gcdisplay.GetToggle('Solomode') == true) and (target.Name ~= 'Lady Lilith') then
+            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (target.Name ~= 'Lady Lilith') then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
             end
         else
