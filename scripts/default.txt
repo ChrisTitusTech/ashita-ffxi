@@ -76,6 +76,7 @@
 /addon load tTimers
 /addon load stfu
 /addon load skeletonkey
+/addon load dropit
 /addon load sellit
 /addon load simplelog
 
