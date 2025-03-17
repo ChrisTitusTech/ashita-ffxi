@@ -318,7 +318,22 @@ local profiles = {
         'Phil. Stone',
         'Teak Log',
         'Jacaranda Log',
-        'Eudaemon Sash'
+        'Eudaemon Sash',
+        'Moonstone',
+        'Wyvern Skin',
+        'Raxa',
+        'Temper',
+        'Yurin: Ichi',
+        'Gain-MND',
+        'Durium Sheet',
+        'Yellow Rock',
+        'Sunstone',
+        'Zircon',
+        'Gold Thread',
+        'Manticore Hide',
+        'Flocon-de-mer',
+        'Titanite',
+        'Hi-Elixir',
     }
 }
 

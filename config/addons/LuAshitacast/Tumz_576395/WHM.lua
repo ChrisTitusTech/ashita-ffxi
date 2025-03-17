@@ -13,7 +13,7 @@ local sets = {
         Hands = 'Ebers Mitts +2',
         Ring1 = 'Vocane Ring',
         Ring2 = 'Prolix Ring',
-        Back = { Name = 'Alaunus\'s Cape', Augment = {'MND+10','Eva.+20 /Mag. Eva.+20','MND+10','Enmity-10','Damage taken-5%'} },
+        Back = 'Alaunus\'s Cape',
         Waist = 'Cetl Belt',
         Legs = 'Ebers Pant. +2',
         Feet = 'Aya. Gambieras +2'
@@ -34,7 +34,7 @@ local sets = {
         Ear2 = 'Cessance Earring',
         Ring1 = 'Vocane Ring',
         Ring2 = 'Rajas Ring',
-        Back = { Name = 'Alaunus\'s Cape', Augment = {'MND+10','Eva.+20 /Mag. Eva.+20','MND+10','Enmity-10','Damage taken-5%'} }
+        Back = 'Alaunus\'s Cape',
     },
     
     ['Resting'] = {},
@@ -63,7 +63,7 @@ local sets = {
             Hands = 'Telchine Gloves',
             Ring1 = 'Sirona\'s Ring',
             Ring2 = 'Ephedra Ring',
-            Back = { Name = 'Alaunus\'s Cape', Augment = {'MND+10','Eva.+20 /Mag. Eva.+20','MND+10','Enmity-10','Damage taken-5%'} },
+            Back = 'Alaunus\'s Cape',
             Waist = 'Witful Belt',
             Legs = 'Ebers Pant. +2',
             Feet = 'Theo. Duckbills +1'
@@ -79,7 +79,7 @@ local sets = {
             Hands = 'Ebers Mitts +2',
             Ring1 = 'Sirona\'s Ring',
             Ring2 = 'Ephedra Ring',
-            Back = { Name = 'Alaunus\'s Cape', Augment = {'MND+10','Eva.+20 /Mag. Eva.+20','MND+10','Enmity-10','Damage taken-5%'} },
+            Back = 'Alaunus\'s Cape',
             Waist = 'Witful Belt',
             Legs = 'Piety Pantaloons',
             Feet = 'Theo. Duckbills +1'
@@ -121,7 +121,7 @@ local sets = {
         Ear2 = 'Cessance Earring',
         Ring1 = 'Chirich Ring',
         Ring2 = 'Rajas Ring',
-        Back = { Name = 'Alaunus\'s Cape', Augment = {'MND+10','Eva.+20 /Mag. Eva.+20','MND+10','Enmity-10','Damage taken-5%'} }
+        Back = 'Alaunus\'s Cape',
     },
 
     ['Movement'] = {},

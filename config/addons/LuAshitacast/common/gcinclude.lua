@@ -154,7 +154,6 @@ function gcinclude.HandleCommands(args)
 		else
 			gcinclude.settings.WScheck = not gcinclude.settings.WScheck;
 			print(chat.header('GCinclude'):append(chat.message('WS distance check is now ' .. tostring(gcinclude.settings.WScheck))));
-			print(chat.header('GCinclude'):append(chat.message('Can change WS distance allowed by using /wsdistance ##')));
 		end
 	elseif (args[1] == 'dt') then
 		gcdisplay.AdvanceToggle('DTset');
@@ -373,8 +372,7 @@ function gcinclude.CheckWsBailout()
 	local charm = gData.GetBuffCount('Charm');
 
 	if gcinclude.settings.WScheck and not gcinclude.DistanceWS:contains(ws.Name) and (tonumber(target.Distance) > gcinclude.settings.WSdistance) then
-		print(chat.header('GCinclude'):append(chat.message('Distance to mob is too far! Move closer or increase WS distance')));
-		print(chat.header('GCinclude'):append(chat.message('Can change WS distance allowed by using /wsdistance ##')));
+		print(chat.header('GCinclude'):append(chat.message('Distance at:' .. string.format("%.1f", tonumber(target.Distance)) .. '/ Max:' .. gcinclude.settings.WSdistance .. ' Change /wsdistance ##')));
 		return false;
 	elseif (player.TP <= 999) or (sleep+petrify+stun+terror+amnesia+charm >= 1) then
 		return false;

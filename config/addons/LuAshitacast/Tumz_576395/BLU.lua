@@ -108,13 +108,15 @@ local sets = {
     },
 
     ['Ws_Default'] = {
+        Head = 'Hashishin Kavuk +2',
         Neck = 'Fotia Gorget',
         Waist = 'Fotia Belt',
     },
 
     ['Magic'] = {       
-        
+        Head = 'Hashishin Kavuk +2',
         Legs = 'Hashishin Tayt +2',
+        Feet = 'Manabyss Pigaches',
         
     },
 
@@ -140,7 +142,7 @@ local sets = {
 
     ['CDC'] = {
         Ammo = 'Coiste Bodhar',
-        Head = { Name = 'Adhemar Bonnet', AugPath='A' },
+        Head = 'Hashishin Kavuk +2',
         Neck = 'Fotia Gorget',
         Ear1 = 'Mache Earring',
         Ear2 = 'Mache Earring',
@@ -156,7 +158,7 @@ local sets = {
     --SB Priority STR > ATK/ACC > Weapon Skill DMG
     ['Savage_Blade'] = {
         Ammo = 'Coiste Bodhar',
-        Head = 'Aya. Zucchetto +2',
+        Head = 'Hashishin Kavuk +2',
         Neck = 'Chivalrous Chain',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Cessance Earring',
@@ -172,7 +174,7 @@ local sets = {
     --Sanguine Blade Priority INT > Magic Atk and Magic Damage
     ['Sanguine_Blade'] = {
         Ammo = 'Coiste Bodhar',
-        Head = 'Aya. Zucchetto +2',
+        Head = 'Hashishin Kavuk +2',
         Neck = 'Mirage Stole',
         Ear1 = 'Friomisi Earring',
         Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Latent effect: "Refresh"+1', [2] = '"Mag. Atk. Bns."+4' } },
@@ -183,7 +185,7 @@ local sets = {
         Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
         Waist = 'Fotia Belt',
         Legs = 'Hashishin Tayt +2',
-        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+        Feet = 'Manabyss Pigaches',
     },
 
 };
@@ -208,7 +210,7 @@ profile.HandleDefault = function()
         end
         if (player.HPP < 50) then
             gFunc.EquipSet(sets.Dt)
-            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (target.Name ~= 'Lady Lilith|Cacheaemic Ghost') then
+            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (target.Name ~= 'Lady Lilith') then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
             end
         else
@@ -263,6 +265,11 @@ profile.HandlePrecast = function()
 end
 
 profile.HandleMidcast = function()
+	local spell = gData.GetAction();
+	
+	if (gcinclude.BstPetMagicAttack ~= nil) and gcinclude.BstPetMagicAttack:contains(spell.Name) then
+		gFunc.EquipSet(sets.Magic);
+	end
 	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
