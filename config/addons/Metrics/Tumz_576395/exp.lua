@@ -22,12 +22,12 @@ settings["Boost_Item_Rate"] = 0;
 settings["Boost_EXP"] = 0;
 settings["Boost_Item_Name"] = "None";
 settings["XP_Mini"] = false;
-settings["X"] = 82;
+settings["Zone_Time"] = false;
 settings["Boost_Item_Default_Index"] = 1;
 settings["Boost_Default"] = false;
-settings["Y"] = 171;
 settings["XP_Boost_Item"] = false;
-settings["Zone_Time"] = false;
+settings["Y"] = 171;
+settings["X"] = 82;
 settings["XP_Progress"] = true;
 
 return settings;

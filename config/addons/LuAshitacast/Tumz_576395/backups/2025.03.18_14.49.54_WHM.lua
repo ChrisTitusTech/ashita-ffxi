@@ -99,33 +99,31 @@ sets.Midcast.Regen = {
 };
 
 sets.Midcast.Elemental_Magic = {
-    Main = { Name = 'Queller Rod', AugPath='D' },
-    Sub = 'Sors Shield',
     Ammo = 'Kalboron Stone',
     Head = 'Aya. Zucchetto +2',
     Neck = 'Sanctity Necklace',
     Ear1 = 'Friomisi Earring',
-    Ear2 = 'Strophadic Earring',
-    Body = 'Ebers Bliaut +2',
-    Hands = { Name = 'Fanatic Gloves', Augment = { [1] = '"Conserve MP"+4', [2] = 'MP+30', [3] = 'Healing magic skill +5' } },
-    Ring1 = 'Sangoma Ring',
-    Ring2 = 'Prolix Ring',
-    Back = { Name = 'Alaunus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'Evasion+20', [3] = 'Mag. Evasion+20', [4] = 'MND+20', [5] = 'Enmity-10' } },
-    Waist = 'Aswang Sash',
+    Ear2 = 'Hecate\'s Earring',
+    Body = 'Witching Robe',
+    Hands = 'Fanatic Gloves',
+    Ring1 = 'Strendu Ring',
+    Ring2 = 'Vertigo Ring',
+    Back = 'Toro Cape',
+    Waist = 'Hachirin-no-Obi',
     Legs = 'Ebers Pant. +2',
-    Feet = 'Manabyss Pigaches',
+    Feet = 'Theo. Duckbills +1'
 };
 
 sets.Tp_Default = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
-    Ammo = 'Vanir Battery',
+    Ammo = 'Hasty Pinion +1',
     Head = 'Aya. Zucchetto +2',
     Body = 'Ayanmo Corazza +2',
     Hands = 'Aya. Manopolas +2',
     Legs = 'Aya. Cosciales +2',
     Feet = 'Aya. Gambieras +2',
-    Neck = 'Sanctity Necklace',
+    Neck = 'Asperity Necklace',
     Waist = 'Cetl Belt',
     Ear1 = 'Brutal Earring',
     Ear2 = 'Cessance Earring',
@@ -170,7 +168,6 @@ end
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
     local hasted = gData.GetBuffCount('Haste');
-    local booststr = gData.GetBuffCount('STR Boost');
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) then
@@ -183,37 +180,7 @@ profile.HandleDefault = function()
         end
         if (hasted == 0) and (gcdisplay.GetToggle('Solomode') == true) then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Haste" <me>');
-        elseif (booststr == 0) and (gcdisplay.GetToggle('Solomode') == true) then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Boost-STR" <me>');
         end
-
-		-- Check if player is not locked on and distance to target is increasing
-		local target = AshitaCore:GetMemoryManager():GetTarget();
-        profile.lastTargetDistance = profile.lastTargetDistance or 0;
-		local currentDistance = 0;
-		
-		-- Only proceed if we have a valid target
-		if target then
-            currentDistance = target.Distance;
-			
-			-- Store the current distance for comparison on next cycle
-			if not profile.lastTargetDistance then
-				profile.lastTargetDistance = currentDistance;
-			end
-			
-			-- Check if we're not locked on, distance is increasing, and greater than 10 units
-			local isLocked = (target:GetLockedOnFlags() > 0);
-			if not isLocked and currentDistance > profile.lastTargetDistance and currentDistance > 10 then
-				print(chat.header('WHM'):append(chat.message('Target moving away - locking on')));
-				AshitaCore:GetChatManager():QueueCommand(1, '/lockon');
-			end
-			
-			-- Update the stored distance for next comparison
-			profile.lastTargetDistance = currentDistance;
-		else
-			-- Reset the stored distance if no target
-			profile.lastTargetDistance = nil;
-		end
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);

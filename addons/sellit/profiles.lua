@@ -334,6 +334,28 @@ local profiles = {
         'Flocon-de-mer',
         'Titanite',
         'Hi-Elixir',
+        'Icarus Wing',
+        'Stone V',
+        'Blizzaja',
+        'Waterja',
+        'Aeroja',
+        'Stoneja',
+        'Firaja',
+        'Thundaja',
+        'Earth Carol II',
+        'Gain-VIT',
+        'Gain-AGI',
+        'Gain-INT',
+        'Gain-CHR',
+        'Gain-DEX',
+        'Gain-STR',
+        'Black Rock',
+        'Jadeite',
+        'Fluorite',
+        'Silk Thread',
+        'Wyvern Tailskin',
+        'Flame Geode',
+        'Faithful Legs I'
     }
 }
 

@@ -51,6 +51,12 @@ local packets = {
 -- Add near the top of the file with other variables
 local debug_enabled = false;
 
+-- Add these new memory signature patterns near the top with other variables
+local MOVEMENT_SIGNATURES = {
+    tp_move = ashita.memory.find('FFXiMain.dll', 0, '8B????????????????????D95C24', 0x00, 0x00),
+    animation = ashita.memory.find('FFXiMain.dll', 0, '89??????????8B??????????8B????89', 0x00, 0x00),
+};
+
 print(chat.header(addon.name):append(chat.message('Loaded with packet handling enabled.')));
 
 ---------------------------------------------------------------------------------------------------
@@ -94,6 +100,17 @@ ashita.events.register('load', 'load_cb', function ()
     ashita.memory.write_array(engage.ja0_ptr, JA0PATCH);
     ashita.memory.write_array(engage.engage_ptr, ENGAGEPATCH);
 
+    -- Add new movement related patches
+    if (MOVEMENT_SIGNATURES.tp_move ~= 0) then
+        -- Patch TP movement handler
+        ashita.memory.write_array(MOVEMENT_SIGNATURES.tp_move, {0x90, 0x90, 0x90, 0x90, 0x90});
+    end
+    
+    if (MOVEMENT_SIGNATURES.animation ~= 0) then
+        -- Patch animation movement handler
+        ashita.memory.write_array(MOVEMENT_SIGNATURES.animation, {0x90, 0x90, 0x90, 0x90});
+    end
+
     print(chat.header(addon.name):append(chat.message('Functions patched; slip and slide around all you want.')));
 end);
 
@@ -127,6 +144,20 @@ end);
 -- desc: Event called when the addon is processing incoming packets.
 ----------------------------------------------------------------------------------------------------
 ashita.events.register('packet_in', 'packet_in_cb', function (e)
+    -- Check for movement packets (0x28 and 0x29)
+    if (e.id == 0x28 or e.id == 0x29) then
+        local data = e.data_modified;
+        local animation_type = struct.unpack('B', data, 11);
+        
+        -- If this is a TP move or ability animation
+        if (animation_type >= 0x20 and animation_type <= 0x24) then
+            -- Zero out movement coordinates
+            local modified_data = data:sub(1, 28) .. string.char(0,0,0,0) .. data:sub(33);
+            e.data_modified = modified_data;
+            return true;
+        end
+    end
+    
     -- Check if this is an action packet
     if (e.id == packets.action) then
         local data = e.data_modified;

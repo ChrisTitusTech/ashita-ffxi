@@ -29,7 +29,7 @@ gcinclude.settings = {
 	but as an example you can just put 'gcinclude.settings.RefreshGearMPP = 50;' in your job files OnLoad function to modify for that job only
 	]]
 	Messages = false; --set to true if you want chat log messages to appear on any /gc command used such as DT, TH, or KITE gear toggles, certain messages will always appear
-	AutoGear = true; --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
+	AutoGear = false; --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
 	WScheck = true; --set to false if you dont want to use the WSdistance safety check
 	WSdistance = 4.7; --default max distance (yalms) to allow non-ranged WS to go off at if the above WScheck is true
 	RegenGearHPP = 60; -- set HPP to have your idle regen set to come on
@@ -51,7 +51,7 @@ gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nash
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
 gcinclude.BstPetAttack = T{'Foot Kick','Whirl Claws','Big Scissors','Tail Blow','Blockhead','Sensilla Blades','Tegmina Buffet','Lamb Chop','Sheep Charge','Pentapeck','Recoil Dive','Frogkick','Queasyshroom','Numbshroom','Shakeshroom','Nimble Snap','Cyclotail','Somersault','Tickling Tendrils','Sweeping Gouge','Grapple','Double Claw','Spinning Top','Suction','Tortoise Stomp','Power Attack','Rhino Attack','Razor Fang','Claw Cyclone','Crossthrash','Scythe Tail','Ripper Fang','Chomp Rush','Pecking Flurry','Sickle Slash','Mandibular Bite','Wing Slap','Beak Lunge','Head Butt','Wild Oats','Needle Shot','Disembowel','Extirpating Salvo','Mega Scissors','Back Heel','Hoof Volley','Fluid Toss','Fluid Spread'};
-gcinclude.BstPetMagicAttack = T{'Gloom Spray','Fireball','Acid Spray','Molting Plumage','Cursed Sphere','Nectarous Deluge','Charged Whisker','Nepenthic Plunge'};
+gcinclude.BstPetMagicAttack = T{'Gloom Spray','Fireball','Acid Spray','Molting Plumage','Cursed Sphere','Nectarous Deluge','Charged Whisker','Nepenthic Plunge','Entomb','Subduction','Tenebral Crush','Spectral Floe','Tem. Upheaval','Embalming Earth'};
 gcinclude.BstPetMagicAccuracy = T{'Toxic Spit','Acid Spray','Leaf Dagger','Venom Spray','Venom','Dark Spore','Sandblast','Dust Cloud','Stink Bomb','Slug Family','Intimidate','Gloeosuccus','Spider Web','Filamented Hold','Choke Breath','Blaster','Snow Cloud','Roar','Palsy Pollen','Spore','Brain Crush','Choke Breath','Silence Gas','Chaotic Eye','Sheep Song','Soporific','Predatory Glare','Sudden Lunge','Numbing Noise','Jettatura','Bubble Shower','Spoil','Scream','Noisome Powder','Acid Mist','Rhinowrecker','Swooping Frenzy','Venom Shower','Corrosive Ooze','Spiral Spin','Infrasonics','Hi-Freq Field','Purulent Ooze','Foul Waters','Sandpit','Infected Leech','Pestilent Plume'};
 gcinclude.SmnSkill = T{'Shining Ruby','Glittering Ruby','Crimson Howl','Inferno Howl','Frost Armor','Crystal Blessing','Aerial Armor','Hastega II','Fleet Wind','Hastega','Earthen Ward','Earthen Armor','Rolling Thunder','Lightning Armor','Soothing Current','Ecliptic Growl','Heavenward Howl','Ecliptic Howl','Noctoshield','Dream Shroud','Altana\'s Favor','Reraise','Reraise II','Reraise III','Raise','Raise II','Raise III','Wind\'s Blessing'};
 gcinclude.SmnMagical = T{'Searing Light','Meteorite','Holy Mist','Inferno','Fire II','Fire IV','Meteor Strike','Conflag Strike','Diamond Dust','Blizzard II','Blizzard IV','Heavenly Strike','Aerial Blast','Aero II','Aero IV','Wind Blade','Earthen Fury','Stone II','Stone IV','Geocrush','Judgement Bolt','Thunder II','Thunder IV','Thunderstorm','Thunderspark','Tidal Wave','Water II','Water IV','Grand Fall','Howling Moon','Lunar Bay','Ruinous Omen','Somnolence','Nether Blast','Night Terror','Level ? Holy'};
@@ -66,7 +66,7 @@ gcinclude.BluMagSkill = T{'Metallic Body','Diamondhide','Magic Barrier','Occulta
 gcinclude.BluMagDiffus = T{'Erratic Flutter','Carcharian Verve','Harden Shell','Mighty Guard'};
 gcinclude.BluMagCure = T{'Pollen','Healing Breeze','Wild Carrot','Magic Fruit','Plenilune Embrace'};
 gcinclude.BluMagEnmity = T{'Actinic Burst','Exuviation','Fantod','Jettatura','Temporal Shift'};
-gcinclude.BluMagTH = T{'Actinic Burst','Dream Flower','Subduction'};
+gcinclude.BluMagTH = T{'Actinic Burst','Dream Flower'};
 gcinclude.Elements = T{'Thunder', 'Blizzard', 'Fire', 'Stone', 'Aero', 'Water', 'Light', 'Dark'};
 gcinclude.HelixSpells = T{'Ionohelix', 'Cryohelix', 'Pyrohelix', 'Geohelix', 'Anemohelix', 'Hydrohelix', 'Luminohelix', 'Noctohelix'};
 gcinclude.StormSpells = T{'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm', 'Windstorm', 'Rainstorm', 'Aurorastorm', 'Voidstorm'};
@@ -76,6 +76,7 @@ gcinclude.Rolls = T{{'Fighter\'s Roll',5,9}, {'Monk\'s Roll',3,7}, {'Healer\'s R
 	{'Companion\'s Roll',2,10},{'Avenger\'s Roll',4,8},}; -- {name,lucky,unlucky}
 gcinclude.FishSet = false;
 gcinclude.CORmsg = true;
+gcinclude.CraftSet = false;
 
 function gcinclude.Message(toggle, status)
 	if toggle ~= nil and status ~= nil then
@@ -103,32 +104,6 @@ function gcinclude.SetVariables()
 	gcdisplay.CreateToggle('Kite', false);
 	gcdisplay.CreateToggle('Solomode', false);
 	gcdisplay.CreateToggle('TH', false);
-	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
-		gcdisplay.CreateToggle('Burst', true);
-		gcdisplay.CreateCycle('NukeSet', {[1] = 'Power', [2] = 'Macc',});
-		if (player.MainJob == 'BLM') or (player.MainJob == 'SCH') then
-			gcdisplay.CreateCycle('Weapon', {[1] = 'Club', [2] = 'Staff'});
-			gcdisplay.CreateCycle('Element', {[1] = 'Thunder', [2] = 'Blizzard', [3] = 'Fire', [4] = 'Stone', [5] = 'Aero', [6] = 'Water', [7] = 'Light', [8] = 'Dark'});
-			if (player.MainJob == 'BLM') then
-				gcdisplay.CreateToggle('Death', false);
-			end
-		end
-	end
-	if (player.MainJob == 'RDM') or (player.MainJob == 'BRD') or (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then
-		gcdisplay.CreateToggle('Fight', false);
-	end
-	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
-		gcdisplay.CreateToggle('PROC', false);
-	end
-	if (player.MainJob == 'PUP') then
-		gcdisplay.CreateCycle('PupMode', {[1] = 'Tank', [2] = 'Melee', [3] = 'Ranger', [4] = 'Mage'});
-	end
-	if (player.MainJob == 'BRD') then
-		gcdisplay.CreateToggle('String', false);
-	end
-	if (player.MainJob == 'COR') then
-		gcdisplay.CreateToggle('TPgun', false);
-	end
 end
 
 function gcinclude.HandleCommands(args)
@@ -188,113 +163,8 @@ function gcinclude.HandleCommands(args)
 		gcinclude.FishSet = not gcinclude.FishSet;
 		toggle = 'Fishing Set';
 		status = gcinclude.FishSet;
-    end
-	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
-		if (args[1] == 'nukeset') then
-			gcdisplay.AdvanceCycle('NukeSet');
-			toggle = 'Nuking Gear Set';
-			status = gcdisplay.GetCycle('NukeSet');
-		elseif (args[1] == 'burst') then
-			gcdisplay.AdvanceToggle('Burst');
-			toggle = 'Magic Burst Set';
-			status = gcdisplay.GetToggle('Burst');
-		end
-		if (player.MainJob == 'BLM') or (player.MainJob == 'SCH') then
-			if (args[1] == 'weapon') then
-				gcdisplay.AdvanceCycle('Weapon');
-				toggle = 'Mage Weapon';
-				status = gcdisplay.GetCycle('Weapon');
-			elseif (args[1] == 'elecycle') then
-				gcdisplay.AdvanceCycle('Element');
-				toggle = 'Spell Element';
-				status = gcdisplay.GetCycle('Element');
-			elseif (args[1] == 'helix') then
-				gcinclude.DoSCHspells('helix');
-			elseif (args[1] == 'weather') then
-				gcinclude.DoSCHspells('weather');
-			elseif (args[1] == 'nuke') then
-				gcinclude.DoNukes(args[2]);
-			end
-			if (player.MainJob == 'BLM') then
-				if (args[1] == 'death') then
-					gcdisplay.AdvanceToggle('Death');
-					toggle = 'BLM Death Set';
-					status = gcdisplay.GetToggle('Death');
-				end
-			end
-		end
 	end
-	if (player.MainJob == 'RDM') or (player.MainJob == 'BRD') or (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then
-		if (args[1] == 'fight') then
-			if (gcdisplay.GetToggle('Fight') == false) then
-				AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Main');
-				AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Sub');
-				if (player.MainJob == 'RDM') or (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Range') end
-				if (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
-				gcdisplay.AdvanceToggle('Fight');
-				toggle = 'Mage Weapon Lock';
-				status = gcdisplay.GetToggle('Fight');
-			else
-				AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Main');
-				AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Sub');
-				if (player.MainJob == 'RDM') or (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Range') end
-				if (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
-				gcdisplay.AdvanceToggle('Fight');
-				toggle = 'Mage Weapon Lock';
-				status = gcdisplay.GetToggle('Fight');
-			end
-		end
-	end
-	if (player.MainJob == 'PLD') or (player.MainJob == 'RUN') then
-		if (args[1] == 'tankset') then
-			gcdisplay.AdvanceCycle('TankSet');
-			toggle = 'Tank Gear Set';
-			status = gcdisplay.GetCycle('TankSet');
-		end
-	end
-	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
-		if (args[1] == 'proc') then
-			gcdisplay.AdvanceToggle('PROC');
-			toggle = 'Low Damage PROC Set';
-			status = gcdisplay.GetToggle('PROC');
-			if (player.MainJob == 'NIN') then
-				if gcdisplay.GetToggle('PROC') == true then
-					AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable ammo');
-				else
-					AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable ammo');
-				end
-			end
-		end
-	end
-	if (player.MainJob == 'PUP') then
-		if (args[1] == 'pupmode') then
-			gcdisplay.AdvanceCycle('PupMode');
-			toggle = 'Puppet Mode';
-			status = gcdisplay.GetCycle('PupMode');
-		end
-	end
-	if (player.MainJob == 'BRD') then
-		if (args[1] == 'forcestring') then
-			gcdisplay.AdvanceToggle('String');
-			toggle = 'BRD Forced Harp';
-			status = gcdisplay.GetToggle('String');
-		end
-	end
-	if (player.MainJob == 'COR') then
-		if (args[1] == 'tpgun') then
-			gcdisplay.AdvanceToggle('TPgun');
-			toggle = 'COR Forced TP Gun';
-			status = gcdisplay.GetToggle('TPgun');
-		elseif (args[1] == 'cormsg') then
-			if gcinclude.CORmsg == true then
-				gcinclude.CORmsg = false;
-				print(chat.header('GCinclude'):append(chat.message('COR Roll messages will no longer show')));
-			else
-				gcinclude.CORmsg = true;
-				print(chat.header('GCinclude'):append(chat.message('COR Roll messages will show now')));
-			end
-		end
-	end
+
 	if gcinclude.settings.Messages then
 		gcinclude.Message(toggle, status)
 	end
@@ -638,7 +508,6 @@ function gcinclude.Initialize()
 	gcdisplay.Initialize:once(2);
 	gcinclude.SetVariables:once(2);
 	gcinclude.SetAlias:once(2);
-	AshitaCore:GetChatManager():QueueCommand(1, '/wait 2; /lockstyle on');
 end
 
 return gcinclude;

@@ -15,179 +15,190 @@ profile.OnUnload = function()
     gcinclude.Unload();
 end
 
-local sets = {
-    ['Idle'] = {
-        Main = 'Kaja Sword',
-        Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
-        Ammo = 'Staunch Tathlum',
-        Head = 'Aya. Zucchetto +2',
-        Neck = 'Mirage Stole',
-        Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
-        Ear2 = 'Moonshade Earring',
-        Body = 'Ayanmo Corazza +2',
-        Hands = 'Aya. Manopolas +2',
-        Ring1 = 'Vocane Ring',
-        Ring2 = 'Rajas Ring',
-        Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-        Waist = 'Flume Belt',
-        Legs = 'Hashishin Tayt +2',
-        Feet = 'Aya. Gambieras +2',
-    },
+local sets = {};
+sets.Weapons = {
+    Main = 'Kaja Sword',
+    Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
+};
 
-    ['Resting'] = {},
-    ['Movement'] = {},
-    ['Precast'] = {
-        Ammo = 'Sapience Orb',
-        Head = 'Aya. Zucchetto +2',
-        Neck = 'Mirage Stole',
-        Ear1 = 'Loquac. Earring',
-        Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Latent effect: "Refresh"+1', [2] = '"Mag. Atk. Bns."+4' } },
-        Body = 'Ayanmo Corazza +2',
-        Hands = { Name = 'Telchine Gloves', Augment = '"Fast Cast"+4' },
-        Ring1 = 'Sangoma Ring',
-        Ring2 = 'Prolix Ring',
-        Back = 'Swith Cape',
-        Waist = 'Witful Belt',
-        Legs = 'Aya. Cosciales +2',
-        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
-    },
-    ['Midcast'] = {},
-    
-    ['Dt'] = {
-        Main = 'Kaja Sword',
-        Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
-        Ammo = 'Staunch Tathlum',
-        Head = 'Aya. Zucchetto +2',
-        Neck = 'Mirage Stole',
-        Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
-        Ear2 = 'Cessance Earring',
-        Body = 'Ayanmo Corazza +2',
-        Hands = 'Aya. Manopolas +2',
-        Ring1 = 'Vocane Ring',
-        Ring2 = 'Rajas Ring',
-        Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-        Waist = 'Flume Belt',
-        Legs = 'Hashishin Tayt +2',
-        Feet = 'Aya. Gambieras +2',
-    },
+sets.Idle = {
+    Main = sets.Weapons.Main,
+    Sub = sets.Weapons.Sub,
+    Ammo = 'Staunch Tathlum',
+    Head = 'Aya. Zucchetto +2',
+    Neck = 'Mirage Stole',
+    Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
+    Ear2 = 'Ethereal Earring',
+    Body = 'Ayanmo Corazza +2',
+    Hands = 'Aya. Manopolas +2',
+    Ring1 = 'Vocane Ring',
+    Ring2 = 'Rajas Ring',
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
+    Waist = 'Flume Belt',
+    Legs = 'Hashishin Tayt +2',
+    Feet = 'Aya. Gambieras +2',
+};
 
-    ['Tp_Default'] = {
-        Main = 'Kaja Sword',
-        Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
-        Ammo = 'Coiste Bodhar',
-        Head = 'Aya. Zucchetto +2',
-        Neck = 'Mirage Stole',
-        Ear1 = 'Suppanomimi',
-        Ear2 = 'Cessance Earring',
-        Body = 'Ayanmo Corazza +2',
-        Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
-        Ring1 = 'Chirich Ring',
-        Ring2 = 'Rajas Ring',
-        Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
-        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
-    },
+sets.Refresh = {
+    Main = sets.Weapons.Main,
+    Sub = sets.Weapons.Sub,
+    Ammo = 'Staunch Tathlum',
+    Head = 'Aya. Zucchetto +2',
+    Neck = 'Mirage Stole',
+    Body = 'Jhakri robe +1',
+    Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
+    Ear2 = 'Moonshade Earring',
+    Hands = 'Aya. Manopolas +2',
+    Ring1 = 'Vocane Ring',
+    Ring2 = 'Rajas Ring',
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
+    Waist = 'Flume Belt',
+    Legs = 'Hashishin Tayt +2',
+    Feet = 'Aya. Gambieras +2',
+};
 
-    ['Tp_Hybrid'] = {
-        Main = 'Kaja Sword',
-        Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
-        Ammo = 'Coiste Bodhar',
-        Head = 'Aya. Zucchetto +2',
-        Neck = 'Mirage Stole',
-        Ear1 = 'Suppanomimi',
-        Ear2 = 'Cessance Earring',
-        Body = 'Ayanmo Corazza +2',
-        Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
-        Ring1 = 'Chirich Ring',
-        Ring2 = 'Rajas Ring',
-        Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Hashishin Tayt +2',
-        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
-    },
+sets.Resting = {};
 
-    ['Ws_Default'] = {
-        Head = 'Hashishin Kavuk +2',
-        Neck = 'Fotia Gorget',
-        Waist = 'Fotia Belt',
-    },
+sets.Movement = {};
 
-    ['Magic'] = {       
-        Head = 'Hashishin Kavuk +2',
-        Legs = 'Hashishin Tayt +2',
-        Feet = 'Manabyss Pigaches',
-        
-    },
+sets.Precast = {
+    Ammo = 'Sapience Orb',
+    Head = 'Aya. Zucchetto +2',
+    Neck = 'Mirage Stole',
+    Ear1 = 'Loquac. Earring',
+    Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Latent effect: "Refresh"+1', [2] = '"Mag. Atk. Bns."+4' } },
+    Body = 'Ayanmo Corazza +2',
+    Hands = { Name = 'Telchine Gloves', Augment = '"Fast Cast"+4' },
+    Ring1 = 'Sangoma Ring',
+    Ring2 = 'Prolix Ring',
+    Back = 'Swith Cape',
+    Waist = 'Witful Belt',
+    Legs = 'Aya. Cosciales +2',
+    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+};
 
-    ['Chain_Affinity'] = {
-        
-    },
-    
-    ['Burst_Affinity'] = {
-        
-    },
-    
-    ['Diffusion'] = {
-        
-    },
-    
-    ['Efflux'] = {
-        Legs = 'Hashishin Tayt +2',
-    },
+sets.Midcast = {};
 
-    ['TH'] = {
-        Ammo = 'Per. Lucky Egg',
-    },
+sets.Dt = {
+    Main = sets.Weapons.Main,
+    Sub = sets.Weapons.Sub,
+    Ammo = 'Staunch Tathlum',
+    Head = 'Aya. Zucchetto +2',
+    Neck = 'Mirage Stole',
+    Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
+    Ear2 = 'Cessance Earring',
+    Body = 'Ayanmo Corazza +2',
+    Hands = 'Aya. Manopolas +2',
+    Ring1 = 'Vocane Ring',
+    Ring2 = 'Rajas Ring',
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
+    Waist = 'Flume Belt',
+    Legs = 'Hashishin Tayt +2',
+    Feet = 'Aya. Gambieras +2',
+};
 
-    ['CDC'] = {
-        Ammo = 'Coiste Bodhar',
-        Head = 'Hashishin Kavuk +2',
-        Neck = 'Fotia Gorget',
-        Ear1 = 'Mache Earring',
-        Ear2 = 'Mache Earring',
-        Body = 'Ayanmo Corazza +2',
-        Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
-        Ring1 = 'Epona\'s Ring',
-        Ring2 = 'Rajas Ring',
-        Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-        Waist = 'Fotia Belt',
-        Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
-        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
-    },
-    --SB Priority STR > ATK/ACC > Weapon Skill DMG
-    ['Savage_Blade'] = {
-        Ammo = 'Coiste Bodhar',
-        Head = 'Hashishin Kavuk +2',
-        Neck = 'Chivalrous Chain',
-        Ear1 = 'Brutal Earring',
-        Ear2 = 'Cessance Earring',
-        Body = 'Ayanmo Corazza +2',
-        Hands = 'Aya. Manopolas +2',
-        Ring1 = 'Spiral Ring',
-        Ring2 = 'Rajas Ring',
-        Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
-        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
-    },
-    --Sanguine Blade Priority INT > Magic Atk and Magic Damage
-    ['Sanguine_Blade'] = {
-        Ammo = 'Coiste Bodhar',
-        Head = 'Hashishin Kavuk +2',
-        Neck = 'Mirage Stole',
-        Ear1 = 'Friomisi Earring',
-        Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Latent effect: "Refresh"+1', [2] = '"Mag. Atk. Bns."+4' } },
-        Body = 'Ayanmo Corazza +2',
-        Hands = 'Aya. Manopolas +2',
-        Ring1 = 'Sangoma Ring',
-        Ring2 = 'Spiral Ring',
-        Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-        Waist = 'Fotia Belt',
-        Legs = 'Hashishin Tayt +2',
-        Feet = 'Manabyss Pigaches',
-    },
+sets.Tp_Default = {
+    Ammo = 'Coiste Bodhar',
+    Head = 'Aya. Zucchetto +2',
+    Neck = 'Mirage Stole',
+    Ear1 = 'Suppanomimi',
+    Ear2 = 'Cessance Earring',
+    Body = 'Ayanmo Corazza +2',
+    Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
+    Ring1 = 'Chirich Ring',
+    Ring2 = 'Rajas Ring',
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
+    Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
+    Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
+    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+};
 
+sets.Tp_Hybrid = {
+    Ammo = 'Coiste Bodhar',
+    Head = 'Aya. Zucchetto +2',
+    Neck = 'Mirage Stole',
+    Ear1 = 'Suppanomimi',
+    Ear2 = 'Cessance Earring',
+    Body = 'Ayanmo Corazza +2',
+    Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
+    Ring1 = 'Chirich Ring',
+    Ring2 = 'Rajas Ring',
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
+    Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
+    Legs = 'Hashishin Tayt +2',
+    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+};
+
+sets.Ws_Default = {
+    Head = 'Hashishin Kavuk +2',
+    Neck = 'Fotia Gorget',
+    Waist = 'Fotia Belt',
+};
+
+sets.Magic = {
+    Ammo = 'Staunch Tathlum',
+    Head = 'Hashishin Kavuk +2',
+    Neck = 'Stoicheion Medal',
+    Ear1 = 'Friomisi Earring',
+    Ear2 = 'Strophadic Earring',
+    Body = 'Jhakri robe +1',
+    Hands = 'Jhakri Cuffs +1',
+    Ring1 = 'Sangoma Ring',
+    Ring2 = 'Spiral Ring',
+    Back = { Name = 'Cornflower Cape', Augment = { [1] = 'Accuracy+2', [2] = 'Blue Magic skill +9', [3] = 'MP+16', [4] = 'DEX+2' } },
+    Waist = 'Aswang Sash',
+    Legs = 'Hashishin Tayt +2',
+    Feet = 'Jhakri Pigaches +1',
+};
+
+sets.Chain_Affinity = {};
+
+sets.Burst_Affinity = {};
+
+sets.Diffusion = {};
+
+sets.Efflux = {
+    Legs = 'Hashishin Tayt +2',
+};
+
+sets.TH = {
+    Ammo = 'Per. Lucky Egg',
+};
+
+sets.CDC = {
+    Main = sets.Weapons.Main,
+    Sub = sets.Weapons.Sub,
+    Ammo = 'Coiste Bodhar',
+    Head = 'Hashishin Kavuk +2',
+    Neck = 'Fotia Gorget',
+    Ear1 = 'Mache Earring',
+    Ear2 = 'Mache Earring',
+    Body = 'Ayanmo Corazza +2',
+    Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
+    Ring1 = 'Epona\'s Ring',
+    Ring2 = 'Rajas Ring',
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
+    Waist = 'Fotia Belt',
+    Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
+    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+};
+
+sets.Savage_Blade = {
+    Main = sets.Weapons.Main,
+    Sub = sets.Weapons.Sub,
+    Ammo = 'Coiste Bodhar',
+    Head = 'Hashishin Kavuk +2',
+    Neck = 'Chivalrous Chain',
+    Ear1 = 'Brutal Earring',
+    Ear2 = 'Cessance Earring',
+    Body = 'Ayanmo Corazza +2',
+    Hands = 'Aya. Manopolas +2',
+    Ring1 = 'Spiral Ring',
+    Ring2 = 'Rajas Ring',
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
+    Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
+    Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
+    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
 };
 
 profile.Sets = sets;
@@ -206,7 +217,10 @@ profile.HandleDefault = function()
     local target = gData.GetTarget();
     if (player.Status == 'Engaged') then
         if (player.TP >= 1000) and (player.HPP > 50) and (gcdisplay.GetToggle('Solomode') == true) then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Chant du Cygne" <t>');
+            local mainWeapon = gData.GetEquipment().Main;
+            if mainWeapon and mainWeapon.Name == sets.Weapons.Main then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Chant du Cygne" <t>');
+            end
         end
         if (player.HPP < 50) then
             gFunc.EquipSet(sets.Dt)
@@ -219,8 +233,11 @@ profile.HandleDefault = function()
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
-    elseif (player.IsMoving == true) then
+    elseif (player.MPP < 90) then 
+        gFunc.EquipSet(sets.Refresh)
+    else
 		gFunc.EquipSet(sets.Idle);
+        
     end
 	
     gcinclude.CheckDefault ();
@@ -283,7 +300,7 @@ profile.HandleWeaponskill = function()
         elseif string.match(ws.Name, 'Savage Blade') then
             gFunc.EquipSet(sets.Savage_Blade)
         elseif string.match(ws.Name, 'Sanguine Blade') then
-            gFunc.EquipSet(sets.Sanguine_Blade)
+            gFunc.EquipSet(sets.Magic)
         else
             gFunc.EquipSet(sets.Ws_Default)
         end
