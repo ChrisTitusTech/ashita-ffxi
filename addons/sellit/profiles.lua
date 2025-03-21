@@ -355,7 +355,14 @@ local profiles = {
         'Silk Thread',
         'Wyvern Tailskin',
         'Flame Geode',
-        'Faithful Legs I'
+        'Faithful Legs I',
+        'Warthog Meat',
+        'White Rock',
+        'G. Bird Plume',
+        'G. Bird Feather',
+        'Seashell',
+        'Bomb Ash',
+        'Iron Sand',
     }
 }
 

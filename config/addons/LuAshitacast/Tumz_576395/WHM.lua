@@ -3,10 +3,13 @@ local profile = {};
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 gcheals = gFunc.LoadFile('common\\gcheals.lua');
 
+-- Add a variable to store main weapon
+setweapon = 'Queller Rod';
+
 local sets = {};
 
 sets.Weapons = {
-    Main = 'Queller Rod',
+    Main = setweapon,
     Sub = 'Sors Shield'
 };
 
@@ -99,8 +102,6 @@ sets.Midcast.Regen = {
 };
 
 sets.Midcast.Elemental_Magic = {
-    Main = { Name = 'Queller Rod', AugPath='D' },
-    Sub = 'Sors Shield',
     Ammo = 'Kalboron Stone',
     Head = 'Aya. Zucchetto +2',
     Neck = 'Sanctity Necklace',
@@ -135,7 +136,10 @@ sets.Tp_Default = {
 };
 
 sets.Movement = {};
-sets.Weaponskill = {};
+sets.Ws_Default = {
+    Neck = 'Fotia Gorget',
+    Waist = 'Fotia Belt'
+};
 sets.Afflatus_Solace = {
     Body = 'Ebers Bliaut +2'
 };
@@ -169,55 +173,33 @@ end
 
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
-    local hasted = gData.GetBuffCount('Haste');
-    local booststr = gData.GetBuffCount('STR Boost');
+    
+    if (gcdisplay.GetCycle('Weapon') == 'Secondary') and (setweapon ~= 'Magesmasher +1') then
+        setweapon = 'Magesmasher +1'
+        sets.Weapons.Main = setweapon
+        -- Update all sets that reference the weapon
+        sets.Idle.Main = setweapon
+        sets.Dt.Main = setweapon
+        sets.Tp_Default.Main = setweapon
+        -- Force equipment update
+        gFunc.EquipSet(sets.Weapons)
+    elseif (gcdisplay.GetCycle('Weapon') == 'Primary') and (setweapon ~= 'Queller Rod') then
+        setweapon = 'Queller Rod'
+        sets.Weapons.Main = setweapon
+        -- Update all sets that reference the weapon
+        sets.Idle.Main = setweapon
+        sets.Dt.Main = setweapon
+        sets.Tp_Default.Main = setweapon
+        -- Force equipment update
+        gFunc.EquipSet(sets.Weapons)
+    end
+    
     if (player.Status == 'Engaged') then
-        gFunc.EquipSet(sets.Tp_Default)
-        if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) then
-            local mainWeapon = gData.GetEquipment().Main;
-            if mainWeapon and mainWeapon.Name == sets.Weapons.Main and (player.MPP > 80) then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Black Halo" <t>');
-            elseif mainWeapon and mainWeapon.Name == sets.Weapons.Main and (player.MPP <= 80) then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Mystic Boon" <t>');
-            end
-        end
-        if (hasted == 0) and (gcdisplay.GetToggle('Solomode') == true) then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Haste" <me>');
-        elseif (booststr == 0) and (gcdisplay.GetToggle('Solomode') == true) then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Boost-STR" <me>');
-        end
-
-		-- Check if player is not locked on and distance to target is increasing
-		local target = AshitaCore:GetMemoryManager():GetTarget();
-        profile.lastTargetDistance = profile.lastTargetDistance or 0;
-		local currentDistance = 0;
-		
-		-- Only proceed if we have a valid target
-		if target then
-            currentDistance = target.Distance;
-			
-			-- Store the current distance for comparison on next cycle
-			if not profile.lastTargetDistance then
-				profile.lastTargetDistance = currentDistance;
-			end
-			
-			-- Check if we're not locked on, distance is increasing, and greater than 10 units
-			local isLocked = (target:GetLockedOnFlags() > 0);
-			if not isLocked and currentDistance > profile.lastTargetDistance and currentDistance > 10 then
-				print(chat.header('WHM'):append(chat.message('Target moving away - locking on')));
-				AshitaCore:GetChatManager():QueueCommand(1, '/lockon');
-			end
-			
-			-- Update the stored distance for next comparison
-			profile.lastTargetDistance = currentDistance;
-		else
-			-- Reset the stored distance if no target
-			profile.lastTargetDistance = nil;
-		end
+        gFunc.EquipSet(sets.Tp_Default);
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
-    elseif (player.IsMoving == true) then
+    else
 		gFunc.EquipSet(sets.Idle);
     end
 	

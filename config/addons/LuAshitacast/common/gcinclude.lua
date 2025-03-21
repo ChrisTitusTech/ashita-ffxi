@@ -45,8 +45,9 @@ Everything else in this file should not be editted by anyone trying to use my pr
 in each individual job lua file. Unless you know what you're doing then it is best to leave everything below this line alone, the rest here are various functions and arrays etc.
 ]]
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
+gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
-gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','dt','solo','th','kite','nukeset','burst','weapon','elecycle','helix','weather','nuke','death','fight','tankset','proc','pupmode','tpgun','cormsg','forcestring','warpring','telering','fishset'};
+gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','dt','solo','th','kite','helix','weather','nuke','death','cormsg','warpring','telering','fishset'};
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
@@ -100,6 +101,7 @@ function gcinclude.SetVariables()
 	local player = gData.GetPlayer();
 
 	gcdisplay.CreateCycle('MeleeSet', {[1] = 'Default', [2] = 'Hybrid'});
+    gcdisplay.CreateCycle('Weapon', {[1] = 'Primary', [2] = 'Secondary'});
 	gcdisplay.CreateToggle('DTset', false);
 	gcdisplay.CreateToggle('Kite', false);
 	gcdisplay.CreateToggle('Solomode', false);
@@ -138,6 +140,10 @@ function gcinclude.HandleCommands(args)
 		gcdisplay.AdvanceCycle('MeleeSet');
 		toggle = 'Melee Gear Set';
 		status = gcdisplay.GetCycle('MeleeSet');
+	elseif (args[1] == 'setweapon') then
+		gcdisplay.AdvanceCycle('Weapon');
+		toggle = 'Changing Weapon Set';
+		status = gcdisplay.GetCycle('Weapon');
 	elseif (#args == 3 and args[1] == 'setcycle') then
 		if gcdisplay.SetCycle(args[2], args[3]) then
 			toggle = args[2];
@@ -241,6 +247,11 @@ function gcinclude.CheckWsBailout()
 	local amnesia = gData.GetBuffCount('Amnesia');
 	local charm = gData.GetBuffCount('Charm');
 
+	 -- Check if player is moving
+	 if gcmovement.isMoving == true then
+        print(chat.header('GCinclude'):append(chat.message('Cannot cast while moving')));
+        return false;
+    end
 	if gcinclude.settings.WScheck and not gcinclude.DistanceWS:contains(ws.Name) and (tonumber(target.Distance) > gcinclude.settings.WSdistance) then
 		print(chat.header('GCinclude'):append(chat.message('Distance at:' .. string.format("%.1f", tonumber(target.Distance)) .. '/ Max:' .. gcinclude.settings.WSdistance .. ' Change /wsdistance ##')));
 		return false;
@@ -258,6 +269,11 @@ function gcinclude.CheckSpellBailout()
 	local terror = gData.GetBuffCount('Terror');
 	local silence = gData.GetBuffCount('Silence');
 	local charm = gData.GetBuffCount('Charm');
+
+	if gcmovement.isMoving == true then
+		print(chat.header('GCinclude'):append(chat.message('Cannot cast while moving')));
+		return false;
+	end
 
 	if (sleep+petrify+stun+terror+silence+charm >= 1) then
 		return false;

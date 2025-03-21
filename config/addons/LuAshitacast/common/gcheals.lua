@@ -1,10 +1,11 @@
 local gcheals = { };
 
-gcheals.DebuffTimers = {};
+gcheals.DebuffTimers ={};
 gcheals.SpellQueue = { spell = nil, target = nil, timestamp = 0 };
 gcheals.LastAction = { spell = nil, target = nil, timestamp = 0 };
 gcheals.DebugTrusts = false;
 gcheals.DebugHeals = false;
+gcheals.DebugDebuffs = true;
 
 function gcheals.GetTrustNames()
     -- Trust names table (returns a lookup table for quick checking)
@@ -29,7 +30,7 @@ function gcheals.GetTrustNames()
         
         -- C
         ["Cascadien"] = true,
-        ["Chacharoon"] = true,
+        ["Cha8oon"] = true,
         ["Cherukiki"] = true,
         ["Cid"] = true,
         ["Cornelia"] = true,
@@ -219,24 +220,38 @@ function gcheals.CheckDebuff(target)
                 local debuffName = whmDebuffs[statusId];
                 local lastAlert = gcheals.DebuffTimers[memberName][debuffName] or 0;
                 
+                -- Debug output about debuff status
+                if gcheals.DebugDebuffs then
+                    local timeElapsed = currentTime - lastAlert;
+                    if lastAlert > 0 then
+                        print(chat.header('gcheals'):append(chat.message('Debuff ' .. debuffName .. 
+                            ' found on ' .. memberName .. '. Last alert: ' .. timeElapsed .. ' seconds ago')));
+                    else
+                        print(chat.header('gcheals'):append(chat.message('New debuff ' .. debuffName .. 
+                            ' found on ' .. memberName)));
+                    end
+                end
+                
                 -- Only include debuff if 30 seconds have passed since last alert
                 if (currentTime - lastAlert) >= 30 then
                     table.insert(memberDebuffs, debuffName);
                     gcheals.DebuffTimers[memberName][debuffName] = currentTime;
+                    
+                    if gcheals.DebugDebuffs then
+                        print(chat.header('gcheals'):append(chat.message('Added ' .. debuffName .. 
+                            ' to cure list for ' .. memberName)));
+                    end
                 end
             end
         end
     else
-        -- Get party member's status effects
-        -- First make sure this is not a trust, AND that the index is valid
-        if trustNames[memberName] then 
-            return {}
-        end
-        
         -- In Ashita's API, GetMemberStatusIcons can return nil even for valid party members
         -- First check if the member is in zone and has valid data
         local memberServerId = partyManager:GetMemberServerId(targetIndex);
         if memberServerId == 0 then
+            if gcheals.DebugDebuffs then
+                print(chat.header('gcheals'):append(chat.error(memberName .. ' not fully loaded yet')));
+            end
             return {} -- Member exists but doesn't have server ID yet (data not loaded)
         end
         
@@ -248,10 +263,27 @@ function gcheals.CheckDebuff(target)
                     local debuffName = whmDebuffs[statusId];
                     local lastAlert = gcheals.DebuffTimers[memberName][debuffName] or 0;
                     
+                    -- Debug output about debuff status
+                    if gcheals.DebugDebuffs then
+                        local timeElapsed = currentTime - lastAlert;
+                        if lastAlert > 0 then
+                            print(chat.header('gcheals'):append(chat.message('Debuff ' .. debuffName .. 
+                                ' found on ' .. memberName .. '. Last alert: ' .. timeElapsed .. ' seconds ago')));
+                        else
+                            print(chat.header('gcheals'):append(chat.message('New debuff ' .. debuffName .. 
+                                ' found on ' .. memberName)));
+                        end
+                    end
+                    
                     -- Only include debuff if 30 seconds have passed since last alert
                     if (currentTime - lastAlert) >= 30 then
                         table.insert(memberDebuffs, debuffName);
                         gcheals.DebuffTimers[memberName][debuffName] = currentTime;
+                        
+                        if gcheals.DebugDebuffs then
+                            print(chat.header('gcheals'):append(chat.message('Added ' .. debuffName .. 
+                                ' to cure list for ' .. memberName)));
+                        end
                     end
                 end
             end
@@ -261,6 +293,10 @@ function gcheals.CheckDebuff(target)
     -- Clean up this member's timer entries
     for debuffName, timestamp in pairs(gcheals.DebuffTimers[memberName]) do
         if (currentTime - timestamp) >= 35 then  -- Clean up entries older than 35 seconds
+            if gcheals.DebugDebuffs then
+                print(chat.header('gcheals'):append(chat.message('Removed expired timer for ' .. 
+                    debuffName .. ' on ' .. memberName)));
+            end
             gcheals.DebuffTimers[memberName][debuffName] = nil;
         end
     end
@@ -268,6 +304,11 @@ function gcheals.CheckDebuff(target)
     -- Remove member entry if they have no debuffs
     if next(gcheals.DebuffTimers[memberName]) == nil then
         gcheals.DebuffTimers[memberName] = nil;
+    end
+    
+    if gcheals.DebugDebuffs and #memberDebuffs > 0 then
+        print(chat.header('gcheals'):append(chat.message('Found ' .. #memberDebuffs .. 
+            ' debuffs to cure on ' .. memberName)));
     end
     
     return memberDebuffs;
@@ -349,7 +390,7 @@ function gcheals.AutoCure(target)
     -- Check if WHM and handle Afflatus Solace
     if mainJob == 3 then -- WHM job ID
         -- Check if Afflatus Solace is not active
-        if gData.GetBuffCount('Afflatus Solace') == 0 then
+        if gData.GetBuffCount('Afflatus Solace') == 0 and gcinclude.CheckAbilityRecast('Afflatus Solace') == 0 then
             -- Check if Afflatus Solace is ready
             print(chat.header('gcheals'):append(chat.message('Activating Afflatus Solace')));
             AshitaCore:GetChatManager():QueueCommand(1, '/ja "Afflatus Solace" <me>');
@@ -443,37 +484,6 @@ function gcheals.AutoCure(target)
         gcheals.QueueSpell(selectedCure, targetSyntax);
         return true;
     end
-
-    -- Create a priority map for debuff handling
-    local debuffHandlers = {
-        ['Curse'] = { spell = 'Cursna', cost = spellCosts['Cursna'] },
-        ['Doom'] = { spell = 'Cursna', cost = spellCosts['Cursna'] },
-        ['Silence'] = { spell = 'Silena', cost = spellCosts['Silena'] },
-        ['Slow'] = { spell = 'Erase', cost = spellCosts['Erase'] },
-        ['Weight'] = { spell = 'Erase', cost = spellCosts['Erase'] },
-        ['Bind'] = { spell = 'Erase', cost = spellCosts['Erase'] },
-        ['Amnesia'] = { spell = 'Erase', cost = spellCosts['Erase'] },
-        ['Disease'] = { spell = 'Viruna', cost = spellCosts['Viruna'] },
-        ['Plague'] = { spell = 'Viruna', cost = spellCosts['Viruna'] },
-        ['Sleep'] = { spell = 'Cure', cost = spellCosts['Cure'] },
-        ['Petrification'] = { spell = 'Stona', cost = spellCosts['Stona'] },
-        ['Paralysis'] = { spell = 'Paralyna', cost = spellCosts['Paralyna'] },
-        ['Blind'] = { spell = 'Blindna', cost = spellCosts['Blindna'] },
-        ['Poison'] = { spell = 'Poisona', cost = spellCosts['Poisona'] }
-    };
-    
-    -- Process debuffs in priority order
-    for _, debuff in ipairs(targetDebuffs) do
-        local handler = debuffHandlers[debuff];
-        if handler and handler.cost <= currentMP then
-            gcheals.DebugPrint('Handling debuff: ' .. debuff .. ' on ' .. targetName);
-            gcheals.QueueSpell(handler.spell, targetSyntax);
-            return true;
-        end
-    end
-    
-    gcheals.DebugPrint('No suitable cure found for ' .. targetName);
-    return false;
 end
 
 function gcheals.CheckParty()
@@ -516,9 +526,16 @@ function gcheals.CheckParty()
     
     -- Find the most injured party member
     local lowestHpp = 100
-    local mostInjuredIndex = nil
+    local mostInjuredIndex = 0
+    local numberOfInjured = 0
+    local numberOfMinorInjured = 0
     
     for i = 1, #partyMembers do
+        if partyMembers[i].hpp < 70 then
+            numberOfInjured = numberOfInjured + 1
+        elseif partyMembers[i].hpp < 85 then
+            numberOfMinorInjured = numberOfMinorInjured + 1
+        end
         if partyMembers[i] and partyMembers[i].hpp < lowestHpp then
             lowestHpp = partyMembers[i].hpp
             mostInjuredIndex = partyMembers[i].index
@@ -526,21 +543,93 @@ function gcheals.CheckParty()
                 ' (HP%: ' .. tostring(lowestHpp) .. ')');
         end
     end
-    
+    local player = gData.GetPlayer();
+    local hasted = gData.GetBuffCount('Haste');
+    local proted = gData.GetBuffCount('Protect');
+    local shelled = gData.GetBuffCount('Shell');
+    local booststr = gData.GetBuffCount('STR Boost');
+    local recast = AshitaCore:GetMemoryManager():GetRecast();
+    local curaRecast = recast:GetSpellTimer(475);
+    local curaga2Recast = recast:GetSpellTimer(8);
+    local curaga3Recast = recast:GetSpellTimer(9);
+    local holyRecast = recast:GetSpellTimer(21);
+    local holy2Recast = recast:GetSpellTimer(22);
+    local target = gData.GetTarget()
+    local targetSyntax = '<me>';
+    if mostInjuredIndex > 0  then
+        targetSyntax = string.format('<p%d>', mostInjuredIndex);
+    end
+
     -- Auto-cure the most injured member if they're below a certain threshold
-    if mostInjuredIndex and lowestHpp < 75 then  -- You can adjust this threshold
+    if mostInjuredIndex and lowestHpp < 75 and numberOfInjured == 1 then
         gcheals.DebugPrint('Attempting to cure member at index: ' .. tostring(mostInjuredIndex));
         gcheals.AutoCure(mostInjuredIndex)
+    elseif mostInjuredIndex and lowestHpp < 85 and numberOfMinorInjured > 1 and player.Status == 'Engaged' and curaRecast == 0 then
+        gcheals.DebugPrint('Attempting party Cura III');
+        gcheals.QueueSpell('Cura III', '<me>');
+    elseif mostInjuredIndex and lowestHpp < 75 and numberOfInjured > 1 and curaga3Recast == 0 then
+        gcheals.DebugPrint('Attempting party Curaga III');
+        gcheals.QueueSpell('Curaga III', targetSyntax);
+    elseif mostInjuredIndex and lowestHpp < 85 and numberOfMinorInjured > 1 and curaga2Recast == 0 and curaRecast ~= 0 then
+        gcheals.DebugPrint('Attempting party Curaga II');
+        gcheals.QueueSpell('Curaga II', targetSyntax);
     else
         gcheals.DebugPrint('No members need healing at this time');
+        if (player.Status == 'Engaged') then
+            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) then
+                local mainWeapon = gData.GetEquipment().Main;
+                if (player.MPP > 80) then
+                    AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Hexa Strike" <t>');
+                elseif (player.MPP <= 80) then
+                    AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Mystic Boon" <t>');
+                end
+            end
+            if (hasted == 0) and (gcdisplay.GetToggle('Solomode') == true) then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Haste" <me>');
+            elseif (proted == 0) and (gcdisplay.GetToggle('Solomode') == true) then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Protectra V" <me>');
+            elseif (shelled == 0) and (gcdisplay.GetToggle('Solomode') == true) then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Shellra V" <me>');
+            elseif (booststr == 0) and (gcdisplay.GetToggle('Solomode') == true) then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Boost-STR" <me>');
+            end  
+            if target then
+                if target.Distance ~= 0 and target.Distance > 3.5 and gcmovement.isMoving ~= true then
+                    print(chat.header('gcheals'):append(chat.message('Target is out of range, moving closer')));
+                    gcmovement.tapForward(0.1);
+                end
+            end
+        elseif target and player.status ~= 'Engaged' then
+            if target.Type == 'Monster' and target.Distance < 21 then
+                print(chat.header('gcheals'):append(chat.message('Target Found: ' .. target.Name .. ' Target Distance: ' .. target.Distance)));
+                if holyRecast == 0 and player.HPP > 85 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Holy" <t>'); 
+                elseif holy2Recast == 0 and player.HPP > 85 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Holy II" <t>'); end
+
+                if target.Distance > 0 and target.Distance < 5 then
+                    print(chat.header('gcheals'):append(chat.message('In range - attacking target')));
+                    AshitaCore:GetChatManager():QueueCommand(-1, '/attack');
+                end
+            end
+        end
     end
+end
+-- For debugging, add this temporarily to see all active buffs
+function gcheals.printAllBuffs()
+    print("Active buffs:")
+    print (gData.GetBuffCount('Haste') .. " Haste")
+    print (gData.GetBuffCount('Protect') .. " Protect")
+    print (gData.GetBuffCount('Shell') .. " Shell")
+    print (gData.GetBuffCount('STR Boost') .. " STR Boost")
 end
 
 function gcheals.DebugPrint(message)
     if gcheals.DebugHeals then
         print(chat.header('gcheals'):append(chat.message(message)));
+        --gcheals.printAllBuffs();
     end
 end
+
+
 
 return gcheals;
 

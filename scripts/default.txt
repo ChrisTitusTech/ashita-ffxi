@@ -104,6 +104,88 @@
 /bind !F5 /ta <a24>
 /bind !F6 /ta <a25>
 /bind numpad9 /targetnpc
+#######################
+# Alias Weapon Skills
+#######################
+/alias /sblade /ws "Sanguine Blade" <t>
+/alias /mboon /ws "Mystic Boon" <t>
+/alias /hexa /ws "Hexa Strike" <t>
+#############################
+# Alias Elemental DD Magic
+#############################
+/alias /b1 /ma "Blizzard" <t>
+/alias /b2 /ma "Blizzard II" <t>
+/alias /b3 /ma "Blizzard III" <t>
+/alias /b4 /ma "Blizzard IV" <t>
+/alias /b5 /ma "Blizzard V" <t>
+/alias /f1 /ma "Fire" <t>
+/alias /f2 /ma "Fire II" <t>
+/alias /f3 /ma "Fire III" <t>
+/alias /f4 /ma "Fire IV" <t>
+/alias /f5 /ma "Fire V" <t>
+/alias /a1 /ma "Aero" <t>
+/alias /a2 /ma "Aero II" <t>
+/alias /a3 /ma "Aero III" <t>
+/alias /a4 /ma "Aero IV" <t>
+/alias /a5 /ma "Aero V" <t>
+/alias /w1 /ma "Water" <t>
+/alias /w2 /ma "Water II" <t>
+/alias /w3 /ma "Water III" <t>
+/alias /w4 /ma "Water IV" <t>
+/alias /w5 /ma "Water V" <t>
+/alias /s1 /ma "Stone" <t>
+/alias /s2 /ma "Stone II" <t>
+/alias /s3 /ma "Stone III" <t>
+/alias /s4 /ma "Stone IV" <t>
+/alias /s5 /ma "Stone V" <t>
+/alias /t1 /ma "Thunder" <t>
+/alias /t2 /ma "Thunder II" <t>
+/alias /t3 /ma "Thunder III" <t>
+/alias /t4 /ma "Thunder IV" <t>
+/alias /t5 /ma "Thunder V" <t>
+#############################
+# Alias White Magic
+#############################
+/alias /dia /ma "Dia" <t>
+#############################
+# Alias White Magic - Barspells
+#############################
+/alias /bfir /ma "Barfira" <me>
+/alias /bice /ma "Barblizzara" <me>
+/alias /bwnd /ma "Baraera" <me>
+/alias /bewt /ma "Barstonra" <me>
+/alias /blit /ma "Barthundra" <me>
+/alias /bwat /ma "Barwatera" <me>
+/alias /bpet /ma "Barpetra" <me>
+/alias /bpoi /ma "Barpoisonra" <me>
+/alias /bdis /ma "Barsilencera" <me>
+/alias /bpar /ma "Barparalyra" <me>
+/alias /bvir /ma "Barvira" <me>
+#############################
+# Alias White Magic - Status Removal
+#############################
+/alias /erase /ma "Erase" <t>
+/alias /para /ma "Paralyna" <t>
+/alias /silena /ma "Silena" <t>
+/alias /stona /ma "Stona" <t>
+/alias /viruna /ma "Viruna" <t>
+/alias /poisna /ma "Poisona" <t>
+/alias /blindna /ma "Blindna" <t>
+/alias /cursna /ma "Cursna" <t>
+#############################
+# Alias White Magic - Cure Spells
+#############################
+/alias /c1 /ma "Cure" <t>
+/alias /c2 /ma "Cure II" <t>
+/alias /c3 /ma "Cure III" <t>
+/alias /c4 /ma "Cure IV" <t>
+/alias /c5 /ma "Cure V" <t>
+/alias /c6 /ma "Cure VI" <t>
+/alias /ca /ma "Curaga" <t>
+/alias /ca2 /ma "Curaga II" <t>
+/alias /ca3 /ma "Curaga III" <t>
+/alias /ca4 /ma "Curaga IV" <t>
+/alias /ca5 /ma "Curaga V" <t>
 
 ##########################################################################
 #

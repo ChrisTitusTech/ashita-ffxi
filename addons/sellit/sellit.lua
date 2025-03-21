@@ -1,12 +1,13 @@
 addon.name      = 'SellIt';
 addon.author    = 'christitustech';
-addon.version   = '2.0';
+addon.version   = '2.1';
 addon.desc      = 'Originally made by Thorny, but I added a profile system to it.';
 addon.link      = 'https://ashitaxi.com/';
 
 require('common');
 local chat = require('chat');
-local profiles = require('profiles');
+-- We'll load profiles on demand instead of at startup
+local profiles;
 
 --Reduce the minimum delay between item sales
 local baseDelay = 0.1; -- Changed from 2 to 0.5 seconds
@@ -20,6 +21,13 @@ local lastSoldItemId = 0;
 local lastSoldItemIndex = 0;
 local waitingForSale = false;
 local minDelay = 0.1; -- Minimum delay between attempts
+
+local function loadProfiles()
+    -- Force reload by clearing the cache first
+    package.loaded['profiles'] = nil;
+    profiles = require('profiles');
+    return profiles;
+end
 
 local function LocateItem(itemTerm)
     local invMgr = AshitaCore:GetMemoryManager():GetInventory();
@@ -40,6 +48,9 @@ local function LocateItem(itemTerm)
 end
 
 local function SellProfile(profileName)
+    -- Load the latest profiles data when a sell command is used
+    profiles = loadProfiles();
+    
     if not profiles[profileName] then
         print(chat.header('SellIt') .. chat.error('Profile not found: ' .. profileName));
         return;
@@ -77,7 +88,7 @@ ashita.events.register('command', 'cb_HandleCommand', function (e)
     
     local args = string.sub(e.command, 9);
     if args:sub(1,1) == '@' then
-        -- Handle profile command
+        -- Load profiles and handle profile command
         local profileName = args:sub(2);
         SellProfile(profileName);
     else
