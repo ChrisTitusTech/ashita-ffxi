@@ -233,10 +233,6 @@ profile.HandleDefault = function()
         else
             gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
         end
-
-        if (gcdisplay.GetToggle('Solomode') == true) and target.Distance > 3.5 then
-            gcmovement.tapForward(0.1);
-        end
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
@@ -244,15 +240,10 @@ profile.HandleDefault = function()
         gFunc.EquipSet(sets.Refresh)
     else
 		gFunc.EquipSet(sets.Idle);
-        if target and (gcdisplay.GetToggle('Solomode') == true) then
-            if target.Distance > 0 and target.Distance < 5 then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/attack');
-            end
-        end
-        
     end
 	
-    gcinclude.CheckDefault ();
+    gcinclude.CheckDefault();
+    gcinclude.AutoEngage();
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
     
 end

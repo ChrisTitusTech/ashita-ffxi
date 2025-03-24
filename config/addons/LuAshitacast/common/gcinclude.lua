@@ -36,7 +36,6 @@ gcinclude.settings = {
 	RefreshGearMPP = 70; -- set MPP to have your idle refresh set to come on
 	DTGearHPP = 40; -- set HPP to have your DT set to come on
 	PetDTGearHPP = 50; -- set pet HPP to have your PetDT set to come on
-	MoonshadeTP = 2250; -- this is the TP amount you want to equip EAR2 with moonshade earring when you have less than this amount, set to 0 if you dont want to use at all
 	Tele_Ring = 'Dim. Ring (Mea)'; -- put your tele ring in here
 };
 
@@ -467,11 +466,6 @@ function gcinclude.DoShadows(spell) -- 1000% credit to zach2good for this functi
 	end
 end
 
-function gcinclude.DoMoonshade()
-	local player = gData.GetPlayer();
-	if player.TP < gcinclude.settings.MoonshadeTP then gFunc.Equip('Ear2', 'Moonshade Earring') end
-end
-
 function gcinclude.CheckCancels()--tossed Stoneskin in here too
 	local action = gData.GetAction();
 	local sneak = gData.GetBuffCount('Sneak');
@@ -501,6 +495,27 @@ function gcinclude.CheckCancels()--tossed Stoneskin in here too
 		gFunc.CancelAction();
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Stoneskin');
 		do_ss:once(1);
+	end
+end
+
+function gcinclude.AutoEngage()
+	-- This function looks for engage and moves forward if out of range
+	local player = gData.GetPlayer();
+	local target = gData.GetTarget();
+
+	if target and gcdisplay.GetToggle('Solomode') == true then
+		-- NOT ENGAGED and Idle
+		if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 10 then
+			AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
+		end
+		-- ENGAGED Logic
+		if player.Status == 'Engaged' and target.Type == 'Monster' then
+			if target.Distance > 3.5 and player.IsMoving ~= true and target.Distance < 10 then
+				
+				gcmovement.tapForward(0.2);
+			end
+		end
+
 	end
 end
 

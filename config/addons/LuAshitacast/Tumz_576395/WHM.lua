@@ -117,7 +117,7 @@ sets.Midcast.Elemental_Magic = {
     Feet = 'Manabyss Pigaches',
 };
 
-sets.Tp_Default = {
+sets.Default = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Vanir Battery',
@@ -134,6 +134,26 @@ sets.Tp_Default = {
     Ring2 = 'Rajas Ring',
     Back = 'Alaunus\'s Cape'
 };
+
+sets.Acc = {
+    Main = sets.Weapons.Main,
+    Sub = sets.Weapons.Sub,
+    Ammo = 'Hasty Pinion +1',
+    Head = 'Aya. Zucchetto +2',
+    Body = 'Ayanmo Corazza +2',
+    Hands = 'Aya. Manopolas +2',
+    Legs = 'Aya. Cosciales +2',
+    Feet = 'Aya. Gambieras +2',
+    Neck = 'Sanctity Necklace',
+    Waist = 'Cetl Belt',
+    Ear1 = 'Brutal Earring',
+    Ear2 = 'Cessance Earring',
+    Ring1 = 'Chirich Ring',
+    Ring2 = 'Rajas Ring',
+    Back = 'Alaunus\'s Cape'
+};
+
+sets.Hybrid = {};
 
 sets.Movement = {};
 sets.Ws_Default = {
@@ -180,7 +200,7 @@ profile.HandleDefault = function()
         -- Update all sets that reference the weapon
         sets.Idle.Main = setweapon
         sets.Dt.Main = setweapon
-        sets.Tp_Default.Main = setweapon
+        sets.Default.Main = setweapon
         -- Force equipment update
         gFunc.EquipSet(sets.Weapons)
     elseif (gcdisplay.GetCycle('Weapon') == 'Primary') and (setweapon ~= 'Queller Rod') then
@@ -189,13 +209,13 @@ profile.HandleDefault = function()
         -- Update all sets that reference the weapon
         sets.Idle.Main = setweapon
         sets.Dt.Main = setweapon
-        sets.Tp_Default.Main = setweapon
+        sets.Default.Main = setweapon
         -- Force equipment update
         gFunc.EquipSet(sets.Weapons)
     end
     
     if (player.Status == 'Engaged') then
-        gFunc.EquipSet(sets.Tp_Default);
+        gFunc.EquipSet(sets.Default);
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
@@ -204,6 +224,7 @@ profile.HandleDefault = function()
     end
 	
     gcinclude.CheckDefault();
+    gcinclude.AutoEngage();
     if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
     if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;

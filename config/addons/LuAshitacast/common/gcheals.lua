@@ -602,8 +602,8 @@ function gcheals.CheckParty()
         gcheals.QueueSpell('Curaga II', targetSyntax);
     else
         if gcheals.DebugHeals == true then gcheals.DebugPrint('No members need healing at this time') end;
-        if (player.Status == 'Engaged') and gcinclude.CheckSpellBailout() == true then
-            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) then
+        if (player.Status == 'Engaged') and (gcdisplay.GetToggle('Solomode') == true) then
+            if (player.TP >= 1000) and gcinclude.CheckWsBailout() == true then
                 local mainWeapon = gData.GetEquipment().Main;
                 if (player.MPP > 80) then
                     AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Hexa Strike" <t>');
@@ -611,19 +611,14 @@ function gcheals.CheckParty()
                     AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Mystic Boon" <t>');
                 end
             end
-            if (hasted == 0) and (gcdisplay.GetToggle('Solomode') == true) then
+            if (hasted == 0) and gcinclude.CheckSpellBailout() == true then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Haste" <me>');
-            elseif (proted == 0) and (gcdisplay.GetToggle('Solomode') == true) then
+            elseif (proted == 0) and gcinclude.CheckSpellBailout() == true then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Protectra V" <me>');
-            elseif (shelled == 0) and (gcdisplay.GetToggle('Solomode') == true) then
+            elseif (shelled == 0) and gcinclude.CheckSpellBailout() == true then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Shellra V" <me>');
-            elseif (booststr == 0) and (gcdisplay.GetToggle('Solomode') == true) then
+            elseif (booststr == 0) and gcinclude.CheckSpellBailout() == true then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Boost-STR" <me>');
-            elseif target then
-                if target.Distance ~= 0 and target.Distance > 3.5 and player.IsMoving ~= true and target.Distance < 10 then
-                    print(chat.header('gcheals'):append(chat.message('Target is out of range, moving closer')));
-                    gcmovement.tapForward(0.1);
-                end
             end
         elseif target and player.status ~= 'Engaged' and gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solomode') == true) then
             if target.Type == 'Monster' and target.Distance < 21 then
@@ -631,10 +626,6 @@ function gcheals.CheckParty()
                 if holyRecast == 0 and player.HPP > 85 and target.Distance > 5 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Dia II" <t>'); 
                 elseif holy2Recast == 0 and player.HPP > 85 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Paralyze" <t>'); end
 
-                if target.Distance > 0 and target.Distance < 5 then
-                    if gcheals.DebugAttacks == true then print(chat.header('gcheals'):append(chat.message('In range - attacking target'))) end;
-                    AshitaCore:GetChatManager():QueueCommand(-1, '/attack');
-                end
             end
         end
     end
