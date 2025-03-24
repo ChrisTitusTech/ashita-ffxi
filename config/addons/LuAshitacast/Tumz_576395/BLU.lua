@@ -1,5 +1,6 @@
 local profile = {};
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
+gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
@@ -79,7 +80,7 @@ sets.Precast = {
 
 sets.Midcast = {};
 
-sets.Dt = {
+sets.DT = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Staunch Tathlum',
@@ -97,7 +98,7 @@ sets.Dt = {
     Feet = 'Aya. Gambieras +2',
 };
 
-sets.Tp_Default = {
+sets.Default = {
     Ammo = 'Coiste Bodhar',
     Head = 'Aya. Zucchetto +2',
     Neck = 'Mirage Stole',
@@ -113,7 +114,7 @@ sets.Tp_Default = {
     Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
 };
 
-sets.Tp_Hybrid = {
+sets.Hybrid = {
     Ammo = 'Coiste Bodhar',
     Head = 'Aya. Zucchetto +2',
     Neck = 'Mirage Stole',
@@ -128,6 +129,8 @@ sets.Tp_Hybrid = {
     Legs = 'Hashishin Tayt +2',
     Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
 };
+
+sets.Acc = {};
 
 sets.Ws_Default = {
     Head = 'Hashishin Kavuk +2',
@@ -215,20 +218,24 @@ end
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
     local target = gData.GetTarget();
-    if (player.Status == 'Engaged') then
-        if (player.TP >= 1000) and (player.HPP > 50) and (gcdisplay.GetToggle('Solomode') == true) then
+    if (player.Status == 'Engaged') and target then
+        if (player.TP >= 1000) and (player.HPP > 50) or  (target.Name == 'Lady Lilith') and (gcdisplay.GetToggle('Solomode') == true) and (gcinclude.CheckWsBailout() == true) then
             local mainWeapon = gData.GetEquipment().Main;
             if mainWeapon and mainWeapon.Name == sets.Weapons.Main then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Chant du Cygne" <t>');
             end
         end
         if (player.HPP < 50) then
-            gFunc.EquipSet(sets.Dt)
-            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (target.Name ~= 'Lady Lilith') then
+            gFunc.EquipSet(sets.DT)
+            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (target.Name ~= 'Lady Lilith') and (gcinclude.CheckWsBailout() == true) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
             end
         else
-            gFunc.EquipSet(sets.Tp_Default)
+            gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
+        end
+
+        if (gcdisplay.GetToggle('Solomode') == true) and target.Distance > 3.5 then
+            gcmovement.tapForward(0.1);
         end
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
@@ -237,11 +244,15 @@ profile.HandleDefault = function()
         gFunc.EquipSet(sets.Refresh)
     else
 		gFunc.EquipSet(sets.Idle);
+        if target and (gcdisplay.GetToggle('Solomode') == true) then
+            if target.Distance > 0 and target.Distance < 5 then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/attack');
+            end
+        end
         
     end
 	
     gcinclude.CheckDefault ();
-    if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
     
 end
@@ -275,24 +286,27 @@ profile.HandleItem = function()
 end
 
 profile.HandlePrecast = function()
-    local spell = gData.GetAction();
-    gFunc.EquipSet(sets.Precast);
+    if (gcinclude.CheckSpellBailout == false) then gFunc.CancelAction() return;
+    else
+        gFunc.EquipSet(sets.Precast);
+    end
 
     gcinclude.CheckCancels();
 end
 
 profile.HandleMidcast = function()
 	local spell = gData.GetAction();
-	
-	if (gcinclude.BstPetMagicAttack ~= nil) and gcinclude.BstPetMagicAttack:contains(spell.Name) then
-		gFunc.EquipSet(sets.Magic);
-	end
-	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+
+    gFunc.EquipSet(sets.Midcast);
+    if (gcinclude.BstPetMagicAttack ~= nil) and gcinclude.BstPetMagicAttack:contains(spell.Name) then
+        gFunc.EquipSet(sets.Magic);
+    end
+    if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckWsBailout();
-    if (canWS == false) then gFunc.CancelAction() return;
+    if (gcinclude.CheckWsBailout() == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();        
         if string.match(ws.Name, 'Chant du Cygne') then

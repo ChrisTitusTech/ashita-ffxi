@@ -5,7 +5,15 @@ local autodrop = {
     'Ritualistic Plans',
     'Tutelary Plans',
     'Genta Hera-Ate',
-    'Neit\'s Coat'
+    'Neit\'s Coat',
+    'Ice Crest Card',
+    'Fire Crest Card',
+    'Wind Crest Card',
+    'Earth Crest Card',
+    'Lightning Crest Card',
+    'Water Crest Card',
+    'Light Crest Card',
+    'Dark Crest Card',
     -- Add more items as needed
 };
 

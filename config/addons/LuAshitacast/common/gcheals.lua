@@ -3,9 +3,10 @@ local gcheals = { };
 gcheals.DebuffTimers ={};
 gcheals.SpellQueue = { spell = nil, target = nil, timestamp = 0 };
 gcheals.LastAction = { spell = nil, target = nil, timestamp = 0 };
-gcheals.DebugTrusts = false;
+gcheals.DebugParty = false;
 gcheals.DebugHeals = false;
-gcheals.DebugDebuffs = true;
+gcheals.DebugDebuffs = false;
+gcheals.DebugAttacks = false;
 
 function gcheals.GetTrustNames()
     -- Trust names table (returns a lookup table for quick checking)
@@ -321,8 +322,8 @@ function gcheals.QueueSpell(spell, target)
         return false;
     end
     
-    -- Check if we can cast spells
-    if not gcinclude.CheckSpellBailout() then
+    gcinclude.CheckSpellBailout();
+    if gcinclude.CheckSpellBailout() == false then
         gcheals.SpellQueue = { spell = nil, target = nil, timestamp = 0 }; -- Clear queue if we can't cast
         return false;
     end
@@ -440,7 +441,7 @@ function gcheals.AutoCure(target)
     -- Calculate missing HP
     local missingHP = targetMaxHP - targetCurrentHP;
     if missingHP <= ignoreMissingHP then 
-        gcheals.DebugPrint('Missing HP (' .. missingHP .. ') below threshold (' .. ignoreMissingHP .. ')');
+        if gcheals.DebugsHeals == true then gcheals.DebugPrint('Missing HP (' .. missingHP .. ') below threshold (' .. ignoreMissingHP .. ')') end;
         return false 
     end
 
@@ -480,7 +481,7 @@ function gcheals.AutoCure(target)
     
     -- Check if we can cast the selected cure (MP check)
     if selectedCure and spellCosts[selectedCure] <= currentMP then
-        gcheals.DebugPrint('Queueing ' .. selectedCure .. ' for ' .. targetName);
+        if gcheals.DebugHeals == true then gcheals.DebugPrint('Queueing ' .. selectedCure .. ' for ' .. targetName) end;
         gcheals.QueueSpell(selectedCure, targetSyntax);
         return true;
     end
@@ -493,7 +494,7 @@ function gcheals.CheckParty()
     local partySize = party:GetAlliancePartyMemberCount1();
     
     -- Debug output for trust detection
-    if gcheals.DebugTrusts then gcheals.DebugPrint('Starting party check - Party size: ' .. tostring(partySize)) end
+    if gcheals.DebugParty then gcheals.DebugPrint('Starting party check - Party size: ' .. tostring(partySize)) end
     
     for i = 0, partySize - 1 do
         local memberName = party:GetMemberName(i);
@@ -501,7 +502,7 @@ function gcheals.CheckParty()
             local isTrust = trustNames[memberName] and true or false;
             
             -- Debug output for each party member
-            if gcheals.DebugTrusts then gcheals.DebugPrint('Member [' .. i .. ']: ' .. memberName .. ' (Trust: ' .. tostring(isTrust) .. ')') end
+            if gcheals.DebugParty then gcheals.DebugPrint('Member [' .. i .. ']: ' .. memberName .. ' (Trust: ' .. tostring(isTrust) .. ')') end
             
             -- Add to overall party list
             table.insert(partyMembers, {
@@ -509,17 +510,39 @@ function gcheals.CheckParty()
                 name = memberName,
                 hpp = party:GetMemberHPPercent(i) or 0,
                 currentHP = party:GetMemberHP(i) or 0,
-                isTrust = isTrust
+                zone = party:GetMemberZone(i) or 0,
+                isTrust = isTrust,
+                distance = 0 -- Initialize distance value
             });
+            
+            -- Try to get the entity's distance if it exists
+            local entityMgr = AshitaCore:GetMemoryManager():GetEntity();
+            if entityMgr then
+                -- Get the actual entity array size
+                local entityCount = entityMgr:GetEntityMapSize();
+                
+                -- Search for the entity by name
+                for j = 0, entityCount - 1 do
+                    local entName = entityMgr:GetName(j);
+                    if entName == memberName then
+                        partyMembers[#partyMembers].distance = entityMgr:GetDistance(j);
+                        if gcheals.DebugParty and partyMembers[#partyMembers].distance > 0 then 
+                            gcheals.DebugPrint('Found entity ' .. memberName .. ' at index ' .. j .. 
+                                ' with distance: ' .. tostring(partyMembers[#partyMembers].distance));
+                        end
+                        break;
+                    end
+                end
+            end
             
             -- Check for debuffs on non-trust party members
             if not isTrust then
-                local memberDebuffs = gcheals.CheckDebuff(i);
+                --local memberDebuffs = gcheals.CheckDebuff(i);
                 -- Debug debuffs found
-                if memberDebuffs and #memberDebuffs > 0 then
-                    gcheals.DebugPrint('Debuffs for ' .. memberName .. ': ' .. table.concat(memberDebuffs, ', '));
-                    partyMembers[#partyMembers].debuffs = memberDebuffs;
-                end
+                --if memberDebuffs and #memberDebuffs > 0 then
+                --    gcheals.DebugPrint('Debuffs for ' .. memberName .. ': ' .. table.concat(memberDebuffs, ', '));
+                --    partyMembers[#partyMembers].debuffs = memberDebuffs;
+                --end
             end
         end
     end
@@ -529,18 +552,22 @@ function gcheals.CheckParty()
     local mostInjuredIndex = 0
     local numberOfInjured = 0
     local numberOfMinorInjured = 0
+    local target = gData.GetTarget();
     
     for i = 1, #partyMembers do
-        if partyMembers[i].hpp < 70 then
-            numberOfInjured = numberOfInjured + 1
-        elseif partyMembers[i].hpp < 85 then
-            numberOfMinorInjured = numberOfMinorInjured + 1
-        end
-        if partyMembers[i] and partyMembers[i].hpp < lowestHpp then
-            lowestHpp = partyMembers[i].hpp
-            mostInjuredIndex = partyMembers[i].index
-            gcheals.DebugPrint('Found injured member: ' .. partyMembers[i].name .. 
-                ' (HP%: ' .. tostring(lowestHpp) .. ')');
+        -- Note on Entity Distance - Trusts are 0 and distance is NOT in yalms but a unique unit that is much smaller than yalms which means higher number
+        if partyMembers[i] and partyMembers[i].isTrust or partyMembers[i].zone == partyMembers[1].zone and partyMembers[i].distance < 350 then
+            if partyMembers[i].hpp < 70 then
+                numberOfInjured = numberOfInjured + 1
+            elseif partyMembers[i].hpp < 85 then
+                numberOfMinorInjured = numberOfMinorInjured + 1
+            end
+            if partyMembers[i] and partyMembers[i].hpp < lowestHpp then
+                lowestHpp = partyMembers[i].hpp
+                mostInjuredIndex = partyMembers[i].index
+                if gcheals.DebugHeals == true then gcheals.DebugPrint('Found injured member: ' .. partyMembers[i].name .. 
+                    ' (HP%: ' .. tostring(lowestHpp) .. ')') end;
+            end
         end
     end
     local player = gData.GetPlayer();
@@ -552,8 +579,8 @@ function gcheals.CheckParty()
     local curaRecast = recast:GetSpellTimer(475);
     local curaga2Recast = recast:GetSpellTimer(8);
     local curaga3Recast = recast:GetSpellTimer(9);
-    local holyRecast = recast:GetSpellTimer(21);
-    local holy2Recast = recast:GetSpellTimer(22);
+    local holyRecast = recast:GetSpellTimer(24);
+    local holy2Recast = recast:GetSpellTimer(58);
     local target = gData.GetTarget()
     local targetSyntax = '<me>';
     if mostInjuredIndex > 0  then
@@ -562,20 +589,20 @@ function gcheals.CheckParty()
 
     -- Auto-cure the most injured member if they're below a certain threshold
     if mostInjuredIndex and lowestHpp < 75 and numberOfInjured == 1 then
-        gcheals.DebugPrint('Attempting to cure member at index: ' .. tostring(mostInjuredIndex));
+        if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting to cure member at index: ' .. tostring(mostInjuredIndex)) end;
         gcheals.AutoCure(mostInjuredIndex)
     elseif mostInjuredIndex and lowestHpp < 85 and numberOfMinorInjured > 1 and player.Status == 'Engaged' and curaRecast == 0 then
-        gcheals.DebugPrint('Attempting party Cura III');
+        if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Cura III') end;
         gcheals.QueueSpell('Cura III', '<me>');
     elseif mostInjuredIndex and lowestHpp < 75 and numberOfInjured > 1 and curaga3Recast == 0 then
-        gcheals.DebugPrint('Attempting party Curaga III');
+        if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Curaga III') end;
         gcheals.QueueSpell('Curaga III', targetSyntax);
     elseif mostInjuredIndex and lowestHpp < 85 and numberOfMinorInjured > 1 and curaga2Recast == 0 and curaRecast ~= 0 then
-        gcheals.DebugPrint('Attempting party Curaga II');
+        if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Curaga II') end;
         gcheals.QueueSpell('Curaga II', targetSyntax);
     else
-        gcheals.DebugPrint('No members need healing at this time');
-        if (player.Status == 'Engaged') then
+        if gcheals.DebugHeals == true then gcheals.DebugPrint('No members need healing at this time') end;
+        if (player.Status == 'Engaged') and gcinclude.CheckSpellBailout() == true then
             if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) then
                 local mainWeapon = gData.GetEquipment().Main;
                 if (player.MPP > 80) then
@@ -592,21 +619,20 @@ function gcheals.CheckParty()
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Shellra V" <me>');
             elseif (booststr == 0) and (gcdisplay.GetToggle('Solomode') == true) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Boost-STR" <me>');
-            end  
-            if target then
-                if target.Distance ~= 0 and target.Distance > 3.5 and gcmovement.isMoving ~= true then
+            elseif target then
+                if target.Distance ~= 0 and target.Distance > 3.5 and player.IsMoving ~= true and target.Distance < 10 then
                     print(chat.header('gcheals'):append(chat.message('Target is out of range, moving closer')));
                     gcmovement.tapForward(0.1);
                 end
             end
-        elseif target and player.status ~= 'Engaged' then
+        elseif target and player.status ~= 'Engaged' and gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solomode') == true) then
             if target.Type == 'Monster' and target.Distance < 21 then
-                print(chat.header('gcheals'):append(chat.message('Target Found: ' .. target.Name .. ' Target Distance: ' .. target.Distance)));
-                if holyRecast == 0 and player.HPP > 85 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Holy" <t>'); 
-                elseif holy2Recast == 0 and player.HPP > 85 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Holy II" <t>'); end
+                if gcheals.DebugAttacks == true then print(chat.header('gcheals'):append(chat.message('Target Found: ' .. target.Name .. ' Target Distance: ' .. target.Distance))) end;
+                if holyRecast == 0 and player.HPP > 85 and target.Distance > 5 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Dia II" <t>'); 
+                elseif holy2Recast == 0 and player.HPP > 85 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Paralyze" <t>'); end
 
                 if target.Distance > 0 and target.Distance < 5 then
-                    print(chat.header('gcheals'):append(chat.message('In range - attacking target')));
+                    if gcheals.DebugAttacks == true then print(chat.header('gcheals'):append(chat.message('In range - attacking target'))) end;
                     AshitaCore:GetChatManager():QueueCommand(-1, '/attack');
                 end
             end
@@ -623,10 +649,9 @@ function gcheals.printAllBuffs()
 end
 
 function gcheals.DebugPrint(message)
-    if gcheals.DebugHeals then
+
         print(chat.header('gcheals'):append(chat.message(message)));
-        --gcheals.printAllBuffs();
-    end
+
 end
 
 

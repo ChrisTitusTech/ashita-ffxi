@@ -60,7 +60,7 @@ local filters = T{
 		uses = false,
 		readies = false,
 		casting = false,
-		all = false,
+		all = true,
 	},
 	
 	my_pet = { -- Your pet is doing something
@@ -99,7 +99,7 @@ local filters = T{
 		uses = false,
 		readies = false,
 		casting = false,
-		all = false,
+		all = true,
 	},
 
 	enemies = { -- Monster that your party has claimed doing something with one of the below targets
@@ -152,7 +152,7 @@ local filters = T{
 			uses = false,
 			readies = false,
 			casting = false,
-			all = false,
+			all = true,
 		},
 		
 		my_pet = { -- He's targeting your pet
@@ -258,7 +258,7 @@ local filters = T{
 			uses = false,
 			readies = false,
 			casting = false,
-			all = false,
+			all = true,
 		},
 		
 		others = { -- He's targeting some guy nearby
@@ -271,7 +271,7 @@ local filters = T{
 			uses = false,
 			readies = false,
 			casting = false,
-			all = false,
+			all = true,
 		},
 		
 		my_pet = { -- He's targeting your pet
@@ -310,7 +310,7 @@ local filters = T{
 			uses = false,
 			readies = false,
 			casting = false,
-			all = false,
+			all = true,
 		},
 		
 		enemies = { -- He's targeting a monster your party has claimed
@@ -336,7 +336,7 @@ local filters = T{
 			uses = false,
 			readies = false,
 			casting = false,
-			all = false,
+			all = true,
 		},
 	},
 };

@@ -47,7 +47,7 @@ in each individual job lua file. Unless you know what you're doing then it is be
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
-gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','dt','solo','th','kite','helix','weather','nuke','death','cormsg','warpring','telering','fishset'};
+gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','solo','th','kite','helix','weather','nuke','death','warpring','telering','fishset','autoheal'};
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
@@ -76,7 +76,6 @@ gcinclude.Rolls = T{{'Fighter\'s Roll',5,9}, {'Monk\'s Roll',3,7}, {'Healer\'s R
 	{'Puppet Roll',3,7}, {'Gallant\'s Roll',3,7}, {'Wizard\'s Roll',5,9}, {'Dancer\'s Roll',3,7}, {'Scholar\'s Roll',2,6},{'Naturalist\'s Roll',3,7}, {'Runeist\'s Roll',4,8}, {'Bolter\'s Roll',3,9}, {'Caster\'s Roll',2,7}, {'Courser\'s Roll',3,9},{'Blitzer\'s Roll',4,9}, {'Tactician\'s Roll',5,8}, {'Allies\' Roll',3,10}, {'Miser\'s Roll',5,7},
 	{'Companion\'s Roll',2,10},{'Avenger\'s Roll',4,8},}; -- {name,lucky,unlucky}
 gcinclude.FishSet = false;
-gcinclude.CORmsg = true;
 gcinclude.CraftSet = false;
 
 function gcinclude.Message(toggle, status)
@@ -100,11 +99,11 @@ end
 function gcinclude.SetVariables()
 	local player = gData.GetPlayer();
 
-	gcdisplay.CreateCycle('MeleeSet', {[1] = 'Default', [2] = 'Hybrid'});
+	gcdisplay.CreateCycle('MeleeSet', {[1] = 'Default', [2] = 'Hybrid', [3] = 'Acc', [4] = 'DT'});
     gcdisplay.CreateCycle('Weapon', {[1] = 'Primary', [2] = 'Secondary'});
-	gcdisplay.CreateToggle('DTset', false);
 	gcdisplay.CreateToggle('Kite', false);
 	gcdisplay.CreateToggle('Solomode', false);
+	if player.MainJob == 'WHM' then gcdisplay.CreateToggle('Autoheal', false) end;
 	gcdisplay.CreateToggle('TH', false);
 end
 
@@ -132,10 +131,6 @@ function gcinclude.HandleCommands(args)
 			gcinclude.settings.WScheck = not gcinclude.settings.WScheck;
 			print(chat.header('GCinclude'):append(chat.message('WS distance check is now ' .. tostring(gcinclude.settings.WScheck))));
 		end
-	elseif (args[1] == 'dt') then
-		gcdisplay.AdvanceToggle('DTset');
-		toggle = 'DT Set';
-		status = gcdisplay.GetToggle('DTset');
 	elseif (args[1] == 'meleeset') then
 		gcdisplay.AdvanceCycle('MeleeSet');
 		toggle = 'Melee Gear Set';
@@ -157,6 +152,10 @@ function gcinclude.HandleCommands(args)
 		gcdisplay.AdvanceToggle('Solomode');
 		toggle = 'Solo Mode';
 		status = gcdisplay.GetToggle('Solomode');
+	elseif (args[1] == 'autoheal') and player.MainJob == 'WHM' then
+		gcdisplay.AdvanceToggle('Autoheal');
+		toggle = 'Autoheal';
+		status = gcdisplay.GetToggle('Autoheal');
 	elseif (args[1] == 'th') then
 		gcdisplay.AdvanceToggle('TH');
 		toggle = 'TH Set';
@@ -230,7 +229,7 @@ function gcinclude.SetRegenRefreshGear()
 	if (player.Status == 'Idle') then
 		gFunc.EquipSet('Idle');
 	end
-	if (player.HPP < gcinclude.settings.DTGearHPP) then gFunc.EquipSet('Dt') end
+	if (player.HPP < gcinclude.settings.DTGearHPP) then gFunc.EquipSet('DT') end
 	if pet ~= nil then
 		if (pet.HPP < gcinclude.settings.PetDTGearHPP) then gFunc.EquipSet('Pet_Dt') end
 	end
@@ -247,18 +246,18 @@ function gcinclude.CheckWsBailout()
 	local amnesia = gData.GetBuffCount('Amnesia');
 	local charm = gData.GetBuffCount('Charm');
 
-	 -- Check if player is moving
-	 if gcmovement.isMoving == true then
-        print(chat.header('GCinclude'):append(chat.message('Cannot cast while moving')));
-        return false;
-    end
-	if gcinclude.settings.WScheck and not gcinclude.DistanceWS:contains(ws.Name) and (tonumber(target.Distance) > gcinclude.settings.WSdistance) then
-		print(chat.header('GCinclude'):append(chat.message('Distance at:' .. string.format("%.1f", tonumber(target.Distance)) .. '/ Max:' .. gcinclude.settings.WSdistance .. ' Change /wsdistance ##')));
-		return false;
-	elseif (player.TP <= 999) or (sleep+petrify+stun+terror+amnesia+charm >= 1) then
+	if ws then
+		if gcinclude.settings.WScheck and not gcinclude.DistanceWS:contains(ws.Name) and (tonumber(target.Distance) > gcinclude.settings.WSdistance) then
+			print(chat.header('GCinclude'):append(chat.message('Distance at:' .. string.format("%.1f", tonumber(target.Distance)) .. '/ Max:' .. gcinclude.settings.WSdistance .. ' Change /wsdistance ##')));
+			return false;
+		end
+	end
+	if (player.HPP <= 0) or (player.Status == 'Dead') or (player.Status == 'Knocked Out') then
 		return false;
 	end
-		
+	if (player.TP <= 999) or (sleep+petrify+stun+terror+amnesia+charm >= 1) then
+		return false;
+	end
 	return true;
 end
 
@@ -269,9 +268,19 @@ function gcinclude.CheckSpellBailout()
 	local terror = gData.GetBuffCount('Terror');
 	local silence = gData.GetBuffCount('Silence');
 	local charm = gData.GetBuffCount('Charm');
+	local cast = gData.GetAction();
+	local player = gData.GetPlayer();
 
-	if gcmovement.isMoving == true then
+	-- Check if player is performing an action
+	if cast then
+		return false
+	end
+	if player.IsMoving == true then
 		print(chat.header('GCinclude'):append(chat.message('Cannot cast while moving')));
+		return false;
+	end
+
+	if (player.HPP <= 0) or (player.Status == 'Dead') or (player.Status == 'Knocked Out') then
 		return false;
 	end
 
@@ -323,16 +332,6 @@ function gcinclude.DoNukes(tier)
 		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. '" <t>');
 	else
 		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. ' ' .. tier .. '" <t>');
-	end
-end
-
-function gcinclude.DoCORmsg(roll)
-	if gcinclude.CORmsg == false then return end
-
-	for n = 1, #gcinclude.Rolls do
-		if gcinclude.Rolls[n][1] == roll then
-			print(chat.header('GCinclude'):append('[' .. chat.warning(roll) .. ']' .. '  [Lucky: ' .. chat.success(gcinclude.Rolls[n][2]) .. ']  [Unlucky: ' .. chat.error(gcinclude.Rolls[n][3]) .. ']'));
-		end
 	end
 end
 
@@ -518,12 +517,30 @@ end
 function gcinclude.Unload()
 	gcinclude.ClearAlias();
 	gcdisplay.Unload();
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind F9');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind F10');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind F11');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind F12');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^F9');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^F10');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^F11');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^F12');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind !F9');
 end
 
 function gcinclude.Initialize()
 	gcdisplay.Initialize:once(2);
 	gcinclude.SetVariables:once(2);
 	gcinclude.SetAlias:once(2);
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind F9 /meleeset');
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind F10 /setcycle MeleeSet DT');
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind F11 /solo');
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind F12 /th');
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F9 /setweapon');
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F10 /setcycle MeleeSet Default');
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F11 /setcycle MeleeSet Hybrid');
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F12 /setcycle MeleeSet Acc');
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind !F9 /autoheal');
 end
 
 return gcinclude;

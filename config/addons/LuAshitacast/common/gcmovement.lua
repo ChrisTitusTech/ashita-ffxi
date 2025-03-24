@@ -12,6 +12,7 @@ ffi.cdef[[
 local KEYEVENTF_KEYUP = 0x0002
 
 local gcmovement = {};
+gcmovement.DebugMode = false;
 
 -- Virtual key constants for FFXI movement with numpad
 -- Use the correct numeric keypad scan codes for FFXI
@@ -19,9 +20,6 @@ local VK_NUMPAD8 = 0x68;  -- Numpad 8 for moving forward
 local VK_NUMPAD2 = 0x62;  -- Numpad 2 for moving backward
 local VK_NUMPAD4 = 0x64;  -- Numpad 4 for moving left
 local VK_NUMPAD6 = 0x66;  -- Numpad 6 for moving right
-
--- Debug mode
-gcmovement.DebugMode = true;
 
 -- Helper function for debug messages
 function gcmovement.Debug(message)
@@ -41,60 +39,55 @@ local function sendWindowsKey(vkey, isDown)
     if vkey == VK_NUMPAD4 then scanCode = 0x4B; end      -- Numpad 4
     if vkey == VK_NUMPAD6 then scanCode = 0x4D; end      -- Numpad 6
     
-    gcmovement.Debug('Sending key: ' .. vkey .. ' (scan: ' .. scanCode .. ') - Down: ' .. tostring(isDown));
+    if gcmovement.DebugMode == true then gcmovement.Debug('Sending key: ' .. vkey .. ' (scan: ' .. scanCode .. ') - Down: ' .. tostring(isDown)) end;
     ffi.C.keybd_event(vkey, scanCode, flags, 0);
-end
-
--- Check if a key is currently down
-local function isKeyDown(vkey)
-    return bit.band(ffi.C.GetAsyncKeyState(vkey), 0x8000) ~= 0;
 end
 
 -- Move character forward
 function gcmovement.moveForward()
-    gcmovement.Debug('Moving forward');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Moving forward') end;
     sendWindowsKey(VK_NUMPAD8, true);
 end
 
 -- Stop moving forward
 function gcmovement.stopForward()
-    gcmovement.Debug('Stopping forward movement');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Stopping forward movement') end;
     sendWindowsKey(VK_NUMPAD8, false);
 end
 
 -- Move character backward
 function gcmovement.moveBackward()
-    gcmovement.Debug('Moving backward');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Moving backward') end;
     sendWindowsKey(VK_NUMPAD2, true);
 end
 
 -- Stop moving backward
 function gcmovement.stopBackward()
-    gcmovement.Debug('Stopping backward movement');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Stopping backward movement') end;
     sendWindowsKey(VK_NUMPAD2, false);
 end
 
 -- Move character left
 function gcmovement.moveLeft()
-    gcmovement.Debug('Moving left');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Moving left') end;
     sendWindowsKey(VK_NUMPAD4, true);
 end
 
 -- Stop moving left
 function gcmovement.stopLeft()
-    gcmovement.Debug('Stopping left movement');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Stopping left movement') end;
     sendWindowsKey(VK_NUMPAD4, false);
 end
 
 -- Move character right
 function gcmovement.moveRight()
-    gcmovement.Debug('Moving right');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Moving right') end;
     sendWindowsKey(VK_NUMPAD6, true);
 end
 
 -- Stop moving right
 function gcmovement.stopRight()
-    gcmovement.Debug('Stopping right movement');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Stopping right movement') end;
     sendWindowsKey(VK_NUMPAD6, false);
 end
 
@@ -112,7 +105,7 @@ function gcmovement.tapKey(vkey, duration)
     end
     
     -- Press the key down
-    gcmovement.Debug('Tapping key ' .. vkey .. ' for ' .. duration .. ' seconds');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Tapping key ' .. vkey .. ' for ' .. duration .. ' seconds') end;
     sendWindowsKey(vkey, true);
     
     -- Store when to release the key using os.clock() for more precise timing
@@ -133,7 +126,7 @@ function gcmovement.update()
     for index, keyInfo in ipairs(gcmovement.KeyReleaseTimer) do
         if currentTime >= keyInfo.releaseTime then
             sendWindowsKey(keyInfo.key, false);
-            gcmovement.Debug('Released key ' .. keyInfo.key);
+            if gcmovement.DebugMode == true then gcmovement.Debug('Released key ' .. keyInfo.key) end;
             table.insert(keysToRemove, index);
         end
     end
@@ -146,25 +139,25 @@ end
 
 -- Tap forward (press and release Numpad 8)
 function gcmovement.tapForward(duration)
-    gcmovement.Debug('Tapping forward');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Tapping forward') end;
     gcmovement.tapKey(VK_NUMPAD8, duration);
 end
 
 -- Tap backward (press and release Numpad 2)
 function gcmovement.tapBackward(duration)
-    gcmovement.Debug('Tapping backward');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Tapping backward') end;
     gcmovement.tapKey(VK_NUMPAD2, duration);
 end
 
 -- Tap left (press and release Numpad 4)
 function gcmovement.tapLeft(duration)
-    gcmovement.Debug('Tapping left');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Tapping left') end;
     gcmovement.tapKey(VK_NUMPAD4, duration);
 end
 
 -- Tap right (press and release Numpad 6)
 function gcmovement.tapRight(duration)
-    gcmovement.Debug('Tapping right');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Tapping right') end;
     gcmovement.tapKey(VK_NUMPAD6, duration);
 end
 
@@ -184,7 +177,7 @@ end
 
 -- Stop all movement
 function gcmovement.stopAll()
-    gcmovement.Debug('Stopping all movement');
+    if gcmovement.DebugMode == true then gcmovement.Debug('Stopping all movement') end;
     gcmovement.stopForward();
     gcmovement.stopBackward();
     gcmovement.stopLeft();

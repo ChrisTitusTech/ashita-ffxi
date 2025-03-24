@@ -22,7 +22,7 @@ local settings = T{
 		crafting = true,
 		showblocks = true,
 		showguards = true,
-		showcritws = false,
+		showcritws = true,
 		showrollinfo = false,
 	},
 	text = T{

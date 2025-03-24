@@ -89,8 +89,8 @@
 /bind insert /ashita
 /bind SYSRQ /screenshot hide
 /bind ^v /paste
-/bind F11 /ambient
-/bind F12 /fps
+/bind !F11 /ambient
+/bind !F12 /fps
 /bind ^F1 /ta <a10>
 /bind ^F2 /ta <a11>
 /bind ^F3 /ta <a12>
@@ -110,6 +110,8 @@
 /alias /sblade /ws "Sanguine Blade" <t>
 /alias /mboon /ws "Mystic Boon" <t>
 /alias /hexa /ws "Hexa Strike" <t>
+/alias /invis /ma "Invisible" <me>
+/alias /sneak /mac "Sneak" <me>
 #############################
 # Alias Elemental DD Magic
 #############################

@@ -204,7 +204,7 @@ profile.HandleDefault = function()
     end
 	
     gcinclude.CheckDefault();
-    gcheals.CheckParty();
+    if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
     if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
     
