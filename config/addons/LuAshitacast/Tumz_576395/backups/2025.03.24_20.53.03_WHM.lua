@@ -62,7 +62,7 @@ sets.Precast = {
     Ring1 = 'Prolix Ring',
     Ring2 = 'Naji\'s Loop',
     Back = 'Swith Cape',
-    Waist = 'Embla Sash',
+    Waist = 'Witful Belt',
     Legs = 'Aya. Cosciales +2',
     Feet = 'Theo. Duckbills +1', --Need FastCast
 };
@@ -94,15 +94,13 @@ sets.Enhancing = {
     Ring1 = 'Sirona\'s Ring',
     Ring2 = 'Ephedra Ring',
     Back = 'Alaunus\'s Cape',
-    Waist = 'Embla Sash',
+    Waist = 'Witful Belt',
     Legs = 'Piety Pantaloons',
     Feet = 'Theo. Duckbills +1'
 };
 
 sets.Regen = {
-    Hands = 'Ebers Mitts +2',
-    Legs = 'Theo. Pant.+1',
-    Waist = 'Embla Sash'
+    Legs = 'Theo. Pant.+1'
 };
 
 sets.Elemental = {
@@ -166,15 +164,6 @@ sets.Ws_Default = {
 };
 sets.Afflatus_Solace = {
     Body = 'Ebers Bliaut +2'
-};
-
-sets.Cursna = {
-    Neck = 'Malison Medallion',
-    Ring1 = 'Ephedra Ring',
-    Ring2 = 'Haoma\'s Ring',
-    Back = { Name = 'Alaunus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'Evasion+20', [3] = 'Mag. Evasion+20', [4] = 'MND+20', [5] = 'Enmity-10' } },
-    Waist = 'Gishdubar Sash',
-    Legs = 'Theo. Pant. +1',
 };
 
 profile.Sets = sets;
@@ -308,7 +297,7 @@ profile.HandleMidcast = function()
             gFunc.Equip('Waist', 'Hachirin-no-Obi');
         end
     elseif (spell.Skill == 'Enfeebling Magic') then
-        gFunc.EquipSet(sets.Enfeebling_Magic);
+        gFunc.EquipSet(sets.Enfeebling);
     end
 
 	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end

@@ -5,12 +5,12 @@ gcheals = gFunc.LoadFile('common\\gcheals.lua');
 
 -- Add a variable to store main weapon
 setweapon = 'Queller Rod';
-setoffhand = 'Sors Shield';
+
 local sets = {};
 
 sets.Weapons = {
     Main = setweapon,
-    Sub = setoffhand
+    Sub = 'Sors Shield'
 };
 
 sets.Idle = {
@@ -53,26 +53,24 @@ sets.Resting = {};
 
 sets.Precast = {
     Ammo = 'Incantor Stone',
-    Head = 'Aya. Zucchetto +2', -- Need Fastcast
-    Neck = { Name = 'Clr. Torque +1', AugPath='A' },
+    Neck = 'Clr. Torque +1',
     Ear1 = 'Loquac. Earring',
-    Ear2 = 'Malignance Earring',
-    Body = 'Inyanga Jubbah +1',
+    Ear2 = 'Orison Earring',
     Hands = 'Gende. Gages +1',
     Ring1 = 'Prolix Ring',
-    Ring2 = 'Naji\'s Loop',
     Back = 'Swith Cape',
-    Waist = 'Embla Sash',
+    Waist = 'Witful Belt',
     Legs = 'Aya. Cosciales +2',
-    Feet = 'Theo. Duckbills +1', --Need FastCast
+    Feet = 'Theo. Duckbills +1'
 };
 
-sets.Cure = {
+sets.Midcast = {};
+sets.Midcast.Cure = {
     Ammo = 'Staunch Tathlum',
     Head = 'Ebers Cap +1',
     Neck = 'Clr. Torque +1',
     Ear1 = 'Roundel Earring',
-    Ear2 = 'Ebers Earring',
+    Ear2 = 'Orison Earring',
     Body = 'Ebers Bliaut +2',
     Hands = 'Telchine Gloves',
     Ring1 = 'Sirona\'s Ring',
@@ -83,7 +81,7 @@ sets.Cure = {
     Feet = 'Theo. Duckbills +1'
 };
 
-sets.Enhancing = {
+sets.Midcast.Enhancing_Magic = {
     Ammo = 'Staunch Tathlum',
     Head = 'Ebers Cap +1',
     Neck = 'Clr. Torque +1',
@@ -94,18 +92,16 @@ sets.Enhancing = {
     Ring1 = 'Sirona\'s Ring',
     Ring2 = 'Ephedra Ring',
     Back = 'Alaunus\'s Cape',
-    Waist = 'Embla Sash',
+    Waist = 'Witful Belt',
     Legs = 'Piety Pantaloons',
     Feet = 'Theo. Duckbills +1'
 };
 
-sets.Regen = {
-    Hands = 'Ebers Mitts +2',
-    Legs = 'Theo. Pant.+1',
-    Waist = 'Embla Sash'
+sets.Midcast.Regen = {
+    Legs = 'Theo. Pant.+1'
 };
 
-sets.Elemental = {
+sets.Midcast.Elemental_Magic = {
     Ammo = 'Kalboron Stone',
     Head = 'Aya. Zucchetto +2',
     Neck = 'Sanctity Necklace',
@@ -168,15 +164,6 @@ sets.Afflatus_Solace = {
     Body = 'Ebers Bliaut +2'
 };
 
-sets.Cursna = {
-    Neck = 'Malison Medallion',
-    Ring1 = 'Ephedra Ring',
-    Ring2 = 'Haoma\'s Ring',
-    Back = { Name = 'Alaunus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'Evasion+20', [3] = 'Mag. Evasion+20', [4] = 'MND+20', [5] = 'Enmity-10' } },
-    Waist = 'Gishdubar Sash',
-    Legs = 'Theo. Pant. +1',
-};
-
 profile.Sets = sets;
 
 profile.Packer = {
@@ -214,15 +201,6 @@ profile.HandleDefault = function()
         sets.Idle.Main = setweapon
         sets.Dt.Main = setweapon
         sets.Default.Main = setweapon
-        if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-            setoffhand = 'Tamaxchi'
-        else
-            setoffhand = 'Sors Shield'
-        end
-            sets.Weapons.Sub = setoffhand
-            sets.Idle.Sub = setoffhand
-            sets.Dt.Sub = setoffhand
-            sets.Default.Sub = setoffhand
         -- Force equipment update
         gFunc.EquipSet(sets.Weapons)
     elseif (gcdisplay.GetCycle('Weapon') == 'Primary') and (setweapon ~= 'Queller Rod') then
@@ -232,15 +210,6 @@ profile.HandleDefault = function()
         sets.Idle.Main = setweapon
         sets.Dt.Main = setweapon
         sets.Default.Main = setweapon
-        if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-            setoffhand = 'Tamaxchi'
-        else
-            setoffhand = 'Sors Shield'
-        end
-            sets.Weapons.Sub = setoffhand
-            sets.Idle.Sub = setoffhand
-            sets.Dt.Sub = setoffhand
-            sets.Default.Sub = setoffhand
         -- Force equipment update
         gFunc.EquipSet(sets.Weapons)
     end
@@ -293,22 +262,22 @@ profile.HandleMidcast = function()
     local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
 
     if (spell.Skill == 'Enhancing Magic') then
-        gFunc.EquipSet(sets.Enhancing);
+        gFunc.EquipSet(sets.Midcast.Enhancing_Magic);
         if string.contains(spell.Name, 'Regen') then
-            gFunc.EquipSet(sets.Regen);
+            gFunc.EquipSet(sets.Midcast.Regen);
         end
     elseif (spell.Skill == 'Healing Magic') then
-        gFunc.EquipSet(sets.Cure);
+        gFunc.EquipSet(sets.Midcast.Cure);
         if string.match(spell.Name, 'Cursna') then
-            gFunc.EquipSet(sets.Cursna);
+            gFunc.EquipSet(sets.Midcast.Cursna);
         end
     elseif (spell.Skill == 'Elemental Magic') then
-        gFunc.EquipSet(sets.Elemental);
+        gFunc.EquipSet(sets.Midcast.Elemental_Magic);
         if (spell.Element == weather.WeatherElement) or (spell.Element == weather.DayElement) then
             gFunc.Equip('Waist', 'Hachirin-no-Obi');
         end
     elseif (spell.Skill == 'Enfeebling Magic') then
-        gFunc.EquipSet(sets.Enfeebling_Magic);
+        gFunc.EquipSet(sets.Midcast.Enfeebling_Magic);
     end
 
 	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end

@@ -40,6 +40,7 @@
 /addon load affinity
 /addon load ahgo
 /addon load allmaps
+/addon load allseeingeye
 /addon load aspect
 /addon load blucheck
 /addon load blumon

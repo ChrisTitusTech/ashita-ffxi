@@ -189,6 +189,12 @@ function gcheals.CheckDebuff(target)
         [31] = 'Plague'
     };
 
+    -- Lookup table for actual debuffs
+    local isDebuff = {};
+    for id, name in pairs(whmDebuffs) do
+        isDebuff[id] = true;
+    end
+
     local partyManager = AshitaCore:GetMemoryManager():GetParty();
     if not partyManager then return {} end
 
@@ -210,84 +216,80 @@ function gcheals.CheckDebuff(target)
         gcheals.DebuffTimers[memberName] = {};
     end
     
+    -- Get status icons for the target
+    local statusIcons = nil;
+    
     -- Check if the target is the player (index 0)
     if targetIndex == 0 then
-        local statusManager = AshitaCore:GetMemoryManager():GetPlayer():GetStatusIcons();
-        
-        -- Read all status effects
-        for i = 1, 32 do
-            local statusId = statusManager[i];
-            if statusId ~= 255 and statusId > 0 and whmDebuffs[statusId] then
-                local debuffName = whmDebuffs[statusId];
-                local lastAlert = gcheals.DebuffTimers[memberName][debuffName] or 0;
-                
-                -- Debug output about debuff status
-                if gcheals.DebugDebuffs then
-                    local timeElapsed = currentTime - lastAlert;
-                    if lastAlert > 0 then
-                        print(chat.header('gcheals'):append(chat.message('Debuff ' .. debuffName .. 
-                            ' found on ' .. memberName .. '. Last alert: ' .. timeElapsed .. ' seconds ago')));
-                    else
-                        print(chat.header('gcheals'):append(chat.message('New debuff ' .. debuffName .. 
-                            ' found on ' .. memberName)));
-                    end
-                end
-                
-                -- Only include debuff if 30 seconds have passed since last alert
-                if (currentTime - lastAlert) >= 30 then
-                    table.insert(memberDebuffs, debuffName);
-                    gcheals.DebuffTimers[memberName][debuffName] = currentTime;
-                    
-                    if gcheals.DebugDebuffs then
-                        print(chat.header('gcheals'):append(chat.message('Added ' .. debuffName .. 
-                            ' to cure list for ' .. memberName)));
-                    end
-                end
-            end
-        end
+        statusIcons = AshitaCore:GetMemoryManager():GetPlayer():GetStatusIcons();
     else
-        -- In Ashita's API, GetMemberStatusIcons can return nil even for valid party members
-        -- First check if the member is in zone and has valid data
+        -- For party members, first check if they're fully loaded
         local memberServerId = partyManager:GetMemberServerId(targetIndex);
         if memberServerId == 0 then
             if gcheals.DebugDebuffs then
                 print(chat.header('gcheals'):append(chat.error(memberName .. ' not fully loaded yet')));
             end
-            return {} -- Member exists but doesn't have server ID yet (data not loaded)
+            return {}; -- Member exists but doesn't have server ID yet (data not loaded)
         end
         
-        local memberStatus = partyManager:GetMemberStatusIcons(targetIndex);
-        if memberStatus then
-            for j = 1, 32 do
-                local statusId = memberStatus[j];
-                if statusId ~= 255 and statusId > 0 and whmDebuffs[statusId] then
-                    local debuffName = whmDebuffs[statusId];
-                    local lastAlert = gcheals.DebuffTimers[memberName][debuffName] or 0;
-                    
-                    -- Debug output about debuff status
-                    if gcheals.DebugDebuffs then
-                        local timeElapsed = currentTime - lastAlert;
-                        if lastAlert > 0 then
-                            print(chat.header('gcheals'):append(chat.message('Debuff ' .. debuffName .. 
-                                ' found on ' .. memberName .. '. Last alert: ' .. timeElapsed .. ' seconds ago')));
-                        else
-                            print(chat.header('gcheals'):append(chat.message('New debuff ' .. debuffName .. 
-                                ' found on ' .. memberName)));
-                        end
-                    end
-                    
-                    -- Only include debuff if 30 seconds have passed since last alert
-                    if (currentTime - lastAlert) >= 30 then
-                        table.insert(memberDebuffs, debuffName);
-                        gcheals.DebuffTimers[memberName][debuffName] = currentTime;
-                        
-                        if gcheals.DebugDebuffs then
-                            print(chat.header('gcheals'):append(chat.message('Added ' .. debuffName .. 
-                                ' to cure list for ' .. memberName)));
-                        end
-                    end
+        statusIcons = partyManager:GetStatusIcons(targetIndex);
+    end
+    
+    -- If we couldn't get status icons, return empty
+    if not statusIcons then
+        if gcheals.DebugDebuffs then
+            print(chat.header('gcheals'):append(chat.error('Could not get status icons for ' .. memberName)));
+        end
+        return {};
+    end
+    
+    -- Process status icons - ONLY include icons that are in our whmDebuffs list
+    local foundDebuffs = {};
+    
+    for i = 1, 32 do
+        local statusId = statusIcons[i];
+        
+        -- Enhanced validation: Make sure statusId is a valid number and matches our debuff list
+        if type(statusId) == "number" and statusId ~= 255 and statusId > 0 and isDebuff[statusId] then
+            local debuffName = whmDebuffs[statusId];
+            
+            -- Log the actual status ID we're processing for debugging
+            if gcheals.DebugDebuffs then
+                print(chat.header('gcheals'):append(chat.message('Checking status ID ' .. statusId .. 
+                    ' (' .. debuffName .. ') on ' .. memberName)));
+            end
+            
+            -- Add to found debuffs (without timer logic for debugging)
+            foundDebuffs[debuffName] = true;
+            
+            local lastAlert = gcheals.DebuffTimers[memberName][debuffName] or 0;
+            
+            -- Only include debuff if 30 seconds have passed since last alert
+            if (currentTime - lastAlert) >= 30 then
+                table.insert(memberDebuffs, debuffName);
+                gcheals.DebuffTimers[memberName][debuffName] = currentTime;
+                
+                if gcheals.DebugDebuffs then
+                    print(chat.header('gcheals'):append(chat.message('Added ' .. debuffName .. 
+                        ' to cure list for ' .. memberName)));
                 end
             end
+        end
+    end
+    
+    -- Extra validation - print all found debuffs for debugging
+    if gcheals.DebugDebuffs then
+        local debugList = "";
+        for debuff, _ in pairs(foundDebuffs) do
+            if debugList ~= "" then debugList = debugList .. ", " end
+            debugList = debugList .. debuff;
+        end
+        
+        if debugList ~= "" then
+            print(chat.header('gcheals'):append(chat.message('Raw debuffs found on ' .. 
+                memberName .. ': ' .. debugList)));
+        else
+            print(chat.header('gcheals'):append(chat.message('No raw debuffs found on ' .. memberName)));
         end
     end
     
@@ -308,8 +310,10 @@ function gcheals.CheckDebuff(target)
     end
     
     if gcheals.DebugDebuffs and #memberDebuffs > 0 then
-        print(chat.header('gcheals'):append(chat.message('Found ' .. #memberDebuffs .. 
-            ' debuffs to cure on ' .. memberName)));
+        print(chat.header('gcheals'):append(chat.message('Returning ' .. #memberDebuffs .. 
+            ' debuffs to cure on ' .. memberName .. ': ' .. table.concat(memberDebuffs, ', '))));
+    elseif gcheals.DebugDebuffs then
+        print(chat.header('gcheals'):append(chat.message('No debuffs to return for ' .. memberName)));
     end
     
     return memberDebuffs;
@@ -369,7 +373,7 @@ end
 function gcheals.AutoCure(target)
     -- Set default values if not specified
     local curePotency = 50;
-    local ignoreMissingHP = 200;
+    local ignoreMissingHP = 100;
     
     -- Get player information
     local player = AshitaCore:GetMemoryManager():GetPlayer();
@@ -440,11 +444,7 @@ function gcheals.AutoCure(target)
 
     -- Calculate missing HP
     local missingHP = targetMaxHP - targetCurrentHP;
-    if missingHP <= ignoreMissingHP then 
-        if gcheals.DebugsHeals == true then gcheals.DebugPrint('Missing HP (' .. missingHP .. ') below threshold (' .. ignoreMissingHP .. ')') end;
-        return false 
-    end
-
+    
     -- Define cure potencies (base values)
     local curePotencies = {
         ['Cure'] = 65,
@@ -537,12 +537,11 @@ function gcheals.CheckParty()
             
             -- Check for debuffs on non-trust party members
             if not isTrust then
-                --local memberDebuffs = gcheals.CheckDebuff(i);
-                -- Debug debuffs found
-                --if memberDebuffs and #memberDebuffs > 0 then
-                --    gcheals.DebugPrint('Debuffs for ' .. memberName .. ': ' .. table.concat(memberDebuffs, ', '));
-                --    partyMembers[#partyMembers].debuffs = memberDebuffs;
-                --end
+                local memberDebuffs = gcheals.CheckDebuff(i);
+                if memberDebuffs and #memberDebuffs > 0 then
+                    gcheals.DebugPrint('Debuffs for ' .. memberName .. ': ' .. table.concat(memberDebuffs, ', '));
+                    partyMembers[#partyMembers].debuffs = memberDebuffs;
+                end
             end
         end
     end

@@ -15,7 +15,7 @@ local WM_KEYUP = 0x0101
 local KEYEVENTF_KEYUP = 0x0002
 
 local gcmovement = {};
-gcmovement.DebugMode = true;
+gcmovement.DebugMode = false;
 
 -- Define the virtual key constants for FFXI movement with numpad
 local VK_NUMPAD8 = 0x68;  -- Numpad 8 for moving forward
