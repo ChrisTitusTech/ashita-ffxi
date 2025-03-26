@@ -275,7 +275,6 @@ function gcinclude.CheckSpellBailout()
 		return false
 	end
 	if player.IsMoving == true then
-		print(chat.header('GCinclude'):append(chat.message('Cannot cast while moving')));
 		return false;
 	end
 

@@ -382,6 +382,11 @@ local profiles = {
         'Anc. Beast Horn',
         'Aqua Geode',
         'Eudaemon Ring',
+        'Ziz Meat',
+        'Giant Bird Fthr.',
+        'Fiend Blood',
+        'Lizard Tail',
+        
     }
 }
 

@@ -14,6 +14,9 @@ local autodrop = {
     'Water Crest Card',
     'Light Crest Card',
     'Dark Crest Card',
+    'Voidtorso: BST',
+    'Footshard: RNG',
+    'Poroggo Hat'
     -- Add more items as needed
 };
 
