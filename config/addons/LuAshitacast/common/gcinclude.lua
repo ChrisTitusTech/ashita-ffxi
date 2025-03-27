@@ -503,18 +503,18 @@ function gcinclude.AutoEngage()
 	local target = gData.GetTarget();
 
 	if target and gcdisplay.GetToggle('Solomode') == true then
-		-- NOT ENGAGED and Idle
-		if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 10 then
-			AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
-		end
-		-- ENGAGED Logic
-		if player.Status == 'Engaged' and target.Type == 'Monster' then
-			if target.Distance > 3.5 and player.IsMoving ~= true and target.Distance < 10 then
-				
-				gcmovement.tapForward(1);
+		if string.find(target.Name, 'Apex') then
+			if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 10 then
+				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
+			end
+			-- ENGAGED Logic
+			if player.Status == 'Engaged' and target.Type == 'Monster' then
+				if target.Distance > 3.5 and player.IsMoving ~= true and target.Distance < 10 then
+					
+					gcmovement.tapForward(1);
+				end
 			end
 		end
-
 	end
 end
 

@@ -53,7 +53,7 @@ sets.Resting = {};
 
 sets.Precast = {
     Ammo = 'Incantor Stone',
-    Head = 'Aya. Zucchetto +2', -- Need Fastcast
+    Head = 'Ebers Cap +2',
     Neck = { Name = 'Clr. Torque +1', AugPath='A' },
     Ear1 = 'Loquac. Earring',
     Ear2 = 'Malignance Earring',
@@ -69,7 +69,7 @@ sets.Precast = {
 
 sets.Cure = {
     Ammo = 'Staunch Tathlum',
-    Head = 'Ebers Cap +1',
+    Head = 'Ebers Cap +2',
     Neck = 'Clr. Torque +1',
     Ear1 = 'Roundel Earring',
     Ear2 = 'Ebers Earring',
@@ -85,7 +85,7 @@ sets.Cure = {
 
 sets.Enhancing = {
     Ammo = 'Staunch Tathlum',
-    Head = 'Ebers Cap +1',
+    Head = 'Ebers Cap +2',
     Neck = 'Clr. Torque +1',
     Ear1 = 'Roundel Earring',
     Ear2 = 'Orison Earring',

@@ -118,12 +118,12 @@ sets.Hybrid = {
     Ammo = 'Coiste Bodhar',
     Head = 'Aya. Zucchetto +2',
     Neck = 'Mirage Stole',
-    Ear1 = 'Suppanomimi',
+    Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
     Ear2 = 'Cessance Earring',
     Body = 'Ayanmo Corazza +2',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
     Ring1 = 'Chirich Ring',
-    Ring2 = 'Rajas Ring',
+    Ring2 = 'Vocane Ring',
     Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = 'Hashishin Tayt +2',
@@ -219,7 +219,7 @@ profile.HandleDefault = function()
 	local player = gData.GetPlayer();
     local target = gData.GetTarget();
     if (player.Status == 'Engaged') and target then
-        if (player.TP >= 1000) and (player.HPP > 50) or  (target.Name == 'Lady Lilith') and (gcdisplay.GetToggle('Solomode') == true) and (gcinclude.CheckWsBailout() == true) then
+        if (player.TP >= 1000) and (player.HPP > 50) and (gcdisplay.GetToggle('Solomode') == true) and (gcinclude.CheckWsBailout() == true) then
             local mainWeapon = gData.GetEquipment().Main;
             if mainWeapon and mainWeapon.Name == sets.Weapons.Main then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Chant du Cygne" <t>');
