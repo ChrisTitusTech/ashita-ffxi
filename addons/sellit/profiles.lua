@@ -386,7 +386,11 @@ local profiles = {
         'Giant Bird Fthr.',
         'Fiend Blood',
         'Lizard Tail',
-        
+        'Lightning Cluster',
+        'Endark',
+        'Ruszor Meat',
+        'Brass Ingot',
+        'Hydra Fang',
     }
 }
 

@@ -112,7 +112,7 @@
 /alias /mboon /ws "Mystic Boon" <t>
 /alias /hexa /ws "Hexa Strike" <t>
 /alias /invis /ma "Invisible" <me>
-/alias /sneak /mac "Sneak" <me>
+/alias /sneak /ma "Sneak" <me>
 #############################
 # Alias Elemental DD Magic
 #############################
