@@ -14,11 +14,11 @@ local debug_enabled = false;
 
 -- Create a lookup table for faster item checking
 local itemsToAutoDrop = {};
+local lastDropTime = {};  -- Track last drop time for each item
 
 -- Initialize items from autodrop list
 for _, itemName in ipairs(autodrop) do
     itemsToAutoDrop[string.lower(itemName)] = true;
-    print(chat.header('DropIt') .. chat.message('Loaded auto-drop item: ') .. chat.color1(2, itemName));
 end
 
 local function CheckInventory()
@@ -26,6 +26,7 @@ local function CheckInventory()
     
     local invMgr = AshitaCore:GetMemoryManager():GetInventory();
     local count = invMgr:GetContainerCount(0); -- 0 is main inventory
+    local currentTime = os.time();
     
     if debug_enabled then
         print(string.format('[Debug] Checking inventory. Count: %d', count));
@@ -37,12 +38,15 @@ local function CheckInventory()
         if (item ~= nil and item.Id > 0) then
             local resource = AshitaCore:GetResourceManager():GetItemById(item.Id);
             if resource ~= nil then
-                local itemName = resource.Name[1];  -- Use original case for the command
+                local itemName = resource.Name[1];
                 local itemNameLower = string.lower(itemName);
-                if autoDropEnabled and itemsToAutoDrop[itemNameLower] then
+                -- Check if item should be dropped and hasn't been dropped recently
+                if autoDropEnabled and itemsToAutoDrop[itemNameLower] and 
+                   (not lastDropTime[itemNameLower] or currentTime - lastDropTime[itemNameLower] >= 2) then
                     if debug_enabled then
-                        print(string.format('[Debug] Dropping item: %s (Index: %d)', itemName, index));
+                        print(chat.header('DropIt') .. chat.message('Dropping: ' .. itemName));
                     end
+                    lastDropTime[itemNameLower] = currentTime;  -- Update last drop time
                     AshitaCore:GetChatManager():QueueCommand(1, string.format('/drop "%s"', itemName));
                 end
             end
