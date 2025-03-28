@@ -30,7 +30,6 @@
 /load Packer
 /load PacketFlow
 /load Sequencer
-/load Shorthand
 /load Stylist
 
 /addon load distance
@@ -61,7 +60,6 @@
 /addon load filterscan
 /addon load find
 /addon load fishaid
-/addon load HXUI
 /addon load instantah
 /addon load instantchat
 /addon load luashitacast
@@ -203,11 +201,10 @@
 /wait 3
 ##########################################################################
 
-/ambient 255 255 255
 /addon load engage
+/addon load HXUI
 /fps 1
 /ignorepet on
 /ignoretrust on
 /hidetrust on
-/hideparty h
 /localsettings blureffect off
