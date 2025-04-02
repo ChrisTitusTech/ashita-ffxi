@@ -203,6 +203,7 @@
 
 /addon load engage
 /addon load HXUI
+/addon load truesight
 /fps 1
 /ignorepet on
 /ignoretrust on

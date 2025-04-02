@@ -391,6 +391,7 @@ local profiles = {
         'Ruszor Meat',
         'Brass Ingot',
         'Hydra Fang',
+        'Prize Powder',
     }
 }
 

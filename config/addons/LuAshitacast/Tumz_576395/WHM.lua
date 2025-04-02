@@ -100,7 +100,8 @@ sets.Enhancing = {
 };
 
 sets.Regen = {
-    Hands = 'Ebers Mitts +2',
+    Head = 'Inyanga Tiara',
+    Hands = 'Ebers Mitts /+2',
     Legs = 'Theo. Pant.+1',
     Waist = 'Embla Sash'
 };
@@ -246,7 +247,7 @@ profile.HandleDefault = function()
     end
     
     if (player.Status == 'Engaged') then
-        gFunc.EquipSet(sets.Default);
+        gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);

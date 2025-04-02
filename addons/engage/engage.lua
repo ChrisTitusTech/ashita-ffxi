@@ -152,6 +152,16 @@ local function clear_bit_at_position(bytes, bit_offset)
     return false
 end
 
+local function check_bit_at_position(bytes, bit_offset)
+    local byte_index = math.floor(bit_offset / 8) + 1
+    local bit_index = bit_offset % 8
+    
+    if byte_index <= #bytes then
+        return bit.band(bytes[byte_index], bit.lshift(1, bit_index)) ~= 0
+    end
+    return false
+end
+
 ----------------------------------------------------------------------------------------------------
 -- func: incoming_packet
 -- desc: Event called when the addon is processing incoming packets.

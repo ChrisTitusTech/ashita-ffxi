@@ -160,10 +160,68 @@ ashita.events.register('command', 'command_cb', function (e)
             return;
         end
 
+        if (args[2] == 'reset') then
+            -- Reset all blocked lists
+            gSettings.Buff.Blocked = T{};
+            gSettings.Debuff.Blocked = T{};
+            
+            -- Clear all blocked spells and abilities
+            for k,v in pairs(gSettings.Recast.BlockedSpells) do
+                gSettings.Recast.BlockedSpells[k] = nil;
+            end
+            for k,v in pairs(gSettings.Recast.BlockedAbilities) do
+                gSettings.Recast.BlockedAbilities[k] = nil;
+            end
+            
+            -- Save settings
+            settings.save();
+            
+            -- Reset config files
+            local configPath = string.format('%sconfig/addons/%s/', AshitaCore:GetInstallPath(), addon.name);
+            if ashita.fs.exists(configPath) then
+                local files = ashita.fs.get_directory(configPath, '.*\\.lua');
+                for _,file in pairs(files) do
+                    if file:match('settings%.lua$') then
+                        local fullPath = configPath .. file;
+                        local defaultSettings = require('defaults.settings');
+                        local out = io.open(fullPath, 'w');
+                        if out then
+                            out:write('require(\'common\');\n\n');
+                            out:write('local settings = T{ };\n');
+                            for k,v in pairs(defaultSettings) do
+                                out:write(string.format('settings["%s"] = T{ };\n', k));
+                                for k2,v2 in pairs(v) do
+                                    if type(v2) == 'table' then
+                                        out:write(string.format('settings["%s"]["%s"] = T{ };\n', k, k2));
+                                        for k3,v3 in pairs(v2) do
+                                            if type(v3) == 'table' then
+                                                out:write(string.format('settings["%s"]["%s"]["%s"] = T{ };\n', k, k2, k3));
+                                            else
+                                                out:write(string.format('settings["%s"]["%s"]["%s"] = %s;\n', k, k2, k3, tostring(v3)));
+                                            end
+                                        end
+                                    else
+                                        out:write(string.format('settings["%s"]["%s"] = %s;\n', k, k2, tostring(v2)));
+                                    end
+                                end
+                            end
+                            out:write('\nreturn settings;');
+                            out:close();
+                        end
+                    end
+                end
+            end
+            
+            -- Print confirmation
+            print(chat.header('tTimers') .. chat.message('All blocked timers have been reset.'));
+            return;
+        end
+
         print(chat.header('tTimers') .. chat.message('Command Descriptions:'));
         print(chat.header('tTimers') .. chat.color1(2, '/tt') .. chat.message(' - Opens configuration menu.'));
         print(chat.header('tTimers') .. chat.color1(2, '/tt reposition') .. chat.message(' - Starts reposition mode, which shows debug timers to fill all panels and provides draggable handles to move them.'));
         print(chat.header('tTimers') .. chat.color1(2, '/tt lock') .. chat.message(' - Ends repositioning mode and saves positions for the current character.'));
         print(chat.header('tTimers') .. chat.color1(2, '/tt custom [label] [duration]') .. chat.message(' - Adds a custom timer.  Duration can be specified in number of seconds or using s,m, or h suffixes with or without decimal places(30m, 1h, 10.5m, etc).'));
+        print(chat.header('tTimers') .. chat.color1(2, '/tt reset') .. chat.message(' - Resets all blocked timers, allowing them to show up again.'));
     end
 end);
