@@ -17,3 +17,5 @@ config/imgui.ini
 /config/minimap
 /config/plugins/FindAll
 config/addons/**/settings.lua
+config/minimap/minimap.ini
+config/imgui.ini
