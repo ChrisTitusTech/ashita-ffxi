@@ -56,7 +56,7 @@ local sets = {
         Feet = 'Sulev. Leggings +2'
     },
 
-    ['Tp_Default'] = {
+    ['Default'] = {
         Main = 'Gae Derg +1',
         Sub = 'Eletta Grip',
         Ammo = 'Coiste Bodhar',

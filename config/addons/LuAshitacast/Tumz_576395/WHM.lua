@@ -19,7 +19,7 @@ sets.Idle = {
     Ammo = 'Homiliary',
     Head = 'Aya. Zucchetto +2',
     Neck = 'Clr. Torque +1',
-    Ear1 = 'Moonshade Earring',
+    Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Ethereal Earring',
     Body = 'Ebers Bliaut +2',
     Hands = 'Ebers Mitts +2',
@@ -42,7 +42,7 @@ sets.Dt = {
     Feet = 'Aya. Gambieras +2',
     Neck = 'Asperity Necklace',
     Waist = 'Cetl Belt',
-    Ear1 = 'Brutal Earring',
+    Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Cessance Earring',
     Ring1 = 'Vocane Ring',
     Ring2 = 'Rajas Ring',
@@ -162,6 +162,7 @@ sets.Hybrid = {};
 
 sets.Movement = {};
 sets.Ws_Default = {
+    Ear1 = 'Moonshade Earring',
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt'
 };

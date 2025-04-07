@@ -26,7 +26,7 @@ profile.OnLoad = function()
     local player = gData.GetPlayer();
     
     if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-        sets.Weapons.Main = 'Kaja Sword';
+        sets.Weapons.Main = 'Naegling';
         sets.Weapons.Sub = 'Malignance Sword';
         sets.Weapons.Ear1 = 'Suppanomimi';
         print(chat.header('RUN'):append(chat.message('Dual Wield detected - using swords')));
@@ -99,7 +99,7 @@ sets.Idle = {
     Hands = 'Turms Mittens',
     Waist = 'Flume Belt',
     Ear1 = 'Odnowa Earring +1',
-    Ear2 = 'Moonshade Earring',
+    Ear2 = 'Ethereal Earring',
     Ring1 = 'Vocane Ring',
     Ring2 = 'Moonbeam Ring',
     Back = 'Ogma\'s Cape',
@@ -229,11 +229,10 @@ sets.Ws_Default = {
 
 sets.Savage_Blade = {
     Ammo = 'Coiste Bodhar',
-    Ear1 = 'Brutal Earring',
+    Ear1 = 'Moonshade Earring',
     Ear2 = 'Cessance Earring',
     Body = 'Ayanmo Corazza +2',
     Hands = 'Aya. Manopolas +2',
-    Ring1 = 'Enlivened Ring',
     Ring2 = 'Rajas Ring',
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
@@ -267,8 +266,8 @@ profile.HandleDefault = function()
     local player = gData.GetPlayer();
     
     -- Add this weapon swap logic near the start of HandleDefault
-    if (player.SubJob == 'NIN' or player.SubJob == 'DNC') and (setweapon ~= 'Kaja Sword') then
-        setweapon = 'Kaja Sword';
+    if (player.SubJob == 'NIN' or player.SubJob == 'DNC') and (setweapon ~= 'Naegling') then
+        setweapon = 'Naegling';
         setoffhand = 'Malignance Sword';
         setear = 'Suppanomimi';
         -- Update weapons in all sets
@@ -327,11 +326,11 @@ profile.HandleDefault = function()
         if (player.TP > 1000) and (gcdisplay.GetToggle('Solomode') == true) and (gcinclude.CheckWsBailout() == true) then
             if mainequipment.Name == 'Epeolatry' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
-            elseif (player.HPP > 50) and mainequipment.Name == 'Kaja Sword' then
+            elseif (player.HPP > 50) and mainequipment.Name == 'Naegling' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
             elseif (player.HPP > 50) and mainequipment.Name == 'Malignance Sword' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Requiescat" <t>');
-            elseif (player.HPP <= 50) and (mainequipment.Name == 'Kaja Sword' or mainequipment.Name == 'Malignance Sword') then
+            elseif (player.HPP <= 50) and (mainequipment.Name == 'Naegling' or mainequipment.Name == 'Malignance Sword') then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
             end
         -- Handle Spells

@@ -18,7 +18,7 @@ end
 
 local sets = {};
 sets.Weapons = {
-    Main = 'Kaja Sword',
+    Main = 'Naegling',
     Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
 };
 
@@ -48,7 +48,7 @@ sets.Refresh = {
     Neck = 'Mirage Stole',
     Body = 'Jhakri robe +1',
     Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
-    Ear2 = 'Moonshade Earring',
+    Ear2 = 'Ethereal Earring',
     Hands = 'Aya. Manopolas +2',
     Ring1 = 'Vocane Ring',
     Ring2 = 'Rajas Ring',
@@ -67,7 +67,6 @@ sets.Precast = {
     Head = 'Aya. Zucchetto +2',
     Neck = 'Mirage Stole',
     Ear1 = 'Loquac. Earring',
-    Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Latent effect: "Refresh"+1', [2] = '"Mag. Atk. Bns."+4' } },
     Body = 'Ayanmo Corazza +2',
     Hands = { Name = 'Telchine Gloves', Augment = '"Fast Cast"+4' },
     Ring1 = 'Sangoma Ring',
@@ -135,6 +134,7 @@ sets.Acc = {};
 sets.Ws_Default = {
     Head = 'Hashishin Kavuk +2',
     Neck = 'Fotia Gorget',
+    Ear1 = 'Moonshade Earring',
     Waist = 'Fotia Belt',
 };
 
@@ -174,7 +174,7 @@ sets.CDC = {
     Ammo = 'Coiste Bodhar',
     Head = 'Hashishin Kavuk +2',
     Neck = 'Fotia Gorget',
-    Ear1 = 'Mache Earring',
+    Ear1 = 'Moonshade Earring',
     Ear2 = 'Mache Earring',
     Body = 'Ayanmo Corazza +2',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
@@ -191,8 +191,8 @@ sets.Savage_Blade = {
     Sub = sets.Weapons.Sub,
     Ammo = 'Coiste Bodhar',
     Head = 'Hashishin Kavuk +2',
-    Neck = 'Chivalrous Chain',
-    Ear1 = 'Brutal Earring',
+    Neck = 'Mirage Stole',
+    Ear1 = 'Moonshade Earring',
     Ear2 = 'Cessance Earring',
     Body = 'Ayanmo Corazza +2',
     Hands = 'Aya. Manopolas +2',
@@ -221,8 +221,10 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') and target then
         if (player.TP >= 1000) and (player.HPP > 50) and (gcdisplay.GetToggle('Solomode') == true) and (gcinclude.CheckWsBailout() == true) then
             local mainWeapon = gData.GetEquipment().Main;
-            if mainWeapon and mainWeapon.Name == sets.Weapons.Main then
+            if mainWeapon then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Chant du Cygne" <t>');
+            elseif mainWeapon.Name == 'Naegling' then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
             end
         end
         if (player.HPP < 50) then

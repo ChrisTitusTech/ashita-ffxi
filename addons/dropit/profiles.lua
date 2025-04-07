@@ -16,7 +16,9 @@ local autodrop = {
     'Dark Crest Card',
     'Voidtorso: BST',
     'Footshard: RNG',
-    'Poroggo Hat'
+    'Poroggo Hat',
+    'creed seal: lg.',
+    'Sanguine Spike',
     -- Add more items as needed
 };
 

@@ -392,6 +392,23 @@ local profiles = {
         'Brass Ingot',
         'Hydra Fang',
         'Prize Powder',
+        'Indi-Malaise',
+        'Crawler Cocoon',
+        'Red Moko Grass',
+        'Mushrm. Locust',
+        'Heathen\'s Earring',
+        'Lizard Egg',
+        'Sentinel\'s Scherzo',
+        'Tigerhunter',
+        'Erebus\'s Lance',
+        'Chiner\'s Belt',
+        'Tableware Set',
+        'Steam Clock',
+        'Bloodwood Log',
+        'Lizard Skin',
+        'Bugard Skin',
+        'Peiste Stinger',
+        
     }
 }
 

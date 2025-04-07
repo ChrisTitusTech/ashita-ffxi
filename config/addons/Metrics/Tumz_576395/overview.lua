@@ -11,8 +11,8 @@ settings["WS"] = false;
 settings["X"] = 759;
 settings["Mobs_Defeated"] = true;
 settings["Y"] = 194;
-settings["Defense"] = false;
 settings["Healing"] = false;
+settings["Defense"] = false;
 settings["Timer"] = true;
 
 return settings;

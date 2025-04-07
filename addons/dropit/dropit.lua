@@ -16,10 +16,27 @@ local debug_enabled = false;
 local itemsToAutoDrop = {};
 local lastDropTime = {};  -- Track last drop time for each item
 
--- Initialize items from autodrop list
-for _, itemName in ipairs(autodrop) do
-    itemsToAutoDrop[string.lower(itemName)] = true;
+-- Function to reload profiles and update the itemsToAutoDrop table
+local function ReloadProfiles()
+    -- Clear the current itemsToAutoDrop table
+    itemsToAutoDrop = {};
+    
+    -- Reload the profiles module
+    package.loaded.profiles = nil;
+    local newAutodrop = require('profiles');
+    
+    -- Update the itemsToAutoDrop table with new items
+    for _, itemName in ipairs(newAutodrop) do
+        itemsToAutoDrop[string.lower(itemName)] = true;
+    end
+    
+    if debug_enabled then
+        print(chat.header('DropIt') .. chat.message('Profiles reloaded. Items to drop: ' .. #newAutodrop));
+    end
 end
+
+-- Initialize items from autodrop list
+ReloadProfiles();
 
 local function CheckInventory()
     if not autoDropEnabled then return end
@@ -78,10 +95,18 @@ ashita.events.register('command', 'command_cb', function (e)
         end
         return;
     end
+    
+    -- Add command to reload profiles
+    if args[2] == 'reload' then
+        ReloadProfiles();
+        print(chat.header('DropIt') .. chat.message('Profiles reloaded'));
+        return;
+    end
 
     if not args[2] then
         print(chat.header('DropIt') .. chat.error('Commands: /dropit toggle - Toggle auto-drop'));
         print(chat.header('DropIt') .. chat.message('          /dropit debug - Toggle debug mode'));
+        print(chat.header('DropIt') .. chat.message('          /dropit reload - Reload profiles'));
         return;
     end
 end);
@@ -90,6 +115,8 @@ end);
 ashita.events.register('packet_in', 'packet_in_cb', function (e)
     -- Inventory Item Update (0x20) or Inventory Finished (0x1D)
     if (e.id == 0x20 or e.id == 0x1D) then
+        -- Reload profiles before checking inventory
+        ReloadProfiles();
         CheckInventory();
     end
 end);
