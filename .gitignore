@@ -16,3 +16,4 @@ config/pivot/pivot.ini
 config/imgui.ini
 /config/minimap
 /config/plugins/FindAll
+config/addons/**/settings.lua
