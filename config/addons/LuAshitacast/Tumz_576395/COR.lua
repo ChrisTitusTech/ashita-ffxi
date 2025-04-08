@@ -4,7 +4,7 @@ gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
 local sets = {
     ['Idle'] = {
-        Sub = 'Naegling',
+        Sub = 'Blurred Knife +1',
         Main = 'Kaja Knife',
         Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
@@ -22,7 +22,7 @@ local sets = {
         Feet = 'Mummu Gamash. +2',
     },
     ['Default'] = {
-        Sub = 'Naegling',
+        Sub = 'Blurred Knife +1',
         Main = 'Kaja Knife',
         Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
@@ -40,7 +40,7 @@ local sets = {
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
     },
     ['Acc'] = {
-        Sub = 'Naegling',
+        Sub = 'Blurred Knife +1',
         Main = 'Kaja Knife',
         Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
@@ -58,7 +58,7 @@ local sets = {
         Feet = 'Mummu Gamash. +2',
     },
     ['DT'] = {
-        Sub = 'Naegling',
+        Sub = 'Blurred Knife +1',
         Main = 'Kaja Knife',
         Range = { Name = 'Anarchy', AugTrial=1783 },
         Ammo = 'Eminent Bullet',
@@ -188,7 +188,7 @@ profile.HandleDefault = function()
             local rangeWeapon = gData.GetEquipment().Range;
             if rangeWeapon.Name == 'Anarchy' or rangeWeapon.Name == 'Quicksilver' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sniper Shot" <t>');
-            elseif mainWeapon.Name == 'Naegling' then
+            elseif mainWeapon.Name == 'Blurred Knife +1' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
             elseif mainWeapon.Name == 'Kaja Knife' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Evisceration" <t>');
