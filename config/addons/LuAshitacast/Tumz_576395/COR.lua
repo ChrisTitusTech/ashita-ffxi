@@ -29,8 +29,8 @@ local sets = {
         Head = { Name = 'Adhemar Bonnet', AugPath='A' },
         Neck = 'Defiant Collar',
         Ear1 = 'Suppanomimi',
-        Ear2 = 'Cessance Earring',
-        Body = 'Mummu Jacket +2',
+        Ear2 = 'Eabani Earring',
+        Body = 'Adhemar Jacket +1',
         Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
         Ring1 = 'Chirich Ring',
         Ring2 = 'Epona\'s Ring',
@@ -48,7 +48,7 @@ local sets = {
         Neck = 'Defiant Collar',
         Ear1 = 'Suppanomimi',
         Ear2 = 'Cessance Earring',
-        Body = 'Chasseur\'s Frac +2',
+        Body = 'Adhemar Jacket +1',
         Hands = 'Mummu Wrists +2',
         Ring1 = 'Epona\'s Ring',
         Ring2 = 'Chirich Ring',
@@ -199,7 +199,11 @@ profile.HandleDefault = function()
         elseif gData.GetBuffCount('Blitzer\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and (gcdisplay.GetToggle('Solomode') == true) then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Blitzer\'s Roll" <me>');
         end
-        gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
+        if (player.HPP >= 50) then
+            gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
+        elseif (player.HPP < 50) then
+            gFunc.EquipSet(sets.DT)
+        end
         
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
@@ -217,8 +221,9 @@ end
 profile.HandleAbility = function()
     local action = gData.GetAction();
 
-    if (action.Name == 'Phantom Roll') then
+    if (action.Name:contains('Roll')) then
         gFunc.EquipSet(sets.PhantomRoll);
+        if (action.Name == 'Tactician\'s Roll') then gFunc.Equip('Body', 'Chasseur\'s Frac +2') end
     elseif (action.Name == 'Quick Draw') then
         gFunc.EquipSet(sets.QuickDraw);
     elseif (action.Name == 'Wild Card') then
