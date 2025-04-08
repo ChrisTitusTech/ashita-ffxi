@@ -19,6 +19,7 @@ local autodrop = {
     'Poroggo Hat',
     'creed seal: lg.',
     'Sanguine Spike',
+    'Askar Zucchetto',
     -- Add more items as needed
 };
 

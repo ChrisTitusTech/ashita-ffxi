@@ -408,6 +408,14 @@ local profiles = {
         'Lizard Skin',
         'Bugard Skin',
         'Peiste Stinger',
+        'Curaga V',
+        'Animus Augeo',
+        'Scopuli Nails',
+        'Slime Oil',
+        'Dhalmel Hide',
+        'Flan Meat',
+        'Ameretat Vine',
+        'Smilodon Hide',
         
     }
 }

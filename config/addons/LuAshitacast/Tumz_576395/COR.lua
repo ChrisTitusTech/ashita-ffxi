@@ -4,12 +4,12 @@ gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
 local sets = {
     ['Idle'] = {
-        Main = 'Naegling',
-        Sub = 'Kaja Knife',
+        Sub = 'Naegling',
+        Main = 'Kaja Knife',
         Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
         Head = { Name = 'Lanun Tricorne +1', AugTrial=5310 },
-        Neck = 'Comm. Charm +1',
+        Neck = 'Elite Royal Collar',
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Ethereal Earring',
         Body = 'Mummu Jacket +2',
@@ -22,12 +22,12 @@ local sets = {
         Feet = 'Mummu Gamash. +2',
     },
     ['Default'] = {
-        Main = 'Naegling',
-        Sub = 'Kaja Knife',
+        Sub = 'Naegling',
+        Main = 'Kaja Knife',
         Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
         Head = { Name = 'Adhemar Bonnet', AugPath='A' },
-        Neck = 'Comm. Charm +1',
+        Neck = 'Defiant Collar',
         Ear1 = 'Suppanomimi',
         Ear2 = 'Cessance Earring',
         Body = 'Mummu Jacket +2',
@@ -40,15 +40,15 @@ local sets = {
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
     },
     ['Acc'] = {
-        Main = 'Naegling',
-        Sub = 'Kaja Knife',
+        Sub = 'Naegling',
+        Main = 'Kaja Knife',
         Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
         Head = 'Mummu Bonnet +2',
         Neck = 'Defiant Collar',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Suppanomimi',
         Ear2 = 'Cessance Earring',
-        Body = 'Mummu Jacket +2',
+        Body = 'Chasseur\'s Frac +2',
         Hands = 'Mummu Wrists +2',
         Ring1 = 'Epona\'s Ring',
         Ring2 = 'Chirich Ring',
@@ -58,15 +58,15 @@ local sets = {
         Feet = 'Mummu Gamash. +2',
     },
     ['DT'] = {
-        Main = 'Naegling',
-        Sub = 'Kaja Knife',
+        Sub = 'Naegling',
+        Main = 'Kaja Knife',
         Range = { Name = 'Anarchy', AugTrial=1783 },
         Ammo = 'Eminent Bullet',
         Head = 'Mummu Bonnet +2',
         Neck = 'Elite Royal Collar',
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Suppanomimi',
-        Body = 'Mummu Jacket +2',
+        Body = 'Chasseur\'s Frac +2',
         Hands = 'Mummu Wrists +2',
         Ring1 = 'Vocane Ring',
         Ring2 = 'Chirich Ring',
@@ -81,7 +81,16 @@ sets.Resting = {};
 sets.Movement = {};
 
 sets.Evisceration = {
+    Head = 'Mummu Bonnet +2',
+    Body = 'Mummu Jacket +2',
+    Hands = 'Mummu Wrists +2',
+    Legs = 'Samnuha Tights',
+    Feet = 'Mummu Gamash. +2',
     Neck = 'Fotia Gorget',
+    Ear1 = 'Moonshade Earring',
+    Ear2 = 'Mache Earring',
+    Ring1 = 'Epona\'s Ring',
+    Ring2 = 'Rajas Ring',    
     Waist = 'Fotia Belt',
 };
 sets.Requiescat = {
@@ -100,7 +109,7 @@ sets.Ws_Default = {
 
 sets.PhantomRoll = {
     Head = 'Lanun Tricorne +1',
-    Hands = 'Chesseur\'s Gants',
+    Hands = 'Chasseur\'s Gants +1',
     Ring1 = 'Merirosvo Ring',
     Ring2 = 'Luzaf\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
@@ -113,7 +122,7 @@ sets.RandomDeal = {
     Body = 'Lanun Frac',
 };
 sets.TripleShot = {
-    Body = 'Chesseur\'s Frac',
+    Body = 'Chasseur\'s Frac +2',
 };
 sets.CuttingCards = {};
 sets.CrookedCards = {};
@@ -177,10 +186,12 @@ profile.HandleDefault = function()
         if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (gcinclude.CheckWsBailout() == true) then
             local mainWeapon = gData.GetEquipment().Main;
             local rangeWeapon = gData.GetEquipment().Range;
-            if rangeWeapon.Name == 'Anarchy' then
+            if rangeWeapon.Name == 'Anarchy' or rangeWeapon.Name == 'Quicksilver' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sniper Shot" <t>');
             elseif mainWeapon.Name == 'Naegling' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
+            elseif mainWeapon.Name == 'Kaja Knife' then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Evisceration" <t>');
             end
         end
         if gData.GetBuffCount('Tactician\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and (gcdisplay.GetToggle('Solomode') == true) then
