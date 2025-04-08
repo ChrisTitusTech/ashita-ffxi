@@ -251,7 +251,6 @@ local profiles = {
         'Chapuli Horn',
         'Craklaw Pincer',
         'Chapuli Wing',
-        'Tulfaire Feather',
         'Snap. Tendril',
         'Raaz Hide',
         'Raaz Tusk',
