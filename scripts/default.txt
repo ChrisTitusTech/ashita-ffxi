@@ -201,7 +201,7 @@
 /wait 3
 ##########################################################################
 
-/addon load engage
+/addon load butterfeat
 /addon load HXUI
 /addon load truesight
 /fps 1
@@ -209,3 +209,5 @@
 /ignoretrust on
 /hidetrust on
 /localsettings blureffect off
+/drawdistance setworld 3
+/drawdistance setentity 10
