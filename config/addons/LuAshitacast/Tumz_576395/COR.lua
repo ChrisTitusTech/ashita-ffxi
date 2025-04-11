@@ -180,13 +180,12 @@ end
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
     local target = gData.GetTarget();
-    local hunt = gData.GetBuffCount('Hunter\'s Roll');
 
     if (player.Status == 'Engaged') and target then
         if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (gcinclude.CheckWsBailout() == true) then
             local mainWeapon = gData.GetEquipment().Main;
             local rangeWeapon = gData.GetEquipment().Range;
-            if rangeWeapon.Name == 'Anarchy' or rangeWeapon.Name == 'Quicksilver' then
+            if rangeWeapon.Name == 'Anarchy' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sniper Shot" <t>');
             elseif mainWeapon.Name == 'Blurred Knife +1' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
@@ -196,9 +195,12 @@ profile.HandleDefault = function()
         end
         if gData.GetBuffCount('Tactician\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and (gcdisplay.GetToggle('Solomode') == true) then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Tactician\'s Roll" <me>');
-        elseif gData.GetBuffCount('Blitzer\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and (gcdisplay.GetToggle('Solomode') == true) then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Blitzer\'s Roll" <me>');
+        elseif gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and (gcdisplay.GetToggle('Solomode') == true) then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Corsair\'s Roll" <me>');
+        elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (gcdisplay.GetToggle('Solomode') == true) and (player.TP >= 350) and player.SubJob == 'DNC' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
         end
+
         if (player.HPP >= 50) then
             gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
         elseif (player.HPP < 50) then

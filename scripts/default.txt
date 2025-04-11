@@ -64,6 +64,7 @@
 /addon load instantchat
 /addon load luashitacast
 /addon load macrofix
+/addon load metrics
 /addon load nocombat
 /addon load NoMount
 /addon load partybuffs
@@ -201,7 +202,7 @@
 /wait 3
 ##########################################################################
 
-/addon load butterfeat
+/addon load ja0wait
 /addon load HXUI
 /addon load truesight
 /fps 1

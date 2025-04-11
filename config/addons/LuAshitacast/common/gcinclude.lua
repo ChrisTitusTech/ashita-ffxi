@@ -509,7 +509,7 @@ function gcinclude.AutoEngage()
 			end
 			-- ENGAGED Logic
 			if player.Status == 'Engaged' and target.Type == 'Monster' then
-				if target.Distance > 3.5 and player.IsMoving ~= true and target.Distance < 10 then
+				if target.Distance > 3 and player.IsMoving ~= true and target.Distance < 10 then
 					gcmovement.tapForward(1);
 				end
 			end

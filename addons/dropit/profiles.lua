@@ -20,6 +20,8 @@ local autodrop = {
     'creed seal: lg.',
     'Sanguine Spike',
     'Askar Zucchetto',
+    'Caller Seal: Hd.',
+    'Cirque Seal: Hd.',
     -- Add more items as needed
 };
 

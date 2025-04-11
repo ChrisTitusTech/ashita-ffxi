@@ -7,12 +7,14 @@ sets.Weapons = {};
 -- Add these near the top after sets declaration
 local setweapon = 'Epeolatry';
 local setoffhand = 'Refined Grip +1';
-local setear = 'Brutal Earring';
+local setear1 = 'Brutal Earring';
+local setear2 = 'Cessance Earring';
 
 sets.Weapons = {
     Main = setweapon,
     Sub = setoffhand,
-    Ear1 = setear
+    Ear1 = setear1,
+    Ear2 = setear2
 };
 
 profile.OnLoad = function()
@@ -164,14 +166,14 @@ sets.Hybrid = {
     Sub = sets.Weapons.Sub,
     Ammo = 'Coiste Bodhar',
     Head = 'Adhemar Bonnet',
-    Body = 'Ayanmo Corazza +2',
+    Body = 'Adhemar Jacket +1',
     Hands = 'Turms Mittens',
     Legs = 'Eri. Leg Guards +2',
     Feet = 'Erilaz Greaves +2',
     Neck = 'Futhark Torque',
     Waist = 'Sailfi Belt +1',
     Ear1 = sets.Weapons.Ear1,
-    Ear2 = 'Cessance Earring',
+    Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
     Ring2 = 'Chirich Ring',
     Back = 'Ogma\'s Cape',
@@ -200,14 +202,14 @@ sets.Default = {
     Sub = sets.Weapons.Sub,
     Ammo = 'Coiste Bodhar',
     Head = 'Adhemar Bonnet',
-    Body = 'Ayanmo Corazza +2',
+    Body = 'Adhemar Jacket +1',
     Hands = 'Herculean Gloves',
     Legs = 'Samnuha Tights',
     Feet = 'Herculean Boots',
     Neck = 'Defiant Collar',
     Waist = 'Sailfi Belt +1',
     Ear1 = sets.Weapons.Ear1,
-    Ear2 = 'Cessance Earring',
+    Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
     Ring2 = 'Chirich Ring',
     Back = 'Ogma\'s Cape',
@@ -231,7 +233,6 @@ sets.Savage_Blade = {
     Ammo = 'Coiste Bodhar',
     Ear1 = 'Moonshade Earring',
     Ear2 = 'Cessance Earring',
-    Body = 'Ayanmo Corazza +2',
     Hands = 'Aya. Manopolas +2',
     Ring2 = 'Rajas Ring',
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
@@ -258,6 +259,32 @@ profile.Sets = sets;
 
 profile.Packer = {};
 
+profile.UpdateSets = function()
+    -- Update weapons in all sets
+    sets.Weapons.Main = setweapon;
+    sets.Weapons.Sub = setoffhand;
+    sets.Weapons.Ear1 = setear1;
+    sets.Weapons.Ear2 = setear2;
+    
+    -- Update all sets that reference weapons
+    sets.Idle.Main = setweapon;
+    sets.Idle.Sub = setoffhand;
+    sets.Dt.Main = setweapon;
+    sets.Dt.Sub = setoffhand;
+    sets.Default.Main = setweapon;
+    sets.Default.Sub = setoffhand;
+    sets.Default.Ear1 = setear1;
+    sets.Default.Ear2 = setear2;
+    sets.Hybrid.Main = setweapon;
+    sets.Hybrid.Sub = setoffhand;
+    sets.Hybrid.Ear1 = setear1;
+    sets.Hybrid.Ear2 = setear2;
+    sets.Acc.Main = setweapon;
+    sets.Acc.Sub = setoffhand;
+    sets.Acc.Ear1 = setear1;
+    sets.Acc.Ear2 = setear2;
+end
+
 profile.HandleCommand = function(args)
     gcinclude.HandleCommands(args);
 end
@@ -269,49 +296,16 @@ profile.HandleDefault = function()
     if (player.SubJob == 'NIN' or player.SubJob == 'DNC') and (setweapon ~= 'Naegling') then
         setweapon = 'Naegling';
         setoffhand = 'Malignance Sword';
-        setear = 'Suppanomimi';
-        -- Update weapons in all sets
-        sets.Weapons.Main = setweapon;
-        sets.Weapons.Sub = setoffhand;
-        sets.Weapons.Ear1 = setear;
-        
-        -- Update all sets that reference weapons
-        sets.Idle.Main = setweapon;
-        sets.Idle.Sub = setoffhand;
-        sets.Dt.Main = setweapon;
-        sets.Dt.Sub = setoffhand;
-        sets.Default.Main = setweapon;
-        sets.Default.Sub = setoffhand;
-        sets.Default.Ear1 = setear;
-        sets.Hybrid.Main = setweapon;
-        sets.Hybrid.Sub = setoffhand;
-        sets.Hybrid.Ear1 = setear;
-        sets.Acc.Main = setweapon;
-        sets.Acc.Sub = setoffhand;
-        sets.Acc.Ear1 = setear;
-        -- Force equipment update
+        setear1 = 'Suppanomimi';
+        setear2 = 'Eabani Earring';
+        profile.UpdateSets();
         gFunc.EquipSet(sets.Weapons);
     elseif (player.SubJob ~= 'NIN' and player.SubJob ~= 'DNC') and (setweapon ~= 'Epeolatry') then
         setweapon = 'Epeolatry';
         setoffhand = 'Refined Grip +1';
-        setear = 'Brutal Earring';
-        -- Update weapons in all sets
-        sets.Weapons.Main = setweapon;
-        sets.Weapons.Sub = setoffhand;
-        sets.Weapons.Ear1 = setear;
-        
-        -- Update all sets that reference weapons
-        sets.Idle.Main = setweapon;
-        sets.Idle.Sub = setoffhand;
-        sets.Dt.Main = setweapon;
-        sets.Dt.Sub = setoffhand;
-        sets.Default.Main = setweapon;
-        sets.Default.Sub = setoffhand;
-        sets.Hybrid.Main = setweapon;
-        sets.Hybrid.Sub = setoffhand;
-        sets.Acc.Main = setweapon;
-        sets.Acc.Sub = setoffhand;
-        
+        setear1 = 'Brutal Earring';
+        setear2 = 'Cessance Earring';
+        profile.UpdateSets();
         -- Force equipment update
         gFunc.EquipSet(sets.Weapons);
     end
@@ -334,13 +328,16 @@ profile.HandleDefault = function()
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
             end
         -- Handle Spells
-        elseif (player.MPP > 50) and (player.TP < 1000) and (gcdisplay.GetToggle('Solomode') == true) and gcinclude.CheckSpellBailout() == true then
+        elseif (gcdisplay.GetToggle('Solomode') == true) and gcinclude.CheckSpellBailout() == true then
             if (player.HPP < 50) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Vivacious Pulse" <me>');
-            elseif temper == 0 and temperRecast == 0 then
+            elseif temper == 0 and temperRecast == 0 and (player.MPP > 50) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Temper" <me>');
+            elseif gcinclude.CheckAbilityRecast('Waltzes') == 0 and (player.HPP < 35) and player.SubJob == 'DNC' then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
+            elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
             end
-            
         end
 
         -- Handle EquipSets
