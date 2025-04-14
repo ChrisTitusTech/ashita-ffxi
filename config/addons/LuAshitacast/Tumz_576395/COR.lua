@@ -5,14 +5,14 @@ gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 local sets = {
     ['Idle'] = {
         Sub = 'Blurred Knife +1',
-        Main = 'Kaja Knife',
+        Main = 'Rostam',
         Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
-        Head = { Name = 'Lanun Tricorne +1', AugTrial=5310 },
+        Head = 'Chass. Tricorne +2',
         Neck = 'Elite Royal Collar',
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Ethereal Earring',
-        Body = 'Mummu Jacket +2',
+        Body = 'Chasseur\'s Frac +2',
         Hands = 'Mummu Wrists +2',
         Ring1 = 'Vocane Ring',
         Ring2 = 'Rajas Ring',
@@ -23,7 +23,7 @@ local sets = {
     },
     ['Default'] = {
         Sub = 'Blurred Knife +1',
-        Main = 'Kaja Knife',
+        Main = 'Rostam',
         Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
         Head = { Name = 'Adhemar Bonnet', AugPath='A' },
@@ -41,13 +41,13 @@ local sets = {
     },
     ['Acc'] = {
         Sub = 'Blurred Knife +1',
-        Main = 'Kaja Knife',
+        Main = 'Rostam',
         Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
-        Head = 'Mummu Bonnet +2',
+        Head = 'Chass. Tricorne +2',
         Neck = 'Defiant Collar',
         Ear1 = 'Suppanomimi',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Eabani Earring',
         Body = 'Adhemar Jacket +1',
         Hands = 'Mummu Wrists +2',
         Ring1 = 'Epona\'s Ring',
@@ -59,10 +59,10 @@ local sets = {
     },
     ['DT'] = {
         Sub = 'Blurred Knife +1',
-        Main = 'Kaja Knife',
+        Main = 'Rostam',
         Range = { Name = 'Anarchy', AugTrial=1783 },
         Ammo = 'Eminent Bullet',
-        Head = 'Mummu Bonnet +2',
+        Head = 'Chass. Tricorne +2',
         Neck = 'Elite Royal Collar',
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Suppanomimi',
@@ -81,9 +81,9 @@ sets.Resting = {};
 sets.Movement = {};
 
 sets.Evisceration = {
-    Head = 'Mummu Bonnet +2',
+    Head = 'Chass. Tricorne +2',
     Body = 'Mummu Jacket +2',
-    Hands = 'Mummu Wrists +2',
+    Hands = 'Chasseaur\'s Gants +2',
     Legs = 'Samnuha Tights',
     Feet = 'Mummu Gamash. +2',
     Neck = 'Fotia Gorget',
@@ -104,12 +104,13 @@ sets.Savage_Blade = {
 sets.Ws_Default = {
     Ear1 = 'Moonshade Earring',
     Neck = 'Fotia Gorget',
+    Hands = 'Chasseaur\'s Gants +2',
     Waist = 'Fotia Belt',
 };
 
 sets.PhantomRoll = {
     Head = 'Lanun Tricorne +1',
-    Hands = 'Chasseur\'s Gants +1',
+    Hands = 'Chasseur\'s Gants +2',
     Ring1 = 'Merirosvo Ring',
     Ring2 = 'Luzaf\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
@@ -135,10 +136,10 @@ sets.Preshot = {
 };
 -- Recycle and ranged Accuracy and Attack
 sets.Midshot = {
-    Head = 'Mummu Bonnet +2',
+    Head = 'Chass. Tricorne +2',
     Neck = 'Comm. Charm +1',
-    Body = 'Mummu Jacket +2',
-    Hands = 'Mummu Wrists +2',
+    Body = 'Chasseur\'s Frac +2',
+    Hands = 'Chasseur\'s Gants +2',
     Ear1 = 'Volley Earring',
     Ring1 = 'Paqichikaji Ring',
     Ring2 = 'Meghanada Ring',
@@ -147,6 +148,23 @@ sets.Midshot = {
 };
 
 sets.WSShot = sets.Midshot
+sets.LSAdd = {
+    Neck = 'Fotia Gorget',
+    Waist = 'Fotia Belt',
+    Ear2 = 'Moonshade Earring',
+};
+sets.LastStand = gFunc.Combine(sets.Midshot, sets.LSAdd);
+sets.WFAdd = {
+    Waist = 'Fotia Belt',
+
+};
+sets.Wildfire = gFunc.Combine(sets.Midshot, sets.WFAdd);
+sets.LSAdd = {
+    Ear1 = 'Friomisi Earring',
+    Ear2 = 'Moonshade Earring',
+
+};
+sets.LeadenSalute = gFunc.Combine(sets.Midshot, sets.LSAdd);
 
 profile.Sets = sets;
 
@@ -162,7 +180,7 @@ profile.OnLoad = function()
     gcinclude.Initialize();
     
     gFunc.LockStyle(sets.Idle)
-    gFunc.Disable('Range');
+    --gFunc.Disable('Range');
     -- Set macro book/set
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
@@ -182,23 +200,30 @@ profile.HandleDefault = function()
     local target = gData.GetTarget();
 
     if (player.Status == 'Engaged') and target then
-        if (player.TP >= 1000) and (gcdisplay.GetToggle('Solomode') == true) and (gcinclude.CheckWsBailout() == true) then
+        if gcdisplay.GetToggle('Solo') == true then
             local mainWeapon = gData.GetEquipment().Main;
             local rangeWeapon = gData.GetEquipment().Range;
-            if rangeWeapon.Name == 'Anarchy' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sniper Shot" <t>');
-            elseif mainWeapon.Name == 'Blurred Knife +1' then
+            local ammo = gData.GetEquipment().Ammo;
+
+            if gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.TP >= 500 and player.HPP < 50 and player.SubJob == 'DNC' then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
+            elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
+            elseif gData.GetBuffCount('Tactician\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Tactician\'s Roll" <me>');
+            elseif gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Corsair\'s Roll" <me>');
+            elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
+            end
+            if ammo.Name == 'Eminent Bullet' and rangeWeapon.Name == 'Compensator' then
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Last Stand" <t>');
+            elseif mainWeapon.Name == 'Naegling' and (player.TP >= 1750) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
-            elseif mainWeapon.Name == 'Kaja Knife' then
+            elseif mainWeapon.Name == 'Kaja Knife' and (player.TP >= 1000) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Evisceration" <t>');
             end
-        end
-        if gData.GetBuffCount('Tactician\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and (gcdisplay.GetToggle('Solomode') == true) then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Tactician\'s Roll" <me>');
-        elseif gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and (gcdisplay.GetToggle('Solomode') == true) then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Corsair\'s Roll" <me>');
-        elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (gcdisplay.GetToggle('Solomode') == true) and (player.TP >= 350) and player.SubJob == 'DNC' then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
+            
         end
 
         if (player.HPP >= 50) then
@@ -269,6 +294,12 @@ profile.HandleWeaponskill = function()
             gFunc.EquipSet(sets.Savage_Blade)
         elseif string.match(ws.Name, 'Evisceration') then
             gFunc.EquipSet(sets.Evisceration )
+        elseif string.match(ws.Name, 'Last Stand') then
+            gFunc.EquipSet(sets.LastStand)
+        elseif string.match(ws.Name, 'Wildfire') then
+            gFunc.EquipSet(sets.Wildfire)
+        elseif string.match(ws.Name, 'Leaden Salute') then
+            gFunc.EquipSet(sets.LeadenSalute)
         elseif string.find(ws.Name, 'Shot') then
             gFunc.EquipSet(sets.WSShot)
         else

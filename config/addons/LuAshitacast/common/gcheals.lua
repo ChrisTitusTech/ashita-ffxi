@@ -537,7 +537,7 @@ function gcheals.CheckParty()
         gcheals.QueueSpell('Curaga II', targetSyntax);
     else
         if gcheals.DebugHeals == true then gcheals.DebugPrint('No members need healing at this time') end;
-        if (player.Status == 'Engaged') and (gcdisplay.GetToggle('Solomode') == true) then
+        if (player.Status == 'Engaged') and (gcdisplay.GetToggle('Solo') == true) then
             if (player.TP >= 1000) and gcinclude.CheckWsBailout() == true then
                 local mainWeapon = gData.GetEquipment().Main;
                 if (player.MPP > 80) then
@@ -555,7 +555,7 @@ function gcheals.CheckParty()
             elseif (booststr == 0) and gcinclude.CheckSpellBailout() == true then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Boost-STR" <me>');
             end
-        elseif target and player.status ~= 'Engaged' and gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solomode') == true) then
+        elseif target and player.status ~= 'Engaged' and gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solo') == true) then
             if target.Type == 'Monster' and target.Distance < 21 then
                 if gcheals.DebugAttacks == true then print(chat.header('gcheals'):append(chat.message('Target Found: ' .. target.Name .. ' Target Distance: ' .. target.Distance))) end;
                 if diaRecast == 0 and player.HPP > 85 and target.Distance > 5 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Dia II" <t>'); 

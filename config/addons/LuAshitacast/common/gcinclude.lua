@@ -101,7 +101,7 @@ function gcinclude.SetVariables()
 	gcdisplay.CreateCycle('MeleeSet', {[1] = 'Default', [2] = 'Hybrid', [3] = 'Acc', [4] = 'DT'});
     gcdisplay.CreateCycle('Weapon', {[1] = 'Primary', [2] = 'Secondary'});
 	gcdisplay.CreateToggle('Kite', false);
-	gcdisplay.CreateToggle('Solomode', false);
+	gcdisplay.CreateToggle('Solo', false);
 	if player.MainJob == 'WHM' then gcdisplay.CreateToggle('Autoheal', false) end;
 	gcdisplay.CreateToggle('TH', false);
 end
@@ -148,9 +148,9 @@ function gcinclude.HandleCommands(args)
 		toggle = 'Kite Set';
 		status = gcdisplay.GetToggle('Kite');
 	elseif (args[1] == 'solo') then
-		gcdisplay.AdvanceToggle('Solomode');
+		gcdisplay.AdvanceToggle('Solo');
 		toggle = 'Solo Mode';
-		status = gcdisplay.GetToggle('Solomode');
+		status = gcdisplay.GetToggle('Solo');
 	elseif (args[1] == 'autoheal') and player.MainJob == 'WHM' then
 		gcdisplay.AdvanceToggle('Autoheal');
 		toggle = 'Autoheal';
@@ -502,7 +502,7 @@ function gcinclude.AutoEngage()
 	local player = gData.GetPlayer();
 	local target = gData.GetTarget();
 
-	if target and gcdisplay.GetToggle('Solomode') == true then
+	if target and gcdisplay.GetToggle('Solo') == true then
 		if string.find(target.Name, 'Apex') then
 			if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 10 then
 				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');

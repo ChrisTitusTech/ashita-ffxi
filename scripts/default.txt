@@ -35,7 +35,6 @@
 /addon load distance
 /addon load fps
 /addon load move
-/addon load timestamp
 /addon load affinity
 /addon load ahgo
 /addon load allmaps

@@ -29,7 +29,7 @@ profile.OnLoad = function()
     
     if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
         sets.Weapons.Main = 'Naegling';
-        sets.Weapons.Sub = 'Malignance Sword';
+        sets.Weapons.Sub = 'Blurred Sword +1';
         sets.Weapons.Ear1 = 'Suppanomimi';
         print(chat.header('RUN'):append(chat.message('Dual Wield detected - using swords')));
     else
@@ -184,14 +184,14 @@ sets.Acc = {
     Sub = sets.Weapons.Sub,
     Ammo = 'Hasty Pinion +1',
     Head = 'Erilaz Galea +2',
-    Body = 'Erilaz Surcoat +2',
+    Body = 'Adhemar Jacket +1',
     Hands = 'Turms Mittens',
     Legs = 'Eri. Leg Guards +2',
     Feet = 'Erilaz Greaves +2',
     Neck = 'Defiant Collar',
     Waist = 'Ioskeha Belt',
     Ear1 = sets.Weapons.Ear1,
-    Ear2 = 'Cessance Earring',
+    Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Moonbeam Ring',
     Ring2 = 'Chirich Ring',
     Back = 'Ogma\'s Cape',
@@ -216,7 +216,7 @@ sets.Default = {
 };
 
 sets.Ws_Default = {
-    Ammo = 'Hasty Pinion +1',
+    Ammo = 'Oshasha\'s Treatise',
     Body = 'Ayanmo Corazza +2',
     Hands = 'Herculean Gloves',
     Legs = 'Samnuha Tights',
@@ -230,14 +230,18 @@ sets.Ws_Default = {
 };
 
 sets.Savage_Blade = {
-    Ammo = 'Coiste Bodhar',
+    Ammo = 'Oshasha\'s Treatise',
     Ear1 = 'Moonshade Earring',
     Ear2 = 'Cessance Earring',
+    Neck = 'Rep. Plat. Medal',
+    Head = 'Erilaz Galea +2',
+    Body = 'Erilaz Surcoat +2',
     Hands = 'Aya. Manopolas +2',
+    Ring1 = 'Spiral Ring',
     Ring2 = 'Rajas Ring',
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
-    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+    Feet = 'Erilaz Greaves +2',
 };
 
 
@@ -245,7 +249,9 @@ sets.TH = {
     Ammo = 'Per. Lucky Egg',
 };
 
-sets.Valiance = {};
+sets.Valiance = {
+    Body = 'Runeist Coat +2',
+};
 
 sets.Vivacious_Pulse = {
     Head = 'Erilaz Galea +2',
@@ -295,7 +301,7 @@ profile.HandleDefault = function()
     -- Add this weapon swap logic near the start of HandleDefault
     if (player.SubJob == 'NIN' or player.SubJob == 'DNC') and (setweapon ~= 'Naegling') then
         setweapon = 'Naegling';
-        setoffhand = 'Malignance Sword';
+        setoffhand = 'Blurred Sword +1';
         setear1 = 'Suppanomimi';
         setear2 = 'Eabani Earring';
         profile.UpdateSets();
@@ -317,18 +323,16 @@ profile.HandleDefault = function()
     local temperRecast = recast:GetSpellTimer(493);
     if (player.Status == 'Engaged') then
         -- Handle Weapon Skills
-        if (player.TP > 1000) and (gcdisplay.GetToggle('Solomode') == true) and (gcinclude.CheckWsBailout() == true) then
+        if (player.TP > 1800) and (gcdisplay.GetToggle('Solo') == true) and (gcinclude.CheckWsBailout() == true) then
             if mainequipment.Name == 'Epeolatry' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
             elseif (player.HPP > 50) and mainequipment.Name == 'Naegling' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
-            elseif (player.HPP > 50) and mainequipment.Name == 'Malignance Sword' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Requiescat" <t>');
             elseif (player.HPP <= 50) and (mainequipment.Name == 'Naegling' or mainequipment.Name == 'Malignance Sword') then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
             end
         -- Handle Spells
-        elseif (gcdisplay.GetToggle('Solomode') == true) and gcinclude.CheckSpellBailout() == true then
+        elseif (gcdisplay.GetToggle('Solo') == true) and gcinclude.CheckSpellBailout() == true then
             if (player.HPP < 50) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Vivacious Pulse" <me>');
             elseif temper == 0 and temperRecast == 0 and (player.MPP > 50) then
@@ -402,6 +406,8 @@ profile.HandleWeaponskill = function()
         
         if string.match(ws.Name, 'Aeolian Edge') then
             gFunc.EquipSet(sets.Aedge_Default)
+        elseif string.match(ws.Name, 'Savage Blade') then
+            gFunc.EquipSet(sets.Savage_Blade)
         end
     end
 end

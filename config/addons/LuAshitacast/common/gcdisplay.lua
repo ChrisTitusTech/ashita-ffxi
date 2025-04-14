@@ -12,8 +12,8 @@ local Sub = 'BAR';
 
 local fontSettings = T{
 	visible = true,
-	font_family = 'Arial',
-	font_height = 12,
+	font_family = 'Tahoma',
+	font_height = 20,
 	color = 0xFFFFFFFF,
 	position_x = 300,
 	position_y = 0,

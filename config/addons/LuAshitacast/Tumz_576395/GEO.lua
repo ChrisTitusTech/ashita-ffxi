@@ -128,7 +128,7 @@ profile.HandleDefault = function()
     end
     
     if (player.Status == 'Engaged') then
-        if (player.TP >= 1000) and gcinclude.CheckWsBailout() == true and (gcdisplay.GetToggle('Solomode') == true) then
+        if (player.TP >= 1000) and gcinclude.CheckWsBailout() == true and (gcdisplay.GetToggle('Solo') == true) then
             local mainWeapon = gData.GetEquipment().Main;
             if (player.MPP > 80) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Hexa Strike" <t>');
@@ -136,8 +136,8 @@ profile.HandleDefault = function()
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Moonlight" <t>');
             end
         end
-        if gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solomode') == true) then
-            if (gcdisplay.GetToggle('Solomode') == true) and target then
+        if gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solo') == true) then
+            if (gcdisplay.GetToggle('Solo') == true) and target then
                 if target.Type == 'Monster' and target.Distance < 21 then
                     if blizzRecast == 0 and player.HPP > 85 and target.Distance > 5 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Blizzard" <t>'); end
                 end
@@ -148,7 +148,7 @@ profile.HandleDefault = function()
         if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
-    elseif target and player.status ~= 'Engaged' and gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solomode') == true) then
+    elseif target and player.status ~= 'Engaged' and gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solo') == true) then
         if target.Type == 'Monster' and target.Distance < 21 then
             if blizzRecast == 0 and player.HPP > 85 and target.Distance > 5 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Blizzard" <t>'); end
         end
