@@ -27,7 +27,13 @@ local function ReloadProfiles()
     
     -- Update the itemsToAutoDrop table with new items
     for _, itemName in ipairs(newAutodrop) do
-        itemsToAutoDrop[string.lower(itemName)] = true;
+        -- Normalize item names by trimming whitespace and converting to lowercase
+        local normalizedName = string.lower(string.gsub(itemName, "^%s*(.-)%s*$", "%1"));
+        itemsToAutoDrop[normalizedName] = true;
+        
+        if debug_enabled then
+            print(chat.header('DropIt') .. chat.message('Added to drop list: ' .. itemName));
+        end
     end
     
     if debug_enabled then
@@ -42,21 +48,31 @@ local function CheckInventory()
     if not autoDropEnabled then return end
     
     local invMgr = AshitaCore:GetMemoryManager():GetInventory();
-    local count = invMgr:GetContainerCount(0); -- 0 is main inventory
+    local count = invMgr:GetContainerCountMax(0); -- 0 is main inventory
     local currentTime = os.time();
     
     if debug_enabled then
-        print(string.format('[Debug] Checking inventory. Count: %d', count));
+        print(string.format('[Debug] Checking main inventory. Total slots: %d', count));
     end
     
     -- Scan through inventory
     for index = 1, count do
         local item = invMgr:GetContainerItem(0, index);
         if (item ~= nil and item.Id > 0) then
+            if debug_enabled then
+                print(string.format('[Debug] Found item ID: %d, Count: %d in slot %d', item.Id, item.Count, index));
+            end
+            
             local resource = AshitaCore:GetResourceManager():GetItemById(item.Id);
             if resource ~= nil then
                 local itemName = resource.Name[1];
-                local itemNameLower = string.lower(itemName);
+                local itemNameLower = string.lower(string.gsub(itemName, "^%s*(.-)%s*$", "%1"));
+                
+                if debug_enabled then
+                    print(string.format('[Debug] Item details - Name: %s, ID: %d', itemName, item.Id));
+                    print(string.format('[Debug] In drop list: %s', itemsToAutoDrop[itemNameLower] and 'yes' or 'no'));
+                end
+                
                 -- Check if item should be dropped and hasn't been dropped recently
                 if autoDropEnabled and itemsToAutoDrop[itemNameLower] and 
                    (not lastDropTime[itemNameLower] or currentTime - lastDropTime[itemNameLower] >= 2) then
@@ -65,6 +81,10 @@ local function CheckInventory()
                     end
                     lastDropTime[itemNameLower] = currentTime;  -- Update last drop time
                     AshitaCore:GetChatManager():QueueCommand(1, string.format('/drop "%s"', itemName));
+                end
+            else
+                if debug_enabled then
+                    print(string.format('[Debug] Could not get resource info for item ID: %d', item.Id));
                 end
             end
         end
@@ -85,16 +105,6 @@ ashita.events.register('command', 'command_cb', function (e)
         print(chat.header('DropIt') .. chat.message('Debug mode: ' .. (debug_enabled and 'enabled' or 'disabled')));
         return;
     end
-
-    -- Add command to toggle auto-drop
-    if args[2] == 'toggle' then
-        autoDropEnabled = not autoDropEnabled;
-        print(chat.header('DropIt') .. chat.message('Auto-drop is now: ' .. (autoDropEnabled and 'enabled' or 'disabled')));
-        if autoDropEnabled then
-            CheckInventory(); -- Check inventory immediately when enabling
-        end
-        return;
-    end
     
     -- Add command to reload profiles
     if args[2] == 'reload' then
@@ -103,10 +113,10 @@ ashita.events.register('command', 'command_cb', function (e)
         return;
     end
 
+    -- Force inventory check if no arguments provided
     if not args[2] then
-        print(chat.header('DropIt') .. chat.error('Commands: /dropit toggle - Toggle auto-drop'));
-        print(chat.header('DropIt') .. chat.message('          /dropit debug - Toggle debug mode'));
-        print(chat.header('DropIt') .. chat.message('          /dropit reload - Reload profiles'));
+        print(chat.header('DropIt') .. chat.message('Forcing inventory check...'));
+        CheckInventory();
         return;
     end
 end);

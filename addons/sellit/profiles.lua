@@ -415,7 +415,26 @@ local profiles = {
         'Flan Meat',
         'Ameretat Vine',
         'Smilodon Hide',
-        
+        'Ice Cluster',
+        'Scream Fungus',
+        'Phalanx',
+        'Flare',
+        'Freeze',
+        'Quake',
+        'Flood',
+        'Aera II',
+        'Utsusemi: Ni',
+        'Utsusemi: Ichi',
+        'Myoshu: Ichi',
+        'Hydra Meat',
+        'Sardonyx',
+        'Soiled Letter',
+        'Vivio Crab Shell',
+        'Fire Fewell',
+        'Ice Fewell',
+        'Soil Geode',
+        'Faithful Legs II',
+        'Faithful Legs III',
     }
 }
 

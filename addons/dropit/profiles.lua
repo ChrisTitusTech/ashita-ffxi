@@ -22,6 +22,17 @@ local autodrop = {
     'Askar Zucchetto',
     'Caller Seal: Hd.',
     'Cirque Seal: Hd.',
+    'G. Seed Pouch',
+    'M. Beetle Saliva',
+    'Voyage Stone',
+    'Wieldance Coin',
+    'Ardor Card',
+    'Vision Card',
+    'Vision Jewel',
+    'Vision Stone',
+    'Nvrch. Seal: Lg.',
+    'Kamome',
+    
     -- Add more items as needed
 };
 

@@ -58,22 +58,22 @@ local sets = {
         Feet = 'Mummu Gamash. +2',
     },
     ['DT'] = {
+        Main = 'Kaja Knife',
         Sub = 'Blurred Knife +1',
-        Main = 'Rostam',
-        Range = { Name = 'Anarchy', AugTrial=1783 },
+        Range = { Name = 'Compensator', AugPath='B' },
         Ammo = 'Eminent Bullet',
         Head = 'Chass. Tricorne +2',
         Neck = 'Elite Royal Collar',
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Suppanomimi',
         Body = 'Chasseur\'s Frac +2',
-        Hands = 'Mummu Wrists +2',
+        Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
         Ring1 = 'Vocane Ring',
-        Ring2 = 'Chirich Ring',
+        Ring2 = 'Meghanada Ring',
         Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
-        Waist = 'Flume Belt',
+        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Meg. Chausses +2',
-        Feet = 'Mummu Gamash. +2',
+        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
     },
 };
 sets.Hybrid = {};
@@ -115,7 +115,6 @@ sets.PhantomRoll = {
     Ring2 = 'Luzaf\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
 };
-sets.QuickDraw = {};
 sets.WildCard = {
     Feet = 'Lanun Bottes',
 };
@@ -146,7 +145,7 @@ sets.Midshot = {
     Legs = 'Meg. Chausses +2',
     Feet = 'Mummu Gamash. +2',
 };
-
+sets.QuickDraw = sets.Midshot
 sets.WSShot = sets.Midshot
 sets.LSAdd = {
     Neck = 'Fotia Gorget',
@@ -216,9 +215,7 @@ profile.HandleDefault = function()
             elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
             end
-            if ammo.Name == 'Eminent Bullet' and rangeWeapon.Name == 'Compensator' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Last Stand" <t>');
-            elseif mainWeapon.Name == 'Naegling' and (player.TP >= 1750) then
+            if mainWeapon.Name == 'Naegling' and (player.TP >= 1750) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
             elseif mainWeapon.Name == 'Kaja Knife' and (player.TP >= 1000) then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Evisceration" <t>');
