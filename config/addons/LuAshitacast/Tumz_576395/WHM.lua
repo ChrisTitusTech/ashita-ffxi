@@ -4,13 +4,13 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 gcheals = gFunc.LoadFile('common\\gcheals.lua');
 
 -- Add a variable to store main weapon
-setweapon = 'Queller Rod';
-setoffhand = 'Sors Shield';
+Setweapon = 'Queller Rod';
+Setoffhand = 'Sors Shield';
 local sets = {};
 
 sets.Weapons = {
-    Main = setweapon,
-    Sub = setoffhand
+    Main = Setweapon,
+    Sub = Setoffhand
 };
 
 sets.Idle = {
@@ -23,7 +23,7 @@ sets.Idle = {
     Ear2 = 'Ethereal Earring',
     Body = 'Ebers Bliaut +2',
     Hands = 'Ebers Mitts +2',
-    Ring1 = 'Vocane Ring',
+    Ring1 = 'Shneddick Ring',
     Ring2 = 'Prolix Ring',
     Back = 'Alaunus\'s Cape',
     Waist = 'Cetl Belt',
@@ -44,7 +44,7 @@ sets.Dt = {
     Waist = 'Cetl Belt',
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Cessance Earring',
-    Ring1 = 'Vocane Ring',
+    Ring1 = 'Shneddick Ring',
     Ring2 = 'Rajas Ring',
     Back = 'Alaunus\'s Cape'
 };
@@ -209,40 +209,40 @@ end
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
     
-    if (gcdisplay.GetCycle('Weapon') == 'Secondary') and (setweapon ~= 'Magesmasher +1') then
-        setweapon = 'Magesmasher +1'
-        sets.Weapons.Main = setweapon
+    if (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setweapon ~= 'Magesmasher +1') then
+        Setweapon = 'Magesmasher +1'
+        sets.Weapons.Main = Setweapon
         -- Update all sets that reference the weapon
-        sets.Idle.Main = setweapon
-        sets.Dt.Main = setweapon
-        sets.Default.Main = setweapon
+        sets.Idle.Main = Setweapon
+        sets.Dt.Main = Setweapon
+        sets.Default.Main = Setweapon
         if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-            setoffhand = 'Tamaxchi'
+            Setoffhand = 'Tamaxchi'
         else
-            setoffhand = 'Sors Shield'
+            Setoffhand = 'Sors Shield'
         end
-            sets.Weapons.Sub = setoffhand
-            sets.Idle.Sub = setoffhand
-            sets.Dt.Sub = setoffhand
-            sets.Default.Sub = setoffhand
+            sets.Weapons.Sub = Setoffhand
+            sets.Idle.Sub = Setoffhand
+            sets.Dt.Sub = Setoffhand
+            sets.Default.Sub = Setoffhand
         -- Force equipment update
         gFunc.EquipSet(sets.Weapons)
-    elseif (gcdisplay.GetCycle('Weapon') == 'Primary') and (setweapon ~= 'Queller Rod') then
-        setweapon = 'Queller Rod'
-        sets.Weapons.Main = setweapon
+    elseif (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setweapon ~= 'Queller Rod') then
+        Setweapon = 'Queller Rod'
+        sets.Weapons.Main = Setweapon
         -- Update all sets that reference the weapon
-        sets.Idle.Main = setweapon
-        sets.Dt.Main = setweapon
-        sets.Default.Main = setweapon
+        sets.Idle.Main = Setweapon
+        sets.Dt.Main = Setweapon
+        sets.Default.Main = Setweapon
         if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-            setoffhand = 'Tamaxchi'
+            Setoffhand = 'Tamaxchi'
         else
-            setoffhand = 'Sors Shield'
+            Setoffhand = 'Sors Shield'
         end
-            sets.Weapons.Sub = setoffhand
-            sets.Idle.Sub = setoffhand
-            sets.Dt.Sub = setoffhand
-            sets.Default.Sub = setoffhand
+            sets.Weapons.Sub = Setoffhand
+            sets.Idle.Sub = Setoffhand
+            sets.Dt.Sub = Setoffhand
+            sets.Default.Sub = Setoffhand
         -- Force equipment update
         gFunc.EquipSet(sets.Weapons)
     end

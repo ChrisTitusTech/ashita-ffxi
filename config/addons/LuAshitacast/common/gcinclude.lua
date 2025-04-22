@@ -46,7 +46,7 @@ in each individual job lua file. Unless you know what you're doing then it is be
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
-gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','solo','th','kite','helix','weather','nuke','death','warpring','telering','fishset','autoheal'};
+gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','solo','th','kite','helix','weather','nuke','death','warpring','telering','fishset','autoheal','autoassist'};
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
@@ -103,6 +103,7 @@ function gcinclude.SetVariables()
 	gcdisplay.CreateToggle('Kite', false);
 	gcdisplay.CreateToggle('Solo', false);
 	if player.MainJob == 'WHM' then gcdisplay.CreateToggle('Autoheal', false) end;
+	gcdisplay.CreateToggle('Assist', false)
 	gcdisplay.CreateToggle('TH', false);
 end
 
@@ -155,6 +156,10 @@ function gcinclude.HandleCommands(args)
 		gcdisplay.AdvanceToggle('Autoheal');
 		toggle = 'Autoheal';
 		status = gcdisplay.GetToggle('Autoheal');
+	elseif (args[1] == 'autoassist') then
+		gcdisplay.AdvanceToggle('Assist');
+		toggle = 'Assist';
+		status = gcdisplay.GetToggle('Assist');
 	elseif (args[1] == 'th') then
 		gcdisplay.AdvanceToggle('TH');
 		toggle = 'TH Set';
@@ -485,7 +490,7 @@ function gcinclude.CheckCancels()--tossed Stoneskin in here too
 	if (action.Name == 'Spectral Jig' and sneak ~=0) then
 		gFunc.CancelAction();
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
-		do_jig:once(2);
+		do_jig:once(1);
 	elseif (action.Name == 'Sneak' and sneak ~= 0 and target.Name == me) then
 		gFunc.CancelAction();
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
@@ -517,6 +522,26 @@ function gcinclude.AutoEngage()
 	end
 end
 
+function gcinclude.AutoAssist()
+	-- This function looks for assist and moves forward if out of range
+	local player = gData.GetPlayer();
+	local target = gData.GetTarget();
+	local rawtarget = AshitaCore:GetMemoryManager():GetTarget();
+	local followtarget = AshitaCore:GetMemoryManager():GetAutoFollow();
+	if target then
+		if player.Status == 'Idle' and target.Name ~= 'Zazle' and target.Type ~= 'Monster' then
+			AshitaCore:GetChatManager():QueueCommand(1, '/target Zazle');
+		elseif target.Name == 'Zazle' then
+			if followtarget == true then AshitaCore:GetChatManager():QueueCommand(1, '/follow') end;
+			AshitaCore:GetChatManager():QueueCommand(1, '/assist');
+		elseif player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 20 then
+				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
+		end
+	else
+		AshitaCore:GetChatManager():QueueCommand(1, '/target Zazle');
+	end
+end
+
 function gcinclude.CheckDefault()
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
@@ -545,6 +570,7 @@ function gcinclude.Initialize()
 	gcdisplay.Initialize:once(2);
 	gcinclude.SetVariables:once(2);
 	gcinclude.SetAlias:once(2);
+	local player = gData.GetPlayer();
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind F9 /meleeset');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind F10 /setcycle MeleeSet DT');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind F11 /solo');
@@ -553,7 +579,8 @@ function gcinclude.Initialize()
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F10 /setcycle MeleeSet Default');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F11 /setcycle MeleeSet Hybrid');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F12 /setcycle MeleeSet Acc');
-	AshitaCore:GetChatManager():QueueCommand(1, '/bind !F9 /autoheal');
+	if player.MainJob == 'WHM' then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F9 /autoheal') end;
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind !F10 /autoassist');
 end
 
 return gcinclude;

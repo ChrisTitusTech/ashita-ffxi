@@ -1,0 +1,34 @@
+---@meta
+
+---@class ActionPacket
+---@field actor_id     integer
+---@field target_count integer
+---@field category     integer
+---@field param        integer
+---@field recast       integer
+---@field targets      Target[]
+
+---@class Target
+---@field id           integer
+---@field action_count integer
+---@field actions      Action[]
+
+---@class Action
+---@field miss                   integer
+---@field kind                   integer
+---@field sub_kind               integer
+---@field info                   integer
+---@field scale                  integer
+---@field param                  integer
+---@field message                integer
+---@field bit                    integer
+---@field has_proc               boolean
+---@field proc_animation         integer?
+---@field proc_effect            integer?
+---@field proc_param             integer?
+---@field proc_message           integer?
+---@field has_reaction           boolean
+---@field reaction_animation     integer?
+---@field reaction_effect        integer?
+---@field reaction_param         integer?
+---@field reaction_message       integer?

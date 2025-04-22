@@ -102,7 +102,7 @@ sets.Idle = {
     Waist = 'Flume Belt',
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Ethereal Earring',
-    Ring1 = 'Vocane Ring',
+    Ring1 = 'Shneddick Ring',
     Ring2 = 'Moonbeam Ring',
     Back = 'Ogma\'s Cape',
     Legs = 'Eri. Leg Guards +2',
@@ -157,7 +157,7 @@ sets.Dt = {
     Waist = 'Flume Belt',
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Ethereal Earring',
-    Ring1 = 'Vocane Ring',
+    Ring1 = 'Shneddick Ring',
     Ring2 = 'Moonbeam Ring',
 };
 
@@ -291,6 +291,57 @@ profile.UpdateSets = function()
     sets.Acc.Ear2 = setear2;
 end
 
+profile.CountRunes = function()
+    -- Count the number of runes active on the player
+    local runeList = { 'Ignis', 'Gelus', 'Flabra', 'Tellus', 'Sulpor', 'Unda', 'Lux', 'Tenebrae' };
+    local runeCount = 0;
+
+    for i = 1, #runeList do
+        if (gData.GetBuffCount(runeList[i]) > 0) then
+            runeCount = runeCount + gData.GetBuffCount(runeList[i]);
+        end
+    end
+
+    return runeCount;
+end
+
+profile.SoloMode = function()
+    local player = gData.GetPlayer();
+    local recast = AshitaCore:GetMemoryManager():GetRecast();
+    local temper = gData.GetBuffCount('Multi Strikes');
+    local temperRecast = recast:GetSpellTimer(493);
+    if player.TP > 1750 and gcinclude.CheckWsBailout() == true and player.Status == 'Engaged' then
+        if gData.GetEquipment().Main.Name == 'Epeolatry' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
+        elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
+        elseif (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
+        end
+    -- Handle Spells
+    elseif gcinclude.CheckSpellBailout() == true and player.Status == 'Engaged' then
+        if (player.HPP < 50) then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Vivacious Pulse" <me>');
+        elseif temper == 0 and temperRecast == 0 and (player.MPP > 50) then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Temper" <me>');
+        elseif gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP < 35 and player.SubJob == 'DNC' and player.TP > 500 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
+        elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
+        elseif gcinclude.CheckAbilityRecast('Rune Enhancement') == 0 and profile.CountRunes() ~= 3 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Sulpor" <me>');
+        elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
+        end
+    elseif player.Status ~= 'Engaged' then
+        if player.MPP < 50 and gcinclude.CheckAbilityRecast('Rune Enhancement') == 0 and gData.GetBuffCount('Lux') ~= 3 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Lux" <me>');
+        end
+    end
+
+    
+end
+
 profile.HandleCommand = function(args)
     gcinclude.HandleCommands(args);
 end
@@ -315,48 +366,20 @@ profile.HandleDefault = function()
         -- Force equipment update
         gFunc.EquipSet(sets.Weapons);
     end
-
-    local target = gData.GetTarget();
-    local recast = AshitaCore:GetMemoryManager():GetRecast();
-    local mainequipment = gData.GetEquipment().Main;
-    local temper = gData.GetBuffCount('Multi Strikes');
-    local temperRecast = recast:GetSpellTimer(493);
-    if (player.Status == 'Engaged') then
-        -- Handle Weapon Skills
-        if (player.TP > 1800) and (gcdisplay.GetToggle('Solo') == true) and (gcinclude.CheckWsBailout() == true) then
-            if mainequipment.Name == 'Epeolatry' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
-            elseif (player.HPP > 50) and mainequipment.Name == 'Naegling' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
-            elseif (player.HPP <= 50) and (mainequipment.Name == 'Naegling' or mainequipment.Name == 'Malignance Sword') then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
-            end
-        -- Handle Spells
-        elseif (gcdisplay.GetToggle('Solo') == true) and gcinclude.CheckSpellBailout() == true then
-            if (player.HPP < 50) then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Vivacious Pulse" <me>');
-            elseif temper == 0 and temperRecast == 0 and (player.MPP > 50) then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Temper" <me>');
-            elseif gcinclude.CheckAbilityRecast('Waltzes') == 0 and (player.HPP < 35) and player.SubJob == 'DNC' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
-            elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
-            end
-        end
-
-        -- Handle EquipSets
+    if player.Status == 'Engaged' then
         if (player.HPP < 50) then
             gFunc.EquipSet(sets.Dt)
         else
             gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
         end
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
-    elseif (player.Status == 'Resting') then
+    elseif player.Status == 'Resting' then
         gFunc.EquipSet(sets.Resting);
     else
 		gFunc.EquipSet(sets.Idle);
     end
 	
+    if (gcdisplay.GetToggle('Solo') == true) then profile.SoloMode() end;
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
     if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;

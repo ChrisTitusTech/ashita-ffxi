@@ -66,6 +66,7 @@
 /addon load metrics
 /addon load nocombat
 /addon load NoMount
+/addon load omen
 /addon load partybuffs
 /addon load petinfo
 /addon load points

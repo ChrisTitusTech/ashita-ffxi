@@ -1,8 +1,6 @@
 local gcheals = { };
 
 gcheals.DebuffTimers ={};
-gcheals.SpellQueue = { spell = nil, target = nil, timestamp = 0 };
-gcheals.LastAction = { spell = nil, target = nil, timestamp = 0 };
 gcheals.DebugParty = false;
 gcheals.DebugHeals = false;
 gcheals.DebugDebuffs = false;
@@ -169,143 +167,16 @@ function gcheals.GetTrustNames()
     return trusts
 end
 
-function gcheals.CheckDebuff(target)
-    -- Table of WHM-curable debuff IDs
-    local whmDebuffs = {
-        [2] = 'Sleep',
-        [3] = 'Poison',
-        [4] = 'Paralysis',
-        [5] = 'Blind',
-        [6] = 'Silence',
-        [7] = 'Petrification',
-        [8] = 'Disease',
-        [9] = 'Curse',
-        [10] = 'Stun',
-        [11] = 'Bind',
-        [12] = 'Weight',
-        [13] = 'Slow',
-        [15] = 'Doom',
-        [16] = 'Amnesia',
-        [31] = 'Plague'
-    };
-
-    -- Lookup table for actual debuffs
-    local isDebuff = {};
-    for id, name in pairs(whmDebuffs) do
-        isDebuff[id] = true;
-    end
-
-    local partyManager = AshitaCore:GetMemoryManager():GetParty();
-    if not partyManager then return {} end
-
-    local memberDebuffs = {};
-    local trustNames = gcheals.GetTrustNames();
-    
-    -- Default to player if no target is specified
-    local targetIndex = target or 0;
-    local memberName = partyManager:GetMemberName(targetIndex);
-    
-    if not memberName then return {} end
-    
-    -- Skip if member is a trust
-    if trustNames[memberName] then return {} end
-    
-    -- Get status icons for the target
-    local statusIcons = nil;
-    
-    -- Check if the target is the player (index 0)
-    if targetIndex == 0 then
-        statusIcons = AshitaCore:GetMemoryManager():GetPlayer():GetStatusIcons();
-    else
-        -- For party members, first check if they're fully loaded
-        local memberServerId = partyManager:GetMemberServerId(targetIndex);
-        if memberServerId == 0 then
-            if gcheals.DebugDebuffs then
-                print(chat.header('gcheals'):append(chat.error(memberName .. ' not fully loaded yet')));
-            end
-            return {}; -- Member exists but doesn't have server ID yet (data not loaded)
-        end
-        
-        statusIcons = partyManager:GetStatusIcons(targetIndex);
-    end
-    
-    -- If we couldn't get status icons, return empty
-    if not statusIcons then
-        if gcheals.DebugDebuffs then
-            print(chat.header('gcheals'):append(chat.error('Could not get status icons for ' .. memberName)));
-        end
-        return {};
-    end
-    
-    -- Process status icons - ONLY include icons that are in our whmDebuffs list
-    for i = 1, 32 do
-        local statusId = statusIcons[i];
-        
-        -- Enhanced validation: Make sure statusId is a valid number and matches our debuff list
-        if type(statusId) == "number" and statusId ~= 255 and statusId > 0 and isDebuff[statusId] then
-            local debuffName = whmDebuffs[statusId];
-            
-            -- Log the actual status ID we're processing for debugging
-            if gcheals.DebugDebuffs then
-                print(chat.header('gcheals'):append(chat.message('Found status ID ' .. statusId .. 
-                    ' (' .. debuffName .. ') on ' .. memberName)));
-            end
-            
-            table.insert(memberDebuffs, debuffName);
-        end
-    end
-    
-    return memberDebuffs;
-end
-
 function gcheals.QueueSpell(spell, target)
-    -- Validate inputs
     if not spell or not target then 
         print(chat.header('gcheals'):append(chat.error('Invalid spell or target')));
         return false;
-    end
-    
-    gcinclude.CheckSpellBailout();
-    if gcinclude.CheckSpellBailout() == false then
-        gcheals.SpellQueue = { spell = nil, target = nil, timestamp = 0 }; -- Clear queue if we can't cast
+    elseif gcinclude.CheckSpellBailout() == false then
         return false;
     end
-    
-    -- Check player status
-    local player = AshitaCore:GetMemoryManager():GetPlayer();
-    if not player then return false end
-    
-    local currentAction = gData.GetAction();
-    if gcheals.LastAction.spell and os.time() - gcheals.LastAction.timestamp < 2 then return false end
-
-    -- Prevent double casting of the same spell
-    if currentAction then
-        -- Only check if the queue has an active spell
-        if gcheals.SpellQueue.spell and 
-           ((target == gcheals.SpellQueue.target) and
-            ((spell:match("Cure%s?[IVX]*") and gcheals.SpellQueue.spell:match("Cure%s?[IVX]*")) or
-             spell == gcheals.SpellQueue.spell or
-             (spell:match("na$") and gcheals.SpellQueue.spell:match("na$")) or
-             (spell:match("Erase") and gcheals.SpellQueue.spell:match("Erase")))) then
-            return false;
-        end
-    end
-    
-    -- Update the queue with the new spell (instead of adding to an array)
-    gcheals.SpellQueue = { 
-        spell = spell, 
-        target = target, 
-        timestamp = os.time() 
-    };
-
     -- Cast the spell
     print(chat.header('gcheals'):append(chat.message('Casting: ' .. spell .. ' on ' .. target)));
     AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. spell .. '" ' .. target);
-    gcheals.LastAction = { 
-        spell = spell, 
-        target = target, 
-        timestamp = os.time() 
-    };
     return true;
 end
 
@@ -330,7 +201,6 @@ function gcheals.AutoCure(target)
         targetSyntax = string.format('<p%d>', target);
     end
     
-    -- Check if WHM and handle Afflatus Solace
     if mainJob == 3 then -- WHM job ID
         -- Check if Afflatus Solace is not active
         if gData.GetBuffCount('Afflatus Solace') == 0 and gcinclude.CheckAbilityRecast('Afflatus Solace') == 0 then
@@ -425,7 +295,7 @@ function gcheals.AutoCure(target)
     end
 end
 
-function gcheals.CheckParty()
+function gcheals.GetParty()
     local trustNames = gcheals.GetTrustNames();
     local partyMembers = {};
     local party = AshitaCore:GetMemoryManager():GetParty();
@@ -472,17 +342,26 @@ function gcheals.CheckParty()
                     end
                 end
             end
-            
-            -- Check for debuffs on non-trust party members
-            if not isTrust then
-                local memberDebuffs = gcheals.CheckDebuff(i);
-                if memberDebuffs and #memberDebuffs > 0 then
-                    partyMembers[#partyMembers].debuffs = memberDebuffs;
-                end
-            end
+        end
+    end
+    return partyMembers;
+end
+
+function gcheals.CheckTrustMembers()
+    local partyMembers = gcheals.GetParty();
+    local numberOfTrusts = 0;
+    
+    for i = 1, #partyMembers do
+        if partyMembers[i].isTrust then
+            numberOfTrusts = numberOfTrusts + 1;
         end
     end
     
+    return numberOfTrusts;
+end
+
+function gcheals.CheckParty()
+    local partyMembers = gcheals.GetParty();
     -- Find the most injured party member
     local lowestHpp = 100
     local mostInjuredIndex = 0
