@@ -206,7 +206,7 @@ sets.WildfireAdd = {
     Belt = 'Fotia Belt',
     Body = 'Samnuha Coat',
     Hands = 'Chasseur\'s Gants +2',
-    Legs = 'Laksa. Trews +1',
+    Legs = 'Herculean Trousers',
     Feet = 'Chass. Bottes +2',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 
@@ -224,7 +224,7 @@ sets.LeadenSaluteAdd = {
     Head = 'Pixie Hairpin +1',
     Body = 'Samnuha Coat',
     Hands = 'Chasseur\'s Gants +2',
-    Legs = 'Laksa. Trews +1',
+    Legs = 'Herculean Trousers',
     Feet = 'Chass. Bottes +2',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 
@@ -292,7 +292,7 @@ profile.SoloMode = function()
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
         elseif (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
-        elseif gData.GetEquipment().Ammo.Name ~= nil and player.TP > 2000 then
+        elseif gData.GetEquipment().Ammo ~= nil and player.TP > 2000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Leaden Salute" <t>');
         end
     elseif player.Status == 'Engaged' then
@@ -307,8 +307,8 @@ profile.SoloMode = function()
         
         elseif gData.GetBuffCount('Chaos Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcheals.CheckTrustMembers() < 5 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Chaos Roll" <me>');
-        elseif gData.GetBuffCount('Tactician\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcheals.CheckTrustMembers() == 5 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Tactician\'s Roll" <me>');
+        elseif gData.GetBuffCount('Wizard\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcheals.CheckTrustMembers() == 5 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Wizard\'s Roll" <me>');
         
         elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');

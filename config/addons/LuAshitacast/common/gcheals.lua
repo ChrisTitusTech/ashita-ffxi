@@ -72,6 +72,7 @@ function gcheals.GetTrustNames()
         -- K
         ["Kayeel-Payeel"] = true,
         ["King of Hearts"] = true,
+        ["KingOfHearts"] = true,
         ["Klara"] = true,
         ["Koru-Moru"] = true,
         ["Kukki-Chebukki"] = true,

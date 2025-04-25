@@ -2,6 +2,7 @@ local profile = {};
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 local sets = {};
+
 sets.Weapons = {};
 
 -- Add these near the top after sets declaration
@@ -96,16 +97,16 @@ sets.Idle = {
     Sub = sets.Weapons.Sub,
     Ammo = 'Homiliary',
     Head = 'Erilaz Galea +2',
-    Neck = 'Futhark Torque',
-    Body = 'Runeist Coat +2',
+    Neck = 'Bathy Choker +1',
+    Body = 'Turms Harness',
     Hands = 'Turms Mittens',
     Waist = 'Flume Belt',
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Ethereal Earring',
     Ring1 = 'Shneddick Ring',
     Ring2 = 'Moonbeam Ring',
-    Back = 'Ogma\'s Cape',
-    Legs = 'Eri. Leg Guards +2',
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
+    Legs = 'Turms Subligar',
     Feet = 'Turms Leggings',
 };
 
@@ -119,6 +120,7 @@ sets.Resting = {
     Body = 'Ayanmo Corazza +2',
     Hands = 'Turms Mittens',
     Waist = 'Flume Belt',
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Ethereal Earring',
     Ring1 = 'Moonbeam Ring',
@@ -157,7 +159,7 @@ sets.Dt = {
     Waist = 'Flume Belt',
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Ethereal Earring',
-    Ring1 = 'Shneddick Ring',
+    Ring1 = 'Moonbeam Ring',
     Ring2 = 'Moonbeam Ring',
 };
 
@@ -176,7 +178,7 @@ sets.Hybrid = {
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
     Ring2 = 'Chirich Ring',
-    Back = 'Ogma\'s Cape',
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
 }
 
 sets.Acc = {
@@ -194,7 +196,7 @@ sets.Acc = {
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Moonbeam Ring',
     Ring2 = 'Chirich Ring',
-    Back = 'Ogma\'s Cape',
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
 }
 
 sets.Default = {
@@ -212,7 +214,7 @@ sets.Default = {
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
     Ring2 = 'Chirich Ring',
-    Back = 'Ogma\'s Cape',
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
 };
 
 sets.Ws_Default = {
@@ -226,22 +228,23 @@ sets.Ws_Default = {
     Ear1 = 'Brutal Earring',
     Ear2 = 'Cessance Earring',
     Ring2 = 'Chirich Ring',
-    Back = 'Ogma\'s Cape',
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
 };
 
 sets.Savage_Blade = {
     Ammo = 'Oshasha\'s Treatise',
     Ear1 = 'Moonshade Earring',
     Ear2 = 'Cessance Earring',
-    Neck = 'Rep. Plat. Medal',
     Head = 'Erilaz Galea +2',
     Body = 'Erilaz Surcoat +2',
     Hands = 'Aya. Manopolas +2',
     Ring1 = 'Spiral Ring',
     Ring2 = 'Rajas Ring',
-    Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-    Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
+    Neck = 'Fotia Gorget',
+    Waist = 'Fotia Belt',
+    Legs = 'Eri. Leg Guards +2',
     Feet = 'Erilaz Greaves +2',
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
 };
 
 
@@ -266,13 +269,10 @@ profile.Sets = sets;
 profile.Packer = {};
 
 profile.UpdateSets = function()
-    -- Update weapons in all sets
     sets.Weapons.Main = setweapon;
     sets.Weapons.Sub = setoffhand;
     sets.Weapons.Ear1 = setear1;
     sets.Weapons.Ear2 = setear2;
-    
-    -- Update all sets that reference weapons
     sets.Idle.Main = setweapon;
     sets.Idle.Sub = setoffhand;
     sets.Dt.Main = setweapon;
@@ -308,33 +308,36 @@ end
 profile.SoloMode = function()
     local player = gData.GetPlayer();
     local recast = AshitaCore:GetMemoryManager():GetRecast();
-    local temper = gData.GetBuffCount('Multi Strikes');
     local temperRecast = recast:GetSpellTimer(493);
-    if player.TP > 1750 and gcinclude.CheckWsBailout() == true and player.Status == 'Engaged' then
-        if gData.GetEquipment().Main.Name == 'Epeolatry' then
+    local target = gData.GetTarget();
+    if player.Status == 'Engaged' then
+        if player.TP > 1750 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Epeolatry' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
-        elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' then
+        elseif player.TP > 1750 and gcinclude.CheckWsBailout() == true and (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
-        elseif (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' then
+        elseif player.TP > 1000 and gcinclude.CheckWsBailout() == true and (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
         end
-    -- Handle Spells
-    elseif gcinclude.CheckSpellBailout() == true and player.Status == 'Engaged' then
         if (player.HPP < 50) then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Vivacious Pulse" <me>');
-        elseif temper == 0 and temperRecast == 0 and (player.MPP > 50) then
+        elseif gData.GetBuffCount('Multi Strikes') == 0 and temperRecast == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Temper" <me>');
         elseif gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP < 35 and player.SubJob == 'DNC' and player.TP > 500 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
         elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
-        elseif gcinclude.CheckAbilityRecast('Rune Enhancement') == 0 and profile.CountRunes() ~= 3 then
+        elseif gcinclude.CheckAbilityRecast('Rune Enchantment') == 0 and profile.CountRunes() ~= 3 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Sulpor" <me>');
         elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
+        elseif gData.GetBuffCount('Hasso') == 0 and gcinclude.CheckAbilityRecast('Hasso') == 0 and player.SubJob == 'SAM' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Hasso" <me>');
+        elseif target == 'Monster' then
+            gcinclude.AutoEngage();
+
         end
     elseif player.Status ~= 'Engaged' then
-        if player.MPP < 50 and gcinclude.CheckAbilityRecast('Rune Enhancement') == 0 and gData.GetBuffCount('Lux') ~= 3 then
+        if player.MPP < 50 and gcinclude.CheckAbilityRecast('Rune Enchantment') == 0 and gData.GetBuffCount('Lux') ~= 3 and gData.GetBuffCount('Invisible') == 0 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Lux" <me>');
         end
     end
@@ -348,6 +351,7 @@ end
 
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
+    local target = gData.GetTarget();
     
     -- Add this weapon swap logic near the start of HandleDefault
     if (player.SubJob == 'NIN' or player.SubJob == 'DNC') and (setweapon ~= 'Naegling') then
@@ -376,7 +380,16 @@ profile.HandleDefault = function()
     elseif player.Status == 'Resting' then
         gFunc.EquipSet(sets.Resting);
     else
-		gFunc.EquipSet(sets.Idle);
+        
+        if target then
+            if target.Type == 'Monster' and target.Distance < 21 then 
+                gFunc.EquipSet(sets.Dt) 
+            else
+                gFunc.EquipSet(sets.Idle);
+            end
+        else
+            gFunc.EquipSet(sets.Idle);
+        end
     end
 	
     if (gcdisplay.GetToggle('Solo') == true) then profile.SoloMode() end;

@@ -76,6 +76,7 @@ gcinclude.Rolls = T{{'Fighter\'s Roll',5,9}, {'Monk\'s Roll',3,7}, {'Healer\'s R
 	{'Companion\'s Roll',2,10},{'Avenger\'s Roll',4,8},}; -- {name,lucky,unlucky}
 gcinclude.FishSet = false;
 gcinclude.CraftSet = false;
+gcinclude.TargetNames = T{'Apex', 'Skeleton Warrior'}; -- Add more names to this table as needed
 
 function gcinclude.Message(toggle, status)
 	if toggle ~= nil and status ~= nil then
@@ -508,7 +509,15 @@ function gcinclude.AutoEngage()
 	local target = gData.GetTarget();
 
 	if target and gcdisplay.GetToggle('Solo') == true then
-		if string.find(target.Name, 'Apex') then
+		local shouldEngage = false;
+		for _, name in ipairs(gcinclude.TargetNames) do
+			if string.find(target.Name, name) then
+				shouldEngage = true;
+				break;
+			end
+		end
+		
+		if shouldEngage then
 			if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 10 then
 				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
 			end
