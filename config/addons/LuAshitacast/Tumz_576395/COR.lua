@@ -5,7 +5,7 @@ gcrolls = gFunc.LoadFile('common\\gcrolls.lua');
 
 local sets = {};
 Setweapon = 'Rostam';
-Setoffhand = 'Blurred Knife +1';
+Setoffhand = 'Naegling';
 Setrange = 'Holliday';
 sets.Weapons = {
     Main = Setweapon,
@@ -141,7 +141,6 @@ sets.Ws_Default = {
 sets.PhantomRoll = {
     Head = 'Lanun Tricorne +1',
     Hands = 'Chasseur\'s Gants +2',
-    Ring1 = 'Merirosvo Ring',
     Ring2 = 'Luzaf\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
 };
@@ -317,7 +316,7 @@ profile.SoloMode = function()
 end
 
 profile.Weapons = function ()
-    if (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setoffhand ~= 'Naegling') then
+    if (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setoffhand ~= 'Naegling') then
         Setweapon = 'Rostam';
         Setoffhand = 'Naegling';
         Setrange = 'Holliday';
@@ -327,7 +326,7 @@ profile.Weapons = function ()
             sets[set].Range = Setrange
         end
         gFunc.EquipSet(sets.Weapons)
-    elseif (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setoffhand ~= 'Blurred Knife +1') then
+    elseif (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setoffhand ~= 'Blurred Knife +1') then
         Setweapon = 'Rostam';
         Setoffhand = 'Blurred Knife +1';
         Setrange = 'Holliday';
