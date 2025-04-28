@@ -100,7 +100,7 @@ sets.Idle = {
     Neck = 'Bathy Choker +1',
     Body = 'Turms Harness',
     Hands = 'Turms Mittens',
-    Waist = 'Flume Belt',
+    Waist = 'Plat. Mog. Belt',
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Ethereal Earring',
     Ring1 = 'Shneddick Ring',
@@ -119,7 +119,7 @@ sets.Resting = {
     Head = 'Aya. Zucchetto +2',
     Body = 'Ayanmo Corazza +2',
     Hands = 'Turms Mittens',
-    Waist = 'Flume Belt',
+    Waist = 'Plat. Mog. Belt',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Ethereal Earring',
@@ -135,30 +135,33 @@ sets.Precast = {
     Ring1 = 'Prolix Ring',
     Ring2 = 'Naji\'s Loop',
     Legs = 'Aya. Cosciales +2',
-    Waist = 'Siegel Sash',
 };
 
-sets.Midcast = {
-    Head = 'Erilaz Galea +2',
-    Body = 'Runeist Coat +2',
-    Hands = 'Runeist Mitons',
+sets.EnhancePrecastAdd = {
     Legs = 'Futhark Trousers',
     Waist = 'Siegel Sash',
 };
+sets.EnhancePrecast = gFunc.Combine(sets.Precast, sets.EnhancePrecastAdd);
 
-sets.Dt = {
+sets.Enhancing = {
+    Head = 'Erilaz Galea +2',
+    Legs = 'Futhark Trousers',
+};
+
+sets.DT = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Staunch Tathlum',
     Neck = 'Futhark Torque',
     Head = 'Aya. Zucchetto +2',
-    Body = 'Ayanmo Corazza +2',
+    Body = 'Erilaz Surcoat +2',
+    -- Body = 'Runeist Coat +2',
     Hands = 'Turms Mittens',
     Legs = 'Eri. Leg Guards +2',
     Feet = 'Erilaz Greaves +2',
-    Waist = 'Flume Belt',
+    Waist = 'Plat. Mog. Belt',
     Ear1 = 'Odnowa Earring +1',
-    Ear2 = 'Ethereal Earring',
+    Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Moonbeam Ring',
     Ring2 = 'Moonbeam Ring',
 };
@@ -167,7 +170,7 @@ sets.Hybrid = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Coiste Bodhar',
-    Head = 'Adhemar Bonnet',
+    Head = 'Erilaz Galea +2',
     Body = 'Adhemar Jacket +1',
     Hands = 'Turms Mittens',
     Legs = 'Eri. Leg Guards +2',
@@ -206,7 +209,7 @@ sets.Default = {
     Head = 'Adhemar Bonnet',
     Body = 'Adhemar Jacket +1',
     Hands = 'Herculean Gloves',
-    Legs = 'Samnuha Tights',
+    Legs = 'Meg. Chausses +2',
     Feet = 'Herculean Boots',
     Neck = 'Defiant Collar',
     Waist = 'Sailfi Belt +1',
@@ -219,15 +222,10 @@ sets.Default = {
 
 sets.Ws_Default = {
     Ammo = 'Oshasha\'s Treatise',
-    Body = 'Ayanmo Corazza +2',
-    Hands = 'Herculean Gloves',
-    Legs = 'Samnuha Tights',
-    Feet = 'Herculean Boots',
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
-    Ear1 = 'Brutal Earring',
-    Ear2 = 'Cessance Earring',
-    Ring2 = 'Chirich Ring',
+    Hands = 'Meg. Gloves +2',
+    Ear1 = 'Moonshade Earring',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
 };
 
@@ -237,7 +235,7 @@ sets.Savage_Blade = {
     Ear2 = 'Cessance Earring',
     Head = 'Erilaz Galea +2',
     Body = 'Erilaz Surcoat +2',
-    Hands = 'Aya. Manopolas +2',
+    Hands = 'Meg. Gloves +2',
     Ring1 = 'Spiral Ring',
     Ring2 = 'Rajas Ring',
     Neck = 'Fotia Gorget',
@@ -247,6 +245,24 @@ sets.Savage_Blade = {
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
 };
 
+sets.DimidationAdd = {
+    Ammo = 'Oshasha\'s Treatise',
+    Head = 'Aya. Zucchetto +2',
+    Neck = 'Fotia Gorget',
+    Ear1 = 'Moonshade Earring',
+    Ear2 = 'Brutal Earring',
+    Body = 'Adhemar Jacket +1',
+    Hands = 'Meg. Gloves +2',
+    Ring1 = 'Epona\'s Ring',
+    Ring2 = 'Rajas Ring',
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
+    Waist = 'Fotia Belt',
+    Legs = 'Aya. Cosciales +2',
+    Feet = 'Aya. Gambieras +2',
+};
+sets.Dimidiation = gFunc.Combine(sets.Ws_Default, sets.DimidationAdd);
+
+sets.Resolution = sets.Ws_Default;
 
 sets.TH = {
     Ammo = 'Per. Lucky Egg',
@@ -275,8 +291,8 @@ profile.UpdateSets = function()
     sets.Weapons.Ear2 = setear2;
     sets.Idle.Main = setweapon;
     sets.Idle.Sub = setoffhand;
-    sets.Dt.Main = setweapon;
-    sets.Dt.Sub = setoffhand;
+    sets.DT.Main = setweapon;
+    sets.DT.Sub = setoffhand;
     sets.Default.Main = setweapon;
     sets.Default.Sub = setoffhand;
     sets.Default.Ear1 = setear1;
@@ -311,14 +327,14 @@ profile.SoloMode = function()
     local temperRecast = recast:GetSpellTimer(493);
     local target = gData.GetTarget();
     if player.Status == 'Engaged' then
-        if player.TP > 1750 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Epeolatry' then
+        if player.TP > 1000 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Epeolatry' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
         elseif player.TP > 1750 and gcinclude.CheckWsBailout() == true and (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
         elseif player.TP > 1000 and gcinclude.CheckWsBailout() == true and (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
         end
-        if (player.HPP < 50) then
+        if (player.HPP < 50) and gcinclude.CheckAbilityRecast('Vivacious Pulse') == 0 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Vivacious Pulse" <me>');
         elseif gData.GetBuffCount('Multi Strikes') == 0 and temperRecast == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Temper" <me>');
@@ -370,12 +386,15 @@ profile.HandleDefault = function()
         -- Force equipment update
         gFunc.EquipSet(sets.Weapons);
     end
+    local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
     if player.Status == 'Engaged' then
         if (player.HPP < 50) then
-            gFunc.EquipSet(sets.Dt)
+            gFunc.EquipSet(sets.DT)
+            
         else
-            gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
+            gFunc.EquipSet(meleeSet)
         end
+        if player.MPP < 50 then gFunc.Equip('Main', 'Erilaz Surcoat +2') end
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif player.Status == 'Resting' then
         gFunc.EquipSet(sets.Resting);
@@ -383,11 +402,11 @@ profile.HandleDefault = function()
         
         if target then
             if target.Type == 'Monster' and target.Distance < 21 then 
-                gFunc.EquipSet(sets.Dt) 
+                gFunc.EquipSet(sets.DT) 
             else
                 gFunc.EquipSet(sets.Idle);
             end
-        else
+        else           
             gFunc.EquipSet(sets.Idle);
         end
     end
@@ -395,7 +414,7 @@ profile.HandleDefault = function()
     if (gcdisplay.GetToggle('Solo') == true) then profile.SoloMode() end;
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
-    if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
+    if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.DT) end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
     
 end
@@ -423,13 +442,28 @@ end
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
     gcinclude.DoShadows(spell);
-    gFunc.EquipSet(sets.Precast);
+    if (spell.Skill == 'Enhancing Magic') then
+        gFunc.EquipSet(sets.EnhancePrecast);
+    else
+        gFunc.EquipSet(sets.Precast);
+    end
 
     gcinclude.CheckCancels();
 end
 
 profile.HandleMidcast = function()
-	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+    local player = gData.GetPlayer();
+    local spell = gData.GetAction();
+    local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
+    if (spell.Skill == 'Enhancing Magic') then
+        local quickcastset = gFunc.Combine(meleeSet, sets.Enhancing);
+        gFunc.EquipSet(quickcastset);
+    elseif player.HPP < 50 then
+        gFunc.EquipSet(sets.DT);
+    else
+        gFunc.EquipSet(meleeSet);
+    end
+    if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()
@@ -444,6 +478,10 @@ profile.HandleWeaponskill = function()
             gFunc.EquipSet(sets.Aedge_Default)
         elseif string.match(ws.Name, 'Savage Blade') then
             gFunc.EquipSet(sets.Savage_Blade)
+        elseif string.match(ws.Name, 'Resolution') then
+            gFunc.EquipSet(sets.Resolution)
+        elseif string.match(ws.Name, 'Dimidiation') then
+            gFunc.EquipSet(sets.Dimidiation)
         end
     end
 end

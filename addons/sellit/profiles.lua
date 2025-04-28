@@ -444,6 +444,8 @@ local profiles = {
         'Humus',
         'Vivified Coral',
         'Vivio Femur',
+        'Faithful\'s Torso I',
+        'Faithful\'s Torso II',
         'Faithfl. Torso III',
         'Faithful\'s Legs III',
         'Saffron Blossom',
@@ -478,6 +480,11 @@ local profiles = {
         'Ra\'Ka. Visage I',
         'Ra\'Ka. Visage II',
         'Ra\'Ka. Visage III',
+        'Dark Cluster',
+        'Apple Juice',
+        'Snoll Arm',
+        'Avatar Blood',
+        'Lizard Blood',
         
     }
 }

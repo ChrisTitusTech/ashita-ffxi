@@ -18,7 +18,7 @@ sets.Idle = {
     Range = Setrange,
     Ammo = 'Eminent Bullet',
     Head = 'Chass. Tricorne +2',
-    Neck = 'Elite Royal Collar',
+    Neck = 'Bathy Choker +1',
     Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
     Ear2 = 'Ethereal Earring',
     Body = 'Chasseur\'s Frac +2',
@@ -26,7 +26,7 @@ sets.Idle = {
     Ring1 = 'Shneddick Ring',
     Ring2 = 'Rajas Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
-    Waist = 'Flume Belt',
+    Waist = 'Plat. Mog. Belt',
     Legs = 'Chas. Culottes +2',
     Feet = 'Chass. Bottes +2',
 };
@@ -133,7 +133,7 @@ sets.Ws_Default = {
     Ear1 = 'Moonshade Earring',
     Neck = 'Fotia Gorget',
     Body = 'Laksa. Frac +2',
-    Hands = 'Chasseaur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +2',
     Waist = 'Fotia Belt',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
@@ -141,6 +141,7 @@ sets.Ws_Default = {
 sets.PhantomRoll = {
     Head = 'Lanun Tricorne +1',
     Hands = 'Chasseur\'s Gants +2',
+    Ring1 = 'Barataria Ring',
     Ring2 = 'Luzaf\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
 };
@@ -160,11 +161,11 @@ sets.Preshot = {
     Head = 'Chass. Tricorne +2',
     Body = 'Laksa. Frac +2',
     Hands = 'Manibozho Gloves',
-    --Legs = 'Adhemar Kecks',
+    Legs = 'Adhemar Kecks',
     Feet = 'Meg. Jam. +2',
     Ear1 = 'Volley Earring',
     Neck = 'Comm. Charm +1',
-    Belt = 'Impulse Belt',
+    Waist = 'Impulse Belt',
 
 };
 -- Recycle and ranged Accuracy and Attack
@@ -180,6 +181,7 @@ sets.Midshot = {
     Feet = 'Chass. Bottes +2',
 };
 sets.QuickDrawAdd = {
+    Ammo = 'Animikii Bullet',
     Head = 'Chass. Tricorne +2',
     Neck = 'Comm. Charm +1',
     Body = 'Chasseur\'s Frac +2',
@@ -299,9 +301,9 @@ profile.SoloMode = function()
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
         elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
-        elseif gData.GetBuffCount('Samurai Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Weapon') == 'Secondary' then
+        elseif gData.GetBuffCount('Samurai Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Weapon') == 'Primary' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Samurai Roll" <me>');
-        elseif gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Weapon') == 'Primary' then
+        elseif gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Weapon') == 'Secondary' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Corsair\'s Roll" <me>');
         
         elseif gData.GetBuffCount('Chaos Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcheals.CheckTrustMembers() < 5 then
@@ -348,10 +350,10 @@ end
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
     local target = gData.GetTarget();
-
+    local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
     if (player.Status == 'Engaged') and target then
         if (player.HPP >= 50) then
-            gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
+            gFunc.EquipSet(meleeSet);
         elseif (player.HPP < 50) then
             gFunc.EquipSet(sets.DT)
         end

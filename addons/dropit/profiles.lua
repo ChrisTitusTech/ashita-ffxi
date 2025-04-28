@@ -50,6 +50,7 @@ local autodrop = {
     'Wieldance Stone',
     'Wieldance Card',
     'Wieldance Coin',
+    '??? Polearm',
     -- CAUTION THESE WILL BE DROPPED
 };
 

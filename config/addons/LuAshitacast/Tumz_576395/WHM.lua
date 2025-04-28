@@ -291,9 +291,7 @@ profile.HandleMidcast = function()
     local weather = gData.GetEnvironment();
     local player = gData.GetPlayer();
     local spell = gData.GetAction();
-    local target = gData.GetActionTarget();
-    local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
-
+    
     if (spell.Skill == 'Enhancing Magic') then
         gFunc.EquipSet(sets.Enhancing);
         if string.contains(spell.Name, 'Regen') then
