@@ -213,12 +213,12 @@ sets.WildfireAdd = {
     Ring1 = 'Sangoma Ring',
     Neck = 'Comm. Charm +1',
     Belt = 'Fotia Belt',
+    Head = 'Nyame Helm',
     Body = 'Laksa. Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
-    Legs = 'Herculean Trousers',
-    Feet = 'Chass. Bottes +2',
+    Hands = 'Nyame Gauntlets',
+    Legs = 'Nyame Flanchard',
+    Feet = 'Nyame Sollerets',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
-
 };
 sets.Wildfire = gFunc.Combine(sets.Midshot, sets.WildfireAdd);
 sets.AeolianEdge = sets.Wildfire;
@@ -232,9 +232,9 @@ sets.LeadenSaluteAdd = {
     Belt = 'Fotia Belt',
     Head = 'Pixie Hairpin +1',
     Body = 'Laksa. Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
-    Legs = 'Herculean Trousers',
-    Feet = 'Chass. Bottes +2',
+    Hands = 'Nyame Gauntlets',
+    Legs = 'Nyame Flanchard',
+    Feet = 'Nyame Sollerets',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 
 };
@@ -296,7 +296,7 @@ profile.SoloMode = function()
     local player = gData.GetPlayer();
     if gcinclude.CheckWsBailout() == true and player.Status == 'Engaged' and player.HPP > 35 and player.TP > 1000 then
         if Setoffhand ~= 'Naegling' and Setweapon ~= 'Naegling' and player.TP > 1000 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Evisceration" <t>');
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Detonator" <t>');
         elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1750 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
         elseif (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1000 then
