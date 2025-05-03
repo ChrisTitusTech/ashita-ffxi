@@ -20,6 +20,7 @@ gcinclude.sets = T{
     },
 	Fishing = { -- this set is meant as a default set for fishing, equip using /fishset
 		Range = 'Lu Shang\'s F. Rod',
+		Ammo = 'Shrimp Lure',
 		--Ring2 = 'Pelican Ring',
     },
 };
@@ -31,7 +32,7 @@ gcinclude.settings = {
 	Messages = false; --set to true if you want chat log messages to appear on any /gc command used such as DT, TH, or KITE gear toggles, certain messages will always appear
 	AutoGear = false; --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
 	WScheck = true; --set to false if you dont want to use the WSdistance safety check
-	WSdistance = 4.7; --default max distance (yalms) to allow non-ranged WS to go off at if the above WScheck is true
+	WSdistance = 8; --default max distance (yalms) to allow non-ranged WS to go off at if the above WScheck is true
 	RegenGearHPP = 60; -- set HPP to have your idle regen set to come on
 	RefreshGearMPP = 70; -- set MPP to have your idle refresh set to come on
 	DTGearHPP = 40; -- set HPP to have your DT set to come on
@@ -46,7 +47,7 @@ in each individual job lua file. Unless you know what you're doing then it is be
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
-gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','solo','th','kite','helix','weather','nuke','death','warpring','telering','fishset','autoheal','autoassist'};
+gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','setprime','solo','th','kite','helix','weather','nuke','death','rrcap','warpring','telering','fishset','autoheal','autoassist'};
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
@@ -100,7 +101,7 @@ function gcinclude.SetVariables()
 	local player = gData.GetPlayer();
 
 	gcdisplay.CreateCycle('MeleeSet', {[1] = 'Default', [2] = 'Hybrid', [3] = 'Acc', [4] = 'DT'});
-    gcdisplay.CreateCycle('Weapon', {[1] = 'Primary', [2] = 'Secondary'});
+    gcdisplay.CreateCycle('Weapon', {[1] = 'Primary', [2] = 'Secondary', [3] = 'Third'});
 	gcdisplay.CreateToggle('Kite', false);
 	gcdisplay.CreateToggle('Solo', false);
 	if player.MainJob == 'WHM' then gcdisplay.CreateToggle('Autoheal', false) end;
@@ -140,6 +141,10 @@ function gcinclude.HandleCommands(args)
 		gcdisplay.AdvanceCycle('Weapon');
 		toggle = 'Changing Weapon Set';
 		status = gcdisplay.GetCycle('Weapon');
+	elseif (args[1] == 'setprime') then
+		gcdisplay.SetCycle('Weapon', 'Primary');
+		toggle = 'Changing Weapon Set';
+		status = gcdisplay.GetCycle('Weapon');
 	elseif (#args == 3 and args[1] == 'setcycle') then
 		if gcdisplay.SetCycle(args[2], args[3]) then
 			toggle = args[2];
@@ -167,6 +172,8 @@ function gcinclude.HandleCommands(args)
 		status = gcdisplay.GetToggle('TH');
 	elseif (args[1] == 'warpring') then
 		gcinclude.DoWarpRing();
+	elseif (args[1] == 'rrcap') then
+		gcinclude.DoRRCap();
 	elseif (args[1] == 'telering') then
 		gcinclude.DoTeleRing();
 	elseif (args[1] == 'fishset') then
@@ -307,6 +314,20 @@ function gcinclude.DoWarpRing()
 	end
 	
 	usering:once(11);
+end
+
+function gcinclude.DoRRCap()
+	AshitaCore:GetChatManager():QueueCommand(1, '/lac equip head "Wh. Rarab Cap +1"');
+
+	local function usering()
+		local function forceidleset()
+			AshitaCore:GetChatManager():QueueCommand(1, '/lac set Idle');
+		end
+		AshitaCore:GetChatManager():QueueCommand(1, '/item "Wh. Rarab Cap +1" <me>');
+		forceidleset:once(30);
+	end
+	
+	usering:once(16);
 end
 
 function gcinclude.DoTeleRing()
@@ -573,6 +594,8 @@ function gcinclude.Unload()
 	AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^F11');
 	AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^F12');
 	AshitaCore:GetChatManager():QueueCommand(1, '/unbind !F9');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind !F10');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind !F12');
 end
 
 function gcinclude.Initialize()
@@ -585,11 +608,12 @@ function gcinclude.Initialize()
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind F11 /solo');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind F12 /th');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F9 /setweapon');
+	AshitaCore:GetChatManager():QueueCommand(1, '/bind !F9 /setprime');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F10 /setcycle MeleeSet Default');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F11 /setcycle MeleeSet Hybrid');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F12 /setcycle MeleeSet Acc');
-	if player.MainJob == 'WHM' then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F9 /autoheal') end;
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind !F10 /autoassist');
+	if player.MainJob == 'WHM' then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F12 /autoheal') end;
 end
 
 return gcinclude;

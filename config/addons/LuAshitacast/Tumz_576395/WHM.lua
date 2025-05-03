@@ -17,7 +17,7 @@ sets.Idle = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Homiliary',
-    Head = 'Aya. Zucchetto +2',
+    Head = 'Nyame Helm',
     Neck = 'Clr. Torque +1',
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Ethereal Earring',
@@ -28,24 +28,24 @@ sets.Idle = {
     Back = 'Alaunus\'s Cape',
     Waist = 'Cetl Belt',
     Legs = 'Ebers Pant. +2',
-    Feet = 'Aya. Gambieras +2'
+    Feet = 'Nyame Sollerets'
 };
 
 sets.Dt = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Hasty Pinion +1',
-    Head = 'Aya. Zucchetto +2',
-    Body = 'Ayanmo Corazza +2',
-    Hands = 'Aya. Manopolas +2',
-    Legs = 'Aya. Cosciales +2',
-    Feet = 'Aya. Gambieras +2',
+    Head = 'Nyame Helm',
+    Body = 'Nyame Mail',
+    Hands = 'Nyame Gauntlets',
+    Legs = 'Nyame Flanchard',
+    Feet = 'Nyame Sollerets',
     Neck = 'Asperity Necklace',
     Waist = 'Cetl Belt',
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Cessance Earring',
     Ring1 = 'Shneddick Ring',
-    Ring2 = 'Rajas Ring',
+    Ring2 = 'Ephramad\'s Ring',
     Back = 'Alaunus\'s Cape'
 };
 
@@ -74,7 +74,7 @@ sets.Cure = {
     Ear1 = 'Roundel Earring',
     Ear2 = 'Ebers Earring',
     Body = 'Ebers Bliaut +2',
-    Hands = 'Telchine Gloves',
+    Hands = 'Nyame Gauntlets',
     Ring1 = 'Sirona\'s Ring',
     Ring2 = 'Ephedra Ring',
     Back = 'Alaunus\'s Cape',
@@ -101,22 +101,22 @@ sets.Enhancing = {
 
 sets.Regen = {
     Head = 'Inyanga Tiara',
-    Hands = 'Ebers Mitts /+2',
-    Legs = 'Theo. Pant.+1',
+    Hands = 'Ebers Mitts +2',
+    Legs = 'Theo. Pant. +1',
     Waist = 'Embla Sash'
 };
 
 sets.Elemental = {
     Ammo = 'Kalboron Stone',
-    Head = 'Aya. Zucchetto +2',
+    Head = 'Nyame Helm',
     Neck = 'Sanctity Necklace',
     Ear1 = 'Friomisi Earring',
     Ear2 = 'Strophadic Earring',
     Body = 'Ebers Bliaut +2',
-    Hands = { Name = 'Fanatic Gloves', Augment = { [1] = '"Conserve MP"+4', [2] = 'MP+30', [3] = 'Healing magic skill +5' } },
+    Hands = 'Nyame Gauntlets',
     Ring1 = 'Sangoma Ring',
     Ring2 = 'Prolix Ring',
-    Back = { Name = 'Alaunus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'Evasion+20', [3] = 'Mag. Evasion+20', [4] = 'MND+20', [5] = 'Enmity-10' } },
+    Back = 'Alaunus\'s Cape',
     Waist = 'Aswang Sash',
     Legs = 'Ebers Pant. +2',
     Feet = 'Manabyss Pigaches',
@@ -125,18 +125,18 @@ sets.Elemental = {
 sets.Default = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
-    Ammo = 'Vanir Battery',
-    Head = 'Aya. Zucchetto +2',
-    Body = 'Ayanmo Corazza +2',
-    Hands = 'Aya. Manopolas +2',
-    Legs = 'Aya. Cosciales +2',
-    Feet = 'Aya. Gambieras +2',
+    Ammo = 'Staunch Tathlum',
+    Head = 'Nyame Helm',
+    Body = 'Nyame Mail',
+    Hands = 'Nyame Gauntlets',
+    Legs = 'Nyame Flanchard',
+    Feet = 'Nyame Sollerets',
     Neck = 'Sanctity Necklace',
     Waist = 'Cetl Belt',
     Ear1 = 'Brutal Earring',
     Ear2 = 'Cessance Earring',
     Ring1 = 'Chirich Ring',
-    Ring2 = 'Rajas Ring',
+    Ring2 = 'Ephramad\'s Ring',
     Back = 'Alaunus\'s Cape'
 };
 
@@ -144,17 +144,17 @@ sets.Acc = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Hasty Pinion +1',
-    Head = 'Aya. Zucchetto +2',
-    Body = 'Ayanmo Corazza +2',
-    Hands = 'Aya. Manopolas +2',
-    Legs = 'Aya. Cosciales +2',
-    Feet = 'Aya. Gambieras +2',
+    Head = 'Nyame Helm',
+    Body = 'Ebers Bliaut +2',
+    Hands = 'Ebers Mitts +2',
+    Legs = 'Ebers Pant. +2',
+    Feet = 'Nyame Sollerets',
     Neck = 'Sanctity Necklace',
     Waist = 'Cetl Belt',
     Ear1 = 'Brutal Earring',
     Ear2 = 'Cessance Earring',
     Ring1 = 'Chirich Ring',
-    Ring2 = 'Rajas Ring',
+    Ring2 = 'Ephramad\'s Ring',
     Back = 'Alaunus\'s Cape'
 };
 
@@ -174,7 +174,7 @@ sets.Cursna = {
     Neck = 'Malison Medallion',
     Ring1 = 'Ephedra Ring',
     Ring2 = 'Haoma\'s Ring',
-    Back = { Name = 'Alaunus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'Evasion+20', [3] = 'Mag. Evasion+20', [4] = 'MND+20', [5] = 'Enmity-10' } },
+    Back = 'Alaunus\'s Cape',
     Waist = 'Gishdubar Sash',
     Legs = 'Theo. Pant. +1',
 };

@@ -24,7 +24,7 @@ sets.Idle = {
     Body = 'Chasseur\'s Frac +2',
     Hands = 'Chasseur\'s Gants +2',
     Ring1 = 'Shneddick Ring',
-    Ring2 = 'Rajas Ring',
+    Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = 'Plat. Mog. Belt',
     Legs = 'Chas. Culottes +2',
@@ -41,7 +41,7 @@ sets.Default = {
     Ear2 = 'Eabani Earring',
     Body = 'Adhemar Jacket +1',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
-    Ring1 = 'Chirich Ring',
+    Ring1 = 'Ephramad\'s Ring',
     Ring2 = 'Epona\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
@@ -59,7 +59,7 @@ sets.Acc = {
     Ear2 = 'Eabani Earring',
     Body = 'Adhemar Jacket +1',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
-    Ring1 = 'Epona\'s Ring',
+    Ring1 = 'Ephramad\'s Ring',
     Ring2 = 'Chirich Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
@@ -77,7 +77,7 @@ sets.DT = {
     Ear2 = 'Suppanomimi',
     Body = 'Chasseur\'s Frac +2',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
-    Ring1 = 'Shneddick Ring',
+    Ring1 = 'Ephramad\'s Ring',
     Ring2 = 'Meghanada Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
@@ -96,7 +96,7 @@ sets.Hybrid = {
     Body = 'Adhemar Jacket +1',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
     Ring1 = 'Epona\'s Ring',
-    Ring2 = 'Chirich Ring',
+    Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = 'Chas. Culottes +2',
@@ -108,26 +108,33 @@ sets.Movement = {};
 
 sets.Evisceration = {
     Head = 'Adhemar Bonnet',
-    Body = 'Mummu Jacket +2',
-    Hands = 'Mummu Wrists +2',
+    Body = 'Laksa. Frac +2',
+    Hands = 'Chasseur\'s Gants +2',
     Legs = 'Meg. Chausses +2',
     Feet = 'Mummu Gamash. +2',
     Neck = 'Fotia Gorget',
     Ear1 = 'Moonshade Earring',
     Ear2 = 'Brutal Earring',
     Ring1 = 'Epona\'s Ring',
-    Ring2 = 'Rajas Ring',    
+    Ring2 = 'Ephramad\'s Ring',    
     Waist = 'Fotia Belt',
+    Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
 sets.Requiescat = {
     Body = 'Laksa. Frac +2',
+    Hands = 'Chasseur\'s Gants +2',
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
+    Ear1 = 'Moonshade Earring',
+    Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
 sets.Savage_Blade = {
     Body = 'Laksa. Frac +2',
-    Neck = 'Rep. Plat. Medal',
+    Hands = 'Chasseur\'s Gants +2',
+    Neck = 'Fotia Gorget',
+    Waist = 'Fotia Belt',
     Ear1 = 'Moonshade Earring',
+    Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
 sets.Ws_Default = {
     Ear1 = 'Moonshade Earring',
@@ -195,6 +202,7 @@ sets.LastStandAdd = {
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
     Body = 'Laksa. Frac +2',
+    Hands = 'Chasseur\'s Gants +2',
     Ear2 = 'Moonshade Earring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
@@ -205,7 +213,7 @@ sets.WildfireAdd = {
     Ring1 = 'Sangoma Ring',
     Neck = 'Comm. Charm +1',
     Belt = 'Fotia Belt',
-    Body = 'Samnuha Coat',
+    Body = 'Laksa. Frac +2',
     Hands = 'Chasseur\'s Gants +2',
     Legs = 'Herculean Trousers',
     Feet = 'Chass. Bottes +2',
@@ -223,7 +231,7 @@ sets.LeadenSaluteAdd = {
     Neck = 'Comm. Charm +1',
     Belt = 'Fotia Belt',
     Head = 'Pixie Hairpin +1',
-    Body = 'Samnuha Coat',
+    Body = 'Laksa. Frac +2',
     Hands = 'Chasseur\'s Gants +2',
     Legs = 'Herculean Trousers',
     Feet = 'Chass. Bottes +2',
@@ -241,7 +249,7 @@ profile.Sets = sets;
 
 profile.Packer = {
     {Name = 'Eminent Bullet', Quantity = 'all'},
-    {Name = 'Em. Bul. Pouch', Quantity = 'all'},
+    --{Name = 'Em. Bul. Pouch', Quantity = 'all'},
     {Name = 'Trump Card', Quantity = 'all'},
     {Name = 'Trump Card Case', Quantity = 'all'},
 };
@@ -289,7 +297,7 @@ profile.SoloMode = function()
     if gcinclude.CheckWsBailout() == true and player.Status == 'Engaged' and player.HPP > 35 and player.TP > 1000 then
         if Setoffhand ~= 'Naegling' and Setweapon ~= 'Naegling' and player.TP > 1000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Evisceration" <t>');
-        elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 2000 then
+        elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1750 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
         elseif (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
@@ -303,14 +311,13 @@ profile.SoloMode = function()
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
         elseif gData.GetBuffCount('Samurai Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Weapon') == 'Primary' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Samurai Roll" <me>');
-        elseif gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Weapon') == 'Secondary' then
+        elseif gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Weapon') == 'Third' and gcheals.CheckTrustMembers() == 5 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Corsair\'s Roll" <me>');
         
         elseif gData.GetBuffCount('Chaos Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcheals.CheckTrustMembers() < 5 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Chaos Roll" <me>');
-        elseif gData.GetBuffCount('Wizard\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcheals.CheckTrustMembers() == 5 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Wizard\'s Roll" <me>');
-        
+        elseif gData.GetBuffCount('Tactician\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcheals.CheckTrustMembers() == 5 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Tactician\'s Roll" <me>');
         elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
         end
@@ -318,9 +325,14 @@ profile.SoloMode = function()
 end
 
 profile.Weapons = function ()
+    local player = gData.GetPlayer();
     if (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setoffhand ~= 'Naegling') then
         Setweapon = 'Rostam';
-        Setoffhand = 'Naegling';
+        if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
+            Setoffhand = 'Naegling';
+        else
+            Setoffhand = 'Ark Shield';
+        end
         Setrange = 'Holliday';
         for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
             sets[set].Main = Setweapon
@@ -330,7 +342,25 @@ profile.Weapons = function ()
         gFunc.EquipSet(sets.Weapons)
     elseif (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setoffhand ~= 'Blurred Knife +1') then
         Setweapon = 'Rostam';
-        Setoffhand = 'Blurred Knife +1';
+        if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
+            Setoffhand = 'Blurred Knife +1';
+        else
+            Setoffhand = 'Ark Shield';
+        end
+        Setrange = 'Holliday';
+        for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
+            sets[set].Main = Setweapon
+            sets[set].Sub = Setoffhand
+            sets[set].Range = Setrange
+        end
+        gFunc.EquipSet(sets.Weapons)
+    elseif (gcdisplay.GetCycle('Weapon') == 'Third') and (Setweapon ~= 'Naegling') then
+        Setweapon = 'Naegling';
+        if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
+            Setoffhand = 'Rostam';
+        else
+            Setoffhand = 'Ark Shield';
+        end
         Setrange = 'Holliday';
         for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
             sets[set].Main = Setweapon

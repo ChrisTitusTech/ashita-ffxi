@@ -22,8 +22,8 @@ local settings = T{
 		crafting = true,
 		showblocks = true,
 		showguards = true,
-		showcritws = false,
-		showrollinfo = false,
+		showcritws = true,
+		showrollinfo = true,
 	},
 	text = T{
 		line_aoe		= 'AOE ${numb} '..string.char(129,168)..' ${target}',

@@ -51,6 +51,9 @@ local autodrop = {
     'Wieldance Card',
     'Wieldance Coin',
     '??? Polearm',
+    'Tutelary Plans',
+    'Ate\'s Sollerets',
+    'Namru\'s Dastanas',
     -- CAUTION THESE WILL BE DROPPED
 };
 
