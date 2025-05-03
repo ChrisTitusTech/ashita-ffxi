@@ -185,17 +185,19 @@ local function search(searchString, useDescription)
         local slipItems = slips.items[v[1].Id];
         local extra = v[2].Extra;
 
-        for i,slipItemID in ipairs(slipItems) do
-            local slipItem = resources:GetItemById(slipItemID);
-            if (find(slipItem, cleanString, useDescription)) then
-                local byte = struct.unpack('B',extra,math.floor((i - 1) / 8)+1);
-                if byte < 0 then
-                    byte = byte + 256;
-                end
+        if (slipItems ~= nil) then
+            for i,slipItemID in ipairs(slipItems) do
+                local slipItem = resources:GetItemById(slipItemID);
+                if (find(slipItem, cleanString, useDescription)) then
+                    local byte = struct.unpack('B',extra,math.floor((i - 1) / 8)+1);
+                    if byte < 0 then
+                        byte = byte + 256;
+                    end
 
-                if (hasBit(byte, bit((i - 1) % 8 + 1))) then
-                    printf('%s: %s', slip.Name[config.language], slipItem.Name[config.language]);
-                    total = total + 1;
+                    if (hasBit(byte, bit((i - 1) % 8 + 1))) then
+                        printf('%s: %s', slip.Name[config.language], slipItem.Name[config.language]);
+                        total = total + 1;
+                    end
                 end
             end
         end
