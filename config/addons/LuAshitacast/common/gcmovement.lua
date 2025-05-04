@@ -147,7 +147,15 @@ end
 function gcmovement.update()
     local currentTime = os.clock();
     local keysToRemove = {};
+    local target = gData.GetTarget();
     
+    -- Check
+    if target then
+        local distance = target.Distance;
+        if distance > 5 then
+            return;
+        end
+    end
     -- Process queued key sends
     for index, keyInfo in ipairs(gcmovement.KeySendQueue) do
         if currentTime >= keyInfo.sendTime then

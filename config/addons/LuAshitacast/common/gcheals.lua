@@ -334,7 +334,7 @@ function gcheals.GetParty()
                 for j = 0, entityCount - 1 do
                     local entName = entityMgr:GetName(j);
                     if entName == memberName then
-                        partyMembers[#partyMembers].distance = entityMgr:GetDistance(j);
+                        partyMembers[#partyMembers].distance = math.sqrt(entityMgr:GetDistance(j));
                         if gcheals.DebugParty and partyMembers[#partyMembers].distance > 0 then 
                             gcheals.DebugPrint('Found entity ' .. memberName .. ' at index ' .. j .. 
                                 ' with distance: ' .. tostring(partyMembers[#partyMembers].distance));
@@ -370,8 +370,7 @@ function gcheals.CheckParty()
     local numberOfMinorInjured = 0
     
     for i = 1, #partyMembers do
-        -- Note on Entity Distance - Trusts are 0 and distance is NOT in yalms but a unique unit that is much smaller than yalms which means higher number
-        if partyMembers[i] and partyMembers[i].isTrust or partyMembers[i].zone == partyMembers[1].zone and partyMembers[i].distance < 350 then
+        if partyMembers[i] and partyMembers[i].isTrust or partyMembers[i].zone == partyMembers[1].zone and partyMembers[i].distance < 21 then
             if partyMembers[i].hpp < 70 and partyMembers[i].hpp > 0 then
                 numberOfInjured = numberOfInjured + 1
             elseif partyMembers[i].hpp < 85 and partyMembers[i].hpp > 0 then
@@ -406,7 +405,7 @@ function gcheals.CheckParty()
         if lowestHpp < 75 and numberOfInjured == 1 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting to cure member at index: ' .. tostring(mostInjuredIndex)) end;
             gcheals.AutoCure(mostInjuredIndex)
-        elseif lowestHpp < 85 and numberOfMinorInjured > 1 and injuredDistance < 350 and curaRecast == 0 then
+        elseif lowestHpp < 85 and numberOfMinorInjured > 1 and injuredDistance < 11 and curaRecast == 0 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Cura III') end;
             gcheals.QueueSpell('Cura III', '<me>');
         elseif lowestHpp < 75 and numberOfInjured > 1 and curaga3Recast == 0 then
