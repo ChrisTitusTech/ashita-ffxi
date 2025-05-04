@@ -397,7 +397,7 @@ function gcheals.CheckParty()
     local injuredDistance = 0;
     if mostInjuredIndex > 0  then
         targetSyntax = string.format('<p%d>', mostInjuredIndex);
-        injuredDistance = partyMembers[mostInjuredIndex].Distance
+        injuredDistance = partyMembers[mostInjuredIndex].distance
     else
         injuredDistance = 400;
     end

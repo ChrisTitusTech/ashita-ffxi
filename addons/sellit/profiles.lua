@@ -485,7 +485,7 @@ local profiles = {
         'Snoll Arm',
         'Avatar Blood',
         'Lizard Blood',
-        
+        'Bronze Bullet',
     }
 }
 

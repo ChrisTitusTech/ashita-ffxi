@@ -77,7 +77,7 @@ gcinclude.Rolls = T{{'Fighter\'s Roll',5,9}, {'Monk\'s Roll',3,7}, {'Healer\'s R
 	{'Companion\'s Roll',2,10},{'Avenger\'s Roll',4,8},}; -- {name,lucky,unlucky}
 gcinclude.FishSet = false;
 gcinclude.CraftSet = false;
-gcinclude.TargetNames = T{'Apex', 'Skeleton Warrior'}; -- Add more names to this table as needed
+gcinclude.TargetNames = T{'Apex', 'Skeleton Warrior', 'Agitated', 'Devouring', 'Ascended'}; -- Add more names to this table as needed
 
 function gcinclude.Message(toggle, status)
 	if toggle ~= nil and status ~= nil then
@@ -537,15 +537,19 @@ function gcinclude.AutoEngage()
 				break;
 			end
 		end
+
+
 		
 		if shouldEngage then
-			if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 10 then
+			if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 30 then
 				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
 			end
-			-- ENGAGED Logic
 			if player.Status == 'Engaged' and target.Type == 'Monster' then
-				if target.Distance > 3 and player.IsMoving ~= true and target.Distance < 10 then
-					gcmovement.tapForward(1);
+				if target.Distance > 3 then
+					-- Move to a target
+					gcmovement.tapForward(0.2);
+				elseif target.Distance < 1.5 then
+					gcmovement.tapBackward(0.2);
 				end
 			end
 		end

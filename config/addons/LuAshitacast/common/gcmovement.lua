@@ -45,6 +45,14 @@ local function sendWindowsKey(vkey, isDown)
             ': VK=' .. vkey .. ' SC=' .. scanCode);
     end
     
+    -- Don't queue new movement if there are already pending movements
+    if isDown and #gcmovement.KeySendQueue > 0 then
+        if gcmovement.DebugMode then
+            gcmovement.Debug('Movement already pending, ignoring new command');
+        end
+        return;
+    end
+    
     -- Queue the bringtofront command to ensure window focus
     AshitaCore:GetChatManager():QueueCommand(1, '/bringtofront');
     

@@ -295,8 +295,8 @@ end
 profile.SoloMode = function()
     local player = gData.GetPlayer();
     if gcinclude.CheckWsBailout() == true and player.Status == 'Engaged' and player.HPP > 35 and player.TP > 1000 then
-        if Setoffhand ~= 'Naegling' and Setweapon ~= 'Naegling' and player.TP > 1000 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Detonator" <t>');
+        if gData.GetEquipment().Ammo ~= nil and Setoffhand ~= 'Naegling' and Setweapon ~= 'Naegling' and player.TP > 1000 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Leaden Salute" <t>');
         elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1750 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
         elseif (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1000 then
