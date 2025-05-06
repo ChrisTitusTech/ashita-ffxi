@@ -6,16 +6,18 @@ local sets = {};
 sets.Weapons = {};
 
 -- Add these near the top after sets declaration
-local setweapon = 'Epeolatry';
-local setoffhand = 'Refined Grip +1';
-local setear1 = 'Brutal Earring';
-local setear2 = 'Cessance Earring';
+Setweapon = 'Epeolatry';
+Setoffhand = 'Refined Grip +1';
+Setear1 = 'Brutal Earring';
+Setear2 = 'Cessance Earring';
+SetBody = 'Runeist Coat +2';
 
 sets.Weapons = {
-    Main = setweapon,
-    Sub = setoffhand,
-    Ear1 = setear1,
-    Ear2 = setear2
+    Main = Setweapon,
+    Sub = Setoffhand,
+    Ear1 = Setear1,
+    Ear2 = Setear2,
+    Body = SetBody,
 };
 
 profile.OnLoad = function()
@@ -121,20 +123,7 @@ sets.Movement = {
     Ring1 = 'Shneddick Ring',
 };
 
-sets.Resting = {
-    Main = sets.Weapons.Main,
-    Sub = sets.Weapons.Sub,
-    Ammo = 'Staunch Tathlum',
-    Head = 'Aya. Zucchetto +2',
-    Body = 'Ayanmo Corazza +2',
-    Hands = 'Turms Mittens',
-    Waist = 'Plat. Mog. Belt',
-    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
-    Ear1 = 'Odnowa Earring +1',
-    Ear2 = 'Ethereal Earring',
-    Ring1 = 'Moonbeam Ring',
-    Ring2 = 'Moonbeam Ring',
-};
+sets.Resting = sets.Idle;
 
 sets.Precast = {
     Ammo = 'Sapience orb',
@@ -163,9 +152,9 @@ sets.DT = {
     Ammo = 'Staunch Tathlum',
     Neck = 'Futhark Torque',
     Head = 'Erilaz Galea +2',
-    Body = 'Runeist Coat +2',
+    Body = sets.Weapons.Body,
     Hands = 'Turms Mittens',
-    Legs = 'Eri. Leg Guards +2',
+    Legs = 'Eri. Leg Guards +3',
     Feet = 'Erilaz Greaves +2',
     Waist = 'Plat. Mog. Belt',
     Ear1 = 'Odnowa Earring +1',
@@ -182,7 +171,7 @@ sets.Hybrid = {
     Head = 'Erilaz Galea +2',
     Body = 'Adhemar Jacket +1',
     Hands = 'Turms Mittens',
-    Legs = 'Eri. Leg Guards +2',
+    Legs = 'Eri. Leg Guards +3',
     Feet = 'Erilaz Greaves +2',
     Neck = 'Futhark Torque',
     Waist = 'Sailfi Belt +1',
@@ -200,7 +189,7 @@ sets.Acc = {
     Head = 'Erilaz Galea +2',
     Body = 'Adhemar Jacket +1',
     Hands = 'Turms Mittens',
-    Legs = 'Eri. Leg Guards +2',
+    Legs = 'Eri. Leg Guards +3',
     Feet = 'Erilaz Greaves +2',
     Neck = 'Defiant Collar',
     Waist = 'Ioskeha Belt',
@@ -249,7 +238,7 @@ sets.Savage_Blade = {
     Ring2 = 'Ephramad\'s Ring',
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
-    Legs = 'Eri. Leg Guards +2',
+    Legs = 'Eri. Leg Guards +3',
     Feet = 'Erilaz Greaves +2',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
 };
@@ -294,26 +283,18 @@ profile.Sets = sets;
 profile.Packer = {};
 
 profile.UpdateSets = function()
-    sets.Weapons.Main = setweapon;
-    sets.Weapons.Sub = setoffhand;
-    sets.Weapons.Ear1 = setear1;
-    sets.Weapons.Ear2 = setear2;
-    sets.Idle.Main = setweapon;
-    sets.Idle.Sub = setoffhand;
-    sets.DT.Main = setweapon;
-    sets.DT.Sub = setoffhand;
-    sets.Default.Main = setweapon;
-    sets.Default.Sub = setoffhand;
-    sets.Default.Ear1 = setear1;
-    sets.Default.Ear2 = setear2;
-    sets.Hybrid.Main = setweapon;
-    sets.Hybrid.Sub = setoffhand;
-    sets.Hybrid.Ear1 = setear1;
-    sets.Hybrid.Ear2 = setear2;
-    sets.Acc.Main = setweapon;
-    sets.Acc.Sub = setoffhand;
-    sets.Acc.Ear1 = setear1;
-    sets.Acc.Ear2 = setear2;
+    local gearSets = {'Weapons', 'Idle', 'DT', 'Default', 'Hybrid', 'Acc'}
+    
+    for _, set in ipairs(gearSets) do
+        sets[set].Main = Setweapon
+        sets[set].Sub = Setoffhand
+        if set ~= 'DT' then
+            sets[set].Ear1 = Setear1
+            sets[set].Ear2 = Setear2
+        end
+    end
+    
+    sets.DT.Body = SetBody
 end
 
 profile.CountRunes = function()
@@ -379,8 +360,8 @@ profile.Weapons = function ()
         for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand
-            sets[set].Ear1 = setear1
-            sets[set].Ear2 = setear2
+            sets[set].Ear1 = Setear1
+            sets[set].Ear2 = Setear2
         end
         gFunc.EquipSet(sets.Weapons)
     elseif (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setweapon ~= 'Naegling') then
@@ -391,8 +372,8 @@ profile.Weapons = function ()
         for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand
-            sets[set].Ear1 = setear1
-            sets[set].Ear2 = setear2
+            sets[set].Ear1 = Setear1
+            sets[set].Ear2 = Setear2
         end
         gFunc.EquipSet(sets.Weapons)
     end
@@ -405,19 +386,27 @@ end
 
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
-    local target = gData.GetTarget();
+    if player.Status == 'Zoning' then return end;
     
     -- Add this weapon swap logic near the start of HandleDefault
     profile.Weapons();
     local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
+    if gData.GetEquipment().Body then
+        if player.MPP < 50 and meleeSet == sets.DT and gData.GetEquipment().Body.Name ~= 'Erilaz Surcoat +2' then
+            SetBody = 'Erilaz Surcoat +2';
+            profile.UpdateSets();
+        elseif player.MPP >= 50 and meleeSet == sets.DT and gData.GetEquipment().Body.Name ~= 'Runeist Coat +2' then
+            SetBody = 'Runeist Coat +2';
+            profile.UpdateSets();
+        end
+    end
     if player.Status == 'Engaged' then
         if (player.HPP < 50) then
             gFunc.EquipSet(sets.DT);
         else
             gFunc.EquipSet(meleeSet);
         end
-        if player.MPP < 50 then gFunc.Equip('Main', 'Erilaz Surcoat +2') end
-		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+        if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end;
     elseif player.Status == 'Resting' then
         gFunc.EquipSet(sets.Resting);
     elseif (meleeSet == sets.DT) then 
@@ -449,7 +438,7 @@ end
 profile.HandleItem = function()
     local item = gData.GetAction();
 
-	if string.match(item.Name, 'Holy Water') then gFunc.EquipSet(gcinclude.sets.Holy_Water) end
+	if string.match(item.Name, 'Holy Water') then gFunc.EquipSet(gcinclude.sets.Holy_Water) end;
 end
 
 profile.HandlePrecast = function()
@@ -476,7 +465,7 @@ profile.HandleMidcast = function()
     else
         gFunc.EquipSet(meleeSet);
     end
-    if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+    if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end;
 end
 
 profile.HandleWeaponskill = function()

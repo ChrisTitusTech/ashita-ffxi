@@ -194,7 +194,6 @@ function gcinclude.CheckCommonDebuffs()
 
 	if (sleep >= 1) then gFunc.EquipSet(gcinclude.sets.Sleeping) end
 	if (doom >= 1) then	gFunc.EquipSet(gcinclude.sets.Doomed) end
-	if (weakened >= 1) then gFunc.EquipSet(gcinclude.sets.Reraise) end
 end
 
 function gcinclude.CheckAbilityRecast(check)
@@ -577,6 +576,8 @@ function gcinclude.AutoAssist()
 end
 
 function gcinclude.CheckDefault()
+	local player = gData.GetPlayer();
+	if player.Status == 'Zoning' then return end
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
     gcinclude.CheckCommonDebuffs();
@@ -618,6 +619,13 @@ function gcinclude.Initialize()
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F12 /setcycle MeleeSet Acc');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind !F10 /autoassist');
 	if player.MainJob == 'WHM' then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F12 /autoheal') end;
+	
+	-- Set RUN job MeleeSet after gcdisplay is initialized
+	(function()
+		local player = gData.GetPlayer();
+		if player.MainJob == 'RUN' then gcdisplay.SetCycle('MeleeSet', 'DT') end;
+		AshitaCore:GetChatManager():QueueCommand(1, '/sl blink');
+	end):once(3);
 end
 
 return gcinclude;

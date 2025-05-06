@@ -104,7 +104,9 @@ sets.Hybrid = {
 
 };
 sets.Resting = {};
-sets.Movement = {};
+sets.Movement = {
+    Ring1 = 'Shneddick Ring',
+};
 
 sets.Evisceration = {
     Head = 'Adhemar Bonnet',
@@ -173,6 +175,7 @@ sets.Preshot = {
     Ear1 = 'Volley Earring',
     Neck = 'Comm. Charm +1',
     Waist = 'Impulse Belt',
+    Back = 'Gunslinger\'s Cape',
 
 };
 -- Recycle and ranged Accuracy and Attack
@@ -186,6 +189,7 @@ sets.Midshot = {
     Ring2 = 'Meghanada Ring',
     Legs = 'Chas. Culottes +2',
     Feet = 'Chass. Bottes +2',
+    Back = 'Gunslinger\'s Cape',
 };
 sets.QuickDrawAdd = {
     Ammo = 'Animikii Bullet',
@@ -211,6 +215,7 @@ sets.WildfireAdd = {
     Ear1 = 'Friomisi Earring',
     Ear2 = 'Moonshade Earring',
     Ring1 = 'Sangoma Ring',
+    Ring2 = 'Ephramad\'s Ring',
     Neck = 'Comm. Charm +1',
     Belt = 'Fotia Belt',
     Head = 'Nyame Helm',
@@ -221,7 +226,7 @@ sets.WildfireAdd = {
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
 sets.Wildfire = gFunc.Combine(sets.Midshot, sets.WildfireAdd);
-sets.AeolianEdge = sets.Wildfire;
+sets.AeolianEdge = sets.WildfireAdd;
 sets.LeadenSaluteAdd = {
     -- Magic Attack Bonus Gear
     Ear1 = 'Friomisi Earring',
@@ -297,7 +302,7 @@ profile.SoloMode = function()
     if gcinclude.CheckWsBailout() == true and player.Status == 'Engaged' and player.HPP > 35 and player.TP > 1000 then
         if gData.GetEquipment().Ammo ~= nil and Setoffhand ~= 'Naegling' and Setweapon ~= 'Naegling' and player.TP > 1000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Leaden Salute" <t>');
-        elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1750 then
+        elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1500 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
         elseif (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
@@ -361,7 +366,7 @@ profile.Weapons = function ()
         else
             Setoffhand = 'Ark Shield';
         end
-        Setrange = 'Holliday';
+        Setrange = 'Anarchy +2';
         for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand

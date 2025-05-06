@@ -149,6 +149,7 @@ ashita.events.register('packet_in', 'packet_in_cb', function(packet)
     -- 221 0xDD Party Member Update
     elseif packet.id == 0x0DD then
         Ashita.Party.Need_Refresh = true
+        DB.Initialize(true)
 
     -- Experience Points
     elseif packet.id == 0x02D then

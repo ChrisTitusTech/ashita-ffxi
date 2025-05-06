@@ -207,6 +207,10 @@ config.DrawWindow = function(us)
                 gConfig.showPartyListWhenSolo = not gConfig.showPartyListWhenSolo;
                 UpdateSettings();
             end
+            if (imgui.Checkbox('Show TP Gauge', { gConfig.showPartyListTP })) then
+                gConfig.showPartyListTP = not gConfig.showPartyListTP;
+                UpdateSettings();
+            end
             local scaleX = { gConfig.partyListScaleX };
             if (imgui.SliderFloat('Scale X', scaleX, 0.1, 3.0, '%.1f')) then
                 gConfig.partyListScaleX = scaleX[1];

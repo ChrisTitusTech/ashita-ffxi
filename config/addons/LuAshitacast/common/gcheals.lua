@@ -362,6 +362,18 @@ function gcheals.CheckTrustMembers()
 end
 
 function gcheals.CheckParty()
+    local player = gData.GetPlayer();
+    local recast = AshitaCore:GetMemoryManager():GetRecast();
+    local curaRecast = recast:GetSpellTimer(475);
+    local curaga2Recast = recast:GetSpellTimer(8);
+    local curaga3Recast = recast:GetSpellTimer(9);
+    local diaRecast = recast:GetSpellTimer(24);
+    local paraRecast = recast:GetSpellTimer(58);
+    local target = gData.GetTarget()
+    local targetSyntax = '<me>';
+    local injuredDistance = 0;
+
+    if player.Status == 'Zoning' then return end
     local partyMembers = gcheals.GetParty();
     -- Find the most injured party member
     local lowestHpp = 100
@@ -384,16 +396,6 @@ function gcheals.CheckParty()
             end
         end
     end
-    local player = gData.GetPlayer();
-    local recast = AshitaCore:GetMemoryManager():GetRecast();
-    local curaRecast = recast:GetSpellTimer(475);
-    local curaga2Recast = recast:GetSpellTimer(8);
-    local curaga3Recast = recast:GetSpellTimer(9);
-    local diaRecast = recast:GetSpellTimer(24);
-    local paraRecast = recast:GetSpellTimer(58);
-    local target = gData.GetTarget()
-    local targetSyntax = '<me>';
-    local injuredDistance = 0;
     if mostInjuredIndex > 0  then
         targetSyntax = string.format('<p%d>', mostInjuredIndex);
         injuredDistance = partyMembers[mostInjuredIndex].distance

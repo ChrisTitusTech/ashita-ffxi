@@ -25,7 +25,7 @@ local function UpdateTextVisibilityByMember(memIdx, visible)
 
     memberText[memIdx].hp:SetVisible(visible);
     memberText[memIdx].mp:SetVisible(visible);
-    memberText[memIdx].tp:SetVisible(visible);
+    memberText[memIdx].tp:SetVisible(visible and gConfig.showPartyListTP);
     memberText[memIdx].name:SetVisible(visible);
 end
 
@@ -123,8 +123,11 @@ local function DrawMember(memIdx, settings)
 
     local bgGradientOverride = {'#000813', '#000813'};
 
-    local allBarsLengths = settings.hpBarWidth + settings.mpBarWidth + settings.tpBarWidth + (imgui.GetStyle().FramePadding.x * 2) + (imgui.GetStyle().ItemSpacing.x * 2);
-
+    local allBarsLengths = settings.hpBarWidth + settings.mpBarWidth;
+    if gConfig.showPartyListTP then
+        allBarsLengths = allBarsLengths + settings.tpBarWidth + (imgui.GetStyle().ItemSpacing.x);
+    end
+    allBarsLengths = allBarsLengths + (imgui.GetStyle().FramePadding.x * 2) + (imgui.GetStyle().ItemSpacing.x);
 
     local hpStartX, hpStartY = imgui.GetCursorScreenPos();
 
@@ -162,7 +165,28 @@ local function DrawMember(memIdx, settings)
     memberText[memIdx].name:SetColor(0xFFFFFFFF);
     memberText[memIdx].name:SetPositionX(namePosX);
     memberText[memIdx].name:SetPositionY(hpStartY - nameSize.cy - settings.nameTextOffsetY);
-    memberText[memIdx].name:SetText(tostring(memInfo.name));
+    
+    -- Get distance for the member
+    local distance = 0;
+    local entityMgr = AshitaCore:GetMemoryManager():GetEntity();
+    if entityMgr then
+        local entityCount = entityMgr:GetEntityMapSize();
+        for j = 0, entityCount - 1 do
+            local entName = entityMgr:GetName(j);
+            if entName == memInfo.name then
+                distance = math.sqrt(entityMgr:GetDistance(j));
+                break;
+            end
+        end
+    end
+    
+    -- Set name text with distance if in zone
+    if memInfo.inzone and distance > 0 then
+        local displayDistance = distance > 50 and "50+" or string.format("%.1f", distance);
+        memberText[memIdx].name:SetText(string.format('%s - %s', tostring(memInfo.name), displayDistance));
+    else
+        memberText[memIdx].name:SetText(tostring(memInfo.name));
+    end
 
     local nameSize = SIZE.new();
     memberText[0].name:GetTextSize(nameSize);
@@ -177,40 +201,42 @@ local function DrawMember(memIdx, settings)
         progressbar.ProgressBar({{memInfo.mpp, {'#9abb5a', '#bfe07d'}}}, {settings.mpBarWidth, settings.barHeight}, {borderConfig=borderConfig, backgroundGradientOverride=bgGradientOverride, decorate = gConfig.showPartyListBookends});
         imgui.SameLine();
 
-        -- Draw the TP bar
-        local tpStartX, tpStartY;
-        imgui.SetCursorPosX(imgui.GetCursorPosX());
-        tpStartX, tpStartY = imgui.GetCursorScreenPos();
+        -- Draw the TP bar only if enabled
+        if gConfig.showPartyListTP then
+            local tpStartX, tpStartY;
+            imgui.SetCursorPosX(imgui.GetCursorPosX());
+            tpStartX, tpStartY = imgui.GetCursorScreenPos();
 
-		local tpGradient = {'#3898ce', '#78c4ee'};
-		local tpOverlayGradient = {'#0078CC', '#0078CC'};
-		local mainPercent;
-		local tpOverlay;
-		
-		if (memInfo.tp >= 1000) then
-			mainPercent = (memInfo.tp - 1000) / 2000;
-			tpOverlay = {{1, tpOverlayGradient}, math.ceil(settings.barHeight * 2/7), 1};
-		else
-			mainPercent = memInfo.tp / 1000;
-		end
-		
-		progressbar.ProgressBar({{mainPercent, tpGradient}}, {settings.tpBarWidth, settings.barHeight}, {overlayBar=tpOverlay, borderConfig=borderConfig, backgroundGradientOverride=bgGradientOverride, decorate = gConfig.showPartyListBookends});
+            local tpGradient = {'#3898ce', '#78c4ee'};
+            local tpOverlayGradient = {'#0078CC', '#0078CC'};
+            local mainPercent;
+            local tpOverlay;
+            
+            if (memInfo.tp >= 1000) then
+                mainPercent = (memInfo.tp - 1000) / 2000;
+                tpOverlay = {{1, tpOverlayGradient}, math.ceil(settings.barHeight * 2/7), 1};
+            else
+                mainPercent = memInfo.tp / 1000;
+            end
+            
+            progressbar.ProgressBar({{mainPercent, tpGradient}}, {settings.tpBarWidth, settings.barHeight}, {overlayBar=tpOverlay, borderConfig=borderConfig, backgroundGradientOverride=bgGradientOverride, decorate = gConfig.showPartyListBookends});
+
+            -- Update the tp text
+            if (memInfo.tp >= 1000) then 
+                memberText[memIdx].tp:SetColor(gAdjustedSettings.tpFullColor);
+            else
+                memberText[memIdx].tp:SetColor(gAdjustedSettings.tpEmptyColor);
+            end	
+            memberText[memIdx].tp:SetPositionX(tpStartX + settings.tpBarWidth + settings.tpTextOffsetX);
+            memberText[memIdx].tp:SetPositionY(tpStartY + settings.barHeight + settings.tpTextOffsetY);
+            memberText[memIdx].tp:SetText(tostring(memInfo.tp));
+        end
 
         -- Update the mp text
         memberText[memIdx].mp:SetColor(gAdjustedSettings.mpColor);
         memberText[memIdx].mp:SetPositionX(mpStartX + settings.mpBarWidth + settings.mpTextOffsetX);
         memberText[memIdx].mp:SetPositionY(mpStartY + settings.barHeight + settings.mpTextOffsetY);
         memberText[memIdx].mp:SetText(tostring(memInfo.mp));
-
-        -- Update the tp text
-        if (memInfo.tp >= 1000) then 
-            memberText[memIdx].tp:SetColor(gAdjustedSettings.tpFullColor);
-        else
-            memberText[memIdx].tp:SetColor(gAdjustedSettings.tpEmptyColor);
-        end	
-        memberText[memIdx].tp:SetPositionX(tpStartX + settings.tpBarWidth + settings.tpTextOffsetX);
-        memberText[memIdx].tp:SetPositionY(tpStartY + settings.barHeight + settings.tpTextOffsetY);
-        memberText[memIdx].tp:SetText(tostring(memInfo.tp));
 
         -- Draw targeted
         local entrySize = hpSize.cy + offsetSize + settings.hpTextOffsetY + settings.barHeight + settings.cursorPaddingY1 + settings.cursorPaddingY2;
@@ -325,7 +351,7 @@ local function DrawMember(memIdx, settings)
 
     memberText[memIdx].hp:SetVisible(memInfo.inzone);
     memberText[memIdx].mp:SetVisible(memInfo.inzone);
-    memberText[memIdx].tp:SetVisible(memInfo.inzone);
+    memberText[memIdx].tp:SetVisible(memInfo.inzone and gConfig.showPartyListTP);
 
     if (memInfo.inzone) then
         imgui.Dummy({0, settings.entrySpacing + hpSize.cy + settings.hpTextOffsetY + settings.nameTextOffsetY + offsetSize});

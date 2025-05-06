@@ -163,6 +163,7 @@ T{
 	partyListCursor = 'GreyArrow.png',
 	partyListBackground = 'BlueGradient.png',
 	partyListEntrySpacing = 0,
+	showPartyListTP = true,
 
 	castBarScaleX = 1,
 	castBarScaleY = 1,

@@ -486,6 +486,21 @@ local profiles = {
         'Avatar Blood',
         'Lizard Blood',
         'Bronze Bullet',
+        'Coeurl Meat',
+        'Istiridye',
+        'Sharug Greens',
+        'Vomp Carrot',
+        'Zegham Carrot',
+        'Adaman Ingot',
+        'Bamboo Stick',
+        'Gold Chain',
+        'Grass Thread',
+        'Cotton Cloth',
+        'Undead Skin',
+        'Coeurl Hide',
+        'Lamp Marimo',
+        'Void Crystal',
+        'Void Grass',
     }
 }
 
