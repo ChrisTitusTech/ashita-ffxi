@@ -161,7 +161,6 @@ local profiles = {
         'Contortopus', 
         'Adoulinian Kelp', 
         'Black Prawn', 
-        'Black Sole', 
         'Dragon Talon', 
         'Beetle Jaw', 
         'Crab Shell', 
@@ -501,6 +500,8 @@ local profiles = {
         'Lamp Marimo',
         'Void Crystal',
         'Void Grass',
+        'Rolanberry Pie',
+        'Cotton Cloth',
     }
 }
 

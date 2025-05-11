@@ -1,0 +1,74 @@
+﻿[
+    {
+        "name": "None",
+        "id": 0
+    },
+    {
+        "name": "Bamboo Fishing Rod",
+        "id": 17389
+    },
+    {
+        "name": "Carbon Fishing Rod",
+        "id": 17384
+    },
+    {
+        "name": "Clothespole",
+        "id": 17383
+    },
+    {
+        "name": "Composite Fishing Rod",
+        "id": 17381
+    },
+    {
+        "name": "Ebisu Fishing Rod",
+        "id": 17011
+    },
+	{
+        "name": "Ebisu Fishing Rod +1",
+        "id": 19321
+    },
+    {
+        "name": "Fastwater Fishing Rod",
+        "id": 17388
+    },
+    {
+        "name": "Glass Fiber Fishing Rod",
+        "id": 17385
+    },
+    {
+        "name": "Halcyon Rod",
+        "id": 17015
+    },
+    {
+        "name": "Hume Fishing Rod",
+        "id": 17014
+    },
+    {
+        "name": "Lu Shang's Fishing Rod",
+        "id": 17386
+    },
+	{
+        "name": "Lu Shang's Fishing Rod +1",
+        "id": 19320
+    },
+    {
+        "name": "Mithran Fishing Rod",
+        "id": 17380
+    },
+    {
+        "name": "Single Hook Fishing Rod",
+        "id": 17382
+    },
+    {
+        "name": "Tarutaru Fishing Rod",
+        "id": 17387
+    },
+    {
+        "name": "Willow Fishing Rod",
+        "id": 17391
+    },
+    {
+        "name": "Yew Fishing Rod",
+        "id": 17390
+    }
+]

@@ -19,62 +19,46 @@ end
 local sets = {};
 sets.Weapons = {
     Main = 'Naegling',
-    Sub = { Name = 'Colada', Augment = { [1] = 'Accuracy+8', [2] = '"Dbl.Atk."+3', [3] = 'Attack+7', [4] = 'DMG:+16' } },
+    Sub = 'Blurred Sword +1',
 };
 
 sets.Idle = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Staunch Tathlum',
-    Head = 'Aya. Zucchetto +2',
+    Head = 'Nyame Helm',
     Neck = 'Mirage Stole',
     Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
     Ear2 = 'Ethereal Earring',
-    Body = 'Ayanmo Corazza +2',
-    Hands = 'Aya. Manopolas +2',
+    Body = 'Nyame Mail',
+    Hands = 'Nyame Gauntlets',
     Ring1 = 'Shneddick Ring',
     Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-    Waist = 'Flume Belt',
+    Waist = 'Plat. Mog. Belt',
     Legs = 'Hashishin Tayt +2',
-    Feet = 'Aya. Gambieras +2',
+    Feet = 'Nyame Sollerets',
 };
 
-sets.Refresh = {
-    Main = sets.Weapons.Main,
-    Sub = sets.Weapons.Sub,
-    Ammo = 'Staunch Tathlum',
-    Head = 'Aya. Zucchetto +2',
-    Neck = 'Mirage Stole',
+sets.Refreshadd = {
     Body = 'Jhakri robe +1',
-    Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
-    Ear2 = 'Ethereal Earring',
-    Hands = 'Aya. Manopolas +2',
-    Ring1 = 'Shneddick Ring',
-    Ring2 = 'Ephramad\'s Ring',
-    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-    Waist = 'Flume Belt',
-    Legs = 'Hashishin Tayt +2',
-    Feet = 'Aya. Gambieras +2',
 };
+sets.Refresh = gFunc.Combine(sets.Idle, sets.Refreshadd);
 
 sets.Resting = {};
 
-sets.Movement = {};
+sets.Movement = {
+    Ring1 = 'Shneddick Ring',
+};
 
 sets.Precast = {
     Ammo = 'Sapience Orb',
-    Head = 'Aya. Zucchetto +2',
-    Neck = 'Mirage Stole',
     Ear1 = 'Loquac. Earring',
-    Body = 'Ayanmo Corazza +2',
-    Hands = { Name = 'Telchine Gloves', Augment = '"Fast Cast"+4' },
-    Ring1 = 'Sangoma Ring',
+    Ring1 = 'Naji\'s Loop',
     Ring2 = 'Prolix Ring',
     Back = 'Swith Cape',
     Waist = 'Witful Belt',
     Legs = 'Aya. Cosciales +2',
-    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
 };
 
 sets.Midcast = {};
@@ -83,46 +67,46 @@ sets.DT = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Staunch Tathlum',
-    Head = 'Aya. Zucchetto +2',
-    Neck = 'Mirage Stole',
+    Head = 'Nyame Helm',
+    Neck = 'Elite Royal Collar',
     Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
     Ear2 = 'Cessance Earring',
-    Body = 'Ayanmo Corazza +2',
-    Hands = 'Aya. Manopolas +2',
+    Body = 'Nyame Mail',
+    Hands = 'Nyame Gauntlets',
     Ring1 = 'Shneddick Ring',
     Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-    Waist = 'Flume Belt',
+    Waist = 'Plat. Mog. Belt',
     Legs = 'Hashishin Tayt +2',
-    Feet = 'Aya. Gambieras +2',
+    Feet = 'Nyame Sollerets',
 };
 
 sets.Default = {
     Ammo = 'Coiste Bodhar',
-    Head = 'Aya. Zucchetto +2',
     Neck = 'Mirage Stole',
     Ear1 = 'Suppanomimi',
     Ear2 = 'Cessance Earring',
-    Body = 'Ayanmo Corazza +2',
+    Head = 'Nyame Helm',
+    Body = 'Adhemar Jacket +1',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
+    Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
+    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
     Ring1 = 'Chirich Ring',
     Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-    Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
-    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
 };
 
 sets.Hybrid = {
     Ammo = 'Coiste Bodhar',
-    Head = 'Aya. Zucchetto +2',
+    Head = 'Nyame Helm',
     Neck = 'Mirage Stole',
     Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
     Ear2 = 'Cessance Earring',
-    Body = 'Ayanmo Corazza +2',
+    Body = 'Adhemar Jacket +1',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
     Ring1 = 'Chirich Ring',
-    Ring2 = 'Shneddick Ring',
+    Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = 'Hashishin Tayt +2',
@@ -132,6 +116,7 @@ sets.Hybrid = {
 sets.Acc = {};
 
 sets.Ws_Default = {
+    Ammo = 'Oshasha\'s Treatise',
     Head = 'Hashishin Kavuk +2',
     Neck = 'Fotia Gorget',
     Ear1 = 'Moonshade Earring',
@@ -169,39 +154,35 @@ sets.TH = {
 };
 
 sets.CDC = {
-    Main = sets.Weapons.Main,
-    Sub = sets.Weapons.Sub,
-    Ammo = 'Coiste Bodhar',
+    Ammo = 'Oshasha\'s Treatise',
     Head = 'Hashishin Kavuk +2',
     Neck = 'Fotia Gorget',
     Ear1 = 'Moonshade Earring',
-    Ear2 = 'Mache Earring',
-    Body = 'Ayanmo Corazza +2',
-    Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
+    Ear2 = 'Cessance Earring',
+    Body = 'Adhemar Jacket +1',
+    Hands = 'Aya. Manopolas +2',
     Ring1 = 'Epona\'s Ring',
     Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
     Waist = 'Fotia Belt',
     Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
-    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+    Feet = 'Aya. Gambieras +2',
 };
 
 sets.Savage_Blade = {
-    Main = sets.Weapons.Main,
-    Sub = sets.Weapons.Sub,
-    Ammo = 'Coiste Bodhar',
+    Ammo = 'Oshasha\'s Treatise',
     Head = 'Hashishin Kavuk +2',
-    Neck = 'Mirage Stole',
     Ear1 = 'Moonshade Earring',
     Ear2 = 'Cessance Earring',
-    Body = 'Ayanmo Corazza +2',
-    Hands = 'Aya. Manopolas +2',
-    Ring1 = 'Spiral Ring',
+    Body = 'Nyame Mail',
+    Hands = 'Nyame Gauntlets',
+    Legs = 'Nyame Flanchard',
+    Feet = 'Nyame Sollerets',
+    Ring1 = 'Rajas Ring',
     Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
-    Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-    Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
-    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+    Neck = 'Fotia Gorget',
+    Waist = 'Fotia Belt',
 };
 
 profile.Sets = sets;
@@ -215,35 +196,43 @@ profile.HandleCommand = function(args)
     gcinclude.HandleCommands(args);
 end
 
+profile.SoloMode = function()
+    local player = gData.GetPlayer();
+    if gcinclude.CheckWsBailout() == true and player.HPP > 35 and player.TP > 1000 then
+        if gcdisplay.GetCycle('Weapon') == 'Primary' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Chant du Cygne" <t>');
+        elseif (player.TP >= 1800)  and gcdisplay.GetCycle('Weapon') == 'Secondary' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
+        end
+    else
+        if gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP <= 35 and player.SubJob == 'DNC' and player.TP > 500 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
+        elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
+        elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
+        end
+    end
+end
+
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
-    local target = gData.GetTarget();
-    if (player.Status == 'Engaged') and target then
-        if (player.TP >= 1000) and (player.HPP > 50) and (gcdisplay.GetToggle('Solo') == true) and (gcinclude.CheckWsBailout() == true) then
-            local mainWeapon = gData.GetEquipment().Main;
-            if mainWeapon then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Chant du Cygne" <t>');
-            elseif mainWeapon.Name == 'Naegling' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
-            end
-        end
+    local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
+    if (player.Status == 'Engaged') then
         if (player.HPP < 50) then
             gFunc.EquipSet(sets.DT)
-            if (player.TP >= 1000) and (gcdisplay.GetToggle('Solo') == true) and (target.Name ~= 'Lady Lilith') and (gcinclude.CheckWsBailout() == true) then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
-            end
         else
-            gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
+            gFunc.EquipSet(meleeSet);
         end
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.MPP < 90) then 
-        gFunc.EquipSet(sets.Refresh)
+        gFunc.EquipSet(sets.Refresh);
     else
 		gFunc.EquipSet(sets.Idle);
     end
-	
+	if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then profile.SoloMode() end;
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;

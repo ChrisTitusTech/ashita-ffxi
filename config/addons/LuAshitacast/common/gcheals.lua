@@ -400,14 +400,14 @@ function gcheals.CheckParty()
         targetSyntax = string.format('<p%d>', mostInjuredIndex);
         injuredDistance = partyMembers[mostInjuredIndex].distance
     else
-        injuredDistance = 400;
+        injuredDistance = 50;
     end
 
     if mostInjuredIndex then
         if lowestHpp < 75 and numberOfInjured == 1 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting to cure member at index: ' .. tostring(mostInjuredIndex)) end;
             gcheals.AutoCure(mostInjuredIndex)
-        elseif lowestHpp < 85 and numberOfMinorInjured > 1 and injuredDistance < 11 and curaRecast == 0 then
+        elseif lowestHpp > 60 and lowestHpp < 85 and numberOfMinorInjured > 1 and injuredDistance < 11 and curaRecast == 0 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Cura III') end;
             gcheals.QueueSpell('Cura III', '<me>');
         elseif lowestHpp < 75 and numberOfInjured > 1 and curaga3Recast == 0 then
@@ -419,37 +419,6 @@ function gcheals.CheckParty()
         end
     else
         if gcheals.DebugHeals == true then gcheals.DebugPrint('No members need healing at this time') end;
-        if (player.Status == 'Engaged') and (gcdisplay.GetToggle('Solo') == true) then
-            if (player.TP >= 1000) and gcinclude.CheckWsBailout() == true then
-                local mainWeapon = gData.GetEquipment().Main;
-                if (player.MPP > 80) then
-                    AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Hexa Strike" <t>');
-                elseif (player.MPP <= 80) then
-                    AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Mystic Boon" <t>');
-                end
-            end
-            if (gData.GetBuffCount('Haste') == 0) and gcinclude.CheckSpellBailout() == true then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Haste" <me>');
-            elseif (gData.GetBuffCount('Protect') == 0) and gcinclude.CheckSpellBailout() == true then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Protectra V" <me>');
-            elseif (gData.GetBuffCount('Shell') == 0) and gcinclude.CheckSpellBailout() == true then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Shellra V" <me>');
-            elseif (gData.GetBuffCount('STR Boost') == 0) and gcinclude.CheckSpellBailout() == true then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Boost-STR" <me>');
-            elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');    
-            elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
-            end
-            
-        elseif target and player.status ~= 'Engaged' and gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solo') == true) then
-            if target.Type == 'Monster' and target.Distance < 21 and string.find(target.Name, 'Apex') then
-                if gcheals.DebugAttacks == true then print(chat.header('gcheals'):append(chat.message('Target Found: ' .. target.Name .. ' Target Distance: ' .. target.Distance))) end;
-                if diaRecast == 0 and player.HPP > 85 and target.Distance > 5 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Dia II" <t>'); 
-                elseif paraRecast == 0 and player.HPP > 85 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Paralyze" <t>'); end
-
-            end
-        end
     end
 end
 

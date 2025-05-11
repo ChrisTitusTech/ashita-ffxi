@@ -2,7 +2,7 @@ local profile = {};
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 gcheals = gFunc.LoadFile('common\\gcheals.lua');
 gcrolls = gFunc.LoadFile('common\\gcrolls.lua');
-
+gcinclude.sets.Sleeping = { Range = 'Earp' }
 local sets = {};
 Setweapon = 'Rostam';
 Setoffhand = 'Naegling';
@@ -55,16 +55,16 @@ sets.Acc = {
     Ammo = 'Eminent Bullet',
     Head = 'Chass. Tricorne +2',
     Neck = 'Defiant Collar',
-    Ear1 = 'Suppanomimi',
-    Ear2 = 'Eabani Earring',
+    Ear1 = 'Cessance Earring',
+    Ear2 = 'Odnowa Earring +1',
     Body = 'Adhemar Jacket +1',
-    Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
+    Hands = 'Meg. Gloves +2',
     Ring1 = 'Ephramad\'s Ring',
     Ring2 = 'Chirich Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = 'Chas. Culottes +2',
-    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+    Feet = 'Chass. Bottes +2',
 };
 sets.DT = {
     Main = Setweapon,
@@ -217,7 +217,7 @@ sets.WildfireAdd = {
     Ring1 = 'Sangoma Ring',
     Ring2 = 'Ephramad\'s Ring',
     Neck = 'Comm. Charm +1',
-    Belt = 'Fotia Belt',
+    Waist = 'Fotia Belt',
     Head = 'Nyame Helm',
     Body = 'Laksa. Frac +2',
     Hands = 'Nyame Gauntlets',
@@ -234,7 +234,7 @@ sets.LeadenSaluteAdd = {
     Ring1 = 'Sangoma Ring',
     Ring2 = 'Archon Ring',
     Neck = 'Comm. Charm +1',
-    Belt = 'Fotia Belt',
+    Waist = 'Fotia Belt',
     Head = 'Pixie Hairpin +1',
     Body = 'Laksa. Frac +2',
     Hands = 'Nyame Gauntlets',
@@ -299,7 +299,7 @@ end
 
 profile.SoloMode = function()
     local player = gData.GetPlayer();
-    if gcinclude.CheckWsBailout() == true and player.Status == 'Engaged' and player.HPP > 35 and player.TP > 1000 then
+    if gcinclude.CheckWsBailout() == true and player.HPP > 35 and player.TP > 1000 then
         if gData.GetEquipment().Ammo ~= nil and Setoffhand ~= 'Naegling' and Setweapon ~= 'Naegling' and player.TP > 1000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Leaden Salute" <t>');
         elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1500 then
@@ -308,24 +308,36 @@ profile.SoloMode = function()
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
         elseif gData.GetEquipment().Ammo ~= nil and player.TP > 2000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Leaden Salute" <t>');
+        elseif gData.GetEquipment().Ammo == nil and player.TP > 1000 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Evisceration" <t>');
         end
-    elseif player.Status == 'Engaged' then
+    else
         if gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP <= 35 and player.SubJob == 'DNC' and player.TP > 500 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
         elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
-        elseif gData.GetBuffCount('Samurai Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Weapon') == 'Primary' then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Samurai Roll" <me>');
-        elseif gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Weapon') == 'Third' and gcheals.CheckTrustMembers() == 5 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Corsair\'s Roll" <me>');
-        
-        elseif gData.GetBuffCount('Chaos Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and profile.CountRolls() < 2 and gData.GetBuffCount('Double-Up Chance') == 0 and gcheals.CheckTrustMembers() < 5 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Chaos Roll" <me>');
-        elseif gData.GetBuffCount('Tactician\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcheals.CheckTrustMembers() == 5 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Tactician\'s Roll" <me>');
         elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
         end
+    end
+end
+
+profile.AutoRolls = function ()
+    if gData.GetBuffCount('Samurai Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Roll1') == 'Samurai' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Samurai Roll" <me>');
+    elseif gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Roll1') == 'EXP' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Corsair\'s Roll" <me>');
+    elseif gData.GetBuffCount('Evoker\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Roll1') == 'Evoker' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Evoker\'s Roll" <me>');
+    elseif gData.GetBuffCount('Hunter\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Roll1') == 'Hunter' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Hunter\'s Roll" <me>');
+
+    elseif gData.GetBuffCount('Chaos Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Roll2') == 'Chaos' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Chaos Roll" <me>');
+    elseif gData.GetBuffCount('Tactician\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Roll2') == 'Tactician' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Tactician\'s Roll" <me>');
+    elseif gData.GetBuffCount('Wizard\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and gcdisplay.GetCycle('Roll2') == 'MAB' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Wizard\'s Roll" <me>');
     end
 end
 
@@ -359,14 +371,14 @@ profile.Weapons = function ()
             sets[set].Range = Setrange
         end
         gFunc.EquipSet(sets.Weapons)
-    elseif (gcdisplay.GetCycle('Weapon') == 'Third') and (Setweapon ~= 'Naegling') then
+    elseif gcdisplay.GetCycle('Weapon') == 'Third' and Setweapon ~= 'Naegling' then
         Setweapon = 'Naegling';
         if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
             Setoffhand = 'Rostam';
         else
             Setoffhand = 'Ark Shield';
         end
-        Setrange = 'Anarchy +2';
+        Setrange = 'Ataktos';
         for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand
@@ -399,7 +411,8 @@ profile.HandleDefault = function()
     else
 		gFunc.EquipSet(sets.Idle);
     end
-	if gcdisplay.GetToggle('Solo') == true then profile.SoloMode() end;
+	if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then profile.SoloMode() end;
+    if player.Status == 'Engaged' then profile.AutoRolls() end;
     if gcdisplay.GetToggle('Assist') == true then gcinclude.AutoAssist() end;
     profile.Weapons();
     gcinclude.CheckDefault();

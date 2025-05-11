@@ -20,7 +20,7 @@ gcinclude.sets = T{
     },
 	Fishing = { -- this set is meant as a default set for fishing, equip using /fishset
 		Range = 'Lu Shang\'s F. Rod',
-		Ammo = 'Shrimp Lure',
+		Ammo = 'Sinking Minnow',
 		--Ring2 = 'Pelican Ring',
     },
 };
@@ -38,6 +38,7 @@ gcinclude.settings = {
 	DTGearHPP = 40; -- set HPP to have your DT set to come on
 	PetDTGearHPP = 50; -- set pet HPP to have your PetDT set to come on
 	Tele_Ring = 'Dim. Ring (Mea)'; -- put your tele ring in here
+	LastForbiddenKey = 0; -- timestamp for last Forbidden Key usage
 };
 
 --[[
@@ -47,7 +48,7 @@ in each individual job lua file. Unless you know what you're doing then it is be
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
-gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','setprime','solo','th','kite','helix','weather','nuke','death','rrcap','warpring','telering','fishset','autoheal','autoassist'};
+gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','setprime','solo','th','kite','helix','weather','nuke','death','rrcap','warpring','telering','fishset','autoheal','roll1','roll2','autoassist'};
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
@@ -72,9 +73,6 @@ gcinclude.Elements = T{'Thunder', 'Blizzard', 'Fire', 'Stone', 'Aero', 'Water', 
 gcinclude.HelixSpells = T{'Ionohelix', 'Cryohelix', 'Pyrohelix', 'Geohelix', 'Anemohelix', 'Hydrohelix', 'Luminohelix', 'Noctohelix'};
 gcinclude.StormSpells = T{'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm', 'Windstorm', 'Rainstorm', 'Aurorastorm', 'Voidstorm'};
 gcinclude.NinNukes = T{'Katon: Ichi', 'Katon: Ni', 'Katon: San', 'Hyoton: Ichi', 'Hyoton: Ni', 'Hyoton: San', 'Huton: Ichi', 'Huton: Ni', 'Huton: San', 'Doton: Ichi', 'Doton: Ni', 'Doton: San', 'Raiton: Ichi', 'Raiton: Ni', 'Raiton: San', 'Suiton: Ichi', 'Suiton: Ni', 'Suiton: San'};
-gcinclude.Rolls = T{{'Fighter\'s Roll',5,9}, {'Monk\'s Roll',3,7}, {'Healer\'s Roll',3,7}, {'Corsair\'s Roll',5,9}, {'Ninja Roll',4,8},{'Hunter\'s Roll',4,8}, {'Chaos Roll',4,8}, {'Magus\'s Roll',2,6}, {'Drachen Roll',4,8}, {'Choral Roll',2,6},{'Beast Roll',4,8}, {'Samurai Roll',2,6}, {'Evoker\'s Roll',5,9}, {'Rogue\'s Roll',5,9}, {'Warlock\'s Roll',4,8},
-	{'Puppet Roll',3,7}, {'Gallant\'s Roll',3,7}, {'Wizard\'s Roll',5,9}, {'Dancer\'s Roll',3,7}, {'Scholar\'s Roll',2,6},{'Naturalist\'s Roll',3,7}, {'Runeist\'s Roll',4,8}, {'Bolter\'s Roll',3,9}, {'Caster\'s Roll',2,7}, {'Courser\'s Roll',3,9},{'Blitzer\'s Roll',4,9}, {'Tactician\'s Roll',5,8}, {'Allies\' Roll',3,10}, {'Miser\'s Roll',5,7},
-	{'Companion\'s Roll',2,10},{'Avenger\'s Roll',4,8},}; -- {name,lucky,unlucky}
 gcinclude.FishSet = false;
 gcinclude.CraftSet = false;
 gcinclude.TargetNames = T{'Apex', 'Skeleton Warrior', 'Agitated', 'Devouring', 'Ascended'}; -- Add more names to this table as needed
@@ -105,6 +103,8 @@ function gcinclude.SetVariables()
 	gcdisplay.CreateToggle('Kite', false);
 	gcdisplay.CreateToggle('Solo', false);
 	if player.MainJob == 'WHM' then gcdisplay.CreateToggle('Autoheal', false) end;
+	if player.MainJob == 'COR' then gcdisplay.CreateCycle('Roll1', {[1] = 'Samurai', [2] = 'EXP', [3] = 'Evoker', [4] = 'Hunter'}) end;
+	if player.MainJob == 'COR' then gcdisplay.CreateCycle('Roll2', {[1] = 'Chaos', [2] = 'Tactician', [3] = 'MAB'}) end;
 	gcdisplay.CreateToggle('Assist', false)
 	gcdisplay.CreateToggle('TH', false);
 end
@@ -162,6 +162,14 @@ function gcinclude.HandleCommands(args)
 		gcdisplay.AdvanceToggle('Autoheal');
 		toggle = 'Autoheal';
 		status = gcdisplay.GetToggle('Autoheal');
+	elseif (args[1] == 'roll1') and player.MainJob == 'COR' then
+		gcdisplay.AdvanceCycle('Roll1');
+		toggle = 'Roll1';
+		status = gcdisplay.GetCycle('Roll1');
+	elseif (args[1] == 'roll2') and player.MainJob == 'COR' then
+		gcdisplay.AdvanceCycle('Roll2');
+		toggle = 'Roll2';
+		status = gcdisplay.GetCycle('Roll2');
 	elseif (args[1] == 'autoassist') then
 		gcdisplay.AdvanceToggle('Assist');
 		toggle = 'Assist';
@@ -577,11 +585,23 @@ end
 
 function gcinclude.CheckDefault()
 	local player = gData.GetPlayer();
+	local target = gData.GetTarget();
 	if player.Status == 'Zoning' then return end
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
     gcinclude.CheckCommonDebuffs();
 	gcinclude.CheckLockingRings();
+
+	if target then
+		if target.Name == 'Sturdy Pyxis' then
+			local currentTime = os.time();
+			if (currentTime - gcinclude.settings.LastForbiddenKey) >= 5 then
+				AshitaCore:GetChatManager():QueueCommand(1, '/item "Forbidden Key" <t>');
+				gcinclude.settings.LastForbiddenKey = currentTime;
+			end
+		end
+	end
+
 	if (gcinclude.CraftSet == true) then gFunc.EquipSet(gcinclude.sets.Crafting) end
 	if (gcinclude.FishSet == true) then gFunc.EquipSet(gcinclude.sets.Fishing) end
 	gcdisplay.Update();
@@ -601,6 +621,8 @@ function gcinclude.Unload()
 	AshitaCore:GetChatManager():QueueCommand(1, '/unbind !F9');
 	AshitaCore:GetChatManager():QueueCommand(1, '/unbind !F10');
 	AshitaCore:GetChatManager():QueueCommand(1, '/unbind !F12');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad1');
+	AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad3');
 end
 
 function gcinclude.Initialize()
@@ -619,7 +641,8 @@ function gcinclude.Initialize()
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F12 /setcycle MeleeSet Acc');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind !F10 /autoassist');
 	if player.MainJob == 'WHM' then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F12 /autoheal') end;
-	
+	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad1 /roll1') end;
+	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad3 /roll2') end;
 	-- Set RUN job MeleeSet after gcdisplay is initialized
 	(function()
 		local player = gData.GetPlayer();

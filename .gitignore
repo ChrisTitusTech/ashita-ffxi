@@ -17,3 +17,4 @@ config/addons/**/settings.lua
 config/minimap/minimap.ini
 config/imgui.ini
 /config/addons/Metrics
+/screenshots

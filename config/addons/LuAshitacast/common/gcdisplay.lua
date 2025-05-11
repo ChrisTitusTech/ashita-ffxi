@@ -125,7 +125,15 @@ function gcdisplay.Initialize()
 				display = display .. '|cFFFF0000|' .. k .. '|r';
 			end
 		end
-		for key, value in pairs(Cycles) do
+		-- Create sorted list of cycle names
+		local cycleNames = {}
+		for key, _ in pairs(Cycles) do
+			table.insert(cycleNames, key)
+		end
+		table.sort(cycleNames)
+		-- Display cycles in sorted order
+		for _, key in ipairs(cycleNames) do
+			local value = Cycles[key]
 			display = display .. '  ' .. key .. ': ' .. '|cFF00FF00|' .. value.Array[value.Index] .. '|r';
 		end
 		gcdisplay.FontObject.text = display;

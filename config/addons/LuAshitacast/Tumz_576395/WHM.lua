@@ -26,7 +26,7 @@ sets.Idle = {
     Ring1 = 'Shneddick Ring',
     Ring2 = 'Prolix Ring',
     Back = 'Alaunus\'s Cape',
-    Waist = 'Cetl Belt',
+    Waist = 'Plat. Mog. Belt',
     Legs = 'Ebers Pant. +2',
     Feet = 'Nyame Sollerets'
 };
@@ -41,7 +41,7 @@ sets.Dt = {
     Legs = 'Nyame Flanchard',
     Feet = 'Nyame Sollerets',
     Neck = 'Asperity Necklace',
-    Waist = 'Cetl Belt',
+    Waist = 'Plat. Mog. Belt',
     Ear1 = 'Odnowa Earring +1',
     Ear2 = 'Cessance Earring',
     Ring1 = 'Shneddick Ring',
@@ -74,7 +74,6 @@ sets.Cure = {
     Ear1 = 'Roundel Earring',
     Ear2 = 'Ebers Earring',
     Body = 'Ebers Bliaut +2',
-    Hands = 'Nyame Gauntlets',
     Ring1 = 'Sirona\'s Ring',
     Ring2 = 'Ephedra Ring',
     Back = 'Alaunus\'s Cape',
@@ -151,8 +150,8 @@ sets.Acc = {
     Feet = 'Nyame Sollerets',
     Neck = 'Sanctity Necklace',
     Waist = 'Cetl Belt',
-    Ear1 = 'Brutal Earring',
-    Ear2 = 'Cessance Earring',
+    Ear1 = 'Cessance Earring',
+    Ear2 = 'Ebers Earring',
     Ring1 = 'Chirich Ring',
     Ring2 = 'Ephramad\'s Ring',
     Back = 'Alaunus\'s Cape'
@@ -160,7 +159,9 @@ sets.Acc = {
 
 sets.Hybrid = {};
 
-sets.Movement = {};
+sets.Movement = {
+    Ring1 = 'Shneddick Ring',
+};
 sets.Ws_Default = {
     Ear1 = 'Moonshade Earring',
     Neck = 'Fotia Gorget',
