@@ -203,9 +203,7 @@ function gcheals.AutoCure(target)
     end
     
     if mainJob == 3 then -- WHM job ID
-        -- Check if Afflatus Solace is not active
-        if gData.GetBuffCount('Afflatus Solace') == 0 and gcinclude.CheckAbilityRecast('Afflatus Solace') == 0 then
-            -- Check if Afflatus Solace is ready
+        if gData.GetBuffCount('Afflatus Solace') == 0 and gcinclude.CheckAbilityRecast('Afflatus Solace') == 0 and gData.GetBuffCount('Afflatus Misery') == 0 then
             print(chat.header('gcheals'):append(chat.message('Activating Afflatus Solace')));
             AshitaCore:GetChatManager():QueueCommand(1, '/ja "Afflatus Solace" <me>');
             return true;
@@ -367,53 +365,53 @@ function gcheals.CheckParty()
     local curaRecast = recast:GetSpellTimer(475);
     local curaga2Recast = recast:GetSpellTimer(8);
     local curaga3Recast = recast:GetSpellTimer(9);
-    local diaRecast = recast:GetSpellTimer(24);
-    local paraRecast = recast:GetSpellTimer(58);
     local target = gData.GetTarget()
     local targetSyntax = '<me>';
-    local injuredDistance = 0;
 
     if player.Status == 'Zoning' then return end
     local partyMembers = gcheals.GetParty();
     -- Find the most injured party member
     local lowestHpp = 100
     local mostInjuredIndex = 0
+    local mostDistant = 0
     local numberOfInjured = 0
     local numberOfMinorInjured = 0
+    local injuredDistance = 0
     
     for i = 1, #partyMembers do
-        if partyMembers[i] and partyMembers[i].isTrust or partyMembers[i].zone == partyMembers[1].zone and partyMembers[i].distance < 21 then
+        if partyMembers[i].isTrust or (partyMembers[i].zone == partyMembers[1].zone and partyMembers[i].distance < 21) then
             if partyMembers[i].hpp < 70 and partyMembers[i].hpp > 0 then
                 numberOfInjured = numberOfInjured + 1
-            elseif partyMembers[i].hpp < 85 and partyMembers[i].hpp > 0 then
+            elseif partyMembers[i].hpp < 80 and partyMembers[i].hpp > 0 then
                 numberOfMinorInjured = numberOfMinorInjured + 1
             end
-            if partyMembers[i] and partyMembers[i].hpp < lowestHpp and partyMembers[i].hpp > 0 then
+            if partyMembers[i].hpp < lowestHpp and partyMembers[i].hpp > 0 then
                 lowestHpp = partyMembers[i].hpp
-                mostInjuredIndex = partyMembers[i].index
+                mostInjuredIndex = i
                 if gcheals.DebugHeals == true then gcheals.DebugPrint('Found injured member: ' .. partyMembers[i].name .. 
                     ' (HP%: ' .. tostring(lowestHpp) .. ')') end;
             end
+            if partyMembers[i].distance > mostDistant and partyMembers[i].isTrust == false then
+                mostDistant = partyMembers[i].distance
+            end
         end
     end
-    if mostInjuredIndex > 0  then
-        targetSyntax = string.format('<p%d>', mostInjuredIndex);
-        injuredDistance = partyMembers[mostInjuredIndex].distance
-    else
-        injuredDistance = 50;
+    if partyMembers[mostInjuredIndex] then
+        targetSyntax = string.format('<p%d>', partyMembers[mostInjuredIndex].index);
+        if partyMembers[mostInjuredIndex].isTrust == false then injuredDistance = partyMembers[mostInjuredIndex].distance; end
     end
 
     if mostInjuredIndex then
-        if lowestHpp < 75 and numberOfInjured == 1 then
+        if lowestHpp < 75 and (numberOfInjured == 1 or player.mpp <= 25) and injuredDistance < 21 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting to cure member at index: ' .. tostring(mostInjuredIndex)) end;
             gcheals.AutoCure(mostInjuredIndex)
-        elseif lowestHpp > 60 and lowestHpp < 85 and numberOfMinorInjured > 1 and injuredDistance < 8 and curaRecast == 0 and injuredDistance ~= 0 then
+        elseif lowestHpp > 50 and lowestHpp < 80 and numberOfMinorInjured > 1 and mostDistant < 11 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Cura III') end;
             gcheals.QueueSpell('Cura III', '<me>');
-        elseif lowestHpp < 75 and numberOfInjured > 1 and curaga3Recast == 0 then
+        elseif lowestHpp < 70 and numberOfInjured > 1 and curaga3Recast == 0 and player.mpp > 25 and injuredDistance < 21 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Curaga III') end;
             gcheals.QueueSpell('Curaga III', targetSyntax);
-        elseif lowestHpp < 85 and numberOfMinorInjured > 1 and curaga2Recast == 0 then
+        elseif lowestHpp < 80 and numberOfMinorInjured > 1 and curaga2Recast == 0 and player.mpp > 25 and injuredDistance < 21 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Curaga II') end;
             gcheals.QueueSpell('Curaga II', targetSyntax);
         end

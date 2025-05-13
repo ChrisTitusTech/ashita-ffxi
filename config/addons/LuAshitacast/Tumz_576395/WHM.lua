@@ -2,7 +2,9 @@ local profile = {};
 
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 gcheals = gFunc.LoadFile('common\\gcheals.lua');
-
+gcinclude.sets.Sleeping = {
+    Main = 'Prime Maul',
+};
 -- Add a variable to store main weapon
 Setweapon = 'Queller Rod';
 Setoffhand = 'Sors Shield';
@@ -149,7 +151,7 @@ sets.Acc = {
     Legs = 'Ebers Pant. +2',
     Feet = 'Nyame Sollerets',
     Neck = 'Sanctity Necklace',
-    Waist = 'Cetl Belt',
+    Waist = 'Famine Sash',
     Ear1 = 'Cessance Earring',
     Ear2 = 'Ebers Earring',
     Ring1 = 'Chirich Ring',
@@ -207,46 +209,39 @@ profile.HandleCommand = function(args)
     gcinclude.HandleCommands(args);
 end
 
-profile.HandleDefault = function()
-	local player = gData.GetPlayer();
-    
+profile.UpdateSets = function()
+    local player = gData.GetPlayer();
     if (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setweapon ~= 'Magesmasher +1') then
         Setweapon = 'Magesmasher +1'
-        sets.Weapons.Main = Setweapon
-        -- Update all sets that reference the weapon
-        sets.Idle.Main = Setweapon
-        sets.Dt.Main = Setweapon
-        sets.Default.Main = Setweapon
         if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
             Setoffhand = 'Tamaxchi'
         else
             Setoffhand = 'Sors Shield'
         end
-            sets.Weapons.Sub = Setoffhand
-            sets.Idle.Sub = Setoffhand
-            sets.Dt.Sub = Setoffhand
-            sets.Default.Sub = Setoffhand
-        -- Force equipment update
+        for _, set in ipairs({'Weapons', 'Idle', 'Dt', 'Default', 'Acc'}) do
+            sets[set].Main = Setweapon
+            sets[set].Sub = Setoffhand
+        end
         gFunc.EquipSet(sets.Weapons)
     elseif (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setweapon ~= 'Queller Rod') then
         Setweapon = 'Queller Rod'
-        sets.Weapons.Main = Setweapon
-        -- Update all sets that reference the weapon
-        sets.Idle.Main = Setweapon
-        sets.Dt.Main = Setweapon
-        sets.Default.Main = Setweapon
         if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
             Setoffhand = 'Tamaxchi'
         else
             Setoffhand = 'Sors Shield'
         end
-            sets.Weapons.Sub = Setoffhand
-            sets.Idle.Sub = Setoffhand
-            sets.Dt.Sub = Setoffhand
-            sets.Default.Sub = Setoffhand
-        -- Force equipment update
+        for _, set in ipairs({'Weapons', 'Idle', 'Dt', 'Default', 'Acc'}) do
+            sets[set].Main = Setweapon
+            sets[set].Sub = Setoffhand
+        end
         gFunc.EquipSet(sets.Weapons)
     end
+end
+
+profile.HandleDefault = function()
+	local player = gData.GetPlayer();
+    
+    profile.UpdateSets();
     
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
@@ -262,7 +257,6 @@ profile.HandleDefault = function()
     if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
     if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
-    
 end
 
 profile.HandleAbility = function()
