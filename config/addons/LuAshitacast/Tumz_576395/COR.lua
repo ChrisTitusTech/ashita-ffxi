@@ -4,9 +4,9 @@ gcheals = gFunc.LoadFile('common\\gcheals.lua');
 gcrolls = gFunc.LoadFile('common\\gcrolls.lua');
 gcinclude.sets.Sleeping = { Range = 'Earp' }
 local sets = {};
-Setweapon = 'Rostam';
-Setoffhand = 'Naegling';
-Setrange = 'Holliday';
+Setweapon = 'Naegling';
+Setoffhand = 'Rostam';
+Setrange = 'Ataktos';
 sets.Weapons = {
     Main = Setweapon,
     Sub = Setoffhand,
@@ -27,7 +27,7 @@ sets.Idle = {
     Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = 'Plat. Mog. Belt',
-    Legs = 'Chas. Culottes +2',
+    Legs = 'Chas. Culottes +3',
     Feet = 'Chass. Bottes +2',
 };
 sets.Default = {
@@ -63,7 +63,7 @@ sets.Acc = {
     Ring2 = 'Chirich Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-    Legs = 'Chas. Culottes +2',
+    Legs = 'Chas. Culottes +3',
     Feet = 'Chass. Bottes +2',
 };
 sets.DT = {
@@ -81,7 +81,7 @@ sets.DT = {
     Ring2 = 'Meghanada Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-    Legs = 'Chas. Culottes +2',
+    Legs = 'Chas. Culottes +3',
     Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
 };
 sets.Hybrid = {
@@ -99,7 +99,7 @@ sets.Hybrid = {
     Ring2 = 'Ephramad\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-    Legs = 'Chas. Culottes +2',
+    Legs = 'Chas. Culottes +3',
     Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
 
 };
@@ -187,7 +187,7 @@ sets.Midshot = {
     Ear1 = 'Volley Earring',
     Ring1 = 'Paqichikaji Ring',
     Ring2 = 'Meghanada Ring',
-    Legs = 'Chas. Culottes +2',
+    Legs = 'Chas. Culottes +3',
     Feet = 'Chass. Bottes +2',
     Back = 'Gunslinger\'s Cape',
 };
@@ -197,7 +197,7 @@ sets.QuickDrawAdd = {
     Neck = 'Comm. Charm +1',
     Body = 'Chasseur\'s Frac +2',
     Hands = 'Chasseur\'s Gants +2',
-    Legs = 'Chas. Culottes +2',
+    Legs = 'Chas. Culottes +3',
     Feet = 'Chass. Bottes +2',
 };
 sets.QuickDraw = gFunc.Combine(sets.Midshot, sets.QuickDrawAdd);
@@ -343,14 +343,14 @@ end
 
 profile.Weapons = function ()
     local player = gData.GetPlayer();
-    if (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setoffhand ~= 'Naegling') then
-        Setweapon = 'Rostam';
+    if (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setweapon ~= 'Naegling') then
+        Setweapon = 'Naegling';
         if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
-            Setoffhand = 'Naegling';
+            Setoffhand = 'Rostam';
         else
             Setoffhand = 'Ark Shield';
         end
-        Setrange = 'Holliday';
+        Setrange = 'Ataktos';
         for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand
@@ -378,7 +378,7 @@ profile.Weapons = function ()
         else
             Setoffhand = 'Ark Shield';
         end
-        Setrange = 'Ataktos';
+        Setrange = 'Holliday';
         for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand

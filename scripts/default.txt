@@ -31,6 +31,7 @@
 /load PacketFlow
 /load Sequencer
 /load Stylist
+/load Volumizer
 
 /addon load distance
 /addon load fps
@@ -72,6 +73,7 @@
 /addon load points
 /addon load porter
 /addon load pupsets
+/addon load repeater
 /addon load rolltracker
 /addon load tTimers
 /addon load stfu

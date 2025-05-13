@@ -407,7 +407,7 @@ function gcheals.CheckParty()
         if lowestHpp < 75 and numberOfInjured == 1 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting to cure member at index: ' .. tostring(mostInjuredIndex)) end;
             gcheals.AutoCure(mostInjuredIndex)
-        elseif lowestHpp > 60 and lowestHpp < 85 and numberOfMinorInjured > 1 and injuredDistance < 11 and curaRecast == 0 then
+        elseif lowestHpp > 60 and lowestHpp < 85 and numberOfMinorInjured > 1 and injuredDistance < 8 and curaRecast == 0 and injuredDistance ~= 0 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Cura III') end;
             gcheals.QueueSpell('Cura III', '<me>');
         elseif lowestHpp < 75 and numberOfInjured > 1 and curaga3Recast == 0 then

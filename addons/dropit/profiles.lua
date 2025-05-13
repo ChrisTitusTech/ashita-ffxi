@@ -54,6 +54,8 @@ local autodrop = {
     'Tutelary Plans',
     'Ate\'s Sollerets',
     'Namru\'s Dastanas',
+    'Soil Sachet',
+    'Mageblade',
     -- CAUTION THESE WILL BE DROPPED
 };
 

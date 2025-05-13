@@ -78,7 +78,6 @@ local profiles = {
         'Mackerel', 
         'Moorish Idol', 
         'Grimmonite', 
-        'Millioncorn', 
         'Kukuru Bean', 
         'Puffball', 
         'Sunflower Seeds', 
@@ -177,7 +176,6 @@ local profiles = {
         'Quus', 
         'Bastore Bream', 
         'Titanictus', 
-        'Tarutaru Rice', 
         'Rye Flour', 
         'Adaman Ore', 
         'Crayfish', 
@@ -384,7 +382,6 @@ local profiles = {
         'Giant Bird Fthr.',
         'Fiend Blood',
         'Lizard Tail',
-        'Lightning Cluster',
         'Endark',
         'Ruszor Meat',
         'Brass Ingot',
@@ -502,6 +499,10 @@ local profiles = {
         'Void Grass',
         'Rolanberry Pie',
         'Cotton Cloth',
+        'Rusty Subligar',
+        'Rusty Leggings',
+        'Wyvern Wing',
+
     }
 }
 
