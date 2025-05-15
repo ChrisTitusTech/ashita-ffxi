@@ -33,24 +33,6 @@ sets.Idle = {
     Feet = 'Nyame Sollerets'
 };
 
-sets.Dt = {
-    Main = sets.Weapons.Main,
-    Sub = sets.Weapons.Sub,
-    Ammo = 'Hasty Pinion +1',
-    Head = 'Nyame Helm',
-    Body = 'Nyame Mail',
-    Hands = 'Nyame Gauntlets',
-    Legs = 'Nyame Flanchard',
-    Feet = 'Nyame Sollerets',
-    Neck = 'Asperity Necklace',
-    Waist = 'Plat. Mog. Belt',
-    Ear1 = 'Odnowa Earring +1',
-    Ear2 = 'Cessance Earring',
-    Ring1 = 'Shneddick Ring',
-    Ring2 = 'Ephramad\'s Ring',
-    Back = 'Alaunus\'s Cape'
-};
-
 sets.Resting = {};
 
 sets.Precast = {
@@ -126,40 +108,36 @@ sets.Elemental = {
 sets.Default = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
-    Ammo = 'Staunch Tathlum',
-    Head = 'Nyame Helm',
-    Body = 'Nyame Mail',
-    Hands = 'Nyame Gauntlets',
-    Legs = 'Nyame Flanchard',
-    Feet = 'Nyame Sollerets',
-    Neck = 'Sanctity Necklace',
-    Waist = 'Cetl Belt',
-    Ear1 = 'Brutal Earring',
-    Ear2 = 'Cessance Earring',
-    Ring1 = 'Chirich Ring',
-    Ring2 = 'Ephramad\'s Ring',
-    Back = 'Alaunus\'s Cape'
-};
-
-sets.Acc = {
-    Main = sets.Weapons.Main,
-    Sub = sets.Weapons.Sub,
     Ammo = 'Hasty Pinion +1',
     Head = 'Nyame Helm',
-    Body = 'Ebers Bliaut +2',
-    Hands = 'Ebers Mitts +2',
+    Body = 'Ayanmo Corazza +2',
+    Hands = 'Bunzi\'s Gloves',
     Legs = 'Ebers Pant. +2',
     Feet = 'Nyame Sollerets',
     Neck = 'Sanctity Necklace',
-    Waist = 'Famine Sash',
+    Waist = 'Cetl Belt',
     Ear1 = 'Cessance Earring',
     Ear2 = 'Ebers Earring',
     Ring1 = 'Chirich Ring',
     Ring2 = 'Ephramad\'s Ring',
     Back = 'Alaunus\'s Cape'
 };
-
-sets.Hybrid = {};
+sets.DTadd = {
+    Head = 'Nyame Helm',
+    Body = 'Nyame Mail',
+    Hands = 'Nyame Gauntlets',
+    Legs = 'Nyame Flanchard',
+    Feet = 'Nyame Sollerets',
+    Waist = 'Plat. Mog. Belt',
+    Neck = 'Elite Royal Collar',
+};
+sets.DT = gFunc.Combine(sets.Default, sets.DTadd);
+sets.Hybrid = sets.Default
+sets.AccAdd = {
+    Ammo = 'Hasty Pinion +1',
+    Waist = 'Famine Sash',
+}
+sets.Acc = gFunc.Combine(sets.Default, sets.AccAdd);
 
 sets.Movement = {
     Ring1 = 'Shneddick Ring',
@@ -214,11 +192,11 @@ profile.UpdateSets = function()
     if (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setweapon ~= 'Magesmasher +1') then
         Setweapon = 'Magesmasher +1'
         if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-            Setoffhand = 'Tamaxchi'
+            Setoffhand = 'Bunzi\'s Rod'
         else
             Setoffhand = 'Sors Shield'
         end
-        for _, set in ipairs({'Weapons', 'Idle', 'Dt', 'Default', 'Acc'}) do
+        for _, set in ipairs({'Weapons', 'Idle', 'DT', 'Default', 'Acc'}) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand
         end
@@ -226,11 +204,11 @@ profile.UpdateSets = function()
     elseif (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setweapon ~= 'Queller Rod') then
         Setweapon = 'Queller Rod'
         if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-            Setoffhand = 'Tamaxchi'
+            Setoffhand = 'Bunzi\'s Rod'
         else
             Setoffhand = 'Sors Shield'
         end
-        for _, set in ipairs({'Weapons', 'Idle', 'Dt', 'Default', 'Acc'}) do
+        for _, set in ipairs({'Weapons', 'Idle', 'DT', 'Default', 'Acc'}) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand
         end
@@ -238,13 +216,29 @@ profile.UpdateSets = function()
     end
 end
 
+profile.SoloMode = function()
+    local player = gData.GetPlayer();
+    if gcinclude.CheckWsBailout() == true and player.HPP > 35 and player.TP > 1000 then
+       AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Hexa Strike" <t>');
+    else
+        if gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP <= 35 and player.SubJob == 'DNC' and player.TP > 500 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
+        elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
+        elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
+        end
+    end
+end
+
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
-    
+    local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
+
     profile.UpdateSets();
     
     if (player.Status == 'Engaged') then
-        gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
+        gFunc.EquipSet(meleeSet)
 		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
@@ -255,7 +249,8 @@ profile.HandleDefault = function()
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
     if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
-    if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
+    if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then profile.SoloMode() end;
+    if (meleeSet == sets.DT) then gFunc.EquipSet(sets.DT) end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 

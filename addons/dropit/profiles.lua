@@ -56,6 +56,7 @@ local autodrop = {
     'Namru\'s Dastanas',
     'Soil Sachet',
     'Mageblade',
+    'Orc Helmet',
     -- CAUTION THESE WILL BE DROPPED
 };
 

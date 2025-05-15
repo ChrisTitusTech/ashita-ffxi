@@ -169,69 +169,7 @@ function gcheals.GetTrustNames()
 end
 
 function gcheals.QueueSpell(spell, target)
-    if not spell or not target then 
-        print(chat.header('gcheals'):append(chat.error('Invalid spell or target')));
-        return false;
-    elseif gcinclude.CheckSpellBailout() == false then
-        return false;
-    end
-    -- Cast the spell
-    print(chat.header('gcheals'):append(chat.message('Casting: ' .. spell .. ' on ' .. target)));
-    AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. spell .. '" ' .. target);
-    return true;
-end
-
-function gcheals.AutoCure(target)
-    -- Set default values if not specified
-    local curePotency = 50;
-        
-    -- Get player information
-    local player = AshitaCore:GetMemoryManager():GetPlayer();
-    local mainJob = player:GetMainJob();
-    local mainJobLevel = player:GetMainJobLevel();
-    local party = AshitaCore:GetMemoryManager():GetParty();
-    
-    if not player or not party then 
-        print(chat.header('gcheals'):append(chat.error('Player or party data not available')));
-        return false 
-    end
-
-    -- Convert numerical target to proper FFXI syntax
-    local targetSyntax = '<me>';
-    if target > 0 and target <= 5 then
-        targetSyntax = string.format('<p%d>', target);
-    end
-    
-    if mainJob == 3 then -- WHM job ID
-        if gData.GetBuffCount('Afflatus Solace') == 0 and gcinclude.CheckAbilityRecast('Afflatus Solace') == 0 and gData.GetBuffCount('Afflatus Misery') == 0 then
-            print(chat.header('gcheals'):append(chat.message('Activating Afflatus Solace')));
-            AshitaCore:GetChatManager():QueueCommand(1, '/ja "Afflatus Solace" <me>');
-            return true;
-        end
-    end
-    
-    -- Get current MP safely
-    local currentMP = party:GetMemberMP(0);
-    if not currentMP or currentMP <= 0 then 
-        print(chat.header('gcheals'):append(chat.error('No MP available')));
-        return false 
-    end
-    
-    -- Get target information directly from party manager
-    local targetName = party:GetMemberName(target);
-    local targetHP = party:GetMemberHP(target);
-    local targetHPP = party:GetMemberHPPercent(target);
-    
-    -- Validate basic target info
-    if not targetName or not targetHP or not targetHPP or targetHPP <= 0 then 
-        print(chat.header('gcheals'):append(chat.error('Invalid target information')));
-        return false 
-    end
-
-    local targetMaxHP = math.floor(targetHP / (targetHPP / 100));
-    local targetCurrentHP = targetHP;
-    
-    -- Define spell costs
+    local player = gData.GetPlayer();
     local spellCosts = {
         ['Cure'] = 8,
         ['Cure II'] = 24,
@@ -248,50 +186,70 @@ function gcheals.AutoCure(target)
         ['Blindna'] = 15,
         ['Poisona'] = 15
     };
-
-    -- Calculate missing HP
-    local missingHP = targetMaxHP - targetCurrentHP;
+    if player.MPP < 8 then 
+        print(chat.header('gcheals'):append(chat.error('No MP available')));
+        return false 
+    end
     
+    if player.MainJob == 'WHM' and string.find(spell, 'Cure') then
+        if gData.GetBuffCount('Afflatus Solace') == 0 and gcinclude.CheckAbilityRecast('Afflatus Solace') == 0 and gData.GetBuffCount('Afflatus Misery') == 0 then
+            print(chat.header('gcheals'):append(chat.message('Activating Afflatus Solace')));
+            AshitaCore:GetChatManager():QueueCommand(1, '/ja "Afflatus Solace" <me>');
+            return true;
+        end
+    end
+    
+    if not spell or not target then 
+        print(chat.header('gcheals'):append(chat.error('Invalid spell or target')));
+        return false;
+    elseif gcinclude.CheckSpellBailout() == false then
+        return false;
+    end
+    if target ~= '<me>' and string.find(spell, 'Cure') then
+        local cleanTarget = tonumber(target:sub(3, 3));
+        spell = gcheals.SelectCure(cleanTarget);
+    end
+    -- Cast the spell
+    print(chat.header('gcheals'):append(chat.message('Casting: ' .. spell .. ' on ' .. target)));
+    AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. spell .. '" ' .. target);
+    return true;
+end
+
+function gcheals.SelectCure(target)
+    local party = AshitaCore:GetMemoryManager():GetParty();
+    local curePotency = 50;
+    local targetName = party:GetMemberName(target);
+    local targetHP = party:GetMemberHP(target);
+    local targetHPP = party:GetMemberHPPercent(target);
+    if not targetName or not targetHP or not targetHPP or targetHPP <= 0 then 
+        print(chat.header('gcheals'):append(chat.error('Invalid target information')));
+        return false 
+    end
+    local targetMaxHP = math.floor(targetHP / (targetHPP / 100));
+    local targetCurrentHP = targetHP;
+    local missingHP = targetMaxHP - targetCurrentHP;
+    local potencyMultiplier = 1 + (curePotency / 100);
     -- Define cure potencies (base values)
     local curePotencies = {
-        ['Cure'] = 65,
-        ['Cure II'] = 145,
-        ['Cure III'] = 400,
-        ['Cure IV'] = 700,
-        ['Cure V'] = 1000,
-        ['Cure VI'] = 2000
+        ['Cure'] = 65*potencyMultiplier,
+        ['Cure II'] = 145*potencyMultiplier,
+        ['Cure III'] = 340*potencyMultiplier,
+        ['Cure IV'] = 640*potencyMultiplier,
+        ['Cure V'] = 780*potencyMultiplier,
+        ['Cure VI'] = 1010*potencyMultiplier
     };
 
-    -- Calculate cure potency multiplier (adding base 100%)
-    local potencyMultiplier = 1 + (curePotency / 100);
-    
-    -- Calculate how much we want to cure for based on missing HP and potency
-    local desiredCure = missingHP / potencyMultiplier;
-    
-    -- Select appropriate cure spell based on desired cure amount and available spells
     local selectedCure = nil;
-    
-    -- Normal cure selection logic - Compare against base cure values
-    if desiredCure <= curePotencies['Cure'] and mainJobLevel >= 1 then
-        selectedCure = 'Cure';
-    elseif desiredCure <= curePotencies['Cure II'] and mainJobLevel >= 11 then
-        selectedCure = 'Cure II';
-    elseif desiredCure <= curePotencies['Cure III'] and mainJobLevel >= 21 then
+    if missingHP <= curePotencies['Cure III']then
         selectedCure = 'Cure III';
-    elseif desiredCure <= curePotencies['Cure IV'] and mainJobLevel >= 41 then
+    elseif missingHP <= curePotencies['Cure IV'] then
         selectedCure = 'Cure IV';
-    elseif desiredCure <= curePotencies['Cure V'] and mainJobLevel >= 61 then
+    elseif missingHP <= curePotencies['Cure V'] then
         selectedCure = 'Cure V';
-    elseif mainJobLevel >= 71 then  -- If none of the above match, use Cure VI as fallback
+    elseif missingHP >= 71 then  -- If none of the above match, use Cure VI as fallback
         selectedCure = 'Cure VI';
     end
-    
-    -- Check if we can cast the selected cure (MP check)
-    if selectedCure and spellCosts[selectedCure] <= currentMP then
-        if gcheals.DebugHeals == true then gcheals.DebugPrint('Queueing ' .. selectedCure .. ' for ' .. targetName) end;
-        gcheals.QueueSpell(selectedCure, targetSyntax);
-        return true;
-    end
+    return selectedCure;
 end
 
 function gcheals.GetParty()
@@ -299,7 +257,8 @@ function gcheals.GetParty()
     local partyMembers = {};
     local party = AshitaCore:GetMemoryManager():GetParty();
     local partySize = party:GetAlliancePartyMemberCount1();
-    
+    -- Note: all Ashita arrays start at 0 and partyMembers array will start at 1
+    -- Initialize party members array
     -- Index Party zone hp and distance
     if gcheals.DebugParty then gcheals.DebugPrint('Starting party check - Party size: ' .. tostring(partySize)) end
     
@@ -313,9 +272,9 @@ function gcheals.GetParty()
             
             -- Add to overall party list
             table.insert(partyMembers, {
-                index = i,
+                pnum = i,
                 name = memberName,
-                hpp = party:GetMemberHPPercent(i) or 0,
+                HPP = party:GetMemberHPPercent(i) or 0,
                 currentHP = party:GetMemberHP(i) or 0,
                 zone = party:GetMemberZone(i) or 0,
                 isTrust = isTrust,
@@ -324,7 +283,7 @@ function gcheals.GetParty()
             
             -- Try to get the entity's distance if it exists
             local entityMgr = AshitaCore:GetMemoryManager():GetEntity();
-            if entityMgr then
+            if entityMgr and partyMembers[i+1].isTrust == false then
                 -- Get the actual entity array size
                 local entityCount = entityMgr:GetEntityMapSize();
                 
@@ -332,15 +291,16 @@ function gcheals.GetParty()
                 for j = 0, entityCount - 1 do
                     local entName = entityMgr:GetName(j);
                     if entName == memberName then
-                        partyMembers[#partyMembers].distance = math.sqrt(entityMgr:GetDistance(j));
-                        if gcheals.DebugParty and partyMembers[#partyMembers].distance > 0 then 
+                        partyMembers[i+1].distance = math.sqrt(entityMgr:GetDistance(j));
+                        if gcheals.DebugParty and partyMembers[i+1].distance > 0 then 
                             gcheals.DebugPrint('Found entity ' .. memberName .. ' at index ' .. j .. 
-                                ' with distance: ' .. tostring(partyMembers[#partyMembers].distance));
+                                ' with distance: ' .. tostring(partyMembers[i+1].distance));
                         end
                         break;
                     end
                 end
             end
+
         end
     end
     return partyMembers;
@@ -365,14 +325,13 @@ function gcheals.CheckParty()
     local curaRecast = recast:GetSpellTimer(475);
     local curaga2Recast = recast:GetSpellTimer(8);
     local curaga3Recast = recast:GetSpellTimer(9);
-    local target = gData.GetTarget()
     local targetSyntax = '<me>';
 
     if player.Status == 'Zoning' then return end
     local partyMembers = gcheals.GetParty();
     -- Find the most injured party member
-    local lowestHpp = 100
-    local mostInjuredIndex = 0
+    local lowestHPP = 100
+    local mostInjuredIndex = 1
     local mostDistant = 0
     local numberOfInjured = 0
     local numberOfMinorInjured = 0
@@ -380,16 +339,16 @@ function gcheals.CheckParty()
     
     for i = 1, #partyMembers do
         if partyMembers[i].isTrust or (partyMembers[i].zone == partyMembers[1].zone and partyMembers[i].distance < 21) then
-            if partyMembers[i].hpp < 70 and partyMembers[i].hpp > 0 then
+            if partyMembers[i].HPP < 70 and partyMembers[i].HPP > 0 then
                 numberOfInjured = numberOfInjured + 1
-            elseif partyMembers[i].hpp < 80 and partyMembers[i].hpp > 0 then
+            elseif partyMembers[i].HPP < 80 and partyMembers[i].HPP > 0 then
                 numberOfMinorInjured = numberOfMinorInjured + 1
             end
-            if partyMembers[i].hpp < lowestHpp and partyMembers[i].hpp > 0 then
-                lowestHpp = partyMembers[i].hpp
+            if partyMembers[i].HPP < lowestHPP and partyMembers[i].HPP > 0 then
+                lowestHPP = partyMembers[i].HPP
                 mostInjuredIndex = i
                 if gcheals.DebugHeals == true then gcheals.DebugPrint('Found injured member: ' .. partyMembers[i].name .. 
-                    ' (HP%: ' .. tostring(lowestHpp) .. ')') end;
+                    ' (HP%: ' .. tostring(lowestHPP) .. ')') end;
             end
             if partyMembers[i].distance > mostDistant and partyMembers[i].isTrust == false then
                 mostDistant = partyMembers[i].distance
@@ -397,21 +356,21 @@ function gcheals.CheckParty()
         end
     end
     if partyMembers[mostInjuredIndex] then
-        targetSyntax = string.format('<p%d>', partyMembers[mostInjuredIndex].index);
+        targetSyntax = string.format('<p%d>', partyMembers[mostInjuredIndex].pnum);
         if partyMembers[mostInjuredIndex].isTrust == false then injuredDistance = partyMembers[mostInjuredIndex].distance; end
     end
 
     if mostInjuredIndex then
-        if lowestHpp < 75 and (numberOfInjured == 1 or player.mpp <= 25) and injuredDistance < 21 then
+        if lowestHPP < 75 and (numberOfInjured == 1 or player.MPP <= 25) and injuredDistance < 21 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting to cure member at index: ' .. tostring(mostInjuredIndex)) end;
-            gcheals.AutoCure(mostInjuredIndex)
-        elseif lowestHpp > 50 and lowestHpp < 80 and numberOfMinorInjured > 1 and mostDistant < 11 then
+            gcheals.QueueSpell('Cure IV', targetSyntax);
+        elseif lowestHPP > 50 and lowestHPP < 80 and curaRecast == 0 and numberOfMinorInjured > 1 and mostDistant < 11 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Cura III') end;
             gcheals.QueueSpell('Cura III', '<me>');
-        elseif lowestHpp < 70 and numberOfInjured > 1 and curaga3Recast == 0 and player.mpp > 25 and injuredDistance < 21 then
+        elseif lowestHPP < 70 and numberOfInjured > 1 and curaga3Recast == 0 and player.MPP > 25 and injuredDistance < 21 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Curaga III') end;
             gcheals.QueueSpell('Curaga III', targetSyntax);
-        elseif lowestHpp < 80 and numberOfMinorInjured > 1 and curaga2Recast == 0 and player.mpp > 25 and injuredDistance < 21 then
+        elseif lowestHPP < 80 and numberOfMinorInjured > 1 and curaga2Recast == 0 and player.MPP > 25 and injuredDistance < 21 then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Curaga II') end;
             gcheals.QueueSpell('Curaga II', targetSyntax);
         end
