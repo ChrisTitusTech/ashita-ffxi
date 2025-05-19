@@ -1,4 +1,4 @@
-local gcinclude = T{};
+local gcinclude = T {};
 
 --[[
 Only edit the next two small sections here. See the readme on my github for more information on usages for my profiles.
@@ -7,38 +7,38 @@ These are universal sets for things like doomed or asleep; avoid main/sub/range/
 The second section is a couple basic settings to decide on whether or not to use you the automatic equiping function of idle regen, idle refresh, DT gear etc.
 More details in each section.
 ]]
-gcinclude.sets = T{
+gcinclude.sets = T {
 	Doomed = { -- this set will equip any time you have the doom status
 		Ring1 = 'Purity Ring',
 		Waist = 'Gishdubar Sash',
-    },
+	},
 	Holy_Water = { -- update with whatever gear you use for the Holy Water item
 		Ring1 = 'Purity Ring',
 		Ring2 = 'Blenmot\'s Ring',
-    },
+	},
 	Sleeping = { -- this set will auto equip if you are asleep
-    },
+	},
 	Fishing = { -- this set is meant as a default set for fishing, equip using /fishset
 		Range = 'Lu Shang\'s F. Rod',
 		Ammo = 'Sinking Minnow',
 		--Ring2 = 'Pelican Ring',
-    },
+	},
 };
 gcinclude.settings = {
 	--[[
 	You can also set any of these on a per job basis in the job file in the OnLoad function. See my COR job file to see how this is done
 	but as an example you can just put 'gcinclude.settings.RefreshGearMPP = 50;' in your job files OnLoad function to modify for that job only
 	]]
-	Messages = false; --set to true if you want chat log messages to appear on any /gc command used such as DT, TH, or KITE gear toggles, certain messages will always appear
-	AutoGear = false; --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
-	WScheck = true; --set to false if you dont want to use the WSdistance safety check
-	WSdistance = 8; --default max distance (yalms) to allow non-ranged WS to go off at if the above WScheck is true
-	RegenGearHPP = 60; -- set HPP to have your idle regen set to come on
-	RefreshGearMPP = 70; -- set MPP to have your idle refresh set to come on
-	DTGearHPP = 40; -- set HPP to have your DT set to come on
-	PetDTGearHPP = 50; -- set pet HPP to have your PetDT set to come on
-	Tele_Ring = 'Dim. Ring (Mea)'; -- put your tele ring in here
-	LastForbiddenKey = 0; -- timestamp for last Forbidden Key usage
+	Messages = false,             --set to true if you want chat log messages to appear on any /gc command used such as DT, TH, or KITE gear toggles, certain messages will always appear
+	AutoGear = false,             --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
+	WScheck = true,               --set to false if you dont want to use the WSdistance safety check
+	WSdistance = 8,               --default max distance (yalms) to allow non-ranged WS to go off at if the above WScheck is true
+	RegenGearHPP = 60,            -- set HPP to have your idle regen set to come on
+	RefreshGearMPP = 70,          -- set MPP to have your idle refresh set to come on
+	DTGearHPP = 40,               -- set HPP to have your DT set to come on
+	PetDTGearHPP = 50,            -- set pet HPP to have your PetDT set to come on
+	Tele_Ring = 'Dim. Ring (Mea)', -- put your tele ring in here
+	LastForbiddenKey = 0,         -- timestamp for last Forbidden Key usage
 };
 
 --[[
@@ -48,34 +48,34 @@ in each individual job lua file. Unless you know what you're doing then it is be
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
-gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','meleeset','setweapon','setprime','solo','th','kite','helix','weather','nuke','death','rrcap','warpring','telering','fishset','autoheal','roll1','roll2','autoassist'};
-gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
-gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
-gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
-gcinclude.BstPetAttack = T{'Foot Kick','Whirl Claws','Big Scissors','Tail Blow','Blockhead','Sensilla Blades','Tegmina Buffet','Lamb Chop','Sheep Charge','Pentapeck','Recoil Dive','Frogkick','Queasyshroom','Numbshroom','Shakeshroom','Nimble Snap','Cyclotail','Somersault','Tickling Tendrils','Sweeping Gouge','Grapple','Double Claw','Spinning Top','Suction','Tortoise Stomp','Power Attack','Rhino Attack','Razor Fang','Claw Cyclone','Crossthrash','Scythe Tail','Ripper Fang','Chomp Rush','Pecking Flurry','Sickle Slash','Mandibular Bite','Wing Slap','Beak Lunge','Head Butt','Wild Oats','Needle Shot','Disembowel','Extirpating Salvo','Mega Scissors','Back Heel','Hoof Volley','Fluid Toss','Fluid Spread'};
-gcinclude.BstPetMagicAttack = T{'Gloom Spray','Fireball','Acid Spray','Molting Plumage','Cursed Sphere','Nectarous Deluge','Charged Whisker','Nepenthic Plunge','Entomb','Subduction','Tenebral Crush','Spectral Floe','Tem. Upheaval','Embalming Earth'};
-gcinclude.BstPetMagicAccuracy = T{'Toxic Spit','Acid Spray','Leaf Dagger','Venom Spray','Venom','Dark Spore','Sandblast','Dust Cloud','Stink Bomb','Slug Family','Intimidate','Gloeosuccus','Spider Web','Filamented Hold','Choke Breath','Blaster','Snow Cloud','Roar','Palsy Pollen','Spore','Brain Crush','Choke Breath','Silence Gas','Chaotic Eye','Sheep Song','Soporific','Predatory Glare','Sudden Lunge','Numbing Noise','Jettatura','Bubble Shower','Spoil','Scream','Noisome Powder','Acid Mist','Rhinowrecker','Swooping Frenzy','Venom Shower','Corrosive Ooze','Spiral Spin','Infrasonics','Hi-Freq Field','Purulent Ooze','Foul Waters','Sandpit','Infected Leech','Pestilent Plume'};
-gcinclude.SmnSkill = T{'Shining Ruby','Glittering Ruby','Crimson Howl','Inferno Howl','Frost Armor','Crystal Blessing','Aerial Armor','Hastega II','Fleet Wind','Hastega','Earthen Ward','Earthen Armor','Rolling Thunder','Lightning Armor','Soothing Current','Ecliptic Growl','Heavenward Howl','Ecliptic Howl','Noctoshield','Dream Shroud','Altana\'s Favor','Reraise','Reraise II','Reraise III','Raise','Raise II','Raise III','Wind\'s Blessing'};
-gcinclude.SmnMagical = T{'Searing Light','Meteorite','Holy Mist','Inferno','Fire II','Fire IV','Meteor Strike','Conflag Strike','Diamond Dust','Blizzard II','Blizzard IV','Heavenly Strike','Aerial Blast','Aero II','Aero IV','Wind Blade','Earthen Fury','Stone II','Stone IV','Geocrush','Judgement Bolt','Thunder II','Thunder IV','Thunderstorm','Thunderspark','Tidal Wave','Water II','Water IV','Grand Fall','Howling Moon','Lunar Bay','Ruinous Omen','Somnolence','Nether Blast','Night Terror','Level ? Holy'};
-gcinclude.SmnHealing = T{'Healing Ruby','Healing Ruby II','Whispering Wind','Spring Water'};
-gcinclude.SmnHybrid = T{'Flaming Crush','Burning Strike'};
-gcinclude.SmnEnfeebling = T{'Diamond Storm','Sleepga','Shock Squall','Slowga','Tidal Roar','Pavor Nocturnus','Ultimate Terror','Nightmare','Mewing Lullaby','Eerie Eye'};
-gcinclude.BluMagPhys = T{'Foot Kick','Sprout Smack','Wild Oats','Power Attack','Queasyshroom','Battle Dance','Feather Storm','Helldive','Bludgeon','Claw Cyclone','Screwdriver','Grand Slam','Smite of Rage','Pinecone Bomb','Jet Stream','Uppercut','Terror Touch','Mandibular Bite','Sickle Slash','Dimensional Death','Spiral Spin','Death Scissors','Seedspray','Body Slam','Hydro Shot','Frenetic Rip','Spinal Cleave','Hysteric Barrage','Asuran Claws','Cannonball','Disseverment','Ram Charge','Vertical Cleave','Final Sting','Goblin Rush','Vanity Dive','Whirl of Rage','Benthic Typhoon','Quad. Continuum','Empty Thrash','Delta Thrust','Heavy Strike','Quadrastrike','Tourbillion','Amorphic Spikes','Barbed Crescent','Bilgestorm','Bloodrake','Glutinous Dart','Paralyzing Triad','Thrashing Assault','Sinker Drill','Sweeping Gouge','Saurian Slide'};
-gcinclude.BluMagDebuff = T{'Filamented Hold','Cimicine Discharge','Demoralizing Roar','Venom Shell','Light of Penance','Sandspray','Auroral Drape','Frightful Roar','Enervation','Infrasonics','Lowing','CMain Wave','Awful Eye','Voracious Trunk','Sheep Song','Soporific','Yawn','Dream Flower','Chaotic Eye','Sound Blast','Blank Gaze','Stinking Gas','Geist Wall','Feather Tickle','Reaving Wind','Mortal Ray','Absolute Terror','Blistering Roar','Cruel Joke'};
-gcinclude.BluMagStun = T{'Head Butt','Frypan','Tail Slap','Sub-zero Smash','Sudden Lunge'};
-gcinclude.BluMagBuff = T{'Cocoon','Refueling','Feather Barrier','Memento Mori','Zephyr Mantle','Warm-Up','Amplification','Triumphant Roar','Saline Coat','Reactor Cool','Plasma Charge','Regeneration','Animating Wail','Battery Charge','Winds of Promy.','Barrier Tusk','Orcish Counterstance','Pyric Bulwark','Nat. Meditation','Restoral','Erratic Flutter','Carcharian Verve','Harden Shell','Mighty Guard'};
-gcinclude.BluMagSkill = T{'Metallic Body','Diamondhide','Magic Barrier','Occultation','Atra. Libations'};
-gcinclude.BluMagDiffus = T{'Erratic Flutter','Carcharian Verve','Harden Shell','Mighty Guard'};
-gcinclude.BluMagCure = T{'Pollen','Healing Breeze','Wild Carrot','Magic Fruit','Plenilune Embrace'};
-gcinclude.BluMagEnmity = T{'Actinic Burst','Exuviation','Fantod','Jettatura','Temporal Shift'};
-gcinclude.BluMagTH = T{'Actinic Burst','Dream Flower'};
-gcinclude.Elements = T{'Thunder', 'Blizzard', 'Fire', 'Stone', 'Aero', 'Water', 'Light', 'Dark'};
-gcinclude.HelixSpells = T{'Ionohelix', 'Cryohelix', 'Pyrohelix', 'Geohelix', 'Anemohelix', 'Hydrohelix', 'Luminohelix', 'Noctohelix'};
-gcinclude.StormSpells = T{'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm', 'Windstorm', 'Rainstorm', 'Aurorastorm', 'Voidstorm'};
-gcinclude.NinNukes = T{'Katon: Ichi', 'Katon: Ni', 'Katon: San', 'Hyoton: Ichi', 'Hyoton: Ni', 'Hyoton: San', 'Huton: Ichi', 'Huton: Ni', 'Huton: San', 'Doton: Ichi', 'Doton: Ni', 'Doton: San', 'Raiton: Ichi', 'Raiton: Ni', 'Raiton: San', 'Suiton: Ichi', 'Suiton: Ni', 'Suiton: San'};
+gcinclude.AliasList = T { 'gcmessages', 'wsdistance', 'setcycle', 'meleeset', 'setweapon', 'setprime', 'solo', 'th', 'kite', 'helix', 'weather', 'nuke', 'death', 'rrcap', 'warpring', 'telering', 'fishset', 'autoheal', 'roll1', 'roll2', 'autoassist' };
+gcinclude.Towns = T { 'Tavnazian Safehold', 'Al Zahbi', 'Aht Urhgan Whitegate', 'Nashmau', 'Southern San d\'Oria [S]', 'Bastok Markets [S]', 'Windurst Waters [S]', 'San d\'Oria-Jeuno Airship', 'Bastok-Jeuno Airship', 'Windurst-Jeuno Airship', 'Kazham-Jeuno Airship', 'Southern San d\'Oria', 'Northern San d\'Oria', 'Port San d\'Oria', 'Chateau d\'Oraguille', 'Bastok Mines', 'Bastok Markets', 'Port Bastok', 'Metalworks', 'Windurst Waters', 'Windurst Walls', 'Port Windurst', 'Windurst Woods', 'Heavens Tower', 'Ru\'Lude Gardens', 'Upper Jeuno', 'Lower Jeuno', 'Port Jeuno', 'Rabao', 'Selbina', 'Mhaura', 'Kazham', 'Norg', 'Mog Garden', 'Celennia Memorial Library', 'Western Adoulin', 'Eastern Adoulin' };
+gcinclude.LockingRings = T { 'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring', 'Facility Ring', 'Dim. Ring (Dem)', 'Dim. Ring (Mea)', 'Dim. Ring (Holla)' };
+gcinclude.DistanceWS = T { 'Flaming Arrow', 'Piercing Arrow', 'Dulling Arrow', 'Sidewinder', 'Blast Arrow', 'Arching Arrow', 'Empyreal Arrow', 'Refulgent Arrow', 'Apex Arrow', 'Namas Arrow', 'Jishnu\'s Randiance', 'Hot Shot', 'Split Shot', 'Sniper Shot', 'Slug Shot', 'Blast Shot', 'Heavy Shot', 'Detonator', 'Numbing Shot', 'Last Stand', 'Coronach', 'Wildfire', 'Trueflight', 'Leaden Salute', 'Myrkr', 'Dagan', 'Moonlight', 'Starlight' };
+gcinclude.BstPetAttack = T { 'Foot Kick', 'Whirl Claws', 'Big Scissors', 'Tail Blow', 'Blockhead', 'Sensilla Blades', 'Tegmina Buffet', 'Lamb Chop', 'Sheep Charge', 'Pentapeck', 'Recoil Dive', 'Frogkick', 'Queasyshroom', 'Numbshroom', 'Shakeshroom', 'Nimble Snap', 'Cyclotail', 'Somersault', 'Tickling Tendrils', 'Sweeping Gouge', 'Grapple', 'Double Claw', 'Spinning Top', 'Suction', 'Tortoise Stomp', 'Power Attack', 'Rhino Attack', 'Razor Fang', 'Claw Cyclone', 'Crossthrash', 'Scythe Tail', 'Ripper Fang', 'Chomp Rush', 'Pecking Flurry', 'Sickle Slash', 'Mandibular Bite', 'Wing Slap', 'Beak Lunge', 'Head Butt', 'Wild Oats', 'Needle Shot', 'Disembowel', 'Extirpating Salvo', 'Mega Scissors', 'Back Heel', 'Hoof Volley', 'Fluid Toss', 'Fluid Spread' };
+gcinclude.BstPetMagicAttack = T { 'Gloom Spray', 'Fireball', 'Acid Spray', 'Molting Plumage', 'Cursed Sphere', 'Nectarous Deluge', 'Charged Whisker', 'Nepenthic Plunge', 'Entomb', 'Subduction', 'Tenebral Crush', 'Spectral Floe', 'Tem. Upheaval', 'Embalming Earth' };
+gcinclude.BstPetMagicAccuracy = T { 'Toxic Spit', 'Acid Spray', 'Leaf Dagger', 'Venom Spray', 'Venom', 'Dark Spore', 'Sandblast', 'Dust Cloud', 'Stink Bomb', 'Slug Family', 'Intimidate', 'Gloeosuccus', 'Spider Web', 'Filamented Hold', 'Choke Breath', 'Blaster', 'Snow Cloud', 'Roar', 'Palsy Pollen', 'Spore', 'Brain Crush', 'Choke Breath', 'Silence Gas', 'Chaotic Eye', 'Sheep Song', 'Soporific', 'Predatory Glare', 'Sudden Lunge', 'Numbing Noise', 'Jettatura', 'Bubble Shower', 'Spoil', 'Scream', 'Noisome Powder', 'Acid Mist', 'Rhinowrecker', 'Swooping Frenzy', 'Venom Shower', 'Corrosive Ooze', 'Spiral Spin', 'Infrasonics', 'Hi-Freq Field', 'Purulent Ooze', 'Foul Waters', 'Sandpit', 'Infected Leech', 'Pestilent Plume' };
+gcinclude.SmnSkill = T { 'Shining Ruby', 'Glittering Ruby', 'Crimson Howl', 'Inferno Howl', 'Frost Armor', 'Crystal Blessing', 'Aerial Armor', 'Hastega II', 'Fleet Wind', 'Hastega', 'Earthen Ward', 'Earthen Armor', 'Rolling Thunder', 'Lightning Armor', 'Soothing Current', 'Ecliptic Growl', 'Heavenward Howl', 'Ecliptic Howl', 'Noctoshield', 'Dream Shroud', 'Altana\'s Favor', 'Reraise', 'Reraise II', 'Reraise III', 'Raise', 'Raise II', 'Raise III', 'Wind\'s Blessing' };
+gcinclude.SmnMagical = T { 'Searing Light', 'Meteorite', 'Holy Mist', 'Inferno', 'Fire II', 'Fire IV', 'Meteor Strike', 'Conflag Strike', 'Diamond Dust', 'Blizzard II', 'Blizzard IV', 'Heavenly Strike', 'Aerial Blast', 'Aero II', 'Aero IV', 'Wind Blade', 'Earthen Fury', 'Stone II', 'Stone IV', 'Geocrush', 'Judgement Bolt', 'Thunder II', 'Thunder IV', 'Thunderstorm', 'Thunderspark', 'Tidal Wave', 'Water II', 'Water IV', 'Grand Fall', 'Howling Moon', 'Lunar Bay', 'Ruinous Omen', 'Somnolence', 'Nether Blast', 'Night Terror', 'Level ? Holy' };
+gcinclude.SmnHealing = T { 'Healing Ruby', 'Healing Ruby II', 'Whispering Wind', 'Spring Water' };
+gcinclude.SmnHybrid = T { 'Flaming Crush', 'Burning Strike' };
+gcinclude.SmnEnfeebling = T { 'Diamond Storm', 'Sleepga', 'Shock Squall', 'Slowga', 'Tidal Roar', 'Pavor Nocturnus', 'Ultimate Terror', 'Nightmare', 'Mewing Lullaby', 'Eerie Eye' };
+gcinclude.BluMagPhys = T { 'Foot Kick', 'Sprout Smack', 'Wild Oats', 'Power Attack', 'Queasyshroom', 'Battle Dance', 'Feather Storm', 'Helldive', 'Bludgeon', 'Claw Cyclone', 'Screwdriver', 'Grand Slam', 'Smite of Rage', 'Pinecone Bomb', 'Jet Stream', 'Uppercut', 'Terror Touch', 'Mandibular Bite', 'Sickle Slash', 'Dimensional Death', 'Spiral Spin', 'Death Scissors', 'Seedspray', 'Body Slam', 'Hydro Shot', 'Frenetic Rip', 'Spinal Cleave', 'Hysteric Barrage', 'Asuran Claws', 'Cannonball', 'Disseverment', 'Ram Charge', 'Vertical Cleave', 'Final Sting', 'Goblin Rush', 'Vanity Dive', 'Whirl of Rage', 'Benthic Typhoon', 'Quad. Continuum', 'Empty Thrash', 'Delta Thrust', 'Heavy Strike', 'Quadrastrike', 'Tourbillion', 'Amorphic Spikes', 'Barbed Crescent', 'Bilgestorm', 'Bloodrake', 'Glutinous Dart', 'Paralyzing Triad', 'Thrashing Assault', 'Sinker Drill', 'Sweeping Gouge', 'Saurian Slide' };
+gcinclude.BluMagDebuff = T { 'Filamented Hold', 'Cimicine Discharge', 'Demoralizing Roar', 'Venom Shell', 'Light of Penance', 'Sandspray', 'Auroral Drape', 'Frightful Roar', 'Enervation', 'Infrasonics', 'Lowing', 'CMain Wave', 'Awful Eye', 'Voracious Trunk', 'Sheep Song', 'Soporific', 'Yawn', 'Dream Flower', 'Chaotic Eye', 'Sound Blast', 'Blank Gaze', 'Stinking Gas', 'Geist Wall', 'Feather Tickle', 'Reaving Wind', 'Mortal Ray', 'Absolute Terror', 'Blistering Roar', 'Cruel Joke' };
+gcinclude.BluMagStun = T { 'Head Butt', 'Frypan', 'Tail Slap', 'Sub-zero Smash', 'Sudden Lunge' };
+gcinclude.BluMagBuff = T { 'Cocoon', 'Refueling', 'Feather Barrier', 'Memento Mori', 'Zephyr Mantle', 'Warm-Up', 'Amplification', 'Triumphant Roar', 'Saline Coat', 'Reactor Cool', 'Plasma Charge', 'Regeneration', 'Animating Wail', 'Battery Charge', 'Winds of Promy.', 'Barrier Tusk', 'Orcish Counterstance', 'Pyric Bulwark', 'Nat. Meditation', 'Restoral', 'Erratic Flutter', 'Carcharian Verve', 'Harden Shell', 'Mighty Guard' };
+gcinclude.BluMagSkill = T { 'Metallic Body', 'Diamondhide', 'Magic Barrier', 'Occultation', 'Atra. Libations' };
+gcinclude.BluMagDiffus = T { 'Erratic Flutter', 'Carcharian Verve', 'Harden Shell', 'Mighty Guard' };
+gcinclude.BluMagCure = T { 'Pollen', 'Healing Breeze', 'Wild Carrot', 'Magic Fruit', 'Plenilune Embrace' };
+gcinclude.BluMagEnmity = T { 'Actinic Burst', 'Exuviation', 'Fantod', 'Jettatura', 'Temporal Shift' };
+gcinclude.BluMagTH = T { 'Actinic Burst', 'Dream Flower' };
+gcinclude.Elements = T { 'Thunder', 'Blizzard', 'Fire', 'Stone', 'Aero', 'Water', 'Light', 'Dark' };
+gcinclude.HelixSpells = T { 'Ionohelix', 'Cryohelix', 'Pyrohelix', 'Geohelix', 'Anemohelix', 'Hydrohelix', 'Luminohelix', 'Noctohelix' };
+gcinclude.StormSpells = T { 'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm', 'Windstorm', 'Rainstorm', 'Aurorastorm', 'Voidstorm' };
+gcinclude.NinNukes = T { 'Katon: Ichi', 'Katon: Ni', 'Katon: San', 'Hyoton: Ichi', 'Hyoton: Ni', 'Hyoton: San', 'Huton: Ichi', 'Huton: Ni', 'Huton: San', 'Doton: Ichi', 'Doton: Ni', 'Doton: San', 'Raiton: Ichi', 'Raiton: Ni', 'Raiton: San', 'Suiton: Ichi', 'Suiton: Ni', 'Suiton: San' };
 gcinclude.FishSet = false;
 gcinclude.CraftSet = false;
-gcinclude.TargetNames = T{'Apex', 'Skeleton Warrior', 'Agitated', 'Devouring', 'Ascended'}; -- Add more names to this table as needed
+gcinclude.TargetNames = T { 'Apex', 'Skeleton Warrior', 'Agitated', 'Devouring', 'Ascended' }; -- Add more names to this table as needed
 
 function gcinclude.Message(toggle, status)
 	if toggle ~= nil and status ~= nil then
@@ -98,13 +98,16 @@ end
 function gcinclude.SetVariables()
 	local player = gData.GetPlayer();
 
-	gcdisplay.CreateCycle('MeleeSet', {[1] = 'Default', [2] = 'Hybrid', [3] = 'Acc', [4] = 'DT'});
-    gcdisplay.CreateCycle('Weapon', {[1] = 'Primary', [2] = 'Secondary', [3] = 'Third'});
+	gcdisplay.CreateCycle('MeleeSet', { [1] = 'Default', [2] = 'Hybrid', [3] = 'Acc', [4] = 'DT' });
+	gcdisplay.CreateCycle('Weapon', { [1] = 'Primary', [2] = 'Secondary', [3] = 'Third' });
 	gcdisplay.CreateToggle('Kite', false);
 	gcdisplay.CreateToggle('Solo', false);
 	if player.MainJob == 'WHM' then gcdisplay.CreateToggle('Autoheal', false) end;
-	if player.MainJob == 'COR' then gcdisplay.CreateCycle('Roll1', {[1] = 'Samurai', [2] = 'EXP', [3] = 'Evoker', [4] = 'Hunter'}) end;
-	if player.MainJob == 'COR' then gcdisplay.CreateCycle('Roll2', {[1] = 'Chaos', [2] = 'Tactician', [3] = 'MAB'}) end;
+	if player.MainJob == 'COR' then
+		gcdisplay.CreateCycle('Roll1',
+			{ [1] = 'Samurai', [2] = 'EXP', [3] = 'Evoker', [4] = 'Hunter' })
+	end;
+	if player.MainJob == 'COR' then gcdisplay.CreateCycle('Roll2', { [1] = 'Chaos', [2] = 'Tactician', [3] = 'MAB' }) end;
 	gcdisplay.CreateToggle('Assist', false)
 	gcdisplay.CreateToggle('TH', false);
 end
@@ -115,7 +118,7 @@ function gcinclude.HandleCommands(args)
 	local player = gData.GetPlayer();
 	local toggle = nil;
 	local status = nil;
-	
+
 	if args[1] == 'gcmessages' then
 		if gcinclude.settings.Messages then
 			gcinclude.settings.Messages = false;
@@ -125,13 +128,15 @@ function gcinclude.HandleCommands(args)
 			print(chat.header('GCinclude'):append(chat.message('Chat messanges are enabled')));
 		end
 	elseif (args[1] == 'wsdistance') then
-		if (tonumber(args[2])) then 
+		if (tonumber(args[2])) then
 			gcinclude.settings.WScheck = true;
 			gcinclude.settings.WSdistance = tonumber(args[2]);
-			print(chat.header('GCinclude'):append(chat.message('WS Distance is on and set to ' .. gcinclude.settings.WSdistance)));
+			print(chat.header('GCinclude'):append(chat.message('WS Distance is on and set to ' .. gcinclude.settings
+				.WSdistance)));
 		else
 			gcinclude.settings.WScheck = not gcinclude.settings.WScheck;
-			print(chat.header('GCinclude'):append(chat.message('WS distance check is now ' .. tostring(gcinclude.settings.WScheck))));
+			print(chat.header('GCinclude'):append(chat.message('WS distance check is now ' ..
+				tostring(gcinclude.settings.WScheck))));
 		end
 	elseif (args[1] == 'meleeset') then
 		gcdisplay.AdvanceCycle('MeleeSet');
@@ -198,10 +203,10 @@ end
 function gcinclude.CheckCommonDebuffs()
 	local weakened = gData.GetBuffCount('Weakened');
 	local sleep = gData.GetBuffCount('Sleep');
-	local doom = (gData.GetBuffCount('Doom'))+(gData.GetBuffCount('Bane'));
+	local doom = (gData.GetBuffCount('Doom')) + (gData.GetBuffCount('Bane'));
 
 	if (sleep >= 1) then gFunc.EquipSet(gcinclude.sets.Sleeping) end
-	if (doom >= 1) then	gFunc.EquipSet(gcinclude.sets.Doomed) end
+	if (doom >= 1) then gFunc.EquipSet(gcinclude.sets.Doomed) end
 end
 
 function gcinclude.CheckAbilityRecast(check)
@@ -267,14 +272,16 @@ function gcinclude.CheckWsBailout()
 
 	if ws then
 		if gcinclude.settings.WScheck and not gcinclude.DistanceWS:contains(ws.Name) and (tonumber(target.Distance) > gcinclude.settings.WSdistance) then
-			print(chat.header('GCinclude'):append(chat.message('Distance at:' .. string.format("%.1f", tonumber(target.Distance)) .. '/ Max:' .. gcinclude.settings.WSdistance .. ' Change /wsdistance ##')));
+			print(chat.header('GCinclude'):append(chat.message('Distance at:' ..
+				string.format("%.1f", tonumber(target.Distance)) ..
+				'/ Max:' .. gcinclude.settings.WSdistance .. ' Change /wsdistance ##')));
 			return false;
 		end
 	end
 	if (player.HPP <= 0) or (player.Status == 'Dead') or (player.Status == 'Knocked Out') then
 		return false;
 	end
-	if (player.TP <= 999) or (sleep+petrify+stun+terror+amnesia+charm >= 1) then
+	if (player.TP <= 999) or (sleep + petrify + stun + terror + amnesia + charm >= 1) then
 		return false;
 	end
 	return true;
@@ -302,7 +309,7 @@ function gcinclude.CheckSpellBailout()
 		return false;
 	end
 
-	if (sleep+petrify+stun+terror+silence+charm >= 1) then
+	if (sleep + petrify + stun + terror + silence + charm >= 1) then
 		return false;
 	else
 		return true;
@@ -319,7 +326,7 @@ function gcinclude.DoWarpRing()
 		AshitaCore:GetChatManager():QueueCommand(1, '/item "Warp Ring" <me>');
 		forceidleset:once(8);
 	end
-	
+
 	usering:once(11);
 end
 
@@ -333,18 +340,18 @@ function gcinclude.DoRRCap()
 		AshitaCore:GetChatManager():QueueCommand(1, '/item "Wh. Rarab Cap +1" <me>');
 		forceidleset:once(30);
 	end
-	
+
 	usering:once(16);
 end
 
 function gcinclude.DoTeleRing()
 	AshitaCore:GetChatManager():QueueCommand(1, '/lac equip ring2 "' .. gcinclude.settings.Tele_Ring .. '"');
-	
+
 	local function usering()
 		local function forceidleset()
 			AshitaCore:GetChatManager():QueueCommand(1, '/lac set Idle');
 		end
-		AshitaCore:GetChatManager():QueueCommand(1, '/item "' .. gcinclude.settings.Tele_Ring .. '" <me>');	
+		AshitaCore:GetChatManager():QueueCommand(1, '/item "' .. gcinclude.settings.Tele_Ring .. '" <me>');
 		forceidleset:once(8);
 	end
 	usering:once(11);
@@ -352,12 +359,18 @@ end
 
 function gcinclude.DoNukes(tier)
 	local cast = gcdisplay.GetCycle('Element');
-	if tier == "1" then tier = 'I'
-	elseif tier == "2" then tier = 'II'
-	elseif tier == "3" then tier = 'III'
-	elseif tier == "4" then tier = 'IV'
-	elseif tier == "5" then tier = 'V'
-	elseif tier == "6" then tier = 'VI'
+	if tier == "1" then
+		tier = 'I'
+	elseif tier == "2" then
+		tier = 'II'
+	elseif tier == "3" then
+		tier = 'III'
+	elseif tier == "4" then
+		tier = 'IV'
+	elseif tier == "5" then
+		tier = 'V'
+	elseif tier == "6" then
+		tier = 'VI'
 	end
 
 	if tier == "I" then
@@ -372,7 +385,7 @@ function gcinclude.DoAspir()
 	local recast1 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(247);
 	local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(248);
 	local recast3 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(881);
-	
+
 	if (player:GetMainJob() == 4 and player:GetJobPointsSpent(4) >= 550) or (player:GetMainJob() == 21 and player:GetJobPointsSpent(21) >= 550) then
 		if (recast3 == 0) then
 			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir III" <t>');
@@ -396,7 +409,7 @@ function gcinclude.DoDrain()
 	local player = AshitaCore:GetMemoryManager():GetPlayer();
 	local recast1 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(245);
 	local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(246);
-	
+
 	if (player:GetMainJob() == 8) then
 		if (recast2 == 0) then
 			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Drain II" <t>');
@@ -418,7 +431,7 @@ function gcinclude.DoSCHspells(spell)
 	local target = 'me';
 	local points = 100;
 
-	if (spell == 'helix') then 
+	if (spell == 'helix') then
 		type = gcinclude.HelixSpells;
 		target = '<t>';
 		points = 1200;
@@ -499,13 +512,13 @@ function gcinclude.DoShadows(spell) -- 1000% credit to zach2good for this functi
 	end
 end
 
-function gcinclude.CheckCancels()--tossed Stoneskin in here too
+function gcinclude.CheckCancels() --tossed Stoneskin in here too
 	local action = gData.GetAction();
 	local sneak = gData.GetBuffCount('Sneak');
 	local stoneskin = gData.GetBuffCount('Stoneskin');
 	local target = gData.GetActionTarget();
 	local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
-	
+
 	local function do_jig()
 		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Spectral Jig" <me>');
 	end
@@ -516,7 +529,7 @@ function gcinclude.CheckCancels()--tossed Stoneskin in here too
 		AshitaCore:GetChatManager():QueueCommand(1, '/ma "Stoneskin" <me>');
 	end
 
-	if (action.Name == 'Spectral Jig' and sneak ~=0) then
+	if (action.Name == 'Spectral Jig' and sneak ~= 0) then
 		gFunc.CancelAction();
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
 		do_jig:once(1);
@@ -546,7 +559,7 @@ function gcinclude.AutoEngage()
 		end
 
 
-		
+
 		if shouldEngage then
 			if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 30 then
 				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
@@ -576,7 +589,7 @@ function gcinclude.AutoAssist()
 			if followtarget == true then AshitaCore:GetChatManager():QueueCommand(1, '/follow') end;
 			AshitaCore:GetChatManager():QueueCommand(1, '/assist');
 		elseif player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 20 then
-				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
+			AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
 		end
 	else
 		AshitaCore:GetChatManager():QueueCommand(1, '/target Zazle');
@@ -589,7 +602,7 @@ function gcinclude.CheckDefault()
 	if player.Status == 'Zoning' then return end
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
-    gcinclude.CheckCommonDebuffs();
+	gcinclude.CheckCommonDebuffs();
 	gcinclude.CheckLockingRings();
 
 	if target then

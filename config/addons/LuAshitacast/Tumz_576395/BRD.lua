@@ -119,13 +119,19 @@ profile.SoloMode = function()
     end
 end
 
+-- Table-driven buff logic for AutoSing
+local buffSongs = {
+    { buff = 'madrigal', spell = 'Blade Madrigal', spellId = 399 },
+    { buff = 'minuet',   spell = 'Valor Minuet V', spellId = 398 },
+    { buff = 'march',    spell = 'Victory March',  spellId = 420 },
+}
+
 profile.AutoSing = function()
-    if gData.GetBuffCount('madrigal') == 0 and AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(399) == 0 then
-        AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Blade Madrigal" <me>');
-    elseif gData.GetBuffCount('minuet') == 0 and AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(398) == 0 then
-        AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Valor Minuet V" <me>');
-    elseif gData.GetBuffCount('march') == 0 and AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(420) == 0 then
-        AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Victory March" <me>');
+    for _, entry in ipairs(buffSongs) do
+        if gData.GetBuffCount(entry.buff) == 0 and AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(entry.spellId) == 0 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. entry.spell .. '" <me>');
+            break -- Only cast one song per call
+        end
     end
 end
 
@@ -191,7 +197,7 @@ end
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
     gcinclude.DoShadows(spell);
-    gFunc.EquipSet(sets.Precast);
+    gFunc.EquipSet('Precast');
     gcinclude.CheckCancels();
 end
 
