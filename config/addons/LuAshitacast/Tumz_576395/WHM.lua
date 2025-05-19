@@ -38,7 +38,7 @@ sets.Resting = {};
 sets.Precast = {
     Ammo = 'Incantor Stone',
     Head = 'Ebers Cap +2',
-    Neck = { Name = 'Clr. Torque +1', AugPath='A' },
+    Neck = { Name = 'Clr. Torque +1', AugPath = 'A' },
     Ear1 = 'Loquac. Earring',
     Ear2 = 'Malignance Earring',
     Body = 'Inyanga Jubbah +1',
@@ -196,7 +196,7 @@ profile.UpdateSets = function()
         else
             Setoffhand = 'Sors Shield'
         end
-        for _, set in ipairs({'Weapons', 'Idle', 'DT', 'Default', 'Acc'}) do
+        for _, set in ipairs({ 'Weapons', 'Idle', 'DT', 'Default', 'Acc' }) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand
         end
@@ -208,7 +208,7 @@ profile.UpdateSets = function()
         else
             Setoffhand = 'Sors Shield'
         end
-        for _, set in ipairs({'Weapons', 'Idle', 'DT', 'Default', 'Acc'}) do
+        for _, set in ipairs({ 'Weapons', 'Idle', 'DT', 'Default', 'Acc' }) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand
         end
@@ -219,7 +219,7 @@ end
 profile.SoloMode = function()
     local player = gData.GetPlayer();
     if gcinclude.CheckWsBailout() == true and player.HPP > 35 and player.TP > 1000 then
-       AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Hexa Strike" <t>');
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Hexa Strike" <t>');
     else
         if gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP <= 35 and player.SubJob == 'DNC' and player.TP > 500 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
@@ -232,20 +232,20 @@ profile.SoloMode = function()
 end
 
 profile.HandleDefault = function()
-	local player = gData.GetPlayer();
+    local player = gData.GetPlayer();
     local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
 
     profile.UpdateSets();
-    
+
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(meleeSet)
-		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+        if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     else
-		gFunc.EquipSet(sets.Idle);
+        gFunc.EquipSet(sets.Idle);
     end
-	
+
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
     if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
@@ -267,7 +267,7 @@ end
 profile.HandleItem = function()
     local item = gData.GetAction();
 
-	if string.match(item.Name, 'Holy Water') then gFunc.EquipSet(gcinclude.sets.Holy_Water) end
+    if string.match(item.Name, 'Holy Water') then gFunc.EquipSet(gcinclude.sets.Holy_Water) end
 end
 
 profile.HandlePrecast = function()
@@ -281,7 +281,7 @@ profile.HandleMidcast = function()
     local weather = gData.GetEnvironment();
     local player = gData.GetPlayer();
     local spell = gData.GetAction();
-    
+
     if (spell.Skill == 'Enhancing Magic') then
         gFunc.EquipSet(sets.Enhancing);
         if string.contains(spell.Name, 'Regen') then
@@ -301,13 +301,17 @@ profile.HandleMidcast = function()
         gFunc.EquipSet(sets.Enfeebling_Magic);
     end
 
-	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+    if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()
     local canWS = gcinclude.CheckWsBailout();
-    if (canWS == false) then gFunc.CancelAction() return;
-    else gFunc.EquipSet(sets.Ws_Default) end
+    if (canWS == false) then
+        gFunc.CancelAction()
+        return;
+    else
+        gFunc.EquipSet(sets.Ws_Default)
+    end
 end
 
-return profile; 
+return profile;

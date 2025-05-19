@@ -46,7 +46,7 @@ sets.Default = {
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
-    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+    Feet = 'Herculean Boots',
 };
 sets.Acc = {
     Main = Setweapon,
@@ -82,7 +82,7 @@ sets.DT = {
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = 'Chas. Culottes +3',
-    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+    Feet = 'Herculean Boots',
 };
 sets.Hybrid = {
     Main = Setweapon,
@@ -100,7 +100,7 @@ sets.Hybrid = {
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = 'Chas. Culottes +3',
-    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+10', [3] = 'AGI+8', [4] = '"Triple Atk."+3' } },
+    Feet = 'Herculean Boots',
 
 };
 sets.Resting = {};
@@ -150,9 +150,9 @@ sets.Ws_Default = {
 sets.PhantomRoll = {
     Head = 'Lanun Tricorne +1',
     Hands = 'Chasseur\'s Gants +2',
+    Back = 'Gunslinger\'s Cape',
     Ring1 = 'Barataria Ring',
     Ring2 = 'Luzaf\'s Ring',
-    Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
 };
 sets.WildCard = {
     Feet = 'Lanun Bottes',

@@ -41,6 +41,7 @@
 /addon load allmaps
 /addon load allseeingeye
 /addon load aspect
+/addon load autora
 /addon load blucheck
 /addon load blumon
 /addon load blusets

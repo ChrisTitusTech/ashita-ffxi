@@ -57,6 +57,7 @@ local autodrop = {
     'Soil Sachet',
     'Mageblade',
     'Orc Helmet',
+    'Bottled Pixie',
     -- CAUTION THESE WILL BE DROPPED
 };
 
