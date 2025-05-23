@@ -58,6 +58,8 @@ local autodrop = {
     'Mageblade',
     'Orc Helmet',
     'Bottled Pixie',
+    'Neit\'s Cuffs',
+    'Namru\'s Shalwar',
     -- CAUTION THESE WILL BE DROPPED
 };
 

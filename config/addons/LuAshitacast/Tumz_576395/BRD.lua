@@ -1,9 +1,15 @@
 local profile = {};
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
+gcheals = gFunc.LoadFile('common\\gcheals.lua');
 
 local sets = {};
-Setweapon = 'Naegling';
-Setoffhand = 'Blurred Knife +1';
+local Setweapon = 'Naegling';
+local Setoffhand = 'Culminus';
+local player = gData.GetPlayer();
+if player.SubJob == 'DNC' or player.SubJob == 'NIN' then
+    Setoffhand = 'Blurred Knife +1';
+end
+    
 sets.Weapons = {
     Main = Setweapon,
     Sub = Setoffhand,
@@ -12,7 +18,7 @@ sets.Weapons = {
 sets.Default = {
     Main = Setweapon,
     Sub = Setoffhand,
-    Range = 'Miracle Cheer',
+    Ammo = 'Coiste Bodhar',
     Head = 'Fili Calot +2',
     Neck = 'Bard\'s Charm',
     Ear1 = 'Suppanomimi',
@@ -30,7 +36,33 @@ sets.Idle = sets.Default;
 sets.Movement = {
     Feet = 'Fili Cothurnes +2',
 }
+sets.Refresh = {
+    Neck = 'Sibyl Scarf',
+    Body = 'Vrikodara Jupon',
+};
+sets.DTAdd = {
+    Neck = 'Elite Royal Collar',
+    Waist = 'Plat. Mog. Belt',
+    Ear1 = { Name = 'Odnowa Earring +1', AugPath = 'A' },
+    Ear2 = { Name = 'Fili Earring +1', Augment = { [1] = 'Accuracy+14', [2] = 'Damage taken-5%', [3] = 'Mag. Acc.+14' } },
+    Ring1 = 'Moonbeam Ring',
+    Ring2 = 'Moonbeam Ring',
+}
+sets.DT = gFunc.Combine(sets.Default, sets.DTAdd);
+sets.Hybrid = sets.Default;
+sets.AccAdd = {
+    Neck = 'Bard\'s Charm',
+    Ear1 = 'Cessance Earring',
+    Waist = 'Sailfi Belt +1',
+    Ring1 = 'Moonbeam Ring',
+    Ring2 = 'Ephramad\'s Ring',
+}
+sets.Acc = gFunc.Combine(sets.Default, sets.AccAdd);
+sets.Resting = sets.Default;
+
 profile.Sets = sets;
+
+-- Casting Sets
 
 sets.Precast = {
     Head = 'Fili Calot +2',
@@ -59,25 +91,16 @@ sets.Midcast = {
     Legs = 'Fili Rhingrave +2',
     Feet = 'Fili Cothurnes +2',
 }
-sets.DTAdd = {
-    Neck = 'Elite Royal Collar',
-    Waist = 'Plat. Mog. Belt',
-    Ear1 = { Name = 'Odnowa Earring +1', AugPath = 'A' },
-    Ear2 = { Name = 'Fili Earring +1', Augment = { [1] = 'Accuracy+14', [2] = 'Damage taken-5%', [3] = 'Mag. Acc.+14' } },
-    Ring1 = 'Moonbeam Ring',
-    Ring2 = 'Moonbeam Ring',
+
+sets.Cure = {
+    Body = 'Vrikodara Jupon',  --13% potency
+    Hands = 'Weath. Cuffs +1', --9% potency
+    Ring1 = 'Sirona\'s Ring',  -- MND+3 Healing Skill +10
+    Ring2 = 'Naji\'s Loop',    -- 1% potency and 1% potency II
+    
 }
-sets.DT = gFunc.Combine(sets.Default, sets.DTAdd);
-sets.Hybrid = sets.Default;
-sets.AccAdd = {
-    Neck = 'Bard\'s Charm',
-    Ear1 = 'Cessance Earring',
-    Waist = 'Sailfi Belt +1',
-    Ring1 = 'Moonbeam Ring',
-    Ring2 = 'Ephramad\'s Ring',
-}
-sets.Acc = gFunc.Combine(sets.Default, sets.AccAdd);
-sets.Resting = sets.Default;
+
+-- Weaponskills
 
 sets.WS = {
     Ammo = 'Oshasha\'s Treatise',
@@ -104,7 +127,9 @@ end
 
 profile.SoloMode = function()
     local player = gData.GetPlayer();
-    if gcinclude.CheckWsBailout() == true and player.HPP > 35 and Setweapon == 'Kaja Knife' and player.TP >= 1000 then
+    if gcinclude.CheckWsBailout() == true and player.MPP < 50 and Setweapon == 'Kaja Knife' and player.TP >= 1000 then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Energy Drain" <t>')
+    elseif gcinclude.CheckWsBailout() == true and player.HPP > 35 and Setweapon == 'Kaja Knife' and player.TP >= 1000 then
         AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Evisceration" <t>')
     elseif gcinclude.CheckWsBailout() == true and player.HPP > 35 and Setweapon == 'Naegling' and player.TP >= 1750 then
         AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>')
@@ -124,6 +149,7 @@ local buffSongs = {
     { buff = 'madrigal', spell = 'Blade Madrigal', spellId = 399 },
     { buff = 'minuet',   spell = 'Valor Minuet V', spellId = 398 },
     { buff = 'march',    spell = 'Victory March',  spellId = 420 },
+    --{ buff = 'ballad',   spell = 'Mage\'s Ballad III', spellId = 388 },
 }
 
 profile.AutoSing = function()
@@ -142,14 +168,14 @@ profile.Weapons = function ()
         if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
             Setoffhand = 'Blurred Knife +1';
         else
-            Setoffhand = 'Ark Shield';
+            Setoffhand = 'Culminus';
         end
     elseif (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setweapon ~= 'Kaja Knife') then
         Setweapon = 'Kaja Knife';
         if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
             Setoffhand = 'Blurred Knife +1';
         else
-            Setoffhand = 'Ark Shield';
+            Setoffhand = 'Culminus';
         end
        
     elseif gcdisplay.GetCycle('Weapon') == 'Third' and Setweapon ~= 'Naegling' then
@@ -157,7 +183,7 @@ profile.Weapons = function ()
         if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
             Setoffhand = 'Blurred Knife +1';
         else
-            Setoffhand = 'Ark Shield';
+            Setoffhand = 'Culminus';
         end
     end
     for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
@@ -184,6 +210,7 @@ profile.HandleDefault = function()
     profile.Weapons();
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
+    if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 
@@ -202,7 +229,13 @@ profile.HandlePrecast = function()
 end
 
 profile.HandleMidcast = function()
-    gFunc.EquipSet(sets.Midcast);
+    local spell = gData.GetAction();
+
+    if (spell.Skill == 'Healing Magic') then
+        gFunc.EquipSet('Cure');
+    else
+        gFunc.EquipSet('Midcast');
+    end
 end
 
 profile.HandlePreshot = function()

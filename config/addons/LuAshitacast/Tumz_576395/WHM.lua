@@ -14,7 +14,11 @@ sets.Weapons = {
     Main = Setweapon,
     Sub = Setoffhand
 };
-
+sets.Refresh = {
+    Ammo = 'Homiliary',
+    Neck = 'Sibyl Scarf',
+    Body = 'Ebers Bliaut +2',
+};
 sets.Idle = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
@@ -29,7 +33,7 @@ sets.Idle = {
     Ring2 = 'Prolix Ring',
     Back = 'Alaunus\'s Cape',
     Waist = 'Plat. Mog. Belt',
-    Legs = 'Ebers Pant. +2',
+    Legs = 'Ebers Pant. +3',
     Feet = 'Nyame Sollerets'
 };
 
@@ -62,7 +66,7 @@ sets.Cure = {
     Ring2 = 'Ephedra Ring',
     Back = 'Alaunus\'s Cape',
     Waist = 'Witful Belt',
-    Legs = 'Ebers Pant. +2',
+    Legs = 'Ebers Pant. +3',
     Feet = 'Theo. Duckbills +1'
 };
 
@@ -101,7 +105,7 @@ sets.Elemental = {
     Ring2 = 'Prolix Ring',
     Back = 'Alaunus\'s Cape',
     Waist = 'Aswang Sash',
-    Legs = 'Ebers Pant. +2',
+    Legs = 'Ebers Pant. +3',
     Feet = 'Manabyss Pigaches',
 };
 
@@ -112,7 +116,7 @@ sets.Default = {
     Head = 'Nyame Helm',
     Body = 'Ayanmo Corazza +2',
     Hands = 'Bunzi\'s Gloves',
-    Legs = 'Ebers Pant. +2',
+    Legs = 'Ebers Pant. +3',
     Feet = 'Nyame Sollerets',
     Neck = 'Sanctity Necklace',
     Waist = 'Cetl Belt',

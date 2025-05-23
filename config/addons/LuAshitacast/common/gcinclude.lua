@@ -29,8 +29,8 @@ gcinclude.settings = {
 	You can also set any of these on a per job basis in the job file in the OnLoad function. See my COR job file to see how this is done
 	but as an example you can just put 'gcinclude.settings.RefreshGearMPP = 50;' in your job files OnLoad function to modify for that job only
 	]]
-	Messages = false,             --set to true if you want chat log messages to appear on any /gc command used such as DT, TH, or KITE gear toggles, certain messages will always appear
-	AutoGear = false,             --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
+	Messages = true,             --set to true if you want chat log messages to appear on any /gc command used such as DT, TH, or KITE gear toggles, certain messages will always appear
+	AutoGear = true,             --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
 	WScheck = true,               --set to false if you dont want to use the WSdistance safety check
 	WSdistance = 8,               --default max distance (yalms) to allow non-ranged WS to go off at if the above WScheck is true
 	RegenGearHPP = 60,            -- set HPP to have your idle regen set to come on
@@ -102,7 +102,7 @@ function gcinclude.SetVariables()
 	gcdisplay.CreateCycle('Weapon', { [1] = 'Primary', [2] = 'Secondary', [3] = 'Third' });
 	gcdisplay.CreateToggle('Kite', false);
 	gcdisplay.CreateToggle('Solo', false);
-	if player.MainJob == 'WHM' then gcdisplay.CreateToggle('Autoheal', false) end;
+	if player.MainJob == 'WHM' or player.SubJob == 'WHM' then gcdisplay.CreateToggle('Autoheal', false) end;
 	if player.MainJob == 'COR' then
 		gcdisplay.CreateCycle('Roll1',
 			{ [1] = 'Samurai', [2] = 'EXP', [3] = 'Evoker', [4] = 'Hunter' })
@@ -163,7 +163,7 @@ function gcinclude.HandleCommands(args)
 		gcdisplay.AdvanceToggle('Solo');
 		toggle = 'Solo Mode';
 		status = gcdisplay.GetToggle('Solo');
-	elseif (args[1] == 'autoheal') and player.MainJob == 'WHM' then
+	elseif (args[1] == 'autoheal') and (player.MainJob == 'WHM' or player.SubJob == 'WHM') then
 		gcdisplay.AdvanceToggle('Autoheal');
 		toggle = 'Autoheal';
 		status = gcdisplay.GetToggle('Autoheal');
@@ -252,6 +252,9 @@ function gcinclude.SetRegenRefreshGear()
 	local pet = gData.GetPet();
 	if (player.Status == 'Idle') then
 		gFunc.EquipSet('Idle');
+	end
+	if (player.MPP < gcinclude.settings.RefreshGearMPP) then
+		gFunc.EquipSet('Refresh');
 	end
 	if (player.HPP < gcinclude.settings.DTGearHPP) then gFunc.EquipSet('DT') end
 	if pet ~= nil then
@@ -653,7 +656,7 @@ function gcinclude.Initialize()
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F11 /setcycle MeleeSet Hybrid');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F12 /setcycle MeleeSet Acc');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind !F10 /autoassist');
-	if player.MainJob == 'WHM' then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F12 /autoheal') end;
+	if (player.MainJob == 'WHM' or player.SubJob == 'WHM') then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F12 /autoheal') end;
 	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad1 /roll1') end;
 	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad3 /roll2') end;
 	-- Set RUN job MeleeSet after gcdisplay is initialized

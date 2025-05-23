@@ -5,11 +5,11 @@ gcheals = gFunc.LoadFile('common\\gcheals.lua');
 local sets = {};
 
 -- Add these near the top after sets declaration
-Setweapon = 'Epeolatry';
-Setoffhand = 'Refined Grip +1';
-Setear1 = 'Brutal Earring';
-Setear2 = 'Cessance Earring';
-SetBody = 'Erilaz Surcoat +2';
+local Setweapon = 'Epeolatry';
+local Setoffhand = 'Refined Grip +1';
+local Setear1 = 'Brutal Earring';
+local Setear2 = 'Cessance Earring';
+local SetBody = 'Erilaz Surcoat +2';
 
 sets.Weapons = {
     Main = Setweapon,
@@ -139,12 +139,14 @@ sets.EnhancePrecastAdd = {
 };
 sets.EnhancePrecast = gFunc.Combine(sets.Precast, sets.EnhancePrecastAdd);
 
-sets.Midcast = {                 -- 70% SIRD
+sets.Midcast = {                 -- 100% SIRD
     Ammo = 'Staunch Tathlum',    -- 10% SIRD
+    Ear2 = 'Halasz Earring',    -- 5% SIRD
     Head = 'Erilaz Galea +2',    -- 20% SIRD
     Neck = 'Moonbeam Necklace',  -- 10% SIRD
     Legs = 'Carmine Cuisses +1', -- 20% SIRD
-    --Waist = 'Audumbla Sash', -- 10% SIRD
+    Hands = 'Rawhide Glvoes',  -- 15% SIRD
+    Waist = 'Audumbla Sash', -- 10% SIRD
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Spell interruption rate down-10%', [2] = 'MND+25', [3] = '"Cure" potency +10%' } },
 }
 sets.EnhancingMidcastAdd = {
@@ -468,7 +470,7 @@ profile.HandleMidcast = function()
     local player = gData.GetPlayer();
     local healingspells = { 'Cure', 'Curaga', 'Wild Carrot', 'Healing Breeze' };
 
-    if (spell.Skill == 'Enhancing Magic') and player.Status ~= 'Engaged' then
+    if spell.Skill == 'Enhancing Magic' and player.Status ~= 'Engaged' then
         gFunc.EquipSet(sets.EnhancingMidcast);
         if spell.Name == 'Phalanx' then
             gFunc.EquipSet(sets.Phalanx);

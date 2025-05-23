@@ -186,11 +186,19 @@ function gcheals.QueueSpell(spell, target)
         ['Blindna'] = 15,
         ['Poisona'] = 15
     };
+
     if player.MPP < 8 then 
         print(chat.header('gcheals'):append(chat.error('No MP available')));
         return false 
     end
     
+    -- Add MP cost check
+    local mpCost = spellCosts[spell];
+    if mpCost and player.MP < mpCost then
+        if gcheals.DebugHeals then print(chat.header('gcheals'):append(chat.error('Not enough MP for ' .. spell .. ' (' .. mpCost .. ' needed)'))) end;
+        return false;
+    end
+
     if player.MainJob == 'WHM' and string.find(spell, 'Cure') then
         if gData.GetBuffCount('Afflatus Solace') == 0 and gcinclude.CheckAbilityRecast('Afflatus Solace') == 0 and gData.GetBuffCount('Afflatus Misery') == 0 then
             print(chat.header('gcheals'):append(chat.message('Activating Afflatus Solace')));
@@ -210,13 +218,20 @@ function gcheals.QueueSpell(spell, target)
         spell = gcheals.SelectCure(cleanTarget);
     end
     -- Cast the spell
-    print(chat.header('gcheals'):append(chat.message('Casting: ' .. spell .. ' on ' .. target)));
-    AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. spell .. '" ' .. target);
-    return true;
+    if gcinclude.CheckSpellBailout() == true then
+        print(chat.header('gcheals'):append(chat.message('Casting: ' .. spell .. ' on ' .. target)));
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. spell .. '" ' .. target);
+        return true;
+    end
 end
 
 function gcheals.SelectCure(target)
     local party = AshitaCore:GetMemoryManager():GetParty();
+    local player = AshitaCore:GetMemoryManager():GetPlayer();
+    local hasCure3 = player:HasSpell(3);
+    local hasCure4 = player:HasSpell(4);
+    local hasCure5 = player:HasSpell(5);
+    local hasCure6 = player:HasSpell(6);
     local curePotency = 50;
     local targetName = party:GetMemberName(target);
     local targetHP = party:GetMemberHP(target);
@@ -240,13 +255,13 @@ function gcheals.SelectCure(target)
     };
 
     local selectedCure = nil;
-    if missingHP <= curePotencies['Cure III']then
+    if missingHP <= curePotencies['Cure III'] and hasCure3 == true then
         selectedCure = 'Cure III';
-    elseif missingHP <= curePotencies['Cure IV'] then
+    elseif missingHP > 300 and (missingHP <= curePotencies['Cure IV'] or player.MainJob ~= 'WHM') and hasCure4 == true then
         selectedCure = 'Cure IV';
-    elseif missingHP <= curePotencies['Cure V'] then
+    elseif missingHP <= curePotencies['Cure V'] and hasCure5 == true and player.MainJob == 'WHM' then
         selectedCure = 'Cure V';
-    elseif missingHP >= 71 then  -- If none of the above match, use Cure VI as fallback
+    elseif missingHP > 700 and hasCure6 == true and player.MainJob == 'WHM' then
         selectedCure = 'Cure VI';
     end
     return selectedCure;
@@ -321,10 +336,13 @@ end
 
 function gcheals.CheckParty()
     local player = gData.GetPlayer();
+    local coreplayer = AshitaCore:GetMemoryManager():GetPlayer();
     local recast = AshitaCore:GetMemoryManager():GetRecast();
     local curaRecast = recast:GetSpellTimer(475);
     local curaga2Recast = recast:GetSpellTimer(8);
     local curaga3Recast = recast:GetSpellTimer(9);
+    local hasCuraga2 = coreplayer:HasSpell(8);
+    local hasCuraga3 = coreplayer:HasSpell(9);
     local targetSyntax = '<me>';
 
     if player.Status == 'Zoning' then return end
@@ -367,10 +385,10 @@ function gcheals.CheckParty()
         elseif lowestHPP > 50 and lowestHPP < 80 and curaRecast == 0 and numberOfMinorInjured > 1 and mostDistant < 11 and player.MainJob == 'WHM' then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Cura III') end;
             gcheals.QueueSpell('Cura III', '<me>');
-        elseif lowestHPP < 70 and numberOfInjured > 1 and curaga3Recast == 0 and player.MPP > 25 and injuredDistance < 21 then
+        elseif lowestHPP < 70 and numberOfInjured > 1 and curaga3Recast == 0 and player.MPP > 25 and injuredDistance < 21 and hasCuraga3 == true and player.MainJob == 'WHM' then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Curaga III') end;
             gcheals.QueueSpell('Curaga III', targetSyntax);
-        elseif lowestHPP < 80 and numberOfMinorInjured > 1 and curaga2Recast == 0 and player.MPP > 25 and injuredDistance < 21 then
+        elseif lowestHPP < 80 and numberOfMinorInjured > 1 and curaga2Recast == 0 and player.MPP > 25 and injuredDistance < 21 and hasCuraga2 == true then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Curaga II') end;
             gcheals.QueueSpell('Curaga II', targetSyntax);
         end

@@ -4,13 +4,17 @@ gcheals = gFunc.LoadFile('common\\gcheals.lua');
 gcrolls = gFunc.LoadFile('common\\gcrolls.lua');
 gcinclude.sets.Sleeping = { Range = 'Earp' }
 local sets = {};
-Setweapon = 'Naegling';
-Setoffhand = 'Rostam';
-Setrange = 'Ataktos';
+local Setweapon = 'Naegling';
+local Setoffhand = 'Rostam';
+local Setrange = 'Ataktos';
 sets.Weapons = {
     Main = Setweapon,
     Sub = Setoffhand,
     Range = Setrange,
+};
+sets.TH = {
+    Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Pet: INT+10', [2] = '"Treasure Hunter"+1', [3] = 'Accuracy+8', [4] = '"Mag. Atk. Bns."+18', [5] = 'Attack+8', [6] = 'Mag. Acc.+18' } },
+    Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+24', [2] = 'Pet: DEX+8', [3] = 'Attack+1', [4] = '"Treasure Hunter"+1' } },
 };
 sets.Idle = {
     Main = Setweapon,
