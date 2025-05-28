@@ -12828,7 +12828,7 @@ return {
     [15540] = {id=15540,article=1,plural="orochi nodowa +1"},
     [15541] = {id=15541,article=0,plural="homing rings"},
     [15542] = {id=15542,article=0,plural="return rings"},
-    [15543] = {id=15543,article=0,plural="Ephramad\'s Rings"},
+    [15543] = {id=15543,article=0,plural="Chirich Rings"},
     [15544] = {id=15544,article=0,plural="sattva rings"},
     [15545] = {id=15545,article=0,plural="tamas rings"},
     [15546] = {id=15546,article=0,plural="fasting rings"},

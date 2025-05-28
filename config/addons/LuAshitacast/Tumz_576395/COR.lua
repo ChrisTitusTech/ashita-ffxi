@@ -16,6 +16,7 @@ sets.TH = {
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Pet: INT+10', [2] = '"Treasure Hunter"+1', [3] = 'Accuracy+8', [4] = '"Mag. Atk. Bns."+18', [5] = 'Attack+8', [6] = 'Mag. Acc.+18' } },
     Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+24', [2] = 'Pet: DEX+8', [3] = 'Attack+1', [4] = '"Treasure Hunter"+1' } },
 };
+sets.Refresh = {};
 sets.Idle = {
     Main = Setweapon,
     Sub = Setoffhand,
@@ -28,7 +29,7 @@ sets.Idle = {
     Body = 'Chasseur\'s Frac +2',
     Hands = 'Chasseur\'s Gants +2',
     Ring1 = 'Shneddick Ring',
-    Ring2 = 'Ephramad\'s Ring',
+    Ring2 = 'Chirich Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = 'Plat. Mog. Belt',
     Legs = 'Chas. Culottes +3',
@@ -45,7 +46,7 @@ sets.Default = {
     Ear2 = 'Eabani Earring',
     Body = 'Adhemar Jacket +1',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
-    Ring1 = 'Ephramad\'s Ring',
+    Ring1 = 'Chirich Ring',
     Ring2 = 'Epona\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
@@ -63,7 +64,7 @@ sets.Acc = {
     Ear2 = 'Odnowa Earring +1',
     Body = 'Adhemar Jacket +1',
     Hands = 'Meg. Gloves +2',
-    Ring1 = 'Ephramad\'s Ring',
+    Ring1 = 'Chirich Ring',
     Ring2 = 'Chirich Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
@@ -81,7 +82,7 @@ sets.DT = {
     Ear2 = 'Suppanomimi',
     Body = 'Chasseur\'s Frac +2',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
-    Ring1 = 'Ephramad\'s Ring',
+    Ring1 = 'Chirich Ring',
     Ring2 = 'Meghanada Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
@@ -100,7 +101,7 @@ sets.Hybrid = {
     Body = 'Adhemar Jacket +1',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
     Ring1 = 'Epona\'s Ring',
-    Ring2 = 'Ephramad\'s Ring',
+    Ring2 = 'Chirich Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
     Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     Legs = 'Chas. Culottes +3',
@@ -122,7 +123,7 @@ sets.Evisceration = {
     Ear1 = 'Moonshade Earring',
     Ear2 = 'Brutal Earring',
     Ring1 = 'Epona\'s Ring',
-    Ring2 = 'Ephramad\'s Ring',    
+    Ring2 = 'Cornelia\'s Ring',
     Waist = 'Fotia Belt',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
@@ -132,6 +133,7 @@ sets.Requiescat = {
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
     Ear1 = 'Moonshade Earring',
+    Ring1 = 'Cornelia\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
 sets.Savage_Blade = {
@@ -140,10 +142,12 @@ sets.Savage_Blade = {
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
     Ear1 = 'Moonshade Earring',
+    Ring1 = 'Cornelia\'s Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
 sets.Ws_Default = {
     Ear1 = 'Moonshade Earring',
+    Ring1 = 'Cornelia\'s Ring',
     Neck = 'Fotia Gorget',
     Body = 'Laksa. Frac +2',
     Hands = 'Chasseur\'s Gants +2',
@@ -219,12 +223,12 @@ sets.WildfireAdd = {
     Ear1 = 'Friomisi Earring',
     Ear2 = 'Moonshade Earring',
     Ring1 = 'Sangoma Ring',
-    Ring2 = 'Ephramad\'s Ring',
-    Neck = 'Comm. Charm +1',
+    Ring2 = 'Chirich Ring',
+    Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
     Head = 'Nyame Helm',
     Body = 'Laksa. Frac +2',
-    Hands = 'Nyame Gauntlets',
+    Hands = 'Chasseur\'s Gants +2',
     Legs = 'Nyame Flanchard',
     Feet = 'Nyame Sollerets',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
@@ -237,11 +241,11 @@ sets.LeadenSaluteAdd = {
     Ear2 = 'Moonshade Earring',
     Ring1 = 'Sangoma Ring',
     Ring2 = 'Archon Ring',
-    Neck = 'Comm. Charm +1',
+    Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
     Head = 'Pixie Hairpin +1',
     Body = 'Laksa. Frac +2',
-    Hands = 'Nyame Gauntlets',
+    Hands = 'Chasseur\'s Gants +2',
     Legs = 'Nyame Flanchard',
     Feet = 'Nyame Sollerets',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
@@ -347,7 +351,7 @@ end
 
 profile.Weapons = function ()
     local player = gData.GetPlayer();
-    if (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setweapon ~= 'Naegling') then
+    if (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setrange ~= 'Ataktos') then
         Setweapon = 'Naegling';
         if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
             Setoffhand = 'Rostam';
@@ -361,21 +365,21 @@ profile.Weapons = function ()
             sets[set].Range = Setrange
         end
         gFunc.EquipSet(sets.Weapons)
-    elseif (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setoffhand ~= 'Blurred Knife +1') then
+    elseif (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setrange ~= 'Compensator') then
         Setweapon = 'Rostam';
         if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
             Setoffhand = 'Blurred Knife +1';
         else
             Setoffhand = 'Ark Shield';
         end
-        Setrange = 'Holliday';
+        Setrange = 'Compensator';
         for _, set in ipairs({'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default'}) do
             sets[set].Main = Setweapon
             sets[set].Sub = Setoffhand
             sets[set].Range = Setrange
         end
         gFunc.EquipSet(sets.Weapons)
-    elseif gcdisplay.GetCycle('Weapon') == 'Third' and Setweapon ~= 'Naegling' then
+    elseif gcdisplay.GetCycle('Weapon') == 'Third' and Setrange ~= 'Holliday' then
         Setweapon = 'Naegling';
         if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
             Setoffhand = 'Rostam';

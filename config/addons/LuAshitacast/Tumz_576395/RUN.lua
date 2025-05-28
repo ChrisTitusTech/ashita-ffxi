@@ -19,86 +19,6 @@ sets.Weapons = {
     Body = SetBody,
 };
 
-profile.OnLoad = function()
-    gSettings.AllowAddSet = true;
-    gcinclude.Initialize();
-
-    -- Set up aliases for commands
-    AshitaCore:GetChatManager():QueueCommand(1, '/alias /stat /lac fwd status');
-
-    -- Check subjob and adjust weapons accordingly
-    local player = gData.GetPlayer();
-
-    if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-        sets.Weapons.Main = 'Naegling';
-        sets.Weapons.Sub = 'Blurred Sword +1';
-        sets.Weapons.Ear1 = 'Suppanomimi';
-        print(chat.header('RUN'):append(chat.message('Dual Wield detected - using swords')));
-    else
-        sets.Weapons.Main = 'Epeolatry';
-        sets.Weapons.Sub = 'Refined Grip +1';
-        sets.Weapons.Ear1 = 'Brutal Earring';
-    end
-    print(chat.header('RUN'):append(chat.message('Main Weapon: ' .. sets.Weapons.Main)));
-    print(chat.header('RUN'):append(chat.message('Sub Weapon: ' .. sets.Weapons.Sub)));
-    -- Set macro book/set
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1');
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 8');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ` /ws "Dimidiation" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^` /ws "Resolution" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad0 /ma "Foil" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad. /ma "Crusade" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad3 /ma "Refresh" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad1 /ma "Phalanx" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad0 /ja "Swipe" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad. /ja "Swordplay" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad3 /ma "Temper" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad1 /ja "Rayke" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad0 /ja "Pflug" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad. /ja "Elemental Sforzo" <me> ');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad3 /ma "Shell V" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad1 /ma "Protect IV" <me>');
-
-
-    if player.SubJob == 'DRK' then
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad/ /ja "Souleater" <me>');
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad* /ja "Weapon Bash" <t>');
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad- /ja "Last Resort" <me>');
-    elseif player.SubJob == 'SAM' then
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad/ /ja "Meditate" <me>');
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad* /ja "Sekkanoki" <me>');
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad- /ja "Third Eye" <me>');
-    elseif player.SubJob == 'BLU' then
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ~ /ma "Cocoon" <me>');
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^~ /ma "Sheep Song" <t>');
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind !~ /ma "Battle Dance" <t>');
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad/ /ma "Refueling" <me>');
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad* /ma "Wild Carrot" <me>');
-        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad- /ma "Terror Touch" <t>');
-    end
-end
-
-profile.OnUnload = function()
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind `');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^`');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad0');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad.');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad3');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad1');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad0');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad.');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad3');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad1');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad0');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad.');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad3');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad1');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad/');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad*');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad-');
-    gcinclude.Unload();
-end
-
 sets.Idle = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
@@ -197,7 +117,7 @@ sets.Hybrid = {
     Ear1 = sets.Weapons.Ear1,
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
-    Ring2 = 'Ephramad\'s Ring',
+    Ring2 = 'Chirich Ring',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
 }
 
@@ -214,8 +134,8 @@ sets.Acc = {
     Waist = 'Ioskeha Belt',
     Ear1 = sets.Weapons.Ear1,
     Ear2 = sets.Weapons.Ear2,
-    Ring1 = 'Ephramad\'s Ring',
-    Ring2 = 'Chirich Ring',
+    Ring1 = 'Chirich Ring',
+    Ring2 = 'Moonbeam Ring',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
 }
 
@@ -233,7 +153,7 @@ sets.Default = {
     Ear1 = sets.Weapons.Ear1,
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
-    Ring2 = 'Ephramad\'s Ring',
+    Ring2 = 'Chirich Ring',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
 };
 
@@ -243,6 +163,7 @@ sets.Ws_Default = {
     Waist = 'Fotia Belt',
     Hands = 'Meg. Gloves +2',
     Ear1 = 'Moonshade Earring',
+    Ring1 = 'Cornelia\'s Ring',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
 };
 
@@ -250,8 +171,8 @@ sets.Savage_BladeAdd = {
     Ear2 = 'Cessance Earring',
     Head = 'Erilaz Galea +2',
     Body = 'Erilaz Surcoat +2',
-    Ring1 = 'Spiral Ring',
-    Ring2 = 'Ephramad\'s Ring',
+    Ring1 = 'Cornelia\'s Ring',
+    Ring2 = 'Chirich Ring',
     Legs = 'Eri. Leg Guards +3',
     Feet = 'Erilaz Greaves +3',
 };
@@ -261,8 +182,8 @@ sets.DimidationAdd = {
     Head = 'Nyame Helm',
     Ear2 = 'Brutal Earring',
     Body = 'Adhemar Jacket +1',
-    Ring1 = 'Epona\'s Ring',
-    Ring2 = 'Ephramad\'s Ring',
+    Ring1 = 'Cornelia\'s Ring',
+    Ring2 = 'Chirich Ring',
     Legs = 'Nyame Flanchard',
     Feet = 'Erilaz Greaves +3',
 };
@@ -287,6 +208,7 @@ sets.Pflug = {
 };
 
 sets.Phalanx = {
+    Main = 'Deacon Sword',
     Head = 'Fu. Bandeau +1',
     Back = 'Evasionist\'s Cape',
     Body = 'Taeon Tabard',
@@ -295,9 +217,99 @@ sets.Phalanx = {
     Feet = 'Taeon Boots',
 }
 
+sets.Refresh = {};
+sets.LockStyle = {
+    Head = 'Erilaz Galea +2',
+    Body = 'Erilaz Surcoat +2',
+    Hands = 'Erilaz Gauntlets',
+    Legs = 'Eri. Leg Guards +3',
+    Feet = 'Erilaz Greaves +3',
+}
+
 profile.Sets = sets;
 
 profile.Packer = {};
+
+profile.OnLoad = function()
+    gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
+    gFunc.LockStyle(sets.LockStyle)
+    -- Set up aliases for commands
+    AshitaCore:GetChatManager():QueueCommand(1, '/alias /stat /lac fwd status');
+
+    -- Check subjob and adjust weapons accordingly
+    local player = gData.GetPlayer();
+
+    if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
+        sets.Weapons.Main = 'Naegling';
+        sets.Weapons.Sub = 'Blurred Sword +1';
+        sets.Weapons.Ear1 = 'Suppanomimi';
+        print(chat.header('RUN'):append(chat.message('Dual Wield detected - using swords')));
+    else
+        sets.Weapons.Main = 'Epeolatry';
+        sets.Weapons.Sub = 'Refined Grip +1';
+        sets.Weapons.Ear1 = 'Brutal Earring';
+    end
+    print(chat.header('RUN'):append(chat.message('Main Weapon: ' .. sets.Weapons.Main)));
+    print(chat.header('RUN'):append(chat.message('Sub Weapon: ' .. sets.Weapons.Sub)));
+    -- Set macro book/set
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 8');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind ` /ws "Dimidiation" <t>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^` /ws "Resolution" <t>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad0 /ma "Foil" <me>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad. /ma "Crusade" <me>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad3 /ma "Refresh" <me>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad1 /ma "Phalanx" <me>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad0 /ja "Swipe" <t>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad. /ja "Swordplay" <me>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad3 /ma "Temper" <me>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad1 /ja "Rayke" <t>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad0 /ja "Pflug" <me>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad. /ja "Elemental Sforzo" <me> ');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad3 /ma "Shell V" <me>');
+    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad1 /ma "Protect IV" <me>');
+
+
+    if player.SubJob == 'DRK' then
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad/ /ja "Souleater" <me>');
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad* /ja "Weapon Bash" <t>');
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad- /ja "Last Resort" <me>');
+    elseif player.SubJob == 'SAM' then
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad/ /ja "Meditate" <me>');
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad* /ja "Sekkanoki" <me>');
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad- /ja "Third Eye" <me>');
+    elseif player.SubJob == 'BLU' then
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ~ /ma "Cocoon" <me>');
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^~ /ma "Sheep Song" <t>');
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind !~ /ma "Battle Dance" <t>');
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad/ /ma "Refueling" <me>');
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad* /ma "Wild Carrot" <me>');
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad- /ma "Terror Touch" <t>');
+    end
+end
+
+profile.OnUnload = function()
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind `');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^`');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad0');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad.');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad3');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad1');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad0');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad.');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad3');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad1');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad0');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad.');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad3');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad1');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad/');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad*');
+    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad-');
+    gcinclude.Unload();
+end
+
 
 profile.UpdateSets = function()
     local gearSets = { 'Weapons', 'Idle', 'DT', 'Default', 'Hybrid', 'Acc' }

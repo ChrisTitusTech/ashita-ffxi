@@ -26,7 +26,7 @@ sets.Default = {
     Body = 'Ayanmo Corazza +2',
     Hands = 'Bunzi\'s Gloves',
     Ring1 = 'Chirich Ring',
-    Ring2 = 'Ephramad\'s Ring',
+    Ring2 = 'Chirich Ring',
     Back = { Name = 'Intarabus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'Evasion+20', [3] = 'Mag. Evasion+20', [4] = 'MND+30', [5] = 'Enmity-10' } },
     Waist = 'Sailfi Belt +1',
     Legs = 'Fili Rhingrave +2',
@@ -55,7 +55,7 @@ sets.AccAdd = {
     Ear1 = 'Cessance Earring',
     Waist = 'Sailfi Belt +1',
     Ring1 = 'Moonbeam Ring',
-    Ring2 = 'Ephramad\'s Ring',
+    Ring2 = 'Chirich Ring',
 }
 sets.Acc = gFunc.Combine(sets.Default, sets.AccAdd);
 sets.Resting = sets.Default;
@@ -146,18 +146,37 @@ end
 
 -- Table-driven buff logic for AutoSing
 local buffSongs = {
-    { buff = 'madrigal', spell = 'Blade Madrigal', spellId = 399 },
+    --{ buff = 'madrigal', spell = 'Blade Madrigal', spellId = 399 },
     { buff = 'minuet',   spell = 'Valor Minuet V', spellId = 398 },
+    { buff = 'minuet',   spell = 'Valor Minuet IV', spellId = 397 },
     { buff = 'march',    spell = 'Victory March',  spellId = 420 },
     --{ buff = 'ballad',   spell = 'Mage\'s Ballad III', spellId = 388 },
 }
 
+local lastSongTime = {}
+
 profile.AutoSing = function()
+    local currentTime = gData.GetEnvironment().Time
+
+    -- Count how many songs of each buff type
+    local buffCounts = {}
     for _, entry in ipairs(buffSongs) do
-        if gData.GetBuffCount(entry.buff) == 0 and AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(entry.spellId) == 0 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. entry.spell .. '" <me>');
-            break -- Only cast one song per call
+        buffCounts[entry.buff] = (buffCounts[entry.buff] or 0) + 1
+    end
+    
+    for _, entry in ipairs(buffSongs) do
+        -- Skip if this specific song was cast in the last 60 seconds
+        if lastSongTime[entry.spell] and (currentTime - lastSongTime[entry.spell]) < 0.20 then
+            goto continue
         end
+        
+        if gData.GetBuffCount(entry.buff) < buffCounts[entry.buff] and AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(entry.spellId) == 0 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. entry.spell .. '" <me>');
+            lastSongTime[entry.spell] = currentTime
+            break
+        end
+        
+        ::continue::
     end
 end
 
@@ -211,6 +230,7 @@ profile.HandleDefault = function()
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
     if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
+    if gcdisplay.GetToggle('Assist') == true then gcinclude.AutoAssist() end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 

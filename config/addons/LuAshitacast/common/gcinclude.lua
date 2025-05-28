@@ -75,7 +75,7 @@ gcinclude.StormSpells = T { 'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm
 gcinclude.NinNukes = T { 'Katon: Ichi', 'Katon: Ni', 'Katon: San', 'Hyoton: Ichi', 'Hyoton: Ni', 'Hyoton: San', 'Huton: Ichi', 'Huton: Ni', 'Huton: San', 'Doton: Ichi', 'Doton: Ni', 'Doton: San', 'Raiton: Ichi', 'Raiton: Ni', 'Raiton: San', 'Suiton: Ichi', 'Suiton: Ni', 'Suiton: San' };
 gcinclude.FishSet = false;
 gcinclude.CraftSet = false;
-gcinclude.TargetNames = T { 'Apex', 'Skeleton Warrior', 'Agitated', 'Devouring', 'Ascended' }; -- Add more names to this table as needed
+gcinclude.TargetNames = T { 'Apex', 'Skeleton Warrior', 'Agitated', 'Devouring', 'Ascended', 'Locus' };
 
 function gcinclude.Message(toggle, status)
 	if toggle ~= nil and status ~= nil then
@@ -256,7 +256,7 @@ function gcinclude.SetRegenRefreshGear()
 	if (player.MPP < gcinclude.settings.RefreshGearMPP) then
 		gFunc.EquipSet('Refresh');
 	end
-	if (player.HPP < gcinclude.settings.DTGearHPP) then gFunc.EquipSet('DT') end
+	if (player.HPP < gcinclude.settings.DTGearHPP) or (gcdisplay.GetCycle('MeleeSet') == 'DT') then gFunc.EquipSet('DT') end
 	if pet ~= nil then
 		if (pet.HPP < gcinclude.settings.PetDTGearHPP) then gFunc.EquipSet('Pet_Dt') end
 	end
@@ -580,23 +580,36 @@ function gcinclude.AutoEngage()
 end
 
 function gcinclude.AutoAssist()
-	-- This function looks for assist and moves forward if out of range
-	local player = gData.GetPlayer();
-	local target = gData.GetTarget();
-	local rawtarget = AshitaCore:GetMemoryManager():GetTarget();
-	local followtarget = AshitaCore:GetMemoryManager():GetAutoFollow();
-	if target then
-		if player.Status == 'Idle' and target.Name ~= 'Zazle' and target.Type ~= 'Monster' then
-			AshitaCore:GetChatManager():QueueCommand(1, '/target Zazle');
-		elseif target.Name == 'Zazle' then
-			if followtarget == true then AshitaCore:GetChatManager():QueueCommand(1, '/follow') end;
-			AshitaCore:GetChatManager():QueueCommand(1, '/assist');
-		elseif player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 20 then
-			AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
-		end
-	else
-		AshitaCore:GetChatManager():QueueCommand(1, '/target Zazle');
-	end
+    -- Improved assist function for following and assisting a leader
+    local player = gData.GetPlayer();
+    local target = gData.GetTarget();
+    local followTarget = AshitaCore:GetMemoryManager():GetAutoFollow();
+    
+    -- Early return if no target or assist is disabled
+    if not target or not gcdisplay.GetToggle('Assist') then
+        return;
+    end
+
+    -- Constants for configuration
+    local LEADER_NAME = 'Buxx'; -- Store leader name as a constant
+    local ENGAGE_DISTANCE = 20;
+    
+    -- Handle different targeting scenarios
+    if player.Status == 'Idle' then
+        if target.Type == 'Monster' and target.Distance < ENGAGE_DISTANCE then
+            -- Engage monster if in range
+            AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
+        elseif target.Name ~= LEADER_NAME then
+            -- Target leader if not already targeted
+            AshitaCore:GetChatManager():QueueCommand(1, '/target ' .. LEADER_NAME);
+        end
+    elseif target.Name == LEADER_NAME then
+        -- Handle follow and assist when leader is targeted
+        if followTarget then 
+            AshitaCore:GetChatManager():QueueCommand(1, '/follow');
+        end
+        AshitaCore:GetChatManager():QueueCommand(1, '/assist');
+    end
 end
 
 function gcinclude.CheckDefault()

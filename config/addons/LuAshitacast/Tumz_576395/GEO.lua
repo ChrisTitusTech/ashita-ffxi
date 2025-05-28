@@ -33,7 +33,7 @@ local sets = {
         Ear2 = 'Cessance Earring',
         Body = 'Jhakri Robe +1',
         Hands = 'Jhakri Cuffs +1',
-        Ring1 = 'Ephramad\'s Ring',
+        Ring1 = 'Chirich Ring',
         Ring2 = 'Chirich Ring',
         Back = { Name = 'Lifestream Cape', Augment = { [1] = 'Pet: Damage taken -4%', [2] = 'Geomancy Skill +7', [3] = 'Indi. eff. dur. +16' } },
         Waist = 'Cetl Belt',

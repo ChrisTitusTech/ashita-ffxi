@@ -69,6 +69,7 @@ sets.Cure = {
     Legs = 'Ebers Pant. +3',
     Feet = 'Theo. Duckbills +1'
 };
+sets.LockStyle = sets.Cure;
 
 sets.Enhancing = {
     Ammo = 'Staunch Tathlum',
@@ -123,7 +124,7 @@ sets.Default = {
     Ear1 = 'Cessance Earring',
     Ear2 = 'Ebers Earring',
     Ring1 = 'Chirich Ring',
-    Ring2 = 'Ephramad\'s Ring',
+    Ring2 = 'Chirich Ring',
     Back = 'Alaunus\'s Cape'
 };
 sets.DTadd = {
@@ -174,7 +175,7 @@ profile.Packer = {
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
     gcinclude.Initialize();
-
+    gFunc.LockStyle(sets.LockStyle);
     AshitaCore:GetChatManager():QueueCommand(1, '/alias /stat /lac fwd status');
 
     -- Set macro book/set
