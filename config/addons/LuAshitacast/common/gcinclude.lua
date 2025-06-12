@@ -257,9 +257,6 @@ function gcinclude.SetRegenRefreshGear()
 		gFunc.EquipSet('Refresh');
 	end
 	if (player.HPP < gcinclude.settings.DTGearHPP) or (gcdisplay.GetCycle('MeleeSet') == 'DT') then gFunc.EquipSet('DT') end
-	if pet ~= nil then
-		if (pet.HPP < gcinclude.settings.PetDTGearHPP) then gFunc.EquipSet('Pet_Dt') end
-	end
 end
 
 function gcinclude.CheckWsBailout()

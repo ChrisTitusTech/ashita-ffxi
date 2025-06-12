@@ -60,6 +60,9 @@ local autodrop = {
     'Bottled Pixie',
     'Neit\'s Cuffs',
     'Namru\'s Shalwar',
+    'Monster Belt',
+    'Crobaci',
+    'Shadow Sachet',
     -- CAUTION THESE WILL BE DROPPED
 };
 

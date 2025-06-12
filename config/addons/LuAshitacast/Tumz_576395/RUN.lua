@@ -23,7 +23,7 @@ sets.Idle = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Homiliary',
-    Head = 'Erilaz Galea +2',
+    Head = 'Erilaz Galea +3',
     Neck = 'Bathy Choker +1',
     Body = 'Turms Harness',
     Hands = 'Turms Mittens +1',
@@ -62,7 +62,7 @@ sets.EnhancePrecast = gFunc.Combine(sets.Precast, sets.EnhancePrecastAdd);
 sets.Midcast = {                 -- 100% SIRD
     Ammo = 'Staunch Tathlum',    -- 10% SIRD
     Ear2 = 'Halasz Earring',    -- 5% SIRD
-    Head = 'Erilaz Galea +2',    -- 20% SIRD
+    Head = 'Erilaz Galea +3',    -- 20% SIRD
     Neck = 'Moonbeam Necklace',  -- 10% SIRD
     Legs = 'Carmine Cuisses +1', -- 20% SIRD
     Hands = 'Rawhide Glvoes',  -- 15% SIRD
@@ -90,7 +90,7 @@ sets.DT = {
     Sub = sets.Weapons.Sub,
     Ammo = 'Staunch Tathlum',
     Neck = 'Futhark Torque +2',
-    Head = 'Erilaz Galea +2',
+    Head = 'Erilaz Galea +3',
     Body = sets.Weapons.Body,
     Hands = 'Turms Mittens +1',
     Legs = 'Eri. Leg Guards +3',
@@ -107,7 +107,7 @@ sets.Hybrid = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Coiste Bodhar',
-    Head = 'Erilaz Galea +2',
+    Head = 'Erilaz Galea +3',
     Body = 'Adhemar Jacket +1',
     Hands = 'Turms Mittens +1',
     Legs = 'Eri. Leg Guards +3',
@@ -125,14 +125,14 @@ sets.Acc = {
     Main = sets.Weapons.Main,
     Sub = sets.Weapons.Sub,
     Ammo = 'Hasty Pinion +1',
-    Head = 'Erilaz Galea +2',
+    Head = 'Erilaz Galea +3',
     Body = 'Adhemar Jacket +1',
     Hands = 'Turms Mittens +1',
     Legs = 'Eri. Leg Guards +3',
     Feet = 'Erilaz Greaves +3',
     Neck = 'Defiant Collar',
     Waist = 'Ioskeha Belt',
-    Ear1 = sets.Weapons.Ear1,
+    Ear1 = 'Telos Earring',
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Chirich Ring',
     Ring2 = 'Moonbeam Ring',
@@ -169,7 +169,7 @@ sets.Ws_Default = {
 
 sets.Savage_BladeAdd = {
     Ear2 = 'Cessance Earring',
-    Head = 'Erilaz Galea +2',
+    Head = 'Erilaz Galea +3',
     Body = 'Erilaz Surcoat +2',
     Ring1 = 'Cornelia\'s Ring',
     Ring2 = 'Chirich Ring',
@@ -200,11 +200,19 @@ sets.Valiance = {
 };
 
 sets.Vivacious_Pulse = {
-    Head = 'Erilaz Galea +2',
+    Head = 'Erilaz Galea +3',
 };
 
 sets.Pflug = {
     Feet = 'Runeist Bottes',
+};
+
+sets.Rayke = {
+    Feet = 'Futhark Boots +1',
+};
+
+sets.Gambit = {
+    Hands = 'Runeist Mitons',
 };
 
 sets.Phalanx = {
@@ -219,7 +227,7 @@ sets.Phalanx = {
 
 sets.Refresh = {};
 sets.LockStyle = {
-    Head = 'Erilaz Galea +2',
+    Head = 'Erilaz Galea +3',
     Body = 'Erilaz Surcoat +2',
     Hands = 'Erilaz Gauntlets',
     Legs = 'Eri. Leg Guards +3',
@@ -348,6 +356,8 @@ profile.SoloMode = function()
     if player.Status == 'Engaged' then
         if player.TP > 1000 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Epeolatry' and gcheals.CheckTrustMembers() == 5 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
+        elseif player.TP > 1000 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Hepatizon Axe +1' and gcheals.CheckTrustMembers() == 5 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Steel Cyclone" <t>');
         elseif player.TP > 1750 and gcinclude.CheckWsBailout() == true and (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
         elseif player.TP > 1000 and gcinclude.CheckWsBailout() == true and (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' then
@@ -402,6 +412,18 @@ profile.Weapons = function()
             sets[set].Ear2 = Setear2
         end
         gFunc.EquipSet(sets.Weapons)
+    elseif (gcdisplay.GetCycle('Weapon') == 'Third') and (Setweapon ~= 'Hepatizon Axe +1') then
+        Setweapon = 'Hepatizon Axe +1';
+        Setoffhand = 'Refined Grip +1';
+        Setear1 = 'Telos Earring';
+        Setear2 = 'Cessance Earring';
+        for _, set in ipairs({ 'Weapons', 'Hybrid', 'Idle', 'Acc', 'DT', 'Default' }) do
+            sets[set].Main = Setweapon
+            sets[set].Sub = Setoffhand
+            sets[set].Ear1 = Setear1
+            sets[set].Ear2 = Setear2
+        end
+        gFunc.EquipSet(sets.Weapons)
     end
 end
 
@@ -411,6 +433,8 @@ end
 
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
+    local equipbody = gData.GetEquipment().Body;
+    local target = gData.GetTarget();
     if player.Status == 'Zoning' then return end;
 
     -- Add this weapon swap logic near the start of HandleDefault
@@ -442,6 +466,12 @@ profile.HandleDefault = function()
     if (gcdisplay.GetToggle('Solo') == true) then profile.SoloMode() end;
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
+    -- Phalanx set failsafe to swap to DT if Target is a monster
+    if equipbody and target then
+        if equipbody.Name == 'Taeon Tabard' and target.Type == 'Monster' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/lac set DT 1');
+        end
+    end
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 
@@ -454,6 +484,10 @@ profile.HandleAbility = function()
         gFunc.EquipSet(sets.Vivacious_Pulse);
     elseif (action.Name == 'Pflug') then
         gFunc.EquipSet(sets.Pflug);
+    elseif (action.Name == 'Rayke') then
+        gFunc.EquipSet(sets.Rayke);
+    elseif (action.Name == 'Gambit') then
+        gFunc.EquipSet(sets.Gambit);
     end
 
     gcinclude.CheckCancels();
