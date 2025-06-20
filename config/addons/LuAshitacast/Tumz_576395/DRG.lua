@@ -137,21 +137,20 @@ sets.Ws_Default = {
     Ring2 = 'Beithir Ring',
     Waist = 'Fotia Belt',
     Head = 'Peltast\'s Mezail +2',
+    Body = 'Nyame Mail',
+    Hands = 'Nyame Gauntlets',
     Legs = 'Nyame Flanchard',
     Feet = 'Sulev. Leggings +2'
 };
 
 sets.Jumps_Default = {       
-    Head = 'Vishap Armet',
-    Neck = 'Dgn. Collar +1',
     Back = 'Brigantia\'s Mantle',
-    Waist = 'Windbuffet Belt',
-    Legs = 'Vishap Brais',
+    Legs = 'Pelt. Cuissots +2',
     Feet = 'Vishap Greaves'
 };
 
 sets.Spirit_Surge = {
-    --Petroslaver Mail 
+    --Pteroslaver Mail 
 };
 sets.Call_Wyvern = {
     --Ptroslaver Mail
@@ -164,7 +163,7 @@ sets.Spirit_Link = {
     Hands = 'Pel. Vambraces +2',
 };
 sets.Steady_Wing = {
-    Back = 'Updraft Mantle'
+    --Back = 'Updraft Mantle'
 };
 
 sets.TH = {
@@ -176,11 +175,11 @@ sets.Angon = {
 };
 
 sets.LockStyle = {
-    Head = 'Vishap Armet',
-    Body = 'Pteroslaver Mail',
-    Hands = 'Vishap Finger Gauntlets',
-    Legs = 'Vishap Brais',
-    Feet = 'Vishap Greaves'
+    Head = 'Peltast\'s Mezail +2',
+    Body = 'Pelt. Plackart +2',
+    Hands = 'Pel. Vambraces +2',
+    Legs = 'Pelt. Cuissots +2',
+    Feet = 'Pelt. Schynbalds',
 }
 
 profile.Sets = sets;
@@ -311,15 +310,14 @@ end
 
 profile.HandleWeaponskill = function()
     local canWS = gcinclude.CheckWsBailout();
-    if (canWS == false) then gFunc.CancelAction() return;
+    if (canWS == false) then 
+        gFunc.CancelAction()
+        return
     else
         local ws = gData.GetAction();
     
         gFunc.EquipSet(sets.Ws_Default)
         
-        if string.match(ws.Name, 'Aeolian Edge') then
-            gFunc.EquipSet(sets.Aedge_Default)
-        end
     end
 end
 
@@ -328,7 +326,7 @@ profile.SoloMode = function()
     local pet = gData.GetPet();
     local target = gData.GetTarget();
 
-    if player.Status == 'Engaged' then
+    if player.Status == 'Engaged' and gData.GetEquipment().Main then
         -- Auto WS logic
         if player.TP >= 1000 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Gae Derg +1' then
                 AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Camlann\'s Torment" <t>');

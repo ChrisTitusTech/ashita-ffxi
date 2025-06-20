@@ -63,6 +63,10 @@ local autodrop = {
     'Monster Belt',
     'Crobaci',
     'Shadow Sachet',
+    'Phuabo Organ',
+    'H. Qdv. Chestplate',
+    'Punch Bug',
+    
     -- CAUTION THESE WILL BE DROPPED
 };
 

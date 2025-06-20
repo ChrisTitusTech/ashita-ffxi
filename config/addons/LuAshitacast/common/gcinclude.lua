@@ -48,7 +48,7 @@ in each individual job lua file. Unless you know what you're doing then it is be
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
-gcinclude.AliasList = T { 'gcmessages', 'wsdistance', 'setcycle', 'meleeset', 'setweapon', 'setprime', 'solo', 'th', 'kite', 'helix', 'weather', 'nuke', 'death', 'rrcap', 'warpring', 'telering', 'fishset', 'autoheal', 'roll1', 'roll2', 'autoassist' };
+gcinclude.AliasList = T { 'gcmessages', 'wsdistance', 'setcycle', 'meleeset', 'setweapon', 'setprime', 'solo', 'th', 'kite', 'helix', 'weather', 'nuke', 'death', 'rrcap', 'warpring', 'telering', 'fishset', 'autoheal', 'roll1', 'roll2', 'autoassist','cureself' };
 gcinclude.Towns = T { 'Tavnazian Safehold', 'Al Zahbi', 'Aht Urhgan Whitegate', 'Nashmau', 'Southern San d\'Oria [S]', 'Bastok Markets [S]', 'Windurst Waters [S]', 'San d\'Oria-Jeuno Airship', 'Bastok-Jeuno Airship', 'Windurst-Jeuno Airship', 'Kazham-Jeuno Airship', 'Southern San d\'Oria', 'Northern San d\'Oria', 'Port San d\'Oria', 'Chateau d\'Oraguille', 'Bastok Mines', 'Bastok Markets', 'Port Bastok', 'Metalworks', 'Windurst Waters', 'Windurst Walls', 'Port Windurst', 'Windurst Woods', 'Heavens Tower', 'Ru\'Lude Gardens', 'Upper Jeuno', 'Lower Jeuno', 'Port Jeuno', 'Rabao', 'Selbina', 'Mhaura', 'Kazham', 'Norg', 'Mog Garden', 'Celennia Memorial Library', 'Western Adoulin', 'Eastern Adoulin' };
 gcinclude.LockingRings = T { 'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring', 'Facility Ring', 'Dim. Ring (Dem)', 'Dim. Ring (Mea)', 'Dim. Ring (Holla)' };
 gcinclude.DistanceWS = T { 'Flaming Arrow', 'Piercing Arrow', 'Dulling Arrow', 'Sidewinder', 'Blast Arrow', 'Arching Arrow', 'Empyreal Arrow', 'Refulgent Arrow', 'Apex Arrow', 'Namas Arrow', 'Jishnu\'s Randiance', 'Hot Shot', 'Split Shot', 'Sniper Shot', 'Slug Shot', 'Blast Shot', 'Heavy Shot', 'Detonator', 'Numbing Shot', 'Last Stand', 'Coronach', 'Wildfire', 'Trueflight', 'Leaden Salute', 'Myrkr', 'Dagan', 'Moonlight', 'Starlight' };
@@ -109,7 +109,21 @@ function gcinclude.SetVariables()
 	end;
 	if player.MainJob == 'COR' then gcdisplay.CreateCycle('Roll2', { [1] = 'Chaos', [2] = 'Tactician', [3] = 'MAB' }) end;
 	gcdisplay.CreateToggle('Assist', false)
-	gcdisplay.CreateToggle('TH', false);
+	gcdisplay.CreateToggle('TH', false)
+end
+
+function gcinclude.HasItem(itemName)
+    local inventory = AshitaCore:GetMemoryManager():GetInventory();
+    for i = 0, 80 do
+        local item = inventory:GetContainerItem(0, i);
+        if item and item.Id ~= 0 then
+            local resource = AshitaCore:GetResourceManager():GetItemById(item.Id);
+            if resource and resource.Name[1] == itemName then
+                return item.Count > 0;
+            end
+        end
+    end
+    return false;
 end
 
 function gcinclude.HandleCommands(args)
@@ -193,6 +207,14 @@ function gcinclude.HandleCommands(args)
 		gcinclude.FishSet = not gcinclude.FishSet;
 		toggle = 'Fishing Set';
 		status = gcinclude.FishSet;
+	elseif (args[1] == 'cureself') then
+    if gData.GetBuffCount('Silence') > 0 then
+        if gcinclude.HasItem('Echo Drops') then
+            AshitaCore:GetChatManager():QueueCommand(1, '/item "echo drops" <me>');
+				elseif gcinclude.HasItem('Remedy') then
+						AshitaCore:GetChatManager():QueueCommand(1, '/item "remedy" <me>');
+				end
+    end
 	end
 
 	if gcinclude.settings.Messages then
@@ -210,25 +232,35 @@ function gcinclude.CheckCommonDebuffs()
 end
 
 function gcinclude.CheckAbilityRecast(check)
-	local RecastTime = 0;
+    local player = gData.GetPlayer();
+    if not player or player.Status == 'Zoning' then
+        return 0;
+    end
+    
+    local RecastTime = 0;
 
-	for x = 0, 31 do
-		local id = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimerId(x);
-		local timer = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimer(x);
+    for x = 0, 31 do
+        local id = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimerId(x);
+        local timer = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimer(x);
 
-		if ((id ~= 0 or x == 0) and timer > 0) then
-			local ability = AshitaCore:GetResourceManager():GetAbilityByTimerId(id);
-			if ability == nil then return end
-			if (ability.Name[1] == check) and (ability.Name[1] ~= 'Unknown') then
-				RecastTime = timer;
-			end
-		end
-	end
+        if ((id ~= 0 or x == 0) and timer > 0) then
+            local ability = AshitaCore:GetResourceManager():GetAbilityByTimerId(id);
+            if ability == nil then return RecastTime end
+            if (ability.Name[1] == check) and (ability.Name[1] ~= 'Unknown') then
+                RecastTime = timer;
+            end
+        end
+    end
 
-	return RecastTime;
+    return RecastTime;
 end
 
 function gcinclude.CheckLockingRings()
+    local player = gData.GetPlayer();
+    if not player or player.Status == 'Zoning' then
+        return;
+    end
+    
 	local rings = gData.GetEquipment();
 	if (rings.Ring1 ~= nil) and (gcinclude.LockingRings:contains(rings.Ring1.Name)) then
 		local tempRing1 = rings.Ring1.Name;
@@ -381,10 +413,17 @@ function gcinclude.DoNukes(tier)
 end
 
 function gcinclude.DoAspir()
-	local player = AshitaCore:GetMemoryManager():GetPlayer();
-	local recast1 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(247);
-	local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(248);
-	local recast3 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(881);
+    local playerData = gData.GetPlayer();
+    if not playerData or playerData.Status == 'Zoning' then
+        return;
+    end
+    
+    local player = AshitaCore:GetMemoryManager():GetPlayer();
+    if not player then return end
+    
+    local recast1 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(247);
+    local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(248);
+    local recast3 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(881);
 
 	if (player:GetMainJob() == 4 and player:GetJobPointsSpent(4) >= 550) or (player:GetMainJob() == 21 and player:GetJobPointsSpent(21) >= 550) then
 		if (recast3 == 0) then
@@ -406,9 +445,16 @@ function gcinclude.DoAspir()
 end
 
 function gcinclude.DoDrain()
-	local player = AshitaCore:GetMemoryManager():GetPlayer();
-	local recast1 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(245);
-	local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(246);
+    local playerData = gData.GetPlayer();
+    if not playerData or playerData.Status == 'Zoning' then
+        return;
+    end
+    
+    local player = AshitaCore:GetMemoryManager():GetPlayer();
+    if not player then return end
+    
+    local recast1 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(245);
+    local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(246);
 
 	if (player:GetMainJob() == 8) then
 		if (recast2 == 0) then
@@ -513,12 +559,23 @@ function gcinclude.DoShadows(spell) -- 1000% credit to zach2good for this functi
 end
 
 function gcinclude.CheckCancels() --tossed Stoneskin in here too
+	local player = gData.GetPlayer();
+	if not player or player.Status == 'Zoning' then
+		return;
+	end
+	
 	local action = gData.GetAction();
 	local sneak = gData.GetBuffCount('Sneak');
 	local stoneskin = gData.GetBuffCount('Stoneskin');
 	local target = gData.GetActionTarget();
-	local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
-
+	
+	-- Add null check for party member access
+	local party = AshitaCore:GetMemoryManager():GetParty();
+	if not party then return end
+	
+	local me = party:GetMemberName(0);
+	if not me then return end
+	
 	local function do_jig()
 		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Spectral Jig" <me>');
 	end
@@ -580,6 +637,12 @@ function gcinclude.AutoAssist()
     -- Improved assist function for following and assisting a leader
     local player = gData.GetPlayer();
     local target = gData.GetTarget();
+    
+    -- Safety check for zoning
+    if not player or not target or player.Status == 'Zoning' then
+        return;
+    end
+    
     local followTarget = AshitaCore:GetMemoryManager():GetAutoFollow();
     
     -- Early return if no target or assist is disabled
@@ -610,9 +673,14 @@ function gcinclude.AutoAssist()
 end
 
 function gcinclude.CheckDefault()
-	local player = gData.GetPlayer();
-	local target = gData.GetTarget();
-	if player.Status == 'Zoning' then return end
+    local player = gData.GetPlayer();
+    local target = gData.GetTarget();
+    
+    -- Early return if zoning to prevent crashes
+    if not player or player.Status == 'Zoning' then 
+        return 
+    end
+    
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
 	gcinclude.CheckCommonDebuffs();
@@ -633,6 +701,44 @@ function gcinclude.CheckDefault()
 	gcdisplay.Update();
 end
 
+gcinclude.aggrolist = function()
+    -- Add safety check for zoning
+    local player = gData.GetPlayer();
+    if not player or player.Status == 'Zoning' then
+        return false, 0;
+    end
+    
+    -- Initialize the aggro targets table if it doesn't exist
+    if not gcinclude.aggroTargets then
+        gcinclude.aggroTargets = {};
+    end
+    local allClaimedTargets = gcinclude.aggroTargets or {};
+    local count = 0;
+    
+    -- Check and clean up targets
+    for k, v in pairs(allClaimedTargets) do
+        local ent = GetEntity(k);
+        if not ent then
+            allClaimedTargets[k] = nil;
+            goto continue;
+        end
+        
+        local renderflags = AshitaCore:GetMemoryManager():GetEntity():GetRenderFlags0(k);
+        local isValid = bit.band(renderflags, 0x200) == 0x200 and bit.band(renderflags, 0x4000) == 0;
+        
+        if (v ~= nil and ent ~= nil and isValid) then
+            count = count + 1;
+        else
+            allClaimedTargets[k] = nil;
+        end
+        
+        ::continue::
+    end
+    
+    gcinclude.aggroTargets = allClaimedTargets;
+    return count > 0, count;
+end
+
 function gcinclude.Unload()
 	gcinclude.ClearAlias();
 	gcdisplay.Unload();
@@ -651,10 +757,21 @@ function gcinclude.Unload()
 	AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad3');
 end
 
+function gcinclude.SetJobSets()
+	local player = gData.GetPlayer();
+	if not player or player.Status == 'Zoning' then return end
+
+	if player.MainJob == 'RUN' then gcdisplay.SetCycle('MeleeSet', 'DT') end;
+	if player.MainJob == 'WHM' and (player.SubJob == 'NIN' or player.SubJob == 'DNC') then
+		gcdisplay.SetCycle('Weapon', 'Secondary')
+	end
+end
+
 function gcinclude.Initialize()
 	gcdisplay.Initialize:once(2);
 	gcinclude.SetVariables:once(2);
 	gcinclude.SetAlias:once(2);
+	gcinclude.SetJobSets:once(2);
 	local player = gData.GetPlayer();
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind F9 /meleeset');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind F10 /setcycle MeleeSet DT');
@@ -669,12 +786,6 @@ function gcinclude.Initialize()
 	if (player.MainJob == 'WHM' or player.SubJob == 'WHM') then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F12 /autoheal') end;
 	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad1 /roll1') end;
 	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad3 /roll2') end;
-	-- Set RUN job MeleeSet after gcdisplay is initialized
-	(function()
-		local player = gData.GetPlayer();
-		if player.MainJob == 'RUN' then gcdisplay.SetCycle('MeleeSet', 'DT') end;
-		AshitaCore:GetChatManager():QueueCommand(1, '/sl blink');
-	end):once(3);
 end
 
 return gcinclude;

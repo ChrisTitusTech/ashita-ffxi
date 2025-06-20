@@ -341,6 +341,8 @@ function gcheals.CheckParty()
     local curaRecast = recast:GetSpellTimer(475);
     local curaga2Recast = recast:GetSpellTimer(8);
     local curaga3Recast = recast:GetSpellTimer(9);
+    local protect5Recast = recast:GetSpellTimer(129);
+    local shell5Recast = recast:GetSpellTimer(134);
     local hasCuraga2 = coreplayer:HasSpell(8);
     local hasCuraga3 = coreplayer:HasSpell(9);
     local targetSyntax = '<me>';
@@ -391,6 +393,12 @@ function gcheals.CheckParty()
         elseif lowestHPP < 80 and numberOfMinorInjured > 1 and curaga2Recast == 0 and player.MPP > 25 and injuredDistance < 21 and hasCuraga2 == true then
             if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting party Curaga II') end;
             gcheals.QueueSpell('Curaga II', targetSyntax);
+        elseif gData.GetBuffCount('Protect') == 0 and protect5Recast == 0 and player.MPP > 25 then
+            if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting Protect') end;
+            gcheals.QueueSpell('Protectra V', '<me>');
+        elseif gData.GetBuffCount('Shell') == 0 and shell5Recast == 0 and player.MPP > 25 then
+            if gcheals.DebugHeals == true then gcheals.DebugPrint('Attempting Shell') end;
+            gcheals.QueueSpell('Shellra V', '<me>');
         end
     else
         if gcheals.DebugHeals == true then gcheals.DebugPrint('No members need healing at this time') end;
