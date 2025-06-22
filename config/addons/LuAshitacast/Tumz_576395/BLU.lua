@@ -41,7 +41,8 @@ sets.Idle = {
 };
 
 sets.Refreshadd = {
-    Body = 'Jhakri robe +1',
+    Neck = 'Sibyl Scarf',
+    Body = 'Jhakri robe +2',
 };
 sets.Refresh = gFunc.Combine(sets.Idle, sets.Refreshadd);
 
@@ -102,7 +103,7 @@ sets.Hybrid = {
     Head = 'Nyame Helm',
     Neck = 'Mirage Stole',
     Ear1 = { Name = 'Odnowa Earring +1', AugPath = 'A' },
-    Ear2 = 'Cessance Earring',
+    Ear2 = 'Telos Earring',
     Body = 'Adhemar Jacket +1',
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Accuracy+25', [2] = 'Attack+14', [3] = '"Triple Atk."+3' } },
     Ring1 = 'Chirich Ring',
@@ -120,7 +121,9 @@ sets.Ws_Default = {
     Head = 'Hashishin Kavuk +2',
     Neck = 'Fotia Gorget',
     Ear1 = 'Moonshade Earring',
+    Ring1 = 'Cornelia\'s Ring',
     Waist = 'Fotia Belt',
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
 };
 
 sets.Magic = {
@@ -128,8 +131,8 @@ sets.Magic = {
     Head = 'Hashishin Kavuk +2',
     Neck = 'Stoicheion Medal',
     Ear1 = 'Friomisi Earring',
-    Ear2 = 'Strophadic Earring',
-    Body = 'Jhakri robe +1',
+    Ear2 = 'Halasz Earring',
+    Body = 'Jhakri robe +2',
     Hands = 'Jhakri Cuffs +1',
     Ring1 = 'Sangoma Ring',
     Ring2 = 'Spiral Ring',
@@ -155,18 +158,18 @@ sets.TH = {
 
 sets.CDC = {
     Ammo = 'Oshasha\'s Treatise',
-    Head = 'Hashishin Kavuk +2',
-    Neck = 'Fotia Gorget',
     Ear1 = 'Moonshade Earring',
     Ear2 = 'Cessance Earring',
-    Body = 'Adhemar Jacket +1',
-    Hands = 'Aya. Manopolas +2',
-    Ring1 = 'Epona\'s Ring',
+    Ring1 = 'Cornelia\'s Ring',
     Ring2 = 'Chirich Ring',
-    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
+    Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
-    Legs = { Name = 'Samnuha Tights', Augment = { [1] = 'STR+9', [2] = '"Dbl.Atk."+2', [3] = '"Triple Atk."+2', [4] = 'DEX+8' } },
-    Feet = 'Aya. Gambieras +2',
+    Head = 'Hashishin Kavuk +2',
+    Body = 'Nyame Mail',
+    Hands = 'Nyame Gauntlets',
+    Legs = 'Nyame Flanchard',
+    Feet = 'Nyame Sollerets',
 };
 
 sets.Savage_Blade = {
@@ -178,9 +181,9 @@ sets.Savage_Blade = {
     Hands = 'Nyame Gauntlets',
     Legs = 'Nyame Flanchard',
     Feet = 'Nyame Sollerets',
-    Ring1 = 'Rajas Ring',
+    Ring1 = 'Cornelia\'s Ring',
     Ring2 = 'Chirich Ring',
-    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+26' } },
+    Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
 };

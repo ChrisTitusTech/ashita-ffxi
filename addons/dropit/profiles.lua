@@ -66,6 +66,13 @@ local autodrop = {
     'Phuabo Organ',
     'H. Qdv. Chestplate',
     'Punch Bug',
+    'M.Abjuration: Ft.',
+    '??? Gloves',
+    '??? Boots',
+    '??? Head',
+    '??? Body',
+    '??? Legs',
+    '??? Hands',
     
     -- CAUTION THESE WILL BE DROPPED
 };

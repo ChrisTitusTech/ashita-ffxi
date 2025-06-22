@@ -532,6 +532,17 @@ local profiles = {
         'Kazham Peppers',
         'Tarutaru Rice',
         'Black Pepper',
+        'Demon Skull',
+        'Karakul Skin',
+        'Mohbwa Cloth',
+        'Scintillant Ingot',
+        'Soulfl. Tentacle',
+        'Almond',
+        'Faithful\'s Torso IV',
+        'Faithful\'s Legs IV',
+        'Faithful\'s Legs I',
+        'Faithful\'s Legs II',
+        'Faithful\'s Torso III',
         
     }
 }
