@@ -139,7 +139,7 @@ sets.AccAdd = {
 }
 sets.Acc = gFunc.Combine(sets.Default, sets.AccAdd);
 
-sets.Movement = {
+gcinclude.sets.Movement = {
     Ring1 = 'Shneddick Ring',
 };
 sets.Ws_Default = {
@@ -256,27 +256,11 @@ profile.HandleDefault = function()
     if not player or not player.MainJob or player.MainJob ~= 'WHM' or player.Status == 'Zoning' or not inventory then
         return;
     end
-    local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
-    
     profile.UpdateSets();
-    if (player.Status == 'Engaged') then
-        gFunc.EquipSet(meleeSet)
-        -- Fix: Check if sets.TH exists before using it
-        if (gcdisplay.GetToggle('TH') == true) and sets.TH then 
-            gFunc.EquipSet(sets.TH) 
-        end
-    elseif (player.Status == 'Resting') then
-        gFunc.EquipSet(sets.Resting);
-    else
-        gFunc.EquipSet(sets.Idle);
-    end
-
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
     if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
     if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then profile.SoloMode() end;
-    if (meleeSet == sets.DT) then gFunc.EquipSet(sets.DT) end;
-    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 
 profile.HandleAbility = function()

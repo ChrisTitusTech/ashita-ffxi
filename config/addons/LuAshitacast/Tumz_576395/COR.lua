@@ -109,7 +109,7 @@ sets.Hybrid = {
 
 };
 sets.Resting = {};
-sets.Movement = {
+gcinclude.sets.Movement = {
     Ring1 = 'Shneddick Ring',
 };
 
@@ -404,28 +404,11 @@ end
 
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
-    local target = gData.GetTarget();
-    local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
-    if (player.Status == 'Engaged') and target then
-        if (player.HPP >= 50) then
-            gFunc.EquipSet(meleeSet);
-        elseif (player.HPP < 50) then
-            gFunc.EquipSet(sets.DT)
-        end
-        
-		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
-    elseif (player.Status == 'Resting') then
-        gFunc.EquipSet(sets.Resting);
-    else
-		gFunc.EquipSet(sets.Idle);
-    end
-	if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then profile.SoloMode() end;
-    if player.Status == 'Engaged' then profile.AutoRolls() end;
-    if gcdisplay.GetToggle('Assist') == true then gcinclude.AutoAssist() end;
+    if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then profile.SoloMode() end;
+    --if player.Status == 'Engaged' then profile.AutoRolls() end;
     profile.Weapons();
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
-    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
     
 end
 

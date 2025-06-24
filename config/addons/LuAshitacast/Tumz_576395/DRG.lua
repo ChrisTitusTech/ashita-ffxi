@@ -85,7 +85,9 @@ sets.Idle = {
 
 sets.Resting = {};
 sets.Refresh = {};
-sets.Movement = {};
+gcinclude.sets.Movement = {
+    Ring1 = 'Shneddick Ring',
+};
 sets.Precast = {};
 sets.Midcast = {};
 

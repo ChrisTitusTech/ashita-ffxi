@@ -73,6 +73,10 @@ local autodrop = {
     '??? Body',
     '??? Legs',
     '??? Hands',
+    'A.Abjuration: Hn.',
+    'A.Abjuration: Ft.',
+    'Soulflayer Robe',
+    'Soulflayer Staff',
     
     -- CAUTION THESE WILL BE DROPPED
 };

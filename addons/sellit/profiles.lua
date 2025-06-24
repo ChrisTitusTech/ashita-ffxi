@@ -543,7 +543,15 @@ local profiles = {
         'Faithful\'s Legs I',
         'Faithful\'s Legs II',
         'Faithful\'s Torso III',
-        
+        'Rosewood Log',
+        'Mistletoe',
+        'Magic Pot Shard',
+        'Dragon Blood',
+        'Khimaira Horn',
+        'Sage',
+        'Habaneros',
+        'Vanilla',
+        10
     }
 }
 

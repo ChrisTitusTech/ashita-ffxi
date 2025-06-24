@@ -23,6 +23,8 @@ gcinclude.sets = T {
 		Ammo = 'Sinking Minnow',
 		--Ring2 = 'Pelican Ring',
 	},
+	Movement = {
+	},
 };
 gcinclude.settings = {
 	--[[
@@ -274,15 +276,21 @@ end
 
 function gcinclude.SetTownGear()
 	local zone = gData.GetEnvironment();
-	if (zone.Area ~= nil) and (gcinclude.Towns:contains(zone.Area)) then gFunc.EquipSet('Movement') end
+	if (zone.Area ~= nil) and (gcinclude.Towns:contains(zone.Area)) then gFunc.EquipSet(gcinclude.sets.Movement) end
 end
 
 function gcinclude.SetRegenRefreshGear()
 	if gcinclude.settings.AutoGear == false then return end
-
 	local player = gData.GetPlayer();
 	local pet = gData.GetPet();
-	if (player.Status == 'Idle') then
+	
+	if (player.Status == 'Engaged') then
+    gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'));
+	elseif (player.Status == 'Resting') then
+		gFunc.EquipSet('Resting');
+	elseif (player.MPP < 90) then
+		gFunc.EquipSet('Refresh');
+	else
 		gFunc.EquipSet('Idle');
 	end
 	if (player.MPP < gcinclude.settings.RefreshGearMPP) then
@@ -530,7 +538,7 @@ function gcinclude.DoSCHspells(spell)
 	end
 end
 
-function gcinclude.DoShadows(spell) -- 1000% credit to zach2good for this function, copy and paste (mostly) from his ashita discord post
+function gcinclude.DoShadows(spell)
 	if spell.Name == 'Utsusemi: Ichi' then
 		local delay = 2.4
 		if gData.GetBuffCount(66) == 1 then
@@ -558,7 +566,7 @@ function gcinclude.DoShadows(spell) -- 1000% credit to zach2good for this functi
 	end
 end
 
-function gcinclude.CheckCancels() --tossed Stoneskin in here too
+function gcinclude.CheckCancels()
 	local player = gData.GetPlayer();
 	if not player or player.Status == 'Zoning' then
 		return;
@@ -651,7 +659,7 @@ function gcinclude.AutoAssist()
     end
 
     -- Constants for configuration
-    local LEADER_NAME = 'Buxx'; -- Store leader name as a constant
+    local LEADER_NAME = ''; -- Store leader name as a constant
     local ENGAGE_DISTANCE = 20;
     
     -- Handle different targeting scenarios
@@ -673,13 +681,13 @@ function gcinclude.AutoAssist()
 end
 
 function gcinclude.CheckDefault()
-    local player = gData.GetPlayer();
-    local target = gData.GetTarget();
-    
-    -- Early return if zoning to prevent crashes
-    if not player or player.Status == 'Zoning' then 
-        return 
-    end
+	local player = gData.GetPlayer();
+	local target = gData.GetTarget();
+	
+	-- Early return if zoning to prevent crashes
+	if not player or player.Status == 'Zoning' then 
+			return 
+	end
     
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
@@ -695,9 +703,10 @@ function gcinclude.CheckDefault()
 			end
 		end
 	end
-
 	if (gcinclude.CraftSet == true) then gFunc.EquipSet(gcinclude.sets.Crafting) end
 	if (gcinclude.FishSet == true) then gFunc.EquipSet(gcinclude.sets.Fishing) end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+	if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(gcinclude.sets.Movement) end;
 	gcdisplay.Update();
 end
 

@@ -33,7 +33,7 @@ sets.Default = {
     Feet = 'Fili Cothurnes +2',
 }
 sets.Idle = sets.Default;
-sets.Movement = {
+gcinclude.sets.Movement = {
     Feet = 'Fili Cothurnes +2',
 }
 sets.Refresh = {

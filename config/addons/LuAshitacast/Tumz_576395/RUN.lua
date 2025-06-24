@@ -8,8 +8,6 @@ local memoryManager = AshitaCore:GetMemoryManager();
 
 -- Constants for better maintainability
 local RUNE_LIST = { 'Ignis', 'Gelus', 'Flabra', 'Tellus', 'Sulpor', 'Unda', 'Lux', 'Tenebrae' };
-local HEALING_SPELLS = { 'Cure', 'Curaga', 'Wild Carrot', 'Healing Breeze' };
-
 -- Keybind configuration table for easier management
 local KEYBINDS = {
     { key = '`', command = '/ws "Dimidiation" <t>' },
@@ -30,6 +28,10 @@ local KEYBINDS = {
 
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 gcheals = gFunc.LoadFile('common\\gcheals.lua');
+
+gcinclude.sets.Movement = {
+    Ring1 = 'Shneddick Ring',
+};
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
@@ -107,10 +109,6 @@ sets.Idle = {
     Feet = 'Turms Leggings',
 };
 
-sets.Movement = {
-    Ring1 = 'Shneddick Ring',
-};
-
 sets.Resting = sets.Idle;
 
 sets.Precast = {
@@ -133,7 +131,7 @@ sets.Midcast = {                 -- 100% SIRD
     Head = 'Erilaz Galea +3',    -- 20% SIRD
     Neck = 'Moonbeam Necklace',  -- 10% SIRD
     Legs = 'Carmine Cuisses +1', -- 20% SIRD
-    Hands = 'Rawhide Glvoes',  -- 15% SIRD
+    Hands = 'Rawhide Gloves',  -- 15% SIRD
     Waist = 'Audumbla Sash', -- 10% SIRD
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Spell interruption rate down-10%', [2] = 'MND+25', [3] = '"Cure" potency +10%' } },
 }
@@ -141,15 +139,6 @@ sets.EnhancingMidcastAdd = {
     Legs = 'Futhark Trousers +3',
 }
 sets.EnhancingMidcast = gFunc.Combine(sets.Midcast, sets.EnhancingMidcastAdd);
-
-sets.HealingMidcastAdd = {     -- 48% potency
-    Waist = 'Gishdubar Sash',  --10% self only
-    Ear1 = 'Roundel Earring',  --5% potency
-    Hands = 'Weath. Cuffs +1', --9% potency
-    Body = 'Vrikodara Jupon',  --13% potency
-    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Spell interruption rate down-10%', [2] = 'MND+25', [3] = '"Cure" potency +10%' } },
-}
-sets.HealingMidcast = gFunc.Combine(sets.Midcast, sets.HealingMidcastAdd);
 
 sets.DT = {
     Main = sets.Weapons.Main,
@@ -183,7 +172,7 @@ sets.Hybrid = {
     Ear1 = sets.Weapons.Ear1,
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
-    Ring2 = 'Chirich Ring',
+    Ring2 = 'Niqmaddu Ring',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
 }
 
@@ -219,7 +208,7 @@ sets.Default = {
     Ear1 = sets.Weapons.Ear1,
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
-    Ring2 = 'Chirich Ring',
+    Ring2 = 'Niqmaddu Ring',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
 };
 
@@ -392,34 +381,12 @@ profile.HandleDefault = function()
     if not player or not player.MainJob or player.MainJob ~= 'RUN' or player.Status == 'Zoning' or not inventory then
         return;
     end
-    
-    -- Safe equipment check
+
     local equipment = gData.GetEquipment();
     local equipbody = equipment and equipment.Body and equipment.Body.Name or 'Nothing';
     local target = gData.GetTarget();
 
-    -- Safer weapon swapping with error checking
-    if player.MainJob == 'RUN' then
-        profile.Weapons();
-    end
-    
-    local meleeSet = sets[gcdisplay.GetCycle('MeleeSet')];
-    
-    if player.Status == 'Engaged' then
-        if (player.HPP < 50) then
-            gFunc.EquipSet(sets.DT);
-        else
-            gFunc.EquipSet(meleeSet);
-        end
-        if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end;
-    elseif player.Status == 'Resting' then
-        gFunc.EquipSet(sets.Resting);
-    elseif (meleeSet == sets.DT) then
-        gFunc.EquipSet(sets.DT);
-    else
-        gFunc.EquipSet(sets.Idle);
-    end
-    
+    profile.Weapons();
     if (gcdisplay.GetToggle('Solo') == true) then profile.SoloMode() end;
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
@@ -430,8 +397,6 @@ profile.HandleDefault = function()
             AshitaCore:GetChatManager():QueueCommand(-1, '/lac set DT 1');
         end
     end
-    
-    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 
 profile.HandleAbility = function()
@@ -493,18 +458,7 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Phalanx);
         end
     else
-        local isHealingSpell = false
-        for _, v in pairs(HEALING_SPELLS) do
-            if spell.Name and spell.Name == v then
-                isHealingSpell = true
-                break
-            end
-        end
-        if isHealingSpell then
-            gFunc.EquipSet(sets.HealingMidcast);
-        else
-            gFunc.EquipSet(sets.Midcast);
-        end
+        gFunc.EquipSet(sets.Midcast);
     end
 end
 

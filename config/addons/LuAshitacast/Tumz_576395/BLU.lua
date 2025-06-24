@@ -48,7 +48,7 @@ sets.Refresh = gFunc.Combine(sets.Idle, sets.Refreshadd);
 
 sets.Resting = {};
 
-sets.Movement = {
+gcinclude.sets.Movement = {
     Ring1 = 'Shneddick Ring',
 };
 
