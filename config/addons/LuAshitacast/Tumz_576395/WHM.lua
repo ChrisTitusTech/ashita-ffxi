@@ -327,11 +327,6 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Enfeebling_Magic);
         end
     end
-
-    -- Fix: Check if sets.TH exists before using it
-    if (gcdisplay.GetToggle('TH') == true) and sets.TH then 
-        gFunc.EquipSet(sets.TH) 
-    end
 end
 
 profile.HandleWeaponskill = function()

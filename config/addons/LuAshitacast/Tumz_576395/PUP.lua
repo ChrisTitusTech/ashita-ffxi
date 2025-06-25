@@ -172,7 +172,6 @@ profile.HandleDefault = function()
         else
             gFunc.EquipSet(sets.Tp_Default)
         end
-		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -218,7 +217,7 @@ profile.HandlePrecast = function()
 end
 
 profile.HandleMidcast = function()
-	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+	
 end
 
 profile.HandleWeaponskill = function()

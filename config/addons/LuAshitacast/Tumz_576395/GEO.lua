@@ -145,7 +145,6 @@ profile.HandleDefault = function()
         end
         
         gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
-        if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif target and player.status ~= 'Engaged' and gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solo') == true) then
@@ -203,8 +202,6 @@ profile.HandleMidcast = function()
     elseif (spell.Skill == 'Enfeebling Magic') then
         gFunc.EquipSet(sets.Enfeebling);
     end
-
-	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

@@ -12,7 +12,7 @@ sets.Weapons = {
     Sub = Setoffhand,
     Range = Setrange,
 };
-sets.TH = {
+gcinclude.sets.TH = {
     Hands = { Name = 'Herculean Gloves', Augment = { [1] = 'Pet: INT+10', [2] = '"Treasure Hunter"+1', [3] = 'Accuracy+8', [4] = '"Mag. Atk. Bns."+18', [5] = 'Attack+8', [6] = 'Mag. Acc.+18' } },
     Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+24', [2] = 'Pet: DEX+8', [3] = 'Attack+1', [4] = '"Treasure Hunter"+1' } },
 };
@@ -161,6 +161,10 @@ sets.PhantomRoll = {
     Back = 'Gunslinger\'s Cape',
     Ring1 = 'Barataria Ring',
     Ring2 = 'Luzaf\'s Ring',
+};
+sets.PhantomWeaps = {
+    Main = 'Rostam',
+    Range = 'Compensator',
 };
 sets.WildCard = {
     Feet = 'Lanun Bottes',
@@ -405,7 +409,7 @@ end
 profile.HandleDefault = function()
 	local player = gData.GetPlayer();
     if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then profile.SoloMode() end;
-    --if player.Status == 'Engaged' then profile.AutoRolls() end;
+    if player.Status == 'Engaged' and gcdisplay.GetToggle('Rolls') == true then profile.AutoRolls() end;
     profile.Weapons();
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
@@ -414,6 +418,7 @@ end
 
 profile.HandleAbility = function()
     local action = gData.GetAction();
+    local player = gData.GetPlayer();
     local quickDraws = {
         'Light Shot',
         'Dark Shot',
@@ -426,6 +431,7 @@ profile.HandleAbility = function()
     };
 
     if (action.Name:contains('Roll')) or action.Name == 'Double-Up' then
+        if player.Status ~= 'Engaged' then gFunc.EquipSet(sets.PhantomWeaps) end
         gFunc.EquipSet(sets.PhantomRoll);
         if (action.Name == 'Tactician\'s Roll') then gFunc.Equip('Body', 'Chasseur\'s Frac +2') end
     elseif (action.Name == 'Quick Draw' or table.contains(quickDraws, action.Name)) then

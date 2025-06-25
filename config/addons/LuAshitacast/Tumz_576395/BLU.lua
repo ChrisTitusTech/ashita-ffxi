@@ -152,7 +152,7 @@ sets.Efflux = {
     Legs = 'Hashishin Tayt +2',
 };
 
-sets.TH = {
+gcinclude.sets.TH = {
     Ammo = 'Per. Lucky Egg',
 };
 

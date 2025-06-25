@@ -168,7 +168,7 @@ sets.Steady_Wing = {
     --Back = 'Updraft Mantle'
 };
 
-sets.TH = {
+gcinclude.sets.TH = {
     Ammo = 'Per. Lucky Egg'
 };
 
@@ -256,7 +256,6 @@ profile.HandleDefault = function()
         else
             gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
         end
-        if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif player.Status == 'Resting' then
         gFunc.EquipSet(sets.Resting);
     elseif (gcdisplay.GetCycle('MeleeSet') == sets.DT) then
@@ -307,7 +306,7 @@ profile.HandlePrecast = function()
 end
 
 profile.HandleMidcast = function()
-	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+	
 end
 
 profile.HandleWeaponskill = function()

@@ -243,7 +243,7 @@ sets.Dimidiation = gFunc.Combine(sets.Ws_Default, sets.DimidationAdd);
 
 sets.Resolution = sets.Ws_Default;
 
-sets.TH = {
+gcinclude.sets.TH = {
     Ammo = 'Per. Lucky Egg',
 };
 

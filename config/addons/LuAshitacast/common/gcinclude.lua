@@ -50,7 +50,7 @@ in each individual job lua file. Unless you know what you're doing then it is be
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
-gcinclude.AliasList = T { 'gcmessages', 'wsdistance', 'setcycle', 'meleeset', 'setweapon', 'setprime', 'solo', 'th', 'kite', 'helix', 'weather', 'nuke', 'death', 'rrcap', 'warpring', 'telering', 'fishset', 'autoheal', 'roll1', 'roll2', 'autoassist','cureself' };
+gcinclude.AliasList = T { 'gcmessages', 'wsdistance', 'setcycle', 'meleeset', 'setweapon', 'setprime', 'solo', 'th', 'kite', 'helix', 'weather', 'nuke', 'death', 'rrcap', 'warpring', 'telering', 'fishset', 'autoheal', 'roll1', 'roll2', 'autoroll','cureself' };
 gcinclude.Towns = T { 'Tavnazian Safehold', 'Al Zahbi', 'Aht Urhgan Whitegate', 'Nashmau', 'Southern San d\'Oria [S]', 'Bastok Markets [S]', 'Windurst Waters [S]', 'San d\'Oria-Jeuno Airship', 'Bastok-Jeuno Airship', 'Windurst-Jeuno Airship', 'Kazham-Jeuno Airship', 'Southern San d\'Oria', 'Northern San d\'Oria', 'Port San d\'Oria', 'Chateau d\'Oraguille', 'Bastok Mines', 'Bastok Markets', 'Port Bastok', 'Metalworks', 'Windurst Waters', 'Windurst Walls', 'Port Windurst', 'Windurst Woods', 'Heavens Tower', 'Ru\'Lude Gardens', 'Upper Jeuno', 'Lower Jeuno', 'Port Jeuno', 'Rabao', 'Selbina', 'Mhaura', 'Kazham', 'Norg', 'Mog Garden', 'Celennia Memorial Library', 'Western Adoulin', 'Eastern Adoulin' };
 gcinclude.LockingRings = T { 'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring', 'Facility Ring', 'Dim. Ring (Dem)', 'Dim. Ring (Mea)', 'Dim. Ring (Holla)' };
 gcinclude.DistanceWS = T { 'Flaming Arrow', 'Piercing Arrow', 'Dulling Arrow', 'Sidewinder', 'Blast Arrow', 'Arching Arrow', 'Empyreal Arrow', 'Refulgent Arrow', 'Apex Arrow', 'Namas Arrow', 'Jishnu\'s Randiance', 'Hot Shot', 'Split Shot', 'Sniper Shot', 'Slug Shot', 'Blast Shot', 'Heavy Shot', 'Detonator', 'Numbing Shot', 'Last Stand', 'Coronach', 'Wildfire', 'Trueflight', 'Leaden Salute', 'Myrkr', 'Dagan', 'Moonlight', 'Starlight' };
@@ -110,7 +110,7 @@ function gcinclude.SetVariables()
 			{ [1] = 'Samurai', [2] = 'EXP', [3] = 'Evoker', [4] = 'Hunter' })
 	end;
 	if player.MainJob == 'COR' then gcdisplay.CreateCycle('Roll2', { [1] = 'Chaos', [2] = 'Tactician', [3] = 'MAB' }) end;
-	gcdisplay.CreateToggle('Assist', false)
+	if player.MainJob == 'COR' then gcdisplay.CreateToggle('Rolls', false) end;
 	gcdisplay.CreateToggle('TH', false)
 end
 
@@ -191,10 +191,10 @@ function gcinclude.HandleCommands(args)
 		gcdisplay.AdvanceCycle('Roll2');
 		toggle = 'Roll2';
 		status = gcdisplay.GetCycle('Roll2');
-	elseif (args[1] == 'autoassist') then
-		gcdisplay.AdvanceToggle('Assist');
-		toggle = 'Assist';
-		status = gcdisplay.GetToggle('Assist');
+	elseif (args[1] == 'autoroll') and player.MainJob == 'COR' then
+		gcdisplay.AdvanceToggle('Rolls');
+		toggle = 'Rolls';
+		status = gcdisplay.GetToggle('Rolls');
 	elseif (args[1] == 'th') then
 		gcdisplay.AdvanceToggle('TH');
 		toggle = 'TH Set';
@@ -288,14 +288,10 @@ function gcinclude.SetRegenRefreshGear()
     gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'));
 	elseif (player.Status == 'Resting') then
 		gFunc.EquipSet('Resting');
-	elseif (player.MPP < 90) then
-		gFunc.EquipSet('Refresh');
-	else
+	elseif (player.Status == 'Idle') then
 		gFunc.EquipSet('Idle');
 	end
-	if (player.MPP < gcinclude.settings.RefreshGearMPP) then
-		gFunc.EquipSet('Refresh');
-	end
+	if (player.MPP < gcinclude.settings.RefreshGearMPP) then gFunc.EquipSet('Refresh') end
 	if (player.HPP < gcinclude.settings.DTGearHPP) or (gcdisplay.GetCycle('MeleeSet') == 'DT') then gFunc.EquipSet('DT') end
 end
 
@@ -705,7 +701,7 @@ function gcinclude.CheckDefault()
 	end
 	if (gcinclude.CraftSet == true) then gFunc.EquipSet(gcinclude.sets.Crafting) end
 	if (gcinclude.FishSet == true) then gFunc.EquipSet(gcinclude.sets.Fishing) end
-	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(gcinclude.sets.TH) end
 	if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(gcinclude.sets.Movement) end;
 	gcdisplay.Update();
 end
@@ -791,10 +787,10 @@ function gcinclude.Initialize()
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F10 /setcycle MeleeSet Default');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F11 /setcycle MeleeSet Hybrid');
 	AshitaCore:GetChatManager():QueueCommand(1, '/bind ^F12 /setcycle MeleeSet Acc');
-	AshitaCore:GetChatManager():QueueCommand(1, '/bind !F10 /autoassist');
 	if (player.MainJob == 'WHM' or player.SubJob == 'WHM') then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F12 /autoheal') end;
 	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad1 /roll1') end;
 	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad3 /roll2') end;
+	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F10 /autoroll') end;
 end
 
 return gcinclude;
