@@ -77,6 +77,13 @@ local autodrop = {
     'A.Abjuration: Ft.',
     'Soulflayer Robe',
     'Soulflayer Staff',
+    'Hero\'s Reflections',
+    'Mage\'s Staff',
+    'Elder Staff',
+    'D.Abjuration: Ft.',
+    'M.Abjuration: Lg.',
+    'Mannequin Hands',
+    'P.Abjuration: Lg.',
     
     -- CAUTION THESE WILL BE DROPPED
 };

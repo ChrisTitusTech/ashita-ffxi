@@ -27,7 +27,7 @@ sets.Idle = {
     Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
     Ear2 = 'Ethereal Earring',
     Body = 'Chasseur\'s Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
     Ring1 = 'Shneddick Ring',
     Ring2 = 'Chirich Ring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Accuracy+30', [3] = 'DEX+20', [4] = 'Attack+20', [5] = '"Dual Wield"+10' } },
@@ -116,7 +116,7 @@ gcinclude.sets.Movement = {
 sets.Evisceration = {
     Head = 'Adhemar Bonnet',
     Body = 'Laksa. Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
     Legs = 'Meg. Chausses +2',
     Feet = 'Mummu Gamash. +2',
     Neck = 'Fotia Gorget',
@@ -129,7 +129,7 @@ sets.Evisceration = {
 };
 sets.Requiescat = {
     Body = 'Laksa. Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
     Ear1 = 'Moonshade Earring',
@@ -137,8 +137,10 @@ sets.Requiescat = {
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
 sets.Savage_Blade = {
-    Body = 'Laksa. Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Body = 'Nyame Mail',
+    Hands = 'Chasseur\'s Gants +3',
+    Legs = 'Nyame Flanchard',
+    Feet = 'Lanun Bottes +3',
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
     Ear1 = 'Moonshade Earring',
@@ -150,14 +152,16 @@ sets.Ws_Default = {
     Ring1 = 'Cornelia\'s Ring',
     Neck = 'Fotia Gorget',
     Body = 'Laksa. Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
+    Feet = 'Lanun Bottes +3',
+    Legs = 'Nyame Flanchard',
     Waist = 'Fotia Belt',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
 
 sets.PhantomRoll = {
     Head = 'Lanun Tricorne +1',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
     Back = 'Gunslinger\'s Cape',
     Ring1 = 'Barataria Ring',
     Ring2 = 'Luzaf\'s Ring',
@@ -167,7 +171,7 @@ sets.PhantomWeaps = {
     Range = 'Compensator',
 };
 sets.WildCard = {
-    Feet = 'Lanun Bottes',
+    Feet = 'Lanun Bottes +3',
 };
 sets.RandomDeal = {
     Body = 'Lanun Frac +1',
@@ -195,7 +199,7 @@ sets.Midshot = {
     Head = 'Chass. Tricorne +2',
     Neck = 'Comm. Charm +1',
     Body = 'Chasseur\'s Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
     Ear1 = 'Volley Earring',
     Ring1 = 'Paqichikaji Ring',
     Ring2 = 'Meghanada Ring',
@@ -208,7 +212,7 @@ sets.QuickDrawAdd = {
     Head = 'Chass. Tricorne +2',
     Neck = 'Comm. Charm +1',
     Body = 'Chasseur\'s Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
     Legs = 'Chas. Culottes +3',
     Feet = 'Chass. Bottes +2',
 };
@@ -218,7 +222,7 @@ sets.LastStandAdd = {
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
     Body = 'Laksa. Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
     Ear2 = 'Moonshade Earring',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
@@ -232,9 +236,9 @@ sets.WildfireAdd = {
     Waist = 'Fotia Belt',
     Head = 'Nyame Helm',
     Body = 'Laksa. Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
     Legs = 'Nyame Flanchard',
-    Feet = 'Nyame Sollerets',
+    Feet = 'Lanun Bottes +3',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 };
 sets.Wildfire = gFunc.Combine(sets.Midshot, sets.WildfireAdd);
@@ -249,9 +253,9 @@ sets.LeadenSaluteAdd = {
     Waist = 'Fotia Belt',
     Head = 'Pixie Hairpin +1',
     Body = 'Laksa. Frac +2',
-    Hands = 'Chasseur\'s Gants +2',
+    Hands = 'Chasseur\'s Gants +3',
     Legs = 'Nyame Flanchard',
-    Feet = 'Nyame Sollerets',
+    Feet = 'Lanun Bottes +3',
     Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Mag. Acc.+20', [2] = 'Weapon skill damage +10%', [3] = 'Magic Damage+20', [4] = 'AGI+20', [5] = 'Magic Damage +10' } },
 
 };
@@ -259,7 +263,7 @@ sets.LeadenSalute = gFunc.Combine(sets.Midshot, sets.LeadenSaluteAdd);
 sets.LockStyleAdd = {
     Head = 'Lanun Tricorne +1',
     Body = 'Lanun Frac +1',
-    Feet = 'Lanun Bottes',
+    Feet = 'Lanun Bottes +3',
 }
 sets.LockStyle = gFunc.Combine(sets.Idle, sets.LockStyleAdd);
 profile.Sets = sets;

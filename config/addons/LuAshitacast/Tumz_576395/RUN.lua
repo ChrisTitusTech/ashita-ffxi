@@ -227,9 +227,7 @@ sets.Ws_Default = {
 sets.Savage_BladeAdd = {
     Ear2 = 'Cessance Earring',
     Head = 'Erilaz Galea +3',
-    Body = 'Erilaz Surcoat +3',
     Ring2 = 'Chirich Ring',
-    Legs = 'Eri. Leg Guards +3',
     Feet = 'Erilaz Greaves +3',
 };
 sets.Savage_Blade = gFunc.Combine(sets.Ws_Default, sets.Savage_BladeAdd);

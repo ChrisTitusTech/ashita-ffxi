@@ -551,7 +551,16 @@ local profiles = {
         'Sage',
         'Habaneros',
         'Vanilla',
-        10
+        'Frost Turnip',
+        'Wild Onion',
+        'Cockatrice Meat',
+        'Brain Stew',
+        'Karakul Meat',
+        'Ahriman Lens',
+        'Im. Wootz Ingot',
+        'Angelstone',
+        'Cockatrice Skin',
+        
     }
 }
 
