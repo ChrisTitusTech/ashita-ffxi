@@ -560,6 +560,10 @@ local profiles = {
         'Im. Wootz Ingot',
         'Angelstone',
         'Cockatrice Skin',
+        'Mercury',
+        'Cactuar Needle',
+        'Hecteyes Eye',
+        'Wamoura Scale',
         
     }
 }

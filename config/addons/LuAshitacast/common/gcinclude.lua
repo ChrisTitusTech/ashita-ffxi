@@ -619,8 +619,6 @@ function gcinclude.AutoEngage()
 			end
 		end
 
-
-
 		if shouldEngage then
 			if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 30 then
 				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
@@ -638,42 +636,30 @@ function gcinclude.AutoEngage()
 end
 
 function gcinclude.AutoAssist()
-    -- Improved assist function for following and assisting a leader
     local player = gData.GetPlayer();
     local target = gData.GetTarget();
     
     -- Safety check for zoning
-    if not player or not target or player.Status == 'Zoning' then
+    if not player or player.Status == 'Zoning' then
         return;
     end
     
-    local followTarget = AshitaCore:GetMemoryManager():GetAutoFollow();
-    
-    -- Early return if no target or assist is disabled
-    if not target or not gcdisplay.GetToggle('Assist') then
-        return;
-    end
-
-    -- Constants for configuration
-    local LEADER_NAME = ''; -- Store leader name as a constant
+    local followTarget = AshitaCore:GetMemoryManager():GetAutoFollow():GetFollowTargetIndex();
+    local LEADER_NAME = '<p1>'; -- set leader to party member 1
     local ENGAGE_DISTANCE = 20;
     
-    -- Handle different targeting scenarios
-    if player.Status == 'Idle' then
-        if target.Type == 'Monster' and target.Distance < ENGAGE_DISTANCE then
-            -- Engage monster if in range
-            AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
-        elseif target.Name ~= LEADER_NAME then
-            -- Target leader if not already targeted
-            AshitaCore:GetChatManager():QueueCommand(1, '/target ' .. LEADER_NAME);
-        end
-    elseif target.Name == LEADER_NAME then
-        -- Handle follow and assist when leader is targeted
-        if followTarget then 
-            AshitaCore:GetChatManager():QueueCommand(1, '/follow');
-        end
-        AshitaCore:GetChatManager():QueueCommand(1, '/assist');
-    end
+	if target then
+		if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < ENGAGE_DISTANCE then
+			AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
+			gcmovement.tapBackward(0.2);
+		elseif target.Name == LEADER_NAME and not followTarget then
+			AshitaCore:GetChatManager():QueueCommand(1, '/follow');
+		elseif target.Name == LEADER_NAME and followTarget then
+			AshitaCore:GetChatManager():QueueCommand(1, '/assist');
+		end
+	else
+		AshitaCore:GetChatManager():QueueCommand(1, '/target ' .. LEADER_NAME);
+	end
 end
 
 function gcinclude.CheckDefault()

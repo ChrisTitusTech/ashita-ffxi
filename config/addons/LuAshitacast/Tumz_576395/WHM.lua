@@ -234,19 +234,22 @@ profile.SoloMode = function()
     local player = gData.GetPlayer();
     local recast = AshitaCore:GetMemoryManager():GetRecast();
     local hasteRecast = recast:GetSpellTimer(57);
-    if gcinclude.CheckWsBailout() == true and player.HPP > 35 and player.TP > 1000 then
+    local target = gData.GetTarget();
+    if gcinclude.CheckWsBailout() == true and player.HPP > 35 and player.MPP > 50 and player.TP > 1000 and target then
         AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Flash Nova" <t>');
-    else
-        if gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP <= 35 and player.SubJob == 'DNC' and player.TP > 500 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
-        elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
-        elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
-        elseif gData.GetBuffCount('Haste') == 0 and hasteRecast == 0 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Haste" <me>');
-        end
+    elseif gcinclude.CheckWsBailout() == true and player.MPP <= 50 and player.TP > 1000 and target then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Mystic Boon" <t>');
+    elseif gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP <= 35 and player.SubJob == 'DNC' and player.TP > 500 then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
+    elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
+    elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
+    elseif gData.GetBuffCount('Haste') == 0 and hasteRecast == 0 then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Haste" <me>');
     end
+    gcinclude.AutoEngage();
+    gcinclude.AutoAssist();
 end
 
 profile.HandleDefault = function()
@@ -258,9 +261,11 @@ profile.HandleDefault = function()
     end
     profile.UpdateSets();
     gcinclude.CheckDefault();
-    gcinclude.AutoEngage();
     if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
-    if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then profile.SoloMode() end;
+    if gcdisplay.GetToggle('Solo') == true then profile.SoloMode() end;
+    if gData.GetBuffCount('Corsair\'s Roll') == 0 and gcinclude.CheckAbilityRecast('Phantom Roll') == 0 and gData.GetBuffCount('Double-Up Chance') == 0 and player.SubJob == 'COR' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Corsair\'s Roll" <me>');
+    end
 end
 
 profile.HandleAbility = function()
