@@ -377,7 +377,7 @@ function gcinclude.DoRRCap()
 		forceidleset:once(30);
 	end
 
-	usering:once(16);
+	usering:once(32);
 end
 
 function gcinclude.DoTeleRing()

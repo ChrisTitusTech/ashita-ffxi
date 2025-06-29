@@ -133,7 +133,7 @@ sets.Magic = {
     Ear1 = 'Friomisi Earring',
     Ear2 = 'Halasz Earring',
     Body = 'Jhakri robe +2',
-    Hands = 'Jhakri Cuffs +1',
+    Hands = 'Jhakri Cuffs +2',
     Ring1 = 'Sangoma Ring',
     Ring2 = 'Spiral Ring',
     Back = { Name = 'Cornflower Cape', Augment = { [1] = 'Accuracy+2', [2] = 'Blue Magic skill +9', [3] = 'MP+16', [4] = 'DEX+2' } },

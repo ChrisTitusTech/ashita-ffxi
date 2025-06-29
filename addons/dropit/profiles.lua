@@ -86,7 +86,10 @@ local autodrop = {
     'P.Abjuration: Lg.',
     'H.Abjuration: Lg.',
     'Corse Robe',
-    
+    'Mannequin Legs',
+    'Mannequin Head',
+    'Mannequin Body',
+    'Nibiru Bow',
     -- CAUTION THESE WILL BE DROPPED
 };
 

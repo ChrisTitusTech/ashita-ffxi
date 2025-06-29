@@ -564,6 +564,8 @@ local profiles = {
         'Cactuar Needle',
         'Hecteyes Eye',
         'Wamoura Scale',
+        'Popoto',
+        'Lilac',
         
     }
 }
