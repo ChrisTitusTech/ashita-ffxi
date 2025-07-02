@@ -21,15 +21,13 @@ JPN installer
 
 You obviously need to replace /placeholder/paths/like/this with your own throughout.
 
-### Set up the Wine prefix
+### Set up the Wine prefix in Lutris
 1) Make sure you have wine or wine-staging installed (terminal: pacman -Qs wine)
 2) Open a terminal, execute:
 WINEPREFIX=/path/where/you/want/ffxi winetricks corefonts win10
 For example (do not copy this, it's just an example):
 WINEPREFIX=/mnt/860evo/games/ffxi winetricks corefonts win10
 If you're asked to install Gecko, that's fine. Do not install Mono.
-
-### Add the prefix to Lutris
 3) In Lutris click "Add game", choose "Add locally installed game".
 4) Fill in the game info (use "Wine" as runner).
 5) Go to "Game options", in "Executable" pick the FFXI installer.
