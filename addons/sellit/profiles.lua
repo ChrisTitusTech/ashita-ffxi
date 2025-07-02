@@ -566,6 +566,11 @@ local profiles = {
         'Wamoura Scale',
         'Popoto',
         'Lilac',
+        'Behemoth Horn',
+        'Beetle Shell',
+        'Sparkling Stone',
+        'H.Q. Bugard Skin',
+        'Beastcoin',
         
     }
 }

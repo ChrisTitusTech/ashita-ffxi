@@ -216,8 +216,9 @@ sets.Ws_Default = {
     Ammo = 'Oshasha\'s Treatise',
     Neck = 'Fotia Gorget',
     Waist = 'Fotia Belt',
-    Ear1 = 'Moonshade Earring',
+    Ear2 = 'Moonshade Earring',
     Ring1 = 'Cornelia\'s Ring',
+    Ring2 = 'Niqmaddu Ring',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'STR+20', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = '"Regen"+5' } },
     Hands = 'Meg. Gloves +2',
     Body = 'Nyame Mail',
@@ -227,13 +228,11 @@ sets.Ws_Default = {
 sets.Savage_BladeAdd = {
     Ear2 = 'Cessance Earring',
     Head = 'Erilaz Galea +3',
-    Ring2 = 'Chirich Ring',
     Feet = 'Erilaz Greaves +3',
 };
 sets.Savage_Blade = gFunc.Combine(sets.Ws_Default, sets.Savage_BladeAdd);
 
 sets.DimidationAdd = {
-    Ear2 = 'Brutal Earring',
     Head = 'Nyame Helm',
     Feet = 'Erilaz Greaves +3',
 };
@@ -246,7 +245,7 @@ gcinclude.sets.TH = {
 };
 
 sets.Valiance = {
-    Body = 'Runeist Coat +2',
+    Body = 'Runeist Coat +3',
 };
 
 sets.Vivacious_Pulse = {
@@ -286,6 +285,14 @@ sets.LockStyle = {
     Feet = 'Erilaz Greaves +3',
 }
 
+sets.Emnity = {
+    Ammo = 'Sapience Orb',
+    Ear2 = 'Cryptic Earring',
+    Neck = 'Futhark Torque +2',
+    Legs = 'Eri. Leg Guards +3',
+    Feet = 'Erilaz Greaves +3',
+}
+
 profile.Sets = sets;
 
 profile.Packer = {};
@@ -319,19 +326,30 @@ profile.SoloMode = function()
     local player = gData.GetPlayer();
     local recast = AshitaCore:GetMemoryManager():GetRecast();
     local temperRecast = recast:GetSpellTimer(493);
+    local phalanxRecast = recast:GetSpellTimer(106);
     local target = gData.GetTarget();
     if player.Status == 'Engaged' and gData.GetEquipment() and gData.GetEquipment().Main then
-        if player.TP > 1000 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Epeolatry' and gcheals.CheckTrustMembers() == 5 then
+        if player.TP == 3000 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Epeolatry' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
-        elseif player.TP > 1000 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Hepatizon Axe +1' and gcheals.CheckTrustMembers() == 5 then
+        elseif player.TP >= 1000 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Epeolatry' and gData.GetBuffCount('Aftermath: Lv.3') > 0 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Dimidiation" <t>');
+        elseif player.TP >= 1000 and gcinclude.CheckWsBailout() == true and gData.GetEquipment().Main.Name == 'Hepatizon Axe +1' and gcheals.CheckTrustMembers() >= 3 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Steel Cyclone" <t>');
-        elseif player.TP > 1750 and gcinclude.CheckWsBailout() == true and (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' then
+        elseif player.TP >= 1750 and gcinclude.CheckWsBailout() == true and (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
-        elseif player.TP > 1000 and gcinclude.CheckWsBailout() == true and (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' then
+        elseif player.TP >= 1000 and gcinclude.CheckWsBailout() == true and (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
         end
         if (player.HPP < 50) and gcinclude.CheckAbilityRecast('Vivacious Pulse') == 0 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Vivacious Pulse" <me>');
+        elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') == 0 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Valiance" <me>');
+        elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') > 0 and gcinclude.CheckAbilityRecast('One for All') == 0 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "One for All" <me>');
+        elseif gData.GetBuffCount('Enmity Boost') == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Crusade" <me>');
+        elseif gData.GetBuffCount('Phalanx') == 0 and phalanxRecast == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Phalanx" <me>');
         elseif gData.GetBuffCount('Multi Strikes') == 0 and temperRecast == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Temper" <me>');
         elseif gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP < 35 and player.SubJob == 'DNC' and player.TP > 500 then
@@ -391,7 +409,7 @@ profile.HandleDefault = function()
     
     -- Safer phalanx failsafe
     if equipbody and target and player.MainJob == 'RUN' then
-        if equipbody == 'Taeon Tabard' and target.Type == 'Monster' then
+        if equipbody == 'Taeon Tabard' and (target.Type == 'Monster' or player.HPP < 70 ) then
             AshitaCore:GetChatManager():QueueCommand(-1, '/lac set DT 1');
         end
     end
@@ -446,8 +464,6 @@ end
 profile.HandleMidcast = function()
     local spell = gData.GetAction();
     local player = gData.GetPlayer();
-    
-    -- Safety checks to prevent crashes
     if not spell or not player then return end;
     
     if spell.Skill == 'Enhancing Magic' and player.Status ~= 'Engaged' then
@@ -455,6 +471,8 @@ profile.HandleMidcast = function()
         if spell.Name == 'Phalanx' then
             gFunc.EquipSet(sets.Phalanx);
         end
+    elseif spell.Name == 'Flash' or spell.Name == 'Foil' then
+        gFunc.EquipSet(sets.Emnity);
     else
         gFunc.EquipSet(sets.Midcast);
     end

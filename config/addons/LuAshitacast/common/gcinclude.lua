@@ -50,7 +50,7 @@ in each individual job lua file. Unless you know what you're doing then it is be
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcmovement = gFunc.LoadFile('common\\gcmovement.lua');
 
-gcinclude.AliasList = T { 'gcmessages', 'wsdistance', 'setcycle', 'meleeset', 'setweapon', 'setprime', 'solo', 'th', 'kite', 'helix', 'weather', 'nuke', 'death', 'rrcap', 'warpring', 'telering', 'fishset', 'autoheal', 'roll1', 'roll2', 'autoroll','cureself' };
+gcinclude.AliasList = T { 'gcmessages', 'wsdistance', 'setcycle', 'meleeset', 'setweapon', 'setprime', 'solo', 'th', 'kite', 'warpring', 'telering', 'fishset', 'autoheal', 'roll1', 'roll2', 'autoroll','cureself' };
 gcinclude.Towns = T { 'Tavnazian Safehold', 'Al Zahbi', 'Aht Urhgan Whitegate', 'Nashmau', 'Southern San d\'Oria [S]', 'Bastok Markets [S]', 'Windurst Waters [S]', 'San d\'Oria-Jeuno Airship', 'Bastok-Jeuno Airship', 'Windurst-Jeuno Airship', 'Kazham-Jeuno Airship', 'Southern San d\'Oria', 'Northern San d\'Oria', 'Port San d\'Oria', 'Chateau d\'Oraguille', 'Bastok Mines', 'Bastok Markets', 'Port Bastok', 'Metalworks', 'Windurst Waters', 'Windurst Walls', 'Port Windurst', 'Windurst Woods', 'Heavens Tower', 'Ru\'Lude Gardens', 'Upper Jeuno', 'Lower Jeuno', 'Port Jeuno', 'Rabao', 'Selbina', 'Mhaura', 'Kazham', 'Norg', 'Mog Garden', 'Celennia Memorial Library', 'Western Adoulin', 'Eastern Adoulin' };
 gcinclude.LockingRings = T { 'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring', 'Facility Ring', 'Dim. Ring (Dem)', 'Dim. Ring (Mea)', 'Dim. Ring (Holla)' };
 gcinclude.DistanceWS = T { 'Flaming Arrow', 'Piercing Arrow', 'Dulling Arrow', 'Sidewinder', 'Blast Arrow', 'Arching Arrow', 'Empyreal Arrow', 'Refulgent Arrow', 'Apex Arrow', 'Namas Arrow', 'Jishnu\'s Randiance', 'Hot Shot', 'Split Shot', 'Sniper Shot', 'Slug Shot', 'Blast Shot', 'Heavy Shot', 'Detonator', 'Numbing Shot', 'Last Stand', 'Coronach', 'Wildfire', 'Trueflight', 'Leaden Salute', 'Myrkr', 'Dagan', 'Moonlight', 'Starlight' };
@@ -77,7 +77,7 @@ gcinclude.StormSpells = T { 'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm
 gcinclude.NinNukes = T { 'Katon: Ichi', 'Katon: Ni', 'Katon: San', 'Hyoton: Ichi', 'Hyoton: Ni', 'Hyoton: San', 'Huton: Ichi', 'Huton: Ni', 'Huton: San', 'Doton: Ichi', 'Doton: Ni', 'Doton: San', 'Raiton: Ichi', 'Raiton: Ni', 'Raiton: San', 'Suiton: Ichi', 'Suiton: Ni', 'Suiton: San' };
 gcinclude.FishSet = false;
 gcinclude.CraftSet = false;
-gcinclude.TargetNames = T { 'Apex', 'Skeleton Warrior', 'Agitated', 'Devouring', 'Ascended', 'Locus' };
+gcinclude.TargetNames = T { 'Apex', 'Skeleton Warrior', 'Agitated', 'Devouring', 'Ascended', 'Locus Armet Beetle', 'Temenos' };
 
 function gcinclude.Message(toggle, status)
 	if toggle ~= nil and status ~= nil then
@@ -224,6 +224,78 @@ function gcinclude.HandleCommands(args)
 	end
 end
 
+function gcinclude.GetPlayerStatus()
+    local player = AshitaCore:GetMemoryManager():GetPlayer();
+    local INFINITE_DURATION = 0x7FFFFFFF;
+    if not player then return nil end
+
+    -- Get the correct UTC timestamp pointer using the actual working pattern from statustimers
+    local real_utcstamp_pointer = ashita.memory.find('FFXiMain.dll', 0, '8B0D????????8B410C8B49108D04808D04808D04808D04C1C3', 2, 0);
+    if not real_utcstamp_pointer or real_utcstamp_pointer == 0 then
+        print(chat.header('GCinclude'):append(chat.message('Error: Unable to find UTC timestamp pointer for buff durations')));
+        return nil;
+    end
+
+    local function get_utcstamp()
+        local ptr = real_utcstamp_pointer;
+        if (ptr == 0) then
+            return INFINITE_DURATION;
+        end
+
+        -- Double dereference the pointer to get the correct address
+        ptr = ashita.memory.read_uint32(ptr);
+        if ptr == 0 then return INFINITE_DURATION end
+        ptr = ashita.memory.read_uint32(ptr);
+        if ptr == 0 then return INFINITE_DURATION end
+        -- The utcstamp is at offset 0x0C
+        return ashita.memory.read_uint32(ptr + 0x0C);
+    end
+
+    local function buff_duration(raw_duration)
+        if (raw_duration == INFINITE_DURATION) then
+            return -1;
+        end
+
+        local vana_base_stamp = 0x3C307D70;
+        --get the time since vanadiel epoch
+        local offset = get_utcstamp() - vana_base_stamp;
+        --multiply it by 60 to create like terms
+        local comparand = offset * 60;
+        --get actual time remaining
+        local real_duration = raw_duration - comparand;
+        --handle the triennial spillover..
+        while (real_duration < -2147483648) do
+            real_duration = real_duration + 0xFFFFFFFF;
+        end
+
+        if real_duration < 1 then
+            return 0;
+        else
+            --convert to seconds..
+            return math.ceil(real_duration / 60);
+        end
+    end
+
+    -- Single loop to process both icons and timers
+    local icons = player:GetStatusIcons();
+    local timers = player:GetStatusTimers();
+    local status_ids = T{};
+
+    for j = 0,31,1 do
+        if (icons[j + 1] ~= 255 and icons[j + 1] > 0) then
+            status_ids[#status_ids+1] = T{
+                id = icons[j + 1],
+                duration = buff_duration(timers[j + 1])
+            };
+        end
+    end
+    
+    if (next(status_ids)) then
+        return status_ids;
+    end
+    return nil;
+end
+
 function gcinclude.CheckCommonDebuffs()
 	local weakened = gData.GetBuffCount('Weakened');
 	local sleep = gData.GetBuffCount('Sleep');
@@ -366,20 +438,6 @@ function gcinclude.DoWarpRing()
 	usering:once(11);
 end
 
-function gcinclude.DoRRCap()
-	AshitaCore:GetChatManager():QueueCommand(1, '/lac equip head "Wh. Rarab Cap +1"');
-
-	local function usering()
-		local function forceidleset()
-			AshitaCore:GetChatManager():QueueCommand(1, '/lac set Idle');
-		end
-		AshitaCore:GetChatManager():QueueCommand(1, '/item "Wh. Rarab Cap +1" <me>');
-		forceidleset:once(30);
-	end
-
-	usering:once(32);
-end
-
 function gcinclude.DoTeleRing()
 	AshitaCore:GetChatManager():QueueCommand(1, '/lac equip ring2 "' .. gcinclude.settings.Tele_Ring .. '"');
 
@@ -391,147 +449,6 @@ function gcinclude.DoTeleRing()
 		forceidleset:once(8);
 	end
 	usering:once(11);
-end
-
-function gcinclude.DoNukes(tier)
-	local cast = gcdisplay.GetCycle('Element');
-	if tier == "1" then
-		tier = 'I'
-	elseif tier == "2" then
-		tier = 'II'
-	elseif tier == "3" then
-		tier = 'III'
-	elseif tier == "4" then
-		tier = 'IV'
-	elseif tier == "5" then
-		tier = 'V'
-	elseif tier == "6" then
-		tier = 'VI'
-	end
-
-	if tier == "I" then
-		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. '" <t>');
-	else
-		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. ' ' .. tier .. '" <t>');
-	end
-end
-
-function gcinclude.DoAspir()
-    local playerData = gData.GetPlayer();
-    if not playerData or playerData.Status == 'Zoning' then
-        return;
-    end
-    
-    local player = AshitaCore:GetMemoryManager():GetPlayer();
-    if not player then return end
-    
-    local recast1 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(247);
-    local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(248);
-    local recast3 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(881);
-
-	if (player:GetMainJob() == 4 and player:GetJobPointsSpent(4) >= 550) or (player:GetMainJob() == 21 and player:GetJobPointsSpent(21) >= 550) then
-		if (recast3 == 0) then
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir III" <t>');
-		elseif (recast2 == 0) then
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir II" <t>');
-		elseif (recast1 == 0) then
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir" <t>');
-		end
-	elseif (player:GetMainJob() == 4 and player:GetMainJobLevel() >= 83) or (player:GetMainJob() == 8 and player:GetMainJobLevel() >= 78) or (player:GetMainJob() == 20 and player:GetMainJobLevel() >= 97) or (player:GetMainJob() == 21 and player:GetMainJobLevel() >= 90) then
-		if (recast2 == 0) then
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir II" <t>');
-		elseif (recast1 == 0) then
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir" <t>');
-		end
-	elseif (recast1 == 0) then
-		AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir" <t>');
-	end
-end
-
-function gcinclude.DoDrain()
-    local playerData = gData.GetPlayer();
-    if not playerData or playerData.Status == 'Zoning' then
-        return;
-    end
-    
-    local player = AshitaCore:GetMemoryManager():GetPlayer();
-    if not player then return end
-    
-    local recast1 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(245);
-    local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(246);
-
-	if (player:GetMainJob() == 8) then
-		if (recast2 == 0) then
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Drain II" <t>');
-		elseif (recast1 == 0) then
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Drain" <t>');
-		end
-	elseif (recast1 == 0) then
-		AshitaCore:GetChatManager():QueueCommand(1, '/ma "Drain" <t>');
-	end
-end
-
-function gcinclude.DoSCHspells(spell)
-	local player = gData.GetPlayer();
-	local playerCore = AshitaCore:GetMemoryManager():GetPlayer();
-	local e = gcdisplay.GetCycle('Element');
-	local key = 0;
-	local cast = 'cast';
-	local type = {};
-	local target = 'me';
-	local points = 100;
-
-	if (spell == 'helix') then
-		type = gcinclude.HelixSpells;
-		target = '<t>';
-		points = 1200;
-	elseif (spell == 'weather') then
-		type = gcinclude.StormSpells;
-		target = '<me>';
-		points = 100;
-	end
-
-	if (player.MainJob == "BLM") then
-		if (player.SubJob == "SCH") then
-			for k, v in pairs(gcinclude.Elements) do
-				if (v == e) then
-					key = k;
-				end
-			end
-			for a, b in pairs(type) do
-				if (a == key) then
-					cast = b;
-				end
-			end
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. '" ' .. target);
-		end
-	elseif (player.MainJob == "SCH") then
-		if playerCore:GetJobPointsSpent(20) >= points then
-			for k, v in pairs(gcinclude.Elements) do
-				if (v == e) then
-					key = k;
-				end
-			end
-			for a, b in pairs(type) do
-				if (a == key) then
-					cast = b;
-				end
-			end
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. ' II" ' .. target);
-		else
-			for k, v in pairs(gcinclude.Elements) do
-				if (v == e) then
-					key = k;
-				end
-			end
-			for a, b in pairs(type) do
-				if (a == key) then
-					cast = b;
-				end
-			end
-			AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. '" ' .. target);
-		end
-	end
 end
 
 function gcinclude.DoShadows(spell)
@@ -622,6 +539,9 @@ function gcinclude.AutoEngage()
 		if shouldEngage then
 			if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 30 then
 				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
+				gcmovement.tapBackward(0.2);
+				gcmovement.tapBackward(0.2);
+				gcmovement.tapBackward(0.2);
 			end
 			if player.Status == 'Engaged' and target.Type == 'Monster' then
 				if target.Distance > 3 then

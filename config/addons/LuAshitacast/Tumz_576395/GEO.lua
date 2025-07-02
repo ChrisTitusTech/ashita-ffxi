@@ -89,74 +89,7 @@ profile.HandleDefault = function()
     local recast = AshitaCore:GetMemoryManager():GetRecast();
     local blizzRecast = recast:GetSpellTimer(149);
     
-    if (gcdisplay.GetCycle('Weapon') == 'Secondary') and (setweapon ~= 'Magesmasher +1') then
-        setweapon = 'Magesmasher +1'
-        sets.Weapons.Main = setweapon
-        -- Update all sets that reference the weapon
-        sets.Idle.Main = setweapon
-        sets.Dt.Main = setweapon
-        sets.Default.Main = setweapon
-        if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-            setoffhand = 'Tamaxchi'
-        else
-            setoffhand = 'Sors Shield'
-        end
-        sets.Weapons.Sub = setoffhand
-        sets.Idle.Sub = setoffhand
-        sets.Dt.Sub = setoffhand
-        sets.Default.Sub = setoffhand
-        -- Force equipment update
-        gFunc.EquipSet(sets.Weapons)
-    elseif (gcdisplay.GetCycle('Weapon') == 'Primary') and (setweapon ~= 'Queller Rod') then
-        setweapon = 'Queller Rod'
-        sets.Weapons.Main = setweapon
-        -- Update all sets that reference the weapon
-        sets.Idle.Main = setweapon
-        sets.Dt.Main = setweapon
-        sets.Default.Main = setweapon
-        if player.SubJob == 'NIN' or player.SubJob == 'DNC' then
-            setoffhand = 'Tamaxchi'
-        else
-            setoffhand = 'Sors Shield'
-        end
-        sets.Weapons.Sub = setoffhand
-        sets.Idle.Sub = setoffhand
-        sets.Dt.Sub = setoffhand
-        sets.Default.Sub = setoffhand
-        -- Force equipment update
-        gFunc.EquipSet(sets.Weapons)
-    end
-    
-    if (player.Status == 'Engaged') then
-        if (player.TP >= 1000) and gcinclude.CheckWsBailout() == true and (gcdisplay.GetToggle('Solo') == true) then
-            local mainWeapon = gData.GetEquipment().Main;
-            if (player.MPP > 80) then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Hexa Strike" <t>');
-            elseif (player.MPP <= 80) then
-                AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Moonlight" <t>');
-            end
-        end
-        if gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solo') == true) then
-            if (gcdisplay.GetToggle('Solo') == true) and target then
-                if target.Type == 'Monster' and target.Distance < 21 then
-                    if blizzRecast == 0 and player.HPP > 85 and target.Distance > 5 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Blizzard" <t>'); end
-                end
-            end
-        end
-        
-        gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
-    elseif (player.Status == 'Resting') then
-        gFunc.EquipSet(sets.Resting);
-    elseif target and player.status ~= 'Engaged' and gcinclude.CheckSpellBailout() == true and (gcdisplay.GetToggle('Solo') == true) then
-        if target.Type == 'Monster' and target.Distance < 21 then
-            if blizzRecast == 0 and player.HPP > 85 and target.Distance > 5 then AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Blizzard" <t>'); end
-        end
-    else
-        gFunc.EquipSet(sets.Idle);
-    end
-    
     gcinclude.CheckDefault();
-    gcinclude.AutoEngage();
     if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
     if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;

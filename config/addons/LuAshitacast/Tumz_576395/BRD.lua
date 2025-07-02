@@ -1,6 +1,7 @@
 local profile = {};
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 gcheals = gFunc.LoadFile('common\\gcheals.lua');
+status_table = gFunc.LoadFile('common\\status_table.lua');
 
 local sets = {};
 local Setweapon = 'Naegling';
@@ -91,6 +92,11 @@ sets.Midcast = {
     Legs = 'Fili Rhingrave +2',
     Feet = 'Fili Cothurnes +2',
 }
+sets.HonorAdd = {
+    Range = 'Marsyas',
+    Legs = 'Inyanga Shalwar +2',
+}
+sets.Honor = gFunc.Combine(sets.Midcast, sets.HonorAdd);
 
 sets.Cure = {
     Body = 'Vrikodara Jupon',  --13% potency
@@ -144,39 +150,67 @@ profile.SoloMode = function()
     end
 end
 
--- Table-driven buff logic for AutoSing
+local honorMarchPending = false
 local buffSongs = {
     --{ buff = 'madrigal', spell = 'Blade Madrigal', spellId = 399 },
     { buff = 'minuet',   spell = 'Valor Minuet V', spellId = 398 },
-    { buff = 'minuet',   spell = 'Valor Minuet IV', spellId = 397 },
-    { buff = 'march',    spell = 'Victory March',  spellId = 420 },
+    { buff = 'march',    spell = 'Honor March',  spellId = 420 },
     --{ buff = 'ballad',   spell = 'Mage\'s Ballad III', spellId = 388 },
 }
 
-local lastSongTime = {}
+local function getSongDuration(statusId)
+    local playerStatus = gcinclude.GetPlayerStatus();
+    if not playerStatus then return 0 end
+    
+    for _, status in ipairs(playerStatus) do
+        if status.id == statusId then
+            return status.duration
+        end
+    end
+    return 0
+end
+
+profile.HonorMarch = function()
+    local equip = gData.GetEquipment();
+    if not equip.Range or equip.Range.Name ~= 'Marsyas' then
+        AshitaCore:GetChatManager():QueueCommand(-1, '/lac equip range "Marsyas"');
+        honorMarchPending = true
+        return;
+    end
+    AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Honor March" <me>');
+end
 
 profile.AutoSing = function()
-    local currentTime = gData.GetEnvironment().Time
-
-    -- Count how many songs of each buff type
-    local buffCounts = {}
     for _, entry in ipairs(buffSongs) do
-        buffCounts[entry.buff] = (buffCounts[entry.buff] or 0) + 1
-    end
-    
-    for _, entry in ipairs(buffSongs) do
-        -- Skip if this specific song was cast in the last 60 seconds
-        if lastSongTime[entry.spell] and (currentTime - lastSongTime[entry.spell]) < 0.20 then
-            goto continue
+        local spellToStatusId = status_table.SPELL_TO_STATUS_MAP[entry.spellId]
+        local currentDuration = 0
+        
+        if spellToStatusId then
+            if type(spellToStatusId) == 'table' then
+                for _, statusId in ipairs(spellToStatusId) do
+                    local duration = getSongDuration(statusId)
+                    if duration > currentDuration then
+                        currentDuration = duration
+                    end
+                end
+            else
+                currentDuration = getSongDuration(spellToStatusId)
+            end
         end
         
-        if gData.GetBuffCount(entry.buff) < buffCounts[entry.buff] and AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(entry.spellId) == 0 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. entry.spell .. '" <me>');
-            lastSongTime[entry.spell] = currentTime
-            break
+        if entry.spell == 'Honor March' and honorMarchPending then
+            if getSongDuration(420) > 30 then
+                honorMarchPending = false
+            end
         end
-        
-        ::continue::
+        if currentDuration <= 30 and AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(entry.spellId) == 0 then
+            if entry.spell == 'Honor March' then
+                profile.HonorMarch()
+            else
+                AshitaCore:GetChatManager():QueueCommand(-1, '/ma "' .. entry.spell .. '" <me>');
+            end
+            return
+        end
     end
 end
 
@@ -219,16 +253,15 @@ end
 
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
+    if not player.IsMoving and gcdisplay.GetToggle('Solo') == true then profile.AutoSing() end;
+    if honorMarchPending then return end
 
     gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'));
-
-    if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then
-        profile.SoloMode();
-        if player.IsMoving ~= true then profile.AutoSing() end;
-    end
+    
     profile.Weapons();
     gcinclude.CheckDefault();
-    gcinclude.AutoEngage();
+    -- gcinclude.AutoEngage();
+    if gcdisplay.GetToggle('Solo') == true and player.Status == 'Engaged' then profile.SoloMode() end;
     if gcdisplay.GetToggle('Autoheal') == true then gcheals.CheckParty() end;
     if gcdisplay.GetToggle('Assist') == true then gcinclude.AutoAssist() end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
@@ -243,16 +276,23 @@ end
 
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
+    if not spell then return end
     gcinclude.DoShadows(spell);
-    gFunc.EquipSet('Precast');
     gcinclude.CheckCancels();
+    if (spell.Name == 'Honor March') then
+        gFunc.EquipSet('Honor');
+    else
+        gFunc.EquipSet('Precast');
+    end
 end
 
 profile.HandleMidcast = function()
     local spell = gData.GetAction();
-
+    if not spell then return end
     if (spell.Skill == 'Healing Magic') then
         gFunc.EquipSet('Cure');
+    elseif (spell.Name == 'Honor March') then
+        gFunc.EquipSet('Honor');
     else
         gFunc.EquipSet('Midcast');
     end
