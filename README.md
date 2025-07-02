@@ -5,7 +5,7 @@
 <a href="https://github.com/AshitaXI/Ashita/issues">![GitHub issues](https://img.shields.io/github/issues/AshitaXI/Ashita?style=for-the-badge)</a>
 <a href="https://github.com/AshitaXI/Ashita/issues?q=is%3Aissue+is%3Aclosed">![GitHub closed issues](https://img.shields.io/github/issues-closed/AshitaXI/Ashita?style=for-the-badge)</a>
 
-This repository contains the current, most up to date and publicly released version of the Ashita v4 beta.
+Above is links to Official Ashita v4 repository. Current Commit, Discord, Issues Open and Closed.
 
 ## Linux Config - FFXI + Ashita v4 setup, with Lutris.
 
