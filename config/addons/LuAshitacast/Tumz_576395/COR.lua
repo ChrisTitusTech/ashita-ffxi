@@ -5,7 +5,12 @@ gcrolls = gFunc.LoadFile('common\\gcrolls.lua');
 gcinclude.sets.Sleeping = { Range = 'Earp' }
 local sets = {};
 local Setweapon = 'Naegling';
-local Setoffhand = 'Rostam';
+local player = gData.GetPlayer();
+if player.SubJob == 'DNC' or player.SubJob == 'NIN' then 
+            Setoffhand = 'Rostam';
+        else
+            Setoffhand = 'Ark Shield';
+        end
 local Setrange = 'Ataktos';
 sets.Weapons = {
     Main = Setweapon,
