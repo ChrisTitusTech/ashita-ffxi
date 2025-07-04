@@ -104,7 +104,7 @@ sets.Idle = {
     Ear2 = 'Ethereal Earring',
     Ring1 = 'Shneddick Ring',
     Ring2 = 'Moonbeam Ring',
-    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Enmity"+10', [5] = 'Evasion+20' } },
     Legs = 'Turms Subligar',
     Feet = 'Turms Leggings',
 };
@@ -155,7 +155,7 @@ sets.DT = {
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Moonbeam Ring',
     Ring2 = 'Moonbeam Ring',
-    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Enmity"+10', [5] = 'Evasion+20' } },
 };
 
 sets.Hybrid = {
@@ -173,7 +173,7 @@ sets.Hybrid = {
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
     Ring2 = 'Niqmaddu Ring',
-    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Enmity"+10', [5] = 'Evasion+20' } },
 }
 
 sets.Acc = {
@@ -191,7 +191,7 @@ sets.Acc = {
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Chirich Ring',
     Ring2 = 'Moonbeam Ring',
-    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Enmity"+10', [5] = 'Evasion+20' } },
 }
 
 sets.Default = {
@@ -209,7 +209,7 @@ sets.Default = {
     Ear2 = sets.Weapons.Ear2,
     Ring1 = 'Epona\'s Ring',
     Ring2 = 'Niqmaddu Ring',
-    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Store TP"+10', [5] = 'Evasion+20' } },
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Enmity"+10', [5] = 'Evasion+20' } },
 };
 
 sets.Ws_Default = {
@@ -244,9 +244,21 @@ gcinclude.sets.TH = {
     Ammo = 'Per. Lucky Egg',
 };
 
-sets.Valiance = {
+sets.Enmity = {
+    Ammo = 'Sapience Orb',
+    Ear2 = 'Cryptic Earring',
+    Ring1 = 'Eihwaz Ring',
+    Neck = 'Futhark Torque +2',
+    Body = 'Emet Harness',
+    Legs = 'Eri. Leg Guards +3',
+    Feet = 'Erilaz Greaves +3',
+    Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Enmity"+10', [5] = 'Evasion+20' } },
+}
+
+sets.ValianceAdd = {
     Body = 'Runeist Coat +3',
 };
+sets.Valiance = gFunc.Combine(sets.Enmity, sets.ValianceAdd);
 
 sets.Vivacious_Pulse = {
     Head = 'Erilaz Galea +3',
@@ -281,14 +293,6 @@ sets.LockStyle = {
     Head = 'Erilaz Galea +3',
     Body = 'Erilaz Surcoat +3',
     Hands = 'Erilaz Gauntlets',
-    Legs = 'Eri. Leg Guards +3',
-    Feet = 'Erilaz Greaves +3',
-}
-
-sets.Emnity = {
-    Ammo = 'Sapience Orb',
-    Ear2 = 'Cryptic Earring',
-    Neck = 'Futhark Torque +2',
     Legs = 'Eri. Leg Guards +3',
     Feet = 'Erilaz Greaves +3',
 }
@@ -342,6 +346,8 @@ profile.SoloMode = function()
         end
         if (player.HPP < 50) and gcinclude.CheckAbilityRecast('Vivacious Pulse') == 0 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Vivacious Pulse" <me>');
+        elseif gcinclude.CheckAbilityRecast('Rune Enchantment') == 0 and profile.CountRunes() ~= 3 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Lux" <me>');
         elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') == 0 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Valiance" <me>');
         elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') > 0 and gcinclude.CheckAbilityRecast('One for All') == 0 then
@@ -356,18 +362,10 @@ profile.SoloMode = function()
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
         elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Healing Waltz" <me>');
-        elseif gcinclude.CheckAbilityRecast('Rune Enchantment') == 0 and profile.CountRunes() ~= 3 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Sulpor" <me>');
         elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
         elseif gData.GetBuffCount('Hasso') == 0 and gcinclude.CheckAbilityRecast('Hasso') == 0 and player.SubJob == 'SAM' then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Hasso" <me>');
-        elseif target then
-            gcinclude.AutoEngage();
-        end
-    elseif player.Status ~= 'Engaged' then
-        if player.MPP < 50 and gcinclude.CheckAbilityRecast('Rune Enchantment') == 0 and gData.GetBuffCount('Lux') ~= 3 and gData.GetBuffCount('Invisible') == 0 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Lux" <me>');
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Hasso" <me>'); 
         end
     end
 end
@@ -403,6 +401,7 @@ profile.HandleDefault = function()
     local target = gData.GetTarget();
 
     profile.Weapons();
+    if (gcdisplay.GetToggle('Solo') == true) and target then gcinclude.AutoEngage() end;
     if (gcdisplay.GetToggle('Solo') == true) then profile.SoloMode() end;
     gcinclude.CheckDefault();
     gcinclude.AutoEngage();
@@ -472,7 +471,7 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Phalanx);
         end
     elseif spell.Name == 'Flash' or spell.Name == 'Foil' then
-        gFunc.EquipSet(sets.Emnity);
+        gFunc.EquipSet(sets.Enmity);
     else
         gFunc.EquipSet(sets.Midcast);
     end

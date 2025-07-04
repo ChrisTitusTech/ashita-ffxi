@@ -539,19 +539,19 @@ function gcinclude.AutoEngage()
 		if shouldEngage then
 			if player.Status == 'Idle' and target.Type == 'Monster' and target.Distance < 30 then
 				AshitaCore:GetChatManager():QueueCommand(1, '/attack on');
-				gcmovement.tapBackward(0.2);
-				gcmovement.tapBackward(0.2);
-				gcmovement.tapBackward(0.2);
+				gcmovement.tapBackward(0.5);
 			end
 			if player.Status == 'Engaged' and target.Type == 'Monster' then
 				if target.Distance > 3 then
 					-- Move to a target
-					gcmovement.tapForward(0.2);
+					gcmovement.tapForward(0.5);
 				elseif target.Distance < 1.5 then
 					gcmovement.tapBackward(0.2);
 				end
 			end
 		end
+	elseif gcdisplay.GetToggle('Solo') == true then
+		--8AshitaCore:GetChatManager():QueueCommand(1, '/targetbnpc');
 	end
 end
 
