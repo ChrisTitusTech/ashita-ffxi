@@ -280,7 +280,7 @@ profile.HandlePrecast = function()
     gcinclude.DoShadows(spell);
     gcinclude.CheckCancels();
     if (spell.Name == 'Honor March') then
-        gFunc.EquipSet('Honor');
+        profile.HonorMarch();
     else
         gFunc.EquipSet('Precast');
     end
@@ -292,7 +292,7 @@ profile.HandleMidcast = function()
     if (spell.Skill == 'Healing Magic') then
         gFunc.EquipSet('Cure');
     elseif (spell.Name == 'Honor March') then
-        gFunc.EquipSet('Honor');
+        profile.HonorMarch();
     else
         gFunc.EquipSet('Midcast');
     end

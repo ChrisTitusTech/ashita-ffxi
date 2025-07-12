@@ -82,6 +82,7 @@
 /addon load dropit
 /addon load sellit
 /addon load simplelog
+/addon load xicamera
 
 ##########################################################################
 #
@@ -107,6 +108,10 @@
 /bind !F5 /ta <a24>
 /bind !F6 /ta <a25>
 /bind numpad9 /targetnpc
+/bind prior /cam de
+/bind next /cam in
+/bind ^prior /cam bde
+/bind ^next /cam /bin
 #######################
 # Alias Weapon Skills
 #######################

@@ -571,6 +571,13 @@ local profiles = {
         'Sparkling Stone',
         'H.Q. Bugard Skin',
         'Beastcoin',
+        'Coeurl Saute',
+        'Ice Carol II',
+        'Flurry II',
+        'Graubg. Lettuce',
+        'Indi-Wilt',
+        'Ra. Bolt Quiver',
+        'Ginger',
         
     }
 }

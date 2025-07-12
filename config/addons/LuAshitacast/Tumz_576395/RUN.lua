@@ -136,6 +136,7 @@ sets.Midcast = {                 -- 100% SIRD
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Spell interruption rate down-10%', [2] = 'MND+25', [3] = '"Cure" potency +10%' } },
 }
 sets.EnhancingMidcastAdd = {
+    Head = 'Erilaz Galea +3',
     Legs = 'Futhark Trousers +3',
 }
 sets.EnhancingMidcast = gFunc.Combine(sets.Midcast, sets.EnhancingMidcastAdd);
@@ -249,7 +250,7 @@ sets.Enmity = {
     Ear2 = 'Cryptic Earring',
     Ring1 = 'Eihwaz Ring',
     Neck = 'Futhark Torque +2',
-    Body = 'Emet Harness',
+    Body = 'Emet Harness +1',
     Legs = 'Eri. Leg Guards +3',
     Feet = 'Erilaz Greaves +3',
     Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'HP+60', [3] = 'Mag. Evasion+30', [4] = '"Enmity"+10', [5] = 'Evasion+20' } },
@@ -260,31 +261,41 @@ sets.ValianceAdd = {
 };
 sets.Valiance = gFunc.Combine(sets.Enmity, sets.ValianceAdd);
 
-sets.Vivacious_Pulse = {
+sets.Vivacious_PulseAdd = {
     Head = 'Erilaz Galea +3',
 };
+sets.Vivacious_Pulse = gFunc.Combine(sets.Enmity, sets.Vivacious_PulseAdd);
 
-sets.Pflug = {
+sets.PflugAdd = {
     Feet = 'Runeist Bottes',
 };
+sets.Pflug = gFunc.Combine(sets.Enmity, sets.PflugAdd);
 
-sets.Rayke = {
+sets.RaykeAdd = {
     Feet = 'Futhark Boots +1',
 };
+sets.Rayke = gFunc.Combine(sets.Enmity, sets.RaykeAdd);
 
-sets.Gambit = {
+sets.GambitAdd = {
     Hands = 'Runeist Mitons',
 };
+sets.Gambit = gFunc.Combine(sets.Enmity, sets.GambitAdd);
 
-sets.Phalanx = {
-    Main = 'Deacon Sword',
-    Head = 'Fu. Bandeau +1',
+sets.BattutaAdd = {
+    Head = 'Fu. Bandeau +2',
+};
+sets.Battuta = gFunc.Combine(sets.Enmity, sets.BattutaAdd);
+
+sets.PhalanxAdd = {
+    Main = 'Deacon Sword', --4
+    Head = 'Fu. Bandeau +2', --6
     Back = 'Evasionist\'s Cape',
-    Body = 'Taeon Tabard',
-    Hands = 'Taeon Gloves',
-    Legs = 'Taeon Tights',
-    Feet = 'Taeon Boots',
+    Body = 'Taeon Tabard', --3
+    Hands = 'Taeon Gloves',--3
+    Legs = 'Taeon Tights',--3
+    Feet = 'Taeon Boots',--3
 }
+sets.Phalanx = gFunc.Combine(sets.EnhancingMidcast, sets.PhalanxAdd);
 
 sets.Refresh = {};
 sets.LockStyle = {
@@ -350,8 +361,6 @@ profile.SoloMode = function()
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Lux" <me>');
         elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') == 0 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Valiance" <me>');
-        elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') > 0 and gcinclude.CheckAbilityRecast('One for All') == 0 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "One for All" <me>');
         elseif gData.GetBuffCount('Enmity Boost') == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Crusade" <me>');
         elseif gData.GetBuffCount('Phalanx') == 0 and phalanxRecast == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
@@ -366,6 +375,8 @@ profile.SoloMode = function()
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
         elseif gData.GetBuffCount('Hasso') == 0 and gcinclude.CheckAbilityRecast('Hasso') == 0 and player.SubJob == 'SAM' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Hasso" <me>'); 
+        elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') > 0 and gcinclude.CheckAbilityRecast('One for All') == 0 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "One for All" <me>');
         end
     end
 end
@@ -420,7 +431,7 @@ profile.HandleAbility = function()
     -- Safety check to prevent crashes
     if not action or not action.Name then return end;
 
-    if (action.Name == 'Valiance') then
+    if action.Name == 'Valiance' or action.Name == 'Vallation' then
         gFunc.EquipSet(sets.Valiance);
     elseif (action.Name == 'Vivacious Pulse') then
         gFunc.EquipSet(sets.Vivacious_Pulse);
@@ -430,6 +441,10 @@ profile.HandleAbility = function()
         gFunc.EquipSet(sets.Rayke);
     elseif (action.Name == 'Gambit') then
         gFunc.EquipSet(sets.Gambit);
+    elseif (action.Name == 'Battuta') then
+        gFunc.EquipSet(sets.Battuta);
+    elseif (action.Name == 'Liement') then
+        gFunc.EquipSet(sets.Enmity);
     end
 
     gcinclude.CheckCancels();
@@ -470,7 +485,7 @@ profile.HandleMidcast = function()
         if spell.Name == 'Phalanx' then
             gFunc.EquipSet(sets.Phalanx);
         end
-    elseif spell.Name == 'Flash' or spell.Name == 'Foil' then
+    elseif spell.Name == 'Flash' or spell.Name == 'Foil' or spell.Name == 'Crusade' then
         gFunc.EquipSet(sets.Enmity);
     else
         gFunc.EquipSet(sets.Midcast);
