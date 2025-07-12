@@ -18,3 +18,4 @@ config/minimap/minimap.ini
 config/imgui.ini
 /config/addons/Metrics
 /screenshots
+config/pivot/pivot.ini
