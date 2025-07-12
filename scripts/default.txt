@@ -76,12 +76,13 @@
 /addon load pupsets
 /addon load repeater
 /addon load rolltracker
-/addon load tTimers
+/addon load recast
 /addon load stfu
 /addon load skeletonkey
 /addon load dropit
 /addon load sellit
 /addon load simplelog
+/addon load xicamera
 
 ##########################################################################
 #
@@ -107,6 +108,10 @@
 /bind !F5 /ta <a24>
 /bind !F6 /ta <a25>
 /bind numpad9 /targetnpc
+/bind prior /cam de
+/bind next /cam in
+/bind ^prior /cam bde
+/bind ^next /cam /bin
 #######################
 # Alias Weapon Skills
 #######################
@@ -208,10 +213,10 @@
 /addon load ja0wait
 /addon load HXUI
 /addon load truesight
-/fps 1
+/fps 2
 /ignorepet on
 /ignoretrust on
 /hidetrust on
 /localsettings blureffect off
-/drawdistance setworld 3
-/drawdistance setentity 10
+/drawdistance setworld 2
+/drawdistance setentity 3

@@ -320,15 +320,15 @@ end
 profile.SoloMode = function()
     local player = gData.GetPlayer();
     if gcinclude.CheckWsBailout() == true and player.HPP > 35 and player.TP > 1000 then
-        if gData.GetEquipment().Ammo ~= nil and Setoffhand ~= 'Naegling' and Setweapon ~= 'Naegling' and player.TP > 1000 then
+        if gData.GetEquipment().Ammo and Setoffhand ~= 'Naegling' and Setweapon ~= 'Naegling' and player.TP > 1000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Leaden Salute" <t>');
         elseif (player.HPP > 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1500 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Savage Blade" <t>');
-        elseif (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1000 then
+        elseif gData.GetEquipment().Main and (player.HPP <= 50) and gData.GetEquipment().Main.Name == 'Naegling' and player.TP > 1000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Sanguine Blade" <t>');
-        elseif gData.GetEquipment().Ammo ~= nil and player.TP > 2000 then
+        elseif gData.GetEquipment().Ammo  and player.TP > 2000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Leaden Salute" <t>');
-        elseif gData.GetEquipment().Ammo == nil and player.TP > 1000 then
+        elseif not gData.GetEquipment().Ammo and player.TP > 1000 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ws "Evisceration" <t>');
         end
     else
