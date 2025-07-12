@@ -76,7 +76,7 @@
 /addon load pupsets
 /addon load repeater
 /addon load rolltracker
-/addon load tTimers
+/addon load recast
 /addon load stfu
 /addon load skeletonkey
 /addon load dropit
@@ -208,10 +208,10 @@
 /addon load ja0wait
 /addon load HXUI
 /addon load truesight
-/fps 1
+/fps 2
 /ignorepet on
 /ignoretrust on
 /hidetrust on
 /localsettings blureffect off
-/drawdistance setworld 3
-/drawdistance setentity 10
+/drawdistance setworld 2
+/drawdistance setentity 3

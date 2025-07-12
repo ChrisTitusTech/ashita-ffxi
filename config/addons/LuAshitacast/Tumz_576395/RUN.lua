@@ -81,7 +81,7 @@ local Setweapon = WEAPON_CONFIGS.Primary.main;
 local Setoffhand = WEAPON_CONFIGS.Primary.sub;
 local Setear1 = WEAPON_CONFIGS.Primary.ear1;
 local Setear2 = WEAPON_CONFIGS.Primary.ear2;
-local SetBody = 'Erilaz Surcoat +3';
+local SetBody = 'Runeist Coat +3';
 
 sets.Weapons = {
     Main = Setweapon,
@@ -234,6 +234,8 @@ sets.Savage_Blade = gFunc.Combine(sets.Ws_Default, sets.Savage_BladeAdd);
 
 sets.DimidationAdd = {
     Head = 'Nyame Helm',
+    Neck = 'Rep. Plat. Medal',
+    Waist = 'Sailfi Belt +1',
     Feet = 'Erilaz Greaves +3',
 };
 sets.Dimidiation = gFunc.Combine(sets.Ws_Default, sets.DimidationAdd);
@@ -350,14 +352,12 @@ profile.SoloMode = function()
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Lux" <me>');
         elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') == 0 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Valiance" <me>');
-        elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') > 0 and gcinclude.CheckAbilityRecast('One for All') == 0 then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "One for All" <me>');
         elseif gData.GetBuffCount('Enmity Boost') == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Crusade" <me>');
-        elseif gData.GetBuffCount('Phalanx') == 0 and phalanxRecast == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Phalanx" <me>');
-        elseif gData.GetBuffCount('Multi Strikes') == 0 and temperRecast == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true then
+        elseif gData.GetBuffCount('Multi Strikes') == 0 and temperRecast == 0 and (player.MPP > 50) and gcinclude.CheckSpellBailout() == true and gcdisplay.GetCycle('MeleeSet') ~= 'DT' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ma "Temper" <me>');
+        elseif gData.GetBuffCount('Valiance') == 0 and gcinclude.CheckAbilityRecast('Valiance') > 0 and gcinclude.CheckAbilityRecast('One for All') == 0 then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "One for All" <me>');
         elseif gcinclude.CheckAbilityRecast('Curing Waltz III') == 0 and player.HPP < 35 and player.SubJob == 'DNC' and player.TP > 500 then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Curing Waltz III" <me>');
         elseif gcinclude.CheckAbilityRecast('Healing Waltz') == 0 and player.TP >= 200 and gData.GetBuffCount('Paralysis') ~= 0 and player.SubJob == 'DNC' then
@@ -365,7 +365,11 @@ profile.SoloMode = function()
         elseif gData.GetBuffCount('Haste Samba') == 0 and gcinclude.CheckAbilityRecast('Sambas') == 0 and (player.TP >= 350) and player.SubJob == 'DNC' then
             AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Haste Samba" <me>');
         elseif gData.GetBuffCount('Hasso') == 0 and gcinclude.CheckAbilityRecast('Hasso') == 0 and player.SubJob == 'SAM' then
-            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Hasso" <me>'); 
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Hasso" <me>');
+        elseif gData.GetBuffCount('Last Resort') == 0 and gcinclude.CheckAbilityRecast('Last Resort') == 0 and player.SubJob == 'DRK' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Last Resort" <me>');
+        elseif gData.GetBuffCount('Souleater') == 0 and gcinclude.CheckAbilityRecast('Souleater') == 0 and player.SubJob == 'DRK' then
+            AshitaCore:GetChatManager():QueueCommand(-1, '/ja "Souleater" <me>'); 
         end
     end
 end
