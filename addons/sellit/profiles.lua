@@ -578,7 +578,23 @@ local profiles = {
         'Indi-Wilt',
         'Ra. Bolt Quiver',
         'Ginger',
-        
+        'La Theine Cbg.',
+        'Black Sole',
+        'Toolbag (Maki)',
+        'White Honey',
+        'Azouph Greens',
+        'Isleracea',
+        'Tin Ore',
+        'Meteorite',
+        'Ginger',
+        'Ocl. Ingot',
+        'Bone Chip',
+        'Scorpion Shell',
+        'Lilac',
+        'H.Q. Scp. Shell',
+        'H.Q. Crab Shell',
+        'Igneous Rock',
+        'Lustreless Wing',
     }
 }
 

@@ -90,6 +90,7 @@ local autodrop = {
     'Mannequin Head',
     'Mannequin Body',
     'Nibiru Bow',
+    'Dung',
     -- CAUTION THESE WILL BE DROPPED
 };
 

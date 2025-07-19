@@ -405,13 +405,12 @@ end
 
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
-    local inventory = AshitaCore:GetMemoryManager():GetInventory();
+    local equipment = gData.GetEquipment();
     -- Enhanced safety checks
-    if not player or not player.MainJob or player.MainJob ~= 'RUN' or player.Status == 'Zoning' or not inventory then
+    if not player or not player.MainJob or player.MainJob ~= 'RUN' or player.Status == 'Zoning' or not equipment or not equipment.Body or not equipment.Body.Name then
         return;
     end
 
-    local equipment = gData.GetEquipment();
     local equipbody = equipment and equipment.Body and equipment.Body.Name or 'Nothing';
     local target = gData.GetTarget();
 

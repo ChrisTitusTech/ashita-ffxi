@@ -220,3 +220,5 @@
 /localsettings blureffect off
 /drawdistance setworld 2
 /drawdistance setentity 3
+/cam d 10
+/cam b 12

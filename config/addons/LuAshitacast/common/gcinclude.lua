@@ -697,6 +697,9 @@ function gcinclude.Initialize()
 	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad1 /roll1') end;
 	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad3 /roll2') end;
 	if player.MainJob == 'COR' then AshitaCore:GetChatManager():QueueCommand(1, '/bind !F10 /autoroll') end;
+	if profile and profile.sets and profile.sets.LockStyle then
+        gFunc.LockStyle(profile.sets.LockStyle);
+  end
+	AshitaCore:GetChatManager():QueueCommand(1, '/sl blink');
 end
-
 return gcinclude;
