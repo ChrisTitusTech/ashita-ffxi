@@ -595,6 +595,10 @@ local profiles = {
         'H.Q. Crab Shell',
         'Igneous Rock',
         'Lustreless Wing',
+        'Rock Salt',
+        'Manticore Hair',
+        'Distilled Water',
+        
     }
 }
 

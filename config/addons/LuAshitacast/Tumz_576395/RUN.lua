@@ -251,6 +251,7 @@ sets.Enmity = {
     Ammo = 'Sapience Orb',
     Ear2 = 'Cryptic Earring',
     Ring1 = 'Eihwaz Ring',
+    Waist = 'Kasiri Belt',
     Neck = 'Futhark Torque +2',
     Body = 'Emet Harness +1',
     Legs = 'Eri. Leg Guards +3',
