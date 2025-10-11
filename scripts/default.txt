@@ -32,6 +32,7 @@
 /load Sequencer
 /load Stylist
 /load Volumizer
+/load winefix
 
 /addon load distance
 /addon load fps
