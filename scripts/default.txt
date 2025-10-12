@@ -33,14 +33,10 @@
 /load winefix
 
 /addon load distance
-/addon load ahgo
 /addon load autora
-/addon load blucheck
 /addon load blumon
 /addon load blusets
 /addon load casper
-/addon load cbind
-/addon load chatmon
 /addon load chains
 /addon load checker
 /addon load cleancs
@@ -49,16 +45,12 @@
 /addon load enternity
 /addon load equipmon
 /addon load fastswap
-/addon load filterless
-/addon load filters
-/addon load filterscan
 /addon load find
-/addon load fishaid
+/addon load freemem
 /addon load instantah
 /addon load instantchat
 /addon load luashitacast
 /addon load macrofix
-/addon load metrics
 /addon load nocombat
 /addon load NoMount
 /addon load omen
@@ -71,7 +63,6 @@
 /addon load rolltracker
 /addon load recast
 /addon load stfu
-/addon load skeletonkey
 /addon load dropit
 /addon load sellit
 /addon load simplelog
