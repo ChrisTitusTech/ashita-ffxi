@@ -21,7 +21,6 @@
 
 /load thirdparty
 /load addons
-/load screenshot
 /load Bellhop
 /load FindAll
 /load Lootwhore
@@ -34,12 +33,7 @@
 /load winefix
 
 /addon load distance
-/addon load fps
-/addon load move
-/addon load affinity
 /addon load ahgo
-/addon load allmaps
-/addon load aspect
 /addon load autora
 /addon load blucheck
 /addon load blumon
@@ -211,7 +205,6 @@
 
 /addon load ja0wait
 /addon load HXUI
-/fps 1
 /ignorepet on
 /ignoretrust on
 /hidetrust on
