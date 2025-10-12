@@ -24,7 +24,6 @@
 /load screenshot
 /load Bellhop
 /load FindAll
-/load hardwaremouse
 /load Lootwhore
 /load Minimap
 /load Packer
@@ -40,7 +39,6 @@
 /addon load affinity
 /addon load ahgo
 /addon load allmaps
-/addon load allseeingeye
 /addon load aspect
 /addon load autora
 /addon load blucheck
@@ -213,8 +211,7 @@
 
 /addon load ja0wait
 /addon load HXUI
-/addon load truesight
-/fps 2
+/fps 1
 /ignorepet on
 /ignoretrust on
 /hidetrust on
@@ -223,3 +220,4 @@
 /drawdistance setentity 3
 /cam d 10
 /cam b 40
+/mouse block 1
