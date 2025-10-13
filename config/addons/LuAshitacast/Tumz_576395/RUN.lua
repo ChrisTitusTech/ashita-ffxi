@@ -46,6 +46,10 @@ profile.OnLoad = function()
         AshitaCore:GetChatManager():QueueCommand(1, '/macro set 8');
         
     end
+    for _, bind in ipairs(KEYBINDS) do
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ' .. bind.key .. ' ' .. bind.command);
+    end
+    profile.UpdateSets();
 end
 
 profile.OnUnload = function()
