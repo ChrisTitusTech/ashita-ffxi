@@ -1,6 +1,19 @@
 local profile = {};
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
+local KEYBINDS = {
+    { key = '`', command = '/ws "Stardiver" <t>' },
+    { key = '^`', command = '/ws "Drakesbane" <t>' },
+    { key = '!`', command = '/ws "Sonic Thrust" <t>' },
+    { key = 'numpad0', command = '/ja "Jump" <t>' },
+    { key = 'numpad.', command = '/ja "High Jump" <t>' },
+    { key = '!numpad0', command = '/ja "Spirit Jump" <t>' },
+    { key = '!numpad.', command = '/ja "Soul Jump" <t>' },
+    { key = '^numpad0', command = '/ja "Ancient Circle" <me>' },
+    { key = '^numpad.', command = '/ja "Spirit Link" <me>' },
+    { key = 'numpad1', command = '/ja "Call Wyvern" <me>' },
+};
+
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
     gcinclude.Initialize();
@@ -8,17 +21,10 @@ profile.OnLoad = function()
     -- Set up common aliases
     AshitaCore:GetChatManager():QueueCommand(1, '/alias /stat /lac fwd status');
 
-    -- DRG-specific keybinds
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ` /ws "Stardiver" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^` /ws "Drakesbane" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind !` /ws "Sonic Thrust" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad0 /ja "Jump" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad. /ja "High Jump" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad0 /ja "Spirit Jump" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind !numpad. /ja "Soul Jump" <t>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad0 /ja "Ancient Circle" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind ^numpad. /ja "Spirit Link" <me>');
-    AshitaCore:GetChatManager():QueueCommand(1, '/bind numpad1 /ja "Call Wyvern" <me>');
+    -- Set up keybinds from KEYBINDS table
+    for i, bind in ipairs(KEYBINDS) do
+        AshitaCore:GetChatManager():QueueCommand(1, '/bind ' .. bind.key .. ' ' .. bind.command);
+    end
 
     -- Add subjob specific binds
     local player = gData.GetPlayer();
@@ -34,17 +40,10 @@ profile.OnLoad = function()
 end
 
 profile.OnUnload = function()
-    -- Remove all keybinds
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind `');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^`');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !`');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad0');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad.');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad0');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind !numpad.');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad0');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad.');
-    AshitaCore:GetChatManager():QueueCommand(1, '/unbind numpad1');
+    -- Remove all keybinds from KEYBINDS table
+    for i, bind in ipairs(KEYBINDS) do
+        AshitaCore:GetChatManager():QueueCommand(1, '/unbind ' .. bind.key);
+    end
     AshitaCore:GetChatManager():QueueCommand(1, '/unbind ^numpad-');
     
     gcinclude.Unload();
@@ -52,11 +51,26 @@ end
 
 local sets = {};
 
--- Define weapon variables
-local Setweapon = 'Gae Derg +1';
-local Setoffhand = 'Kaja Grip';
-local Setear1 = 'Telos Earring';
-local Setear2 = 'Peltast\'s Earring';
+-- weapon configuration system
+local WEAPON_CONFIGS = {   
+    Primary = {
+        main = 'Gae Derg +1',
+        sub = 'Kaja Grip',
+        ear1 = 'Brutal Earring',
+        ear2 = 'Cessance Earring'
+    },
+    Secondary = {
+        main = 'Naegling',
+        sub = '',
+        ear1 = 'Suppanomimi',
+        ear2 = 'Eabani Earring'
+    },
+};
+
+local Setweapon = WEAPON_CONFIGS.Primary.main;
+local Setoffhand = WEAPON_CONFIGS.Primary.sub;
+local Setear1 = WEAPON_CONFIGS.Primary.ear1;
+local Setear2 = WEAPON_CONFIGS.Primary.ear2;
 
 sets.Weapons = {
     Main = Setweapon,
@@ -127,7 +141,23 @@ sets.Default = {
     Feet = 'Flam. Gambieras +2'
 };
 
-sets.Acc = {};
+sets.Acc = {
+    Main = sets.Weapons.Main,
+    Sub = sets.Weapons.Sub,
+    Ammo = 'Coiste Bodhar',
+    Head = 'Flam. Zucchetto +2',
+    Neck = 'Dgn. Collar +1',
+    Ear1 = sets.Weapons.Ear1,
+    Ear2 = sets.Weapons.Ear2,
+    Body = 'Pelt. Plackart +2',
+    Hands = 'Pel. Vambraces +2',
+    Ring1 = 'Chirich Ring',
+    Ring2 = 'Moonbeam Ring',
+    Back = 'Brigantia\'s Mantle',
+    Waist = 'Ioskeha Belt',
+    Legs = 'Pelt. Cuissots +2',
+    Feet = 'Flam. Gambieras +2'
+};
 sets.Hybrid = {};
 
 sets.Ws_Default = {
@@ -218,56 +248,29 @@ profile.UpdateSets = function()
 end
 
 profile.Weapons = function()
-    if (gcdisplay.GetCycle('Weapon') == 'Primary') and (Setweapon ~= 'Gae Derg +1') then
-        Setweapon = 'Gae Derg +1';
-        Setoffhand = 'Kaja Grip';
-        Setear1 = 'Telos Earring';
-        Setear2 = 'Cessance Earring';
+    local currentCycle = gcdisplay.GetCycle('Weapon');
+    local config = WEAPON_CONFIGS[currentCycle];
+    
+    if config and (Setweapon ~= config.main) then
+        Setweapon = config.main;
+        Setoffhand = config.sub;
+        Setear1 = config.ear1;
+        Setear2 = config.ear2;
         profile.UpdateSets();
-        gFunc.EquipSet(sets.Weapons)
-    elseif (gcdisplay.GetCycle('Weapon') == 'Secondary') and (Setweapon ~= 'Naegling') then
-        Setweapon = 'Naegling';
-        Setoffhand = 'Ark Shield';
-        Setear1 = 'Telos Earring';
-        Setear2 = 'Cessance Earring';
-        profile.UpdateSets();
-        gFunc.EquipSet(sets.Weapons)
-    elseif (gcdisplay.GetCycle('Weapon') == 'Third') and (Setweapon ~= 'Exalted Staff +1') then
-        Setweapon = 'Exalted Staff +1';
-        Setoffhand = 'Kaja Grip';
-        Setear1 = 'Telos Earring';
-        Setear2 = 'Cessance Earring';
-        profile.UpdateSets();
-        gFunc.EquipSet(sets.Weapons)
+        gFunc.EquipSet(sets.Weapons);
     end
 end
 
 
 
 profile.HandleDefault = function()
-    local player = gData.GetPlayer();
-    local bodyequip = gData.GetEquipment().Body;
     local target = gData.GetTarget();
-    if player.Status == 'Zoning' then return end;  
+
     profile.Weapons();
-    if player.Status == 'Engaged' then
-        if (player.HPP < 50) then
-            gFunc.EquipSet(sets.DT)
-        else
-            gFunc.EquipSet(gcdisplay.GetCycle('MeleeSet'))
-        end
-    elseif player.Status == 'Resting' then
-        gFunc.EquipSet(sets.Resting);
-    elseif (gcdisplay.GetCycle('MeleeSet') == sets.DT) then
-        gFunc.EquipSet(sets.DT);
-    else
-        gFunc.EquipSet(sets.Idle);
-    end
-    
-    gcinclude.CheckDefault();
-    gcinclude.AutoEngage();
+    if (gcdisplay.GetToggle('Solo') == true) and target then gcinclude.AutoEngage() end;
     if (gcdisplay.GetToggle('Solo') == true) then profile.SoloMode() end;
-    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
+    gcinclude.CheckDefault();
+    
 end
 
 profile.HandleAbility = function()

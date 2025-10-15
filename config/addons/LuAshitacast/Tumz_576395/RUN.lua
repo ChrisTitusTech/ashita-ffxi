@@ -2,10 +2,6 @@
 local profile = {};
 local sets = {};
 
--- Cache frequently accessed objects to reduce API calls
-local chatManager = AshitaCore:GetChatManager();
-local memoryManager = AshitaCore:GetMemoryManager();
-
 -- Constants for better maintainability
 local RUNE_LIST = { 'Ignis', 'Gelus', 'Flabra', 'Tellus', 'Sulpor', 'Unda', 'Lux', 'Tenebrae' };
 -- Keybind configuration table for easier management
@@ -423,7 +419,6 @@ profile.HandleDefault = function()
     if (gcdisplay.GetToggle('Solo') == true) and target then gcinclude.AutoEngage() end;
     if (gcdisplay.GetToggle('Solo') == true) then profile.SoloMode() end;
     gcinclude.CheckDefault();
-    gcinclude.AutoEngage();
     
     -- Safer phalanx failsafe
     if equipbody and target and player.MainJob == 'RUN' then
